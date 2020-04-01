@@ -18,7 +18,7 @@ public class representativeFootballAssociation extends AUser {
 
         //TODO: NOTE - as Dana instructed us, we will define 2 policies and let the user choose one.
         // Therefore, please use the family-class of "ScoreTablePolicy" (PoliciesAndAlgorithms package)
-        // I hope we could implement it as strategy design pattern. contact ___ who is in charge on
+        // I hope we could implement it as strategy design pattern. contact __Amit/Alon_ who is in charge on
         // those classes.
 
     }

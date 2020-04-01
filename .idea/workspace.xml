@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="" />
+    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Score/Score.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/System/Guest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/Guest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +36,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -62,17 +72,41 @@
       <option name="presentableId" value="Default" />
       <updated>1585582933875</updated>
     </task>
+    <task id="LOCAL-00001" summary="First commit, just to see that everything is connected">
+      <created>1585595847583</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585595847583</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First commit, just to see that everything is connected" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit, just to see that everything is connected" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1585591086081">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585591086081" />
+    <state x="323" y="271" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585667285815">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="323" y="271" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1585667285815" />
+    <state x="443" y="211" width="394" height="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585595997110">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="443" y="211" width="394" height="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585595997110" />
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585591484060">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585591484060" />
+    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1585595846524">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585595846524" />
     <state x="421" y="87" key="FileChooserDialogImpl" timestamp="1585594541426">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -85,9 +119,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585583017612" />
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1585582937422">
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1585726095318">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585582937422" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1585726095318" />
   </component>
 </project>

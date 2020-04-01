@@ -1,7 +1,5 @@
 package AssociationAssets;
 
-import Score.Score;
-
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
