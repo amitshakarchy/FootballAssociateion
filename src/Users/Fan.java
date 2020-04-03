@@ -1,6 +1,16 @@
 package Users;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Fan extends AUser {
+
+    List<String> searchHistory;
+
+    public Fan(int UID, String fName, String lName) {
+        super(UID, fName, lName);
+        searchHistory = new ArrayList<>();
+    }
 
     public void subscribePersonalPage() {//useCase 3.2
 
@@ -23,13 +33,15 @@ public class Fan extends AUser {
 
     }
 
+    // return search history in order to display it on the screen.
     public Object getSearchHistory() { //useCase 3.5
-
-        // return search history in order to display it on the screen.
-
-        return null;
+        return this.searchHistory;
     }
 
-
+    public void viewSearchHistory(){ //useCase 3.5
+        for (int i = 0; i < this.searchHistory.size(); i++) {
+            System.out.println(this.searchHistory.get(i));
+        }
+    }
 
 }

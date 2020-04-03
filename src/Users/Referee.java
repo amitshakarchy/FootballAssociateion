@@ -7,6 +7,10 @@ public class Referee extends AUser {
     ETraining training;
     Logger logger; // singleton
 
+    public Referee(int UID, String fName, String lName) {
+        super(UID, fName, lName);
+    }
+
 
     public void getAssignedGames(){} //10.2
 

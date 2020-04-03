@@ -1,34 +1,277 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/Score.java" afterDir="false" />
+    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="I started doing the player and coach.&#10;I created an abstract page for a personal page and also an interface because I saw that for each stakeholder there are different details that are displayed on the personal page.&#10;For example, the player has the date of birth and the coach has a type of training. That's why I created an interface that describes the contract of the two actions together. I wrote most of the code implementation in the abstract department. And the differences between the two I wrote in new departments that are expanding the abstract department.&#10;I've added an ENUM of a status that uses the system. Once the user logs in or out of the system, the status changes. I have seen that the status affects actions to be shown to the user in alerts.&#10;I have added the types of training the coaches have.&#10;I have added group types of roles to coaches.">
+      <change afterPath="$PROJECT_DIR$/src/Users/APageEditor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Users/CoachPageEditor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Users/EStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Users/IPageEditor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Users/PlayerPageEditor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Score/Score.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/System/Guest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/Guest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/AUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/AUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Coach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Coach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/ECoachRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/ECoachRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/ETraining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/ETraining.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Fan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Fan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/PageEditor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Users/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Referee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Referee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="AUser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Users/AUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="129">
+              <caret line="35" column="38" lean-forward="true" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#741#742#0" expanded="true" />
+                <element signature="e#799#800#0" expanded="true" />
+                <element signature="e#733#734#0" expanded="true" />
+                <element signature="e#759#760#0" expanded="true" />
+                <element signature="e#791#792#0" expanded="true" />
+                <element signature="e#819#820#0" expanded="true" />
+                <element signature="e#851#852#0" expanded="true" />
+                <element signature="e#879#880#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IPageEditor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Users/IPageEditor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoachPageEditor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Users/CoachPageEditor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding>
+                <element signature="e#310#311#0" expanded="true" />
+                <element signature="e#341#342#0" expanded="true" />
+                <element signature="e#392#393#0" expanded="true" />
+                <element signature="e#432#433#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IUser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Users/IUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fan.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Users/Fan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-311">
+              <caret line="23" column="38" lean-forward="true" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1080#1081#0" expanded="true" />
+                <element signature="e#1121#1122#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EStatus.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Users/EStatus.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Coach.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Users/Coach.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-233">
+              <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
+              <folding>
+                <element signature="docComment;method#Coach#0;class#Coach#0" />
+                <element signature="docComment;method#addFeedToMyPage#0;class#Coach#0" />
+                <element signature="docComment;method#addFeedToMyPage#1;class#Coach#0" />
+                <element signature="docComment;method#setRole#0;class#Coach#0" />
+                <element signature="method#setRole#0;class#Coach#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Referee.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="e#185#186#0" expanded="true" />
+                <element signature="e#225#226#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="APageEditor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Users/APageEditor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="669">
+              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#538#539#0" expanded="true" />
+                <element signature="e#565#566#0" expanded="true" />
+                <element signature="e#603#604#0" expanded="true" />
+                <element signature="e#635#636#0" expanded="true" />
+                <element signature="method#addFeedToMyPage#0;class#PageEditor#0" />
+                <element signature="method#removeFeedFromMyPage#0;class#PageEditor#0" />
+                <element signature="e#1192#1193#0" expanded="true" />
+                <element signature="e#1226#1227#0" expanded="true" />
+                <element signature="e#1280#1281#0" expanded="true" />
+                <element signature="e#1326#1327#0" expanded="true" />
+                <element signature="e#1363#1364#0" expanded="true" />
+                <element signature="e#1396#1397#0" expanded="true" />
+                <element signature="e#1448#1449#0" expanded="true" />
+                <element signature="e#1492#1493#0" expanded="true" />
+                <element signature="e#1544#1545#0" expanded="true" />
+                <element signature="e#1573#1574#0" expanded="true" />
+                <element signature="e#1635#1636#0" expanded="true" />
+                <element signature="e#1671#1672#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Users/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="22" column="65" selection-start-line="22" selection-start-column="65" selection-end-line="22" selection-end-column="65" />
+              <folding>
+                <element signature="docComment;method#Player#0;class#Player#0" />
+                <element signature="docComment;method#addFeedToMyPage#0;class#Player#0" />
+                <element signature="docComment;method#addFeedToMyPage#1;class#Player#0" />
+                <element signature="method#setRole#0;class#Player#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Singleton" />
         <option value="Interface" />
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/Users/ECoachRole.java" />
+        <option value="$PROJECT_DIR$/src/Users/ETraining.java" />
+        <option value="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" />
+        <option value="$PROJECT_DIR$/src/Users/PageEditor.java" />
+        <option value="$PROJECT_DIR$/src/Users/Referee.java" />
+        <option value="$PROJECT_DIR$/src/Users/APageEditor.java" />
+        <option value="$PROJECT_DIR$/src/Users/PlayerPageEditor.java" />
+        <option value="$PROJECT_DIR$/src/Users/Coach.java" />
+        <option value="$PROJECT_DIR$/src/Users/CoachPageeditor.java" />
+        <option value="$PROJECT_DIR$/src/Users/EStatus.java" />
+        <option value="$PROJECT_DIR$/src/Users/AUser.java" />
+        <option value="$PROJECT_DIR$/src/Users/Player.java" />
+        <option value="$PROJECT_DIR$/src/Users/Fan.java" />
+        <option value="$PROJECT_DIR$/src/Users/IPageEditor.java" />
+        <option value="$PROJECT_DIR$/src/Users/CoachPageEditor.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="119" />
+    <option name="width" value="1097" />
+    <option name="height" value="880" />
   </component>
   <component name="ProjectId" id="1Zr2Xlfccmk1yjMuSshZwv6bqTW" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="System" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Users" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+    </panes>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -37,6 +280,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -48,6 +293,61 @@
       <recent name="Score" />
       <recent name="Users" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -71,6 +371,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585582933875</updated>
+      <workItem from="1585913465258" duration="10112000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, just to see that everything is connected">
       <created>1585595847583</created>
@@ -82,47 +383,325 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="10112000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1618" height="868" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32932332" />
+      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.32932332" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21243523" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="bottom" id="Run" order="6" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.21243523" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="bottom" id="TODO" order="10" visible="true" weight="0.32932332" />
+      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Designer" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit, just to see that everything is connected" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit, just to see that everything is connected" />
+    <MESSAGE value="I started doing the player and coach.&#10;I created an abstract page for a personal page and also an interface because I saw that for each stakeholder there are different details that are displayed on the personal page.&#10;For example, the player has the date of birth and the coach has a type of training. That's why I created an interface that describes the contract of the two actions together. I wrote most of the code implementation in the abstract department. And the differences between the two I wrote in new departments that are expanding the abstract department.&#10;I've added an ENUM of a status that uses the system. Once the user logs in or out of the system, the status changes. I have seen that the status affects actions to be shown to the user in alerts.&#10;I have added the types of training the coaches have.&#10;I have added group types of roles to coaches." />
+    <option name="LAST_COMMIT_MESSAGE" value="I started doing the player and coach.&#10;I created an abstract page for a personal page and also an interface because I saw that for each stakeholder there are different details that are displayed on the personal page.&#10;For example, the player has the date of birth and the coach has a type of training. That's why I created an interface that describes the contract of the two actions together. I wrote most of the code implementation in the abstract department. And the differences between the two I wrote in new departments that are expanding the abstract department.&#10;I've added an ENUM of a status that uses the system. Once the user logs in or out of the system, the status changes. I have seen that the status affects actions to be shown to the user in alerts.&#10;I have added the types of training the coaches have.&#10;I have added group types of roles to coaches." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1585591086081">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585591086081" />
-    <state x="323" y="271" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585667285815">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="323" y="271" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1585667285815" />
-    <state x="443" y="211" width="394" height="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585595997110">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="443" y="211" width="394" height="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585595997110" />
-    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585591484060">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585591484060" />
-    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1585595846524">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585595846524" />
-    <state x="421" y="87" key="FileChooserDialogImpl" timestamp="1585594541426">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="421" y="87" key="FileChooserDialogImpl/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585594541426" />
-    <state x="316" y="47" key="NewModule_or_Project.wizard" timestamp="1585594600864">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="316" y="47" key="NewModule_or_Project.wizard/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585594600864" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1585583017612">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585583017612" />
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1585726095318">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585582937422" />
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1585726095318" />
+    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" />
+    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" />
+    <state x="323" y="271" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" />
+    <state x="323" y="271" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.680@0.0.1280.680" />
+    <state x="443" y="211" width="394" height="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" />
+    <state x="443" y="211" width="394" height="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" />
+    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" />
+    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" />
+    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" />
+    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" />
+    <state x="421" y="87" key="FileChooserDialogImpl" />
+    <state x="421" y="87" key="FileChooserDialogImpl/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" />
+    <state x="316" y="47" key="NewModule_or_Project.wizard" />
+    <state x="316" y="47" key="NewModule_or_Project.wizard/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" />
+    <state x="121" y="0" key="SettingsEditor" />
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/EEventType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/Date.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="163" column="11" selection-start-line="163" selection-start-column="11" selection-end-line="163" selection-end-column="11" />
+          <folding>
+            <element signature="e#6390#6391#0" expanded="true" />
+            <element signature="e#6438#6439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Enum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-839">
+          <caret line="61" column="30" lean-forward="true" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/ETraining.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" column="11" selection-start-line="3" selection-start-column="4" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/representativeFootballAssociation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" column="20" lean-forward="true" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+          <folding>
+            <element signature="e#162#163#0" expanded="true" />
+            <element signature="e#202#203#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/System/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/PlayerPageEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#305#306#0" expanded="true" />
+            <element signature="e#332#333#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/ECoachRole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/EPlayerRole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/EStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/IUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="22" column="65" selection-start-line="22" selection-start-column="65" selection-end-line="22" selection-end-column="65" />
+          <folding>
+            <element signature="docComment;method#Player#0;class#Player#0" />
+            <element signature="docComment;method#addFeedToMyPage#0;class#Player#0" />
+            <element signature="docComment;method#addFeedToMyPage#1;class#Player#0" />
+            <element signature="method#setRole#0;class#Player#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Coach.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-233">
+          <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
+          <folding>
+            <element signature="docComment;method#Coach#0;class#Coach#0" />
+            <element signature="docComment;method#addFeedToMyPage#0;class#Coach#0" />
+            <element signature="docComment;method#addFeedToMyPage#1;class#Coach#0" />
+            <element signature="docComment;method#setRole#0;class#Coach#0" />
+            <element signature="method#setRole#0;class#Coach#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#185#186#0" expanded="true" />
+            <element signature="e#225#226#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Fan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-311">
+          <caret line="23" column="38" lean-forward="true" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1080#1081#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/AUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="35" column="38" lean-forward="true" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#799#800#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+            <element signature="e#851#852#0" expanded="true" />
+            <element signature="e#879#880#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/IPageEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/CoachPageEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#310#311#0" expanded="true" />
+            <element signature="e#341#342#0" expanded="true" />
+            <element signature="e#392#393#0" expanded="true" />
+            <element signature="e#432#433#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/APageEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="669">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
+            <element signature="e#603#604#0" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="method#addFeedToMyPage#0;class#PageEditor#0" />
+            <element signature="method#removeFeedFromMyPage#0;class#PageEditor#0" />
+            <element signature="e#1192#1193#0" expanded="true" />
+            <element signature="e#1226#1227#0" expanded="true" />
+            <element signature="e#1280#1281#0" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1363#1364#0" expanded="true" />
+            <element signature="e#1396#1397#0" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+            <element signature="e#1492#1493#0" expanded="true" />
+            <element signature="e#1544#1545#0" expanded="true" />
+            <element signature="e#1573#1574#0" expanded="true" />
+            <element signature="e#1635#1636#0" expanded="true" />
+            <element signature="e#1671#1672#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

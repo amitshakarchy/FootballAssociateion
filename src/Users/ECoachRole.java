@@ -1,6 +1,10 @@
 package Users;
 
 public enum ECoachRole {
+    GoalkeeperCoach,
+    HeadCoach,
+    AssistantCoach,
+    YouthCoach
 
-    //TODO: add enum values here
+
 }
