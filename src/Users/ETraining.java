@@ -5,6 +5,4 @@ public enum ETraining {
     UEFAA,
     UEFAB,
     UEFAPro
-
-
 }
