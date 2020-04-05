@@ -1,10 +1,10 @@
 package System;
 
-public class Guest {
-    
-    public void signIn(){} // useCase 2.2
+import Users.AUser;
+import Users.IUser;
 
-    public void login(){} // useCase 2.3
+public class Guest {
+
 
     public Object viewInformationFeed(){ // useCase 2.4
         return null;
