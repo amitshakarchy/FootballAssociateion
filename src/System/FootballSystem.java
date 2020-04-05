@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * this class responsible for the football system.
+ */
 public class FootballSystem {
 
     SecuritySystem securitySystem = new SecuritySystem();
@@ -26,7 +29,6 @@ public class FootballSystem {
         }
         Fan fan = new Fan();
         // TODO: 4/5/2020 create new fan!!
-
     } // useCase 2.2
 
     public void login(String userName, String password){
