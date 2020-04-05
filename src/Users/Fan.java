@@ -29,7 +29,7 @@ public class Fan extends AUser {
     public void submitComplain() {//useCase 3.4
 
         // the way I see it, this method should receive a complain text (from the service layer)
-        // and send it as an email to a system manage (you can get it's email from the System itself).
+        // and send it as an email to a system manage (you can get it's email from the FootballSystem itself).
 
     }
 
