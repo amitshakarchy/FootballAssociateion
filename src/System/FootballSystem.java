@@ -1,15 +1,13 @@
 package System;
-
 import Security.SecuritySystem;
 import Users.AUser;
 import Users.Fan;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class System {
+public class FootballSystem {
 
     SecuritySystem securitySystem = new SecuritySystem();
     List<Guest> guestList = new LinkedList<>();
@@ -33,5 +31,11 @@ public class System {
 
     public void login(String userName, String password){
         // TODO: 4/5/2020 give the authorization of user and not of guest
+        if(securitySystem.checkPasswordForLogIn(userName,password)){
+            // the guest can log in into the system
+        }
+        else{
+            System.out.println("user name or password incorrect");
+        }
     } // useCase 2.3
 }

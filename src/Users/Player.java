@@ -6,4 +6,8 @@ public class Player extends AUser {
     Date bDate;
     EPlayerRole role;
     PageEditor myPage;
+
+    public Player() {
+        // blablalab
+    }
 }

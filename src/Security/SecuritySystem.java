@@ -50,7 +50,19 @@ public class SecuritySystem {
         }
     }
 
-
+    public boolean checkPasswordForLogIn(String userName,String password){
+        if(!userName.contains(userName)){
+            System.out.println("the user name is NOT EXISTS");
+            return false;
+        }
+        if(AES.decrypt(usersHashMap.get(userName),secretKey).equals(password)) {
+            // the user can log in
+            return true;
+        }
+        //else..
+        System.out.println("the password is wrong");
+        return false;
+    }
 
 
 
