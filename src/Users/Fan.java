@@ -7,7 +7,7 @@ public class Fan extends AUser {
 
     List<String> searchHistory;
 
-    public Fan(int UID, String fName, String lName) {
+    public Fan(String UID, String fName, String lName) {
         super(UID, fName, lName);
         searchHistory = new ArrayList<>();
     }

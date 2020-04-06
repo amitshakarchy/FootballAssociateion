@@ -3,6 +3,10 @@ import RecommendationSystem.*;
 
 public class SystemManager extends AUser {
 
+    public SystemManager(String UID, String fName, String lName) {
+        super(UID, fName, lName);
+    }
+
     public void closeTeam(){} //useCase 8.1
 
     public void removeUser(){} //useCase 8.2

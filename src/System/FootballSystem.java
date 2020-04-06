@@ -24,7 +24,6 @@ public class FootballSystem {
                 lastName == null || lastName.isEmpty() ){
 
         }
-        Fan fan = new Fan();
         // TODO: 4/5/2020 create new fan!!
 
     } // useCase 2.2

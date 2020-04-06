@@ -1,5 +1,7 @@
 package Users;
 
+import AssociationAssets.AdditionalInfo;
+
 import java.util.Date;
 
 public class Coach extends AUser {
@@ -7,6 +9,7 @@ public class Coach extends AUser {
     ETraining training;
     ECoachRole role;
     APageEditor myPage;
+    AdditionalInfo myAdditionalInfo;
 
     /**
      *
@@ -19,13 +22,41 @@ public class Coach extends AUser {
      *             GoalkeeperCoach, HeadCoach, AssistantCoach, YouthCoach
      * When a coach is created, a personal page is created for him.
      */
-    public Coach(int UID, String fName, String lName, ETraining training, ECoachRole role) {
+    public Coach(String UID, String fName, String lName, ETraining training, ECoachRole role) {
         super(UID, fName, lName);
         this.training = training;
         this.role = role;
         this.myPage = new CoachPageEditor(fName,lName,role,training);
+        this.myAdditionalInfo = null;
     }
 
+
+    /**
+     *
+     * @param UID - Unique user ID
+     * @param fName - First name of the coach
+     * @param lName - Last name of the coach
+     * @param training - Coach type of training. It could be:
+     *                 CDiploma, UEFAA, UEFAB, UEFAPro
+     * @param role - The role of the coach. It could be:
+     *             GoalkeeperCoach, HeadCoach, AssistantCoach, YouthCoach
+     * When a coach is created, a personal page is created for him.
+     */
+    public Coach(AdditionalInfo myAdditionalInfo, String UID, String fName, String lName, ETraining training, ECoachRole role) {
+        super(UID, fName, lName);
+        this.training = training;
+        this.role = role;
+        this.myPage = new CoachPageEditor(fName,lName,role,training);
+        this.myAdditionalInfo = myAdditionalInfo;
+    }
+
+    public AdditionalInfo getMyAdditionalInfo() {
+        return myAdditionalInfo;
+    }
+
+    public void setMyAdditionalInfo(AdditionalInfo myAdditionalInfo) {
+        this.myAdditionalInfo = myAdditionalInfo;
+    }
 
     /**
      * Coaches can upload content to their personal page.

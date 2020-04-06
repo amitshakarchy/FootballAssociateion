@@ -2,7 +2,7 @@ package Users;
 
 public class representativeFootballAssociation extends AUser {
 
-    public representativeFootballAssociation(int UID, String fName, String lName) {
+    public representativeFootballAssociation(String UID, String fName, String lName) {
         super(UID, fName, lName);
     }
 

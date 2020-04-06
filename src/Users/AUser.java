@@ -1,18 +1,15 @@
 package Users;
 
-import com.sun.org.apache.xerces.internal.util.Status;
-import jdk.net.SocketFlow;
-
 public abstract class AUser implements IUser {
 
 
     //region Fields
-    int UID;
+    String UID;
     String fName;
     String lName;
     EStatus status;
 
-    public AUser(int UID, String fName, String lName) {
+    public AUser(String UID, String fName, String lName) {
         this.UID = UID;
         this.fName = fName;
         this.lName = lName;
@@ -44,7 +41,7 @@ public abstract class AUser implements IUser {
     //endregion
 
 
-    public int getUID() {
+    public String getUID() {
         return UID;
     }
 

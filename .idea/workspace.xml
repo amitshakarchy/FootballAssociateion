@@ -3,6 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="I started doing the player and coach.&#10;I created an abstract page for a personal page and also an interface because I saw that for each stakeholder there are different details that are displayed on the personal page.&#10;For example, the player has the date of birth and the coach has a type of training. That's why I created an interface that describes the contract of the two actions together. I wrote most of the code implementation in the abstract department. And the differences between the two I wrote in new departments that are expanding the abstract department.&#10;I've added an ENUM of a status that uses the system. Once the user logs in or out of the system, the status changes. I have seen that the status affects actions to be shown to the user in alerts.&#10;I have added the types of training the coaches have.&#10;I have added group types of roles to coaches.&#10;I also added package of tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/System/FootballSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/FootballSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/AUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/AUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Coach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Coach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Fan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Fan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Referee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Referee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/SystemManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/SystemManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/TeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/TeamOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamOwner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,27 +24,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="AUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Users/AUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="58" selection-start-line="58" selection-end-line="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#740#741#0" expanded="true" />
-                <element signature="e#799#800#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Coach.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Users/Coach.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+            <state relative-caret-position="245">
+              <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="docComment;method#Coach#0;class#Coach#0" />
+                <element signature="docComment;method#Coach#1;class#Coach#0" />
+                <element signature="e#1859#1860#0" expanded="true" />
+                <element signature="e#1898#1899#0" expanded="true" />
+                <element signature="e#1970#1971#0" expanded="true" />
+                <element signature="e#2026#2027#0" expanded="true" />
                 <element signature="docComment;method#addFeedToMyPage#0;class#Coach#0" />
                 <element signature="docComment;method#addFeedToMyPage#1;class#Coach#0" />
                 <element signature="docComment;method#setRole#0;class#Coach#0" />
@@ -44,80 +46,89 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoachTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Users/CoachTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Fan.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Users/Fan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+            <state relative-caret-position="-770">
+              <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1080#1081#0" expanded="true" />
-                <element signature="e#1135#1136#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JNotifications.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Notifications/JNotifications.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="70">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RFANotifications.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Notifications/RFANotifications.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="70">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TONotifications.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Notifications/TONotifications.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="70">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Users/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+            <state>
+              <caret lean-forward="true" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="docComment;method#Player#0;class#Player#0" />
-                <element signature="docComment;method#addFeedToMyPage#0;class#Player#0" />
-                <element signature="docComment;method#addFeedToMyPage#1;class#Player#0" />
-                <element signature="method#setRole#0;class#Player#0" />
+                <element signature="e#3040#3041#0" expanded="true" />
+                <element signature="e#3079#3080#0" expanded="true" />
+                <element signature="e#3151#3152#0" expanded="true" />
+                <element signature="e#3207#3208#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/Users/PlayerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IPageEditor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Users/IPageEditor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Referee.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Referee.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="132">
+              <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
               <folding>
-                <element signature="e#185#186#0" expanded="true" />
-                <element signature="e#225#226#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#Referee#0;class#Referee#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Logger.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/System/Logger.java">
+      <file leaf-file-name="EEventType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AssociationAssets/EEventType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Game.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="245">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+              <caret line="9" column="25" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -159,14 +170,10 @@
         <option value="$PROJECT_DIR$/src/Users/ECoachRole.java" />
         <option value="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" />
         <option value="$PROJECT_DIR$/src/Users/PageEditor.java" />
-        <option value="$PROJECT_DIR$/src/Users/Referee.java" />
         <option value="$PROJECT_DIR$/src/Users/APageEditor.java" />
         <option value="$PROJECT_DIR$/src/Users/PlayerPageEditor.java" />
-        <option value="$PROJECT_DIR$/src/Users/Coach.java" />
         <option value="$PROJECT_DIR$/src/Users/CoachPageeditor.java" />
         <option value="$PROJECT_DIR$/src/Users/EStatus.java" />
-        <option value="$PROJECT_DIR$/src/Users/AUser.java" />
-        <option value="$PROJECT_DIR$/src/Users/Player.java" />
         <option value="$PROJECT_DIR$/src/Users/Fan.java" />
         <option value="$PROJECT_DIR$/src/Users/IPageEditor.java" />
         <option value="$PROJECT_DIR$/src/Users/CoachPageEditor.java" />
@@ -174,6 +181,13 @@
         <option value="$PROJECT_DIR$/src/Users/ETraining.java" />
         <option value="$PROJECT_DIR$/tests/Users/CoachTest.java" />
         <option value="$PROJECT_DIR$/tests/Users/PlayerTest.java" />
+        <option value="$PROJECT_DIR$/src/Users/SystemManager.java" />
+        <option value="$PROJECT_DIR$/src/Users/TeamManager.java" />
+        <option value="$PROJECT_DIR$/src/Users/TeamOwner.java" />
+        <option value="$PROJECT_DIR$/src/Users/AUser.java" />
+        <option value="$PROJECT_DIR$/src/Users/Player.java" />
+        <option value="$PROJECT_DIR$/src/Users/Coach.java" />
+        <option value="$PROJECT_DIR$/src/Users/Referee.java" />
       </list>
     </option>
   </component>
@@ -186,7 +200,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="119" />
     <option name="width" value="1097" />
     <option name="height" value="880" />
@@ -197,6 +211,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -213,26 +229,37 @@
               <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
               <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Users" type="462c0819:PsiDirectoryNode" />
+              <item name="AssociationAssets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
               <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Notifications" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
               <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="PoliciesAndAlgorithms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RecommendationSystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Users" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -349,6 +376,7 @@
       <updated>1585582933875</updated>
       <workItem from="1585913465258" duration="12340000" />
       <workItem from="1586105686993" duration="1043000" />
+      <workItem from="1586155113326" duration="1341000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, just to see that everything is connected">
       <created>1585595847583</created>
@@ -375,9 +403,9 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13383000" />
+    <option name="totallyTimeSpent" value="14761000" />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -391,7 +419,7 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.39648682" />
+      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.2421581" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -403,7 +431,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32932332" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21598272" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21976241" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -417,31 +445,31 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32932332" />
+      <window_info anchor="bottom" id="Messages" order="7" visible="true" weight="0.32873276" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Find" order="5" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="bottom" id="Run" order="6" />
       <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.21243523" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="10" visible="true" weight="0.32932332" />
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info id="Capture Tool" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
@@ -509,12 +537,112 @@
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Referee#0;class#Referee#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/System/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/IPageEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/AUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#740#741#0" expanded="true" />
+            <element signature="e#799#800#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Coach.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#Coach#0;class#Coach#0" />
+            <element signature="docComment;method#Coach#1;class#Coach#0" />
+            <element signature="e#1859#1860#0" expanded="true" />
+            <element signature="e#1898#1899#0" expanded="true" />
+            <element signature="e#1970#1971#0" expanded="true" />
+            <element signature="e#2026#2027#0" expanded="true" />
+            <element signature="docComment;method#addFeedToMyPage#0;class#Coach#0" />
+            <element signature="docComment;method#addFeedToMyPage#1;class#Coach#0" />
+            <element signature="docComment;method#setRole#0;class#Coach#0" />
+            <element signature="method#setRole#0;class#Coach#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/ETraining.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Fan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/CoachTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5213">
+          <caret line="159" column="13" selection-start-line="159" selection-start-column="13" selection-end-line="159" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Users/AUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="7" selection-start-line="7" selection-end-line="11" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#740#741#0" expanded="true" />
             <element signature="e#799#800#0" expanded="true" />
           </folding>
@@ -543,7 +671,13 @@
         <state relative-caret-position="140">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;method#Coach#0;class#Coach#0" />
+            <element signature="docComment;method#Coach#1;class#Coach#0" />
+            <element signature="e#1859#1860#0" expanded="true" />
+            <element signature="e#1898#1899#0" expanded="true" />
+            <element signature="e#1970#1971#0" expanded="true" />
+            <element signature="e#2026#2027#0" expanded="true" />
             <element signature="docComment;method#addFeedToMyPage#0;class#Coach#0" />
             <element signature="docComment;method#addFeedToMyPage#1;class#Coach#0" />
             <element signature="docComment;method#setRole#0;class#Coach#0" />
@@ -558,8 +692,6 @@
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1135#1136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -569,8 +701,8 @@
         <state relative-caret-position="735">
           <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
           <folding>
-            <element signature="e#185#186#0" expanded="true" />
-            <element signature="e#225#226#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#Referee#0;class#Referee#0" />
           </folding>
         </state>
       </provider>
@@ -600,12 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
           <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-          <folding>
-            <element signature="docComment;method#Player#0;class#Player#0" />
-            <element signature="docComment;method#addFeedToMyPage#0;class#Player#0" />
-            <element signature="docComment;method#addFeedToMyPage#1;class#Player#0" />
-            <element signature="method#setRole#0;class#Player#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -613,13 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/EEventType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -720,17 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#185#186#0" expanded="true" />
-            <element signature="e#225#226#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/System/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
@@ -745,28 +853,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/CoachTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1820">
+          <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/SystemManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding>
+            <element signature="e#153#154#0" expanded="true" />
+            <element signature="e#193#194#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/TeamManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#118#119#0" expanded="true" />
+            <element signature="e#158#159#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/TeamOwner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding>
+            <element signature="e#115#116#0" expanded="true" />
+            <element signature="e#155#156#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Users/AUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        <state relative-caret-position="210">
+          <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="10" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#740#741#0" expanded="true" />
             <element signature="e#799#800#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/Coach.java">
+    <entry file="file://$PROJECT_DIR$/src/Notifications/JNotifications.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        <state relative-caret-position="70">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Notifications/TONotifications.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Notifications/RFANotifications.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Fan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-770">
+          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
           <folding>
-            <element signature="docComment;method#Coach#0;class#Coach#0" />
-            <element signature="docComment;method#addFeedToMyPage#0;class#Coach#0" />
-            <element signature="docComment;method#addFeedToMyPage#1;class#Coach#0" />
-            <element signature="docComment;method#setRole#0;class#Coach#0" />
-            <element signature="method#setRole#0;class#Coach#0" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#Player#0;class#Player#0" />
+            <element signature="e#3040#3041#0" expanded="true" />
+            <element signature="e#3079#3080#0" expanded="true" />
+            <element signature="e#3151#3152#0" expanded="true" />
+            <element signature="e#3207#3208#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -778,41 +964,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/Fan.java">
+    <entry file="file://$PROJECT_DIR$/src/Users/Coach.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+        <state relative-caret-position="245">
+          <caret line="29" column="37" lean-forward="true" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="docComment;method#Coach#0;class#Coach#0" />
+            <element signature="docComment;method#Coach#1;class#Coach#0" />
+            <element signature="e#1859#1860#0" expanded="true" />
+            <element signature="e#1898#1899#0" expanded="true" />
+            <element signature="e#1970#1971#0" expanded="true" />
+            <element signature="e#2026#2027#0" expanded="true" />
+            <element signature="docComment;method#addFeedToMyPage#0;class#Coach#0" />
+            <element signature="docComment;method#addFeedToMyPage#1;class#Coach#0" />
+            <element signature="docComment;method#setRole#0;class#Coach#0" />
+            <element signature="method#setRole#0;class#Coach#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Users/CoachTest.java">
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/EEventType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        <state relative-caret-position="60">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Users/PlayerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="54" column="5" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
+        <state relative-caret-position="245">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+        <state relative-caret-position="132">
+          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
           <folding>
-            <element signature="docComment;method#Player#0;class#Player#0" />
-            <element signature="docComment;method#addFeedToMyPage#0;class#Player#0" />
-            <element signature="docComment;method#addFeedToMyPage#1;class#Player#0" />
-            <element signature="method#setRole#0;class#Player#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#Referee#0;class#Referee#0" />
           </folding>
         </state>
       </provider>
