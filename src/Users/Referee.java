@@ -3,6 +3,7 @@ import AssociationAssets.Game;
 import System.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -11,12 +12,14 @@ public class Referee extends AUser {
     ETraining training;
     Logger logger; // singleton
     List<Game> myGames;
+    EReferee role;
 
-    public Referee(String UID, String fName, String lName, ETraining training, Logger logger) {
+    public Referee(String UID, String fName, String lName, ETraining training, Logger logger,EReferee role) {
         super(UID, fName, lName);
         this.training = training;
         this.logger = logger;
         this.myGames = new ArrayList<>();
+        this.role = role;
     }
 
     public ETraining getTraining() {
@@ -39,7 +42,7 @@ public class Referee extends AUser {
         }
     } //10.2
 
-    public void addEventToAssignedGame(){
+    public void addEventToAssignedGame(Date dateOfTheGame){
 
     } //10.3
 

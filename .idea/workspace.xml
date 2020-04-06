@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="I started doing the player and coach.&#10;I created an abstract page for a personal page and also an interface because I saw that for each stakeholder there are different details that are displayed on the personal page.&#10;For example, the player has the date of birth and the coach has a type of training. That's why I created an interface that describes the contract of the two actions together. I wrote most of the code implementation in the abstract department. And the differences between the two I wrote in new departments that are expanding the abstract department.&#10;I've added an ENUM of a status that uses the system. Once the user logs in or out of the system, the status changes. I have seen that the status affects actions to be shown to the user in alerts.&#10;I have added the types of training the coaches have.&#10;I have added group types of roles to coaches.&#10;I also added package of tests">
+    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="Start doing referee.&#10;I add to coach and to player constructor with additional info and field of additional info.">
+      <change afterPath="$PROJECT_DIR$/src/Users/EReferee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/System/FootballSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/FootballSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/AUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/AUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Coach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Coach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Fan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Fan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Users/Referee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Referee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/SystemManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/SystemManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/TeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/TeamOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -67,46 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RFANotifications.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Notifications/RFANotifications.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TONotifications.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Notifications/TONotifications.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Users/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;method#Player#0;class#Player#0" />
-                <element signature="e#3040#3041#0" expanded="true" />
-                <element signature="e#3079#3080#0" expanded="true" />
-                <element signature="e#3151#3152#0" expanded="true" />
-                <element signature="e#3207#3208#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Referee.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+            <state relative-caret-position="296">
+              <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Referee#0;class#Referee#0" />
@@ -115,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EEventType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AssociationAssets/EEventType.java">
+      <file leaf-file-name="EReferee.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Users/EReferee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            <state relative-caret-position="175">
+              <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -133,15 +90,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ETraining.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Users/ETraining.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -150,9 +98,9 @@
         <option value="Singleton" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Enum" />
         <option value="Arquillian JUnit Test Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -187,6 +135,7 @@
         <option value="$PROJECT_DIR$/src/Users/AUser.java" />
         <option value="$PROJECT_DIR$/src/Users/Player.java" />
         <option value="$PROJECT_DIR$/src/Users/Coach.java" />
+        <option value="$PROJECT_DIR$/src/Users/EReferee.java" />
         <option value="$PROJECT_DIR$/src/Users/Referee.java" />
       </list>
     </option>
@@ -201,9 +150,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="119" />
-    <option name="width" value="1097" />
-    <option name="height" value="880" />
+    <option name="x" value="-18" />
+    <option name="y" value="5" />
+    <option name="width" value="1722" />
+    <option name="height" value="974" />
   </component>
   <component name="ProjectId" id="1Zr2Xlfccmk1yjMuSshZwv6bqTW" />
   <component name="ProjectView">
@@ -292,9 +242,9 @@
       <recent name="" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="Users" />
       <recent name="AssociationAssets" />
       <recent name="Score" />
-      <recent name="Users" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -376,7 +326,7 @@
       <updated>1585582933875</updated>
       <workItem from="1585913465258" duration="12340000" />
       <workItem from="1586105686993" duration="1043000" />
-      <workItem from="1586155113326" duration="1341000" />
+      <workItem from="1586155113326" duration="2747000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, just to see that everything is connected">
       <created>1585595847583</created>
@@ -399,11 +349,18 @@
       <option name="project" value="LOCAL" />
       <updated>1586106083678</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Start doing referee.&#10;I add to coach and to player constructor with additional info and field of additional info.">
+      <created>1586156700088</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586156700088</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14761000" />
+    <option name="totallyTimeSpent" value="16167000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -415,11 +372,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <frame x="16" y="797" width="1722" height="974" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.2421581" />
+      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.26474622" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -431,7 +388,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32932332" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21976241" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2800245" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -513,7 +470,8 @@
     <MESSAGE value="First commit, just to see that everything is connected" />
     <MESSAGE value="I started doing the player and coach.&#10;I created an abstract page for a personal page and also an interface because I saw that for each stakeholder there are different details that are displayed on the personal page.&#10;For example, the player has the date of birth and the coach has a type of training. That's why I created an interface that describes the contract of the two actions together. I wrote most of the code implementation in the abstract department. And the differences between the two I wrote in new departments that are expanding the abstract department.&#10;I've added an ENUM of a status that uses the system. Once the user logs in or out of the system, the status changes. I have seen that the status affects actions to be shown to the user in alerts.&#10;I have added the types of training the coaches have.&#10;I have added group types of roles to coaches." />
     <MESSAGE value="I started doing the player and coach.&#10;I created an abstract page for a personal page and also an interface because I saw that for each stakeholder there are different details that are displayed on the personal page.&#10;For example, the player has the date of birth and the coach has a type of training. That's why I created an interface that describes the contract of the two actions together. I wrote most of the code implementation in the abstract department. And the differences between the two I wrote in new departments that are expanding the abstract department.&#10;I've added an ENUM of a status that uses the system. Once the user logs in or out of the system, the status changes. I have seen that the status affects actions to be shown to the user in alerts.&#10;I have added the types of training the coaches have.&#10;I have added group types of roles to coaches.&#10;I also added package of tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="I started doing the player and coach.&#10;I created an abstract page for a personal page and also an interface because I saw that for each stakeholder there are different details that are displayed on the personal page.&#10;For example, the player has the date of birth and the coach has a type of training. That's why I created an interface that describes the contract of the two actions together. I wrote most of the code implementation in the abstract department. And the differences between the two I wrote in new departments that are expanding the abstract department.&#10;I've added an ENUM of a status that uses the system. Once the user logs in or out of the system, the status changes. I have seen that the status affects actions to be shown to the user in alerts.&#10;I have added the types of training the coaches have.&#10;I have added group types of roles to coaches.&#10;I also added package of tests" />
+    <MESSAGE value="Start doing referee.&#10;I add to coach and to player constructor with additional info and field of additional info." />
+    <option name="LAST_COMMIT_MESSAGE" value="Start doing referee.&#10;I add to coach and to player constructor with additional info and field of additional info." />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" />
@@ -537,17 +495,6 @@
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Referee#0;class#Referee#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/System/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
@@ -998,10 +945,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/EReferee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+        <state relative-caret-position="296">
+          <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Referee#0;class#Referee#0" />
