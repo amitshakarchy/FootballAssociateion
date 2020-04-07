@@ -1,6 +1,6 @@
 package Users;
 
-public class Fan extends AUser {
+public class Fan  {
 
     public void subscribePersonalPage() {//useCase 3.2
 
