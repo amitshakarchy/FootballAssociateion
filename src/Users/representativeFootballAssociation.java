@@ -2,6 +2,9 @@ package Users;
 
 public class representativeFootballAssociation extends AUser {
 
+    public representativeFootballAssociation(String UID, String fName, String lName) {
+        super(UID, fName, lName);
+    }
 
     //region Methods
     public void setNewLeague(){} // useCase #9.1

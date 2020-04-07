@@ -1,14 +1,24 @@
 package Users;
 
+import com.sun.org.apache.xerces.internal.util.Status;
+import jdk.net.SocketFlow;
+
 public abstract class AUser implements IUser {
 
 
     //region Fields
-    int UID;
+    String UID;
     String fName;
     String lName;
+    EStatus status;
 
-    //TODO: decide how to represent and use the fields :
+    public AUser(String UID, String fName, String lName) {
+        this.UID = UID;
+        this.fName = fName;
+        this.lName = lName;
+        this.status = EStatus.ONLINE;
+    }
+//TODO: decide how to represent and use the fields :
     // String username
     // String password
     // In order to do so, contact ___ who is on charge on authentication and security.
@@ -23,7 +33,7 @@ public abstract class AUser implements IUser {
 
     @Override
     public void logout() { //useCase 3.1
-
+        this.status = EStatus.OFFLINE;
     }
 
     @Override
@@ -34,4 +44,15 @@ public abstract class AUser implements IUser {
     //endregion
 
 
+    public String getUID() {
+        return UID;
+    }
+
+    public String getfName() {
+        return fName;
+    }
+
+    public String getlName() {
+        return lName;
+    }
 }

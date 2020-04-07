@@ -11,7 +11,6 @@ public class Guest {
     }
 
     public void search(){ // useCase 2.5
-
         //TODO: Leave it for now. We will take an open source engine or something.
     }
 }

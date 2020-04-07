@@ -14,10 +14,11 @@ public class FootballSystem {
 
     SecuritySystem securitySystem = new SecuritySystem();
     List<Guest> guestList = new LinkedList<>();
-    Map<String,AUser> userMap = new HashMap<>();
+    Map<String,AUser> userHashMap = new HashMap<>();
 
 
-    public void signIn(String id, String userName, String password,String firstName,String lastName){
+    public void signIn(String id, String userName, String password,
+                       String firstName,String lastName){
         if(id.length() != 9) {
 
         }
@@ -27,8 +28,7 @@ public class FootballSystem {
                 lastName == null || lastName.isEmpty() ){
 
         }
-        Fan fan = new Fan();
-        // TODO: 4/5/2020 create new fan!!
+        securitySystem.addNewUser(id,password);
     } // useCase 2.2
 
     public void login(String userName, String password){
@@ -40,4 +40,8 @@ public class FootballSystem {
             System.out.println("user name or password incorrect");
         }
     } // useCase 2.3
+
+    public void removeUser(String userName){
+        this.userHashMap.remove(userName);
+    }
 }
