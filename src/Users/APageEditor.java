@@ -1,9 +1,5 @@
 package Users;
-
-import javafx.util.Pair;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public abstract class APageEditor implements IPageEditor {
@@ -11,7 +7,7 @@ public abstract class APageEditor implements IPageEditor {
     private String myFirstName;
     private String myLastName;
     private Enum role;
-    private List<Pair<Date,String>> myFeed;
+    private List<String> myFeed;
 
     public APageEditor(String myFirstName, String myLastName, Enum role) {
         this.myFirstName = myFirstName;
@@ -29,15 +25,12 @@ public abstract class APageEditor implements IPageEditor {
     }
 
     public void addFeedToMyPage(String feed){ //useCase 4.2
-        Date today = new Date();
-        Pair<Date,String> newFeed = new Pair<>(today,feed);
-        this.myFeed.add(newFeed);
+        this.myFeed.add(feed);
     }
 
-    public void removeFeedFromMyPage(Date publishDate, String feed) {
-        Pair<Date,String> newFeed = new Pair<>(publishDate,feed);
+    public void removeFeedFromMyPage(String feed) {
         try{
-            this.myFeed.remove(newFeed);
+            this.myFeed.remove(feed);
 
         }
         catch (Exception e){
@@ -62,13 +55,22 @@ public abstract class APageEditor implements IPageEditor {
     }
 
 
-    public List<Pair<Date, String>> getMyFeed() {
+    public List<String> getMyFeed() {
         return myFeed;
     }
 
-    public void setMyFeed(List<Pair<Date, String>> myFeed) {
+    public void setMyFeed(List<String> myFeed) {
         this.myFeed = myFeed;
     }
 
+    @Override
+    public String viewMyPersonalPage() {
+        return "Welcome to my page! "+
+                "My Name is: '" + myFirstName + '\'' +
+                " " + myLastName + '\'' +
+                ". My role is " + role +
+                ", My Feed : " + myFeed ;
+
+    }
 
 }

@@ -13,4 +13,14 @@ public class PlayerPageEditor extends APageEditor {
     public Date getbDay() {
         return bDay;
     }
+
+    @Override
+    public String viewMyPersonalPage() {
+        return "Welcome to my page! "+
+                "My Name is: '" + super.getMyFisrtName() + '\'' +
+                " " + super.getMyLastName() + '\'' +
+                "I was born on " + this.getbDay()+
+                ". My role is " + super.getRole() +
+                ", My Feed : " + super.getMyFeed() ;
+    }
 }

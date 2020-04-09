@@ -14,4 +14,15 @@ public class CoachPageEditor extends APageEditor {
     public void setTraining(ETraining training) {
         this.training = training;
     }
+
+
+    @Override
+    public String viewMyPersonalPage() {
+        return "Welcome to my page! "+
+                "My Name is: '" + super.getMyFisrtName() + '\'' +
+                " " + super.getMyLastName() + '\'' +
+                "My Training is " + getTraining() +
+                ". My role is " + super.getRole() +
+                ", My Feed : " + super.getMyFeed() ;
+    }
 }

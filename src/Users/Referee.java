@@ -9,28 +9,39 @@ import java.util.List;
 
 public class Referee extends AUser {
 
-    ETraining training;
-    Logger logger; // singleton
+    Logger  logger; // singleton
     List<Game> myGames;
-    EReferee role;
+    EReferee training;
 
-    public Referee(String UID, String fName, String lName, ETraining training, Logger logger,EReferee role) {
+
+    public Referee(String UID, String fName, String lName, EReferee training) {
         super(UID, fName, lName);
-        this.training = training;
-        this.logger = logger;
+        this.logger = Logger.getInstance();
         this.myGames = new ArrayList<>();
-        this.role = role;
+        this.training = training;
     }
 
-    public ETraining getTraining() {
+    public List<Game> getMyGames() {
+        return myGames;
+    }
+
+    public void setMyGames(List<Game> myGames) {
+        if(myGames != null) {
+            this.myGames = myGames;
+        }
+    }
+
+    public EReferee getTraining() {
         return training;
     }
 
-    public void setTraining(ETraining training) {
-        this.training = training;
+    public void setTraining(EReferee training) {
+        if(training != null) {
+            this.training = training;
+        }
     }
 
-    public void getAssignedGames(){
+    public void viewAssignedGames(){
         if(this.myGames.size() == 0){
             System.out.println("You haven't selected a game yet");
         }
@@ -41,6 +52,8 @@ public class Referee extends AUser {
             }
         }
     } //10.2
+
+
 
     public void addEventToAssignedGame(Date dateOfTheGame){
 

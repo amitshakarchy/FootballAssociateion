@@ -1,15 +1,14 @@
 package Users;
-
 import AssociationAssets.AdditionalInfo;
-
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Coach extends AUser {
 
     ETraining training;
     ECoachRole role;
     APageEditor myPage;
-    AdditionalInfo myAdditionalInfo;
+    List<AdditionalInfo> myAdditionalInfo;
 
     /**
      *
@@ -27,36 +26,25 @@ public class Coach extends AUser {
         this.training = training;
         this.role = role;
         this.myPage = new CoachPageEditor(fName,lName,role,training);
-        this.myAdditionalInfo = null;
+        this.myAdditionalInfo = new ArrayList<>();
     }
 
 
-    /**
-     *
-     * @param UID - Unique user ID
-     * @param fName - First name of the coach
-     * @param lName - Last name of the coach
-     * @param training - Coach type of training. It could be:
-     *                 CDiploma, UEFAA, UEFAB, UEFAPro
-     * @param role - The role of the coach. It could be:
-     *             GoalkeeperCoach, HeadCoach, AssistantCoach, YouthCoach
-     * When a coach is created, a personal page is created for him.
-     */
-    public Coach(AdditionalInfo myAdditionalInfo, String UID, String fName, String lName, ETraining training, ECoachRole role) {
-        super(UID, fName, lName);
-        this.training = training;
-        this.role = role;
-        this.myPage = new CoachPageEditor(fName,lName,role,training);
-        this.myAdditionalInfo = myAdditionalInfo;
-    }
-
-    public AdditionalInfo getMyAdditionalInfo() {
+    public List<AdditionalInfo> getMyAdditionalInfo() {
         return myAdditionalInfo;
     }
 
-    public void setMyAdditionalInfo(AdditionalInfo myAdditionalInfo) {
-        this.myAdditionalInfo = myAdditionalInfo;
+    /**
+     * @param additionalInfo - This section contains details about the team manager,
+     *                      team, team owner, team players, team coach and season.
+     */
+    public void addAdditionalInfo(AdditionalInfo additionalInfo){
+        if(additionalInfo != null){
+            this.myAdditionalInfo.add(additionalInfo);
+        }
+
     }
+
 
     /**
      * Coaches can upload content to their personal page.
@@ -68,17 +56,18 @@ public class Coach extends AUser {
      * @param feed verbal content
      */
     public void addFeedToMyPage(String feed){
-        this.myPage.addFeedToMyPage(feed);
+        if(feed != null) {
+            this.myPage.addFeedToMyPage(feed);
+        }
     }
 
     /**
      * Coaches can remove content from their personal page.
      * # use case 5.2
-     * @param publishDate Content publication date
      * @param feed Verbal content
      */
-    public void addFeedToMyPage(Date publishDate, String feed){
-        this.myPage.removeFeedFromMyPage(publishDate,feed);
+    public void removeFeedFromMyPage(String feed){
+        this.myPage.removeFeedFromMyPage(feed);
     }
 
     public APageEditor getMyPage() {
@@ -90,7 +79,9 @@ public class Coach extends AUser {
     }
 
     public void setTraining(ETraining training) {
-        this.training = training;
+        if( training != null){
+                this.training = training;
+        }
     }
 
     public ECoachRole getRole() {
@@ -104,8 +95,35 @@ public class Coach extends AUser {
      *             GoalkeeperCoach, HeadCoach, AssistantCoach, YouthCoach
      */
     public void setRole(ECoachRole role) {
-        this.role = role;
-        this.myPage.setRole(role);
+        if(role != null) {
+            this.role = role;
+            this.myPage.setRole(role);
+        }
+    }
+
+    /**
+     * # use case 5.1
+     * @param myPage - Personal page.
+     */
+    public void setMyPage(CoachPageEditor myPage) {
+        if(myPage != null){
+            this.myPage = myPage;
+        }
+    }
+
+
+    /**
+     * With this function you can view player information.
+     * Provides a brief description of the actor,
+     * his full name, date of birth and his role.
+     * # use case 2.4 - You can view details about the players through
+     * this function as well as through the personal pages of the players.
+     */
+    @Override
+    public String viewProfile() {
+        return super.viewProfile() + ", I am a football coach, " +
+                ", My training is " + this.training +
+                ", My role is " + this.role;
     }
 
 }
