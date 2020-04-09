@@ -71,4 +71,7 @@ public class Player extends AUser {
 
 
 
+    public Player(String UID, String fName, String lName) {
+        super(UID, fName, lName);
+    }
 }
