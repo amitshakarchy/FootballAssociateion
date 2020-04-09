@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/SeasonLeagueBinder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Users/EUserType.java" afterDir="false" />
+    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;Team owner adding+removing team property">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/League.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/League.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Season.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/SecuritySystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/SecuritySystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/System/FootballSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/FootballSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/TeamOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Users/TeamOwner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="11" column="28" selection-end-line="67" />
+            <state relative-caret-position="264">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#removeTeamProperty#0;class#TeamOwner#0" />
@@ -42,19 +27,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Users/SystemManager.java">
+        <entry file="file://$PROJECT_DIR$/tests/AssociationAssets/GameTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+            <state relative-caret-position="88">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/AssociationAssets/ScoreTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="112" column="1" lean-forward="true" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
+            <state relative-caret-position="-186">
+              <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -62,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Users/representativeFootballAssociation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="10" />
+            <state relative-caret-position="286">
+              <caret line="15" column="8" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -251,6 +236,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Users" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="AssociationAssets" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -269,7 +265,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586435909084" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586436029243" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -351,17 +347,30 @@
       <option name="project" value="LOCAL" />
       <updated>1586155960001</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;Team owner adding+removing team property">
+      <created>1586435914795</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586435914795</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;Team owner adding+removing team property">
+      <created>1586435945456</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586435945456</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42426000" />
+    <option name="totallyTimeSpent" value="42628000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="745" height="695" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.04379562" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20647773" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -378,8 +387,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="11" visible="true" weight="0.06749556" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50040483" side_tool="true" weight="0.22912966" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49959514" visible="true" weight="0.22912966" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -572,16 +581,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Team.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -614,13 +613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="18" column="17" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/representativeFootballAssociation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -667,14 +659,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/representativeFootballAssociation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Team.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="14" column="21" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Users/TeamOwner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="11" column="28" selection-end-line="67" />
+        <state relative-caret-position="264">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#removeTeamProperty#0;class#TeamOwner#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AssociationAssets/GameTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/AssociationAssets/ScoreTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-186">
+          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
         </state>
       </provider>
     </entry>
