@@ -2,25 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/Budget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/DuplicateValueException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/TeamBudget.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/GameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/ScoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/ScoreTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/League.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/League.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/SeasonLeagueBinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/SeasonLeagueBinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Football Association/AssociationAssets/Budget.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Budget.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Team.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="114" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -91,7 +86,21 @@
       <recent name="Users" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GameTest">
+  <component name="RunManager" selected="JUnit.TeamTest">
+    <configuration name="AssociationAssets in Football Association" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Football Association" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="AssociationAssets.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="AssociationAssets" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Football Association" />
       <extension name="coverage">
@@ -154,29 +163,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TeamTest.findPlayer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Football Association" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="AssociationAssets.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="AssociationAssets" />
-      <option name="MAIN_CLASS_NAME" value="AssociationAssets.TeamTest" />
-      <option name="METHOD_NAME" value="findPlayer" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TeamTest" />
+        <item itemvalue="JUnit.AssociationAssets in Football Association" />
         <item itemvalue="JUnit.GameTest" />
         <item itemvalue="JUnit.GameTest.setSide2" />
         <item itemvalue="JUnit.GameTest.setMain" />
-        <item itemvalue="JUnit.TeamTest" />
-        <item itemvalue="JUnit.TeamTest.findPlayer" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586439334327</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="First commit, just to see that everything is connected">
+      <created>1586509399539</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586509399539</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -271,11 +271,15 @@
     </state>
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585591484060" />
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1586163482445" />
-    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1586509370229">
+    <state x="371" y="91" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586509443945">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="91" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1586509443945" />
+    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1586515164145">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585595846524" />
-    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586509370229" />
+    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586515164145" />
     <state width="405" height="445" key="DebuggerActiveHint" timestamp="1586503649617">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -285,22 +289,22 @@
     </state>
     <state x="421" y="87" key="FileChooserDialogImpl/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585594541426" />
     <state x="421" y="87" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1586075992219" />
-    <state width="1237" height="30" key="GridCell.Tab.0.bottom" timestamp="1586509370241">
+    <state width="618" height="92" key="GridCell.Tab.0.bottom" timestamp="1586515061365">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="30" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586509370241" />
-    <state width="1237" height="30" key="GridCell.Tab.0.center" timestamp="1586509370241">
+    <state width="618" height="92" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586515061365" />
+    <state width="618" height="92" key="GridCell.Tab.0.center" timestamp="1586515061365">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="30" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586509370241" />
-    <state width="1237" height="30" key="GridCell.Tab.0.left" timestamp="1586509370241">
+    <state width="618" height="92" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586515061365" />
+    <state width="618" height="92" key="GridCell.Tab.0.left" timestamp="1586515061364">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="30" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586509370241" />
-    <state width="1237" height="30" key="GridCell.Tab.0.right" timestamp="1586509370241">
+    <state width="618" height="92" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586515061364" />
+    <state width="618" height="92" key="GridCell.Tab.0.right" timestamp="1586515061365">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="30" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586509370241" />
+    <state width="618" height="92" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586515061365" />
     <state width="1237" height="47" key="GridCell.Tab.1.bottom" timestamp="1586503727638">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -326,10 +330,10 @@
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585583017612" />
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1586182573946" />
-    <state x="233" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586439345167">
+    <state x="233" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586515138965">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="77" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586439345167" />
+    <state x="233" y="77" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586515138965" />
     <state x="560" y="118" key="chooseDestDirectoryDialog" timestamp="1586183969115">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -363,13 +367,19 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1586257953944" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1586509275318">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1586514403478">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1586509275318" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1586514403478" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FootballAssociateion$GameTest_setMain.ic" NAME="GameTest.setMain Coverage Results" MODIFIED="1586503227894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>AssociationAssets.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/FootballAssociateion$AssociationAssets_in_Football_Association.ic" NAME="AssociationAssets in Football Association Coverage Results" MODIFIED="1586514448929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>AssociationAssets.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/FootballAssociateion$TeamTest.ic" NAME="TeamTest Coverage Results" MODIFIED="1586514456916" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>AssociationAssets.*</FILTER>
     </SUITE>
   </component>

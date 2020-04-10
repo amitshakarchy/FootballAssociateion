@@ -33,7 +33,7 @@ public class TeamTest {
         r2= new Referee("2","a","a");
         r3= new Referee("3","a","a");
         team1= new Team(1, field, null, season, new HashMap<>(), new HashMap<>(),new HashMap<>(),new HashMap<>());
-        team2= new Team(1, field, null, season, new HashMap<>(), new HashMap<>(),new HashMap<>(),new HashMap<>());
+        team2= new Team(2, field, null, season, new HashMap<>(), new HashMap<>(),new HashMap<>(),new HashMap<>());
         game= new Game(new Date(10,10,2020),
                 new Time(19,30,0),
                 field,team1,team2,r1,r2,r3,season,

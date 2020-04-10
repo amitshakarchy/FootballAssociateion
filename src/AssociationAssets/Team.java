@@ -15,7 +15,7 @@ public class Team {
     AdditionalInfo info;
     HashMap<String, Game> homeGames;
     HashMap<String, Game> awayGames;
-    Budget budget;
+    TeamBudget budget;
     //endregion
 
     /**
@@ -30,7 +30,7 @@ public class Team {
      * @param managers
      * @param players
      */
-    public Team(int TID, Field homeField, Budget budget, Season season, HashMap<String,TeamOwner>  owners, HashMap<String, Coach> coaches, HashMap<String, TeamManager> managers, HashMap<String, Player> players) {
+    public Team(int TID, Field homeField, TeamBudget budget, Season season, HashMap<String,TeamOwner>  owners, HashMap<String, Coach> coaches, HashMap<String, TeamManager> managers, HashMap<String, Player> players) {
         this.TID = TID;
         this.homeField = homeField;
         this.budget = budget;
@@ -57,7 +57,7 @@ public class Team {
         return awayGames;
     }
 
-    public Budget getBudget() {
+    public TeamBudget getBudget() {
         return budget;
     }
 
@@ -92,7 +92,7 @@ public class Team {
         this.homeField = homeField;
     }
 
-    public void setBudget(Budget budget) {
+    public void setBudget(TeamBudget budget) {
         this.budget = budget;
     }
 
@@ -252,6 +252,7 @@ public class Team {
     }
     //endregion
 
+    //region Find methods
     /**
      * Given a user ID, finds the player in the team.
      * if the player is not in the team, returns NULL
@@ -263,25 +264,54 @@ public class Team {
         return p;
     }
 
+    /**
+     * Given a user ID, finds the coach in the team.
+     * if the coach is not in the team, returns NULL
+     * @param CID
+     * @return
+     */
     public Coach findCoach(String CID){
         Coach c=info.findCoach(CID);
         return c;
     }
-
+    /**
+     * Given a user ID, finds the manager in the team.
+     * if the manager is not in the team, returns NULL
+     * @param MID
+     * @return
+     */
     public TeamManager findManager(String MID){
         TeamManager m=info.findManager(MID);
         return m;
     }
-
+    /**
+     * Given a user ID, finds the owner in the team.
+     * if the owner is not in the team, returns NULL
+     * @param OID
+     * @return
+     */
     public TeamOwner findTeamOwner(String OID){
         TeamOwner o=info.findTeamOwner(OID);
         return o;
     }
-
+    /**
+     * Given a game ID, finds the relevant home-game
+     * if the game is not in the team, returns NULL
+     * @param gid
+     * @return
+     */
     public Game findHomeGame(String gid){
         return homeGames.get(gid);
     }
+
+    /**
+     * Given a game ID, finds the relevant away-game
+     * if the game is not in the team, returns NULL
+     * @param gid
+     * @return
+     */
     public Game findAwayGame(String gid){
         return awayGames.get(gid);
     }
+    //endregion
 }
