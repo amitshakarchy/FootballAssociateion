@@ -23,4 +23,19 @@ public class Referee extends AUser {
         //TODO: Use the class "Logger" (System package) in order to create a report.
 
     }
+
+    @Override
+    public String viewProfile() {
+        return null;
+    }
+
+    @Override
+    public EStatus getStatus() {
+        return null;
+    }
+
+    @Override
+    public void setStatus(EStatus status) {
+
+    }
 }

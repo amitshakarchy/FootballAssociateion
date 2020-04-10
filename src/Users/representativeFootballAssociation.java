@@ -49,6 +49,21 @@ public class representativeFootballAssociation extends AUser {
         //TODO: Leave it for now. we will be smarter soon :)
 
     }
+
+    @Override
+    public String viewProfile() {
+        return null;
+    }
+
+    @Override
+    public EStatus getStatus() {
+        return null;
+    }
+
+    @Override
+    public void setStatus(EStatus status) {
+
+    }
     //endregion
 
 }

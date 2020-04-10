@@ -110,6 +110,21 @@ public class Player extends AUser {
         }
 
     }
+
+    @Override
+    public String viewProfile() {
+        return null;
+    }
+
+    @Override
+    public EStatus getStatus() {
+        return null;
+    }
+
+    @Override
+    public void setStatus(EStatus status) {
+
+    }
 //
 //    /**
 //     * With this function you can view player information.

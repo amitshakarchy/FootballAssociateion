@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c3b85c3-4333-4e6a-832c-11d20aaf6d10" name="Default Changelist" comment="Trying to fix the mess i did">
-      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/TeamBudget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/AUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/AUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Coach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Coach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/IUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/IUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Player.java" afterDir="false" />
+    <list default="true" id="0c3b85c3-4333-4e6a-832c-11d20aaf6d10" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585595847583</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Trying to fix the mess i did">
+      <created>1586521691701</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586521691701</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -195,14 +194,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit, just to see that everything is connected" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit, just to see that everything is connected" />
+    <MESSAGE value="Trying to fix the mess i did" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to fix the mess i did" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1586520626096">
+    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1586521852800">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585591086081" />
-    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1586520626096" />
+    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1586521852800" />
     <state x="323" y="271" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585667285815">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -219,10 +219,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="91" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1586520528257" />
-    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1585595846524">
+    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1586521871117">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585595846524" />
+    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586521871117" />
     <state x="421" y="87" key="FileChooserDialogImpl" timestamp="1585594541426">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -239,10 +240,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585583017612" />
-    <state x="233" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586517802538">
+    <state x="233" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586521713675">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="77" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586517802538" />
+    <state x="233" y="77" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586521713675" />
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1585726095318">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

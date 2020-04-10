@@ -23,8 +23,8 @@ public class TeamTest {
     Game game;
     @Before
     public void setUp() throws Exception {
-        c= new Coach("1","a","a");
-        p= new Player("1", "a", "a");
+        c= new Coach("1","a","a", null, null);
+        p= new Player("1", "a", "a", null, null);
         m= new TeamManager("1", "a", "a");
         o= new TeamOwner("1", "a", "a");
         field= new Field("Teddi", "Beer Sheva", 800);
