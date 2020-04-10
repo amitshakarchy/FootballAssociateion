@@ -3,7 +3,6 @@ import AssociationAssets.AdditionalInfo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 /**
  * A footballer or a football player is an athlete who plays football, as an amateur or as a professional.
  * This system is about professional football players.
@@ -15,7 +14,7 @@ public class Player extends AUser {
     private List<AdditionalInfo> myAdditionalInfo;
 
     /**
-     * @param UID - Unique user ID
+     * @param userName - Unique user name
      * @param fName - First name of the player
      * @param lName -Last name of the player
      * @param bDate - Date of birth of the player
@@ -25,19 +24,18 @@ public class Player extends AUser {
      * When a player is created, a personal page is created for him.
      * Each player has one personal page.
      */
-    public Player(String UID, String fName, String lName, Date bDate, EPlayerRole role) {
-        super(UID, fName, lName);
+    public Player(String userName, String fName, String lName, Date bDate, EPlayerRole role) {
+        super(userName, fName, lName);
         this.bDate = bDate;
         this.role = role;
         this.myPage = new PlayerPageEditor(fName,lName,role,bDate);
         this.myAdditionalInfo = new ArrayList<>();
     }
 
-
     /**
      * Players can upload content to their personal page.
      * The player uploads verbal content and that content goes up
-     * to his personal page along with the current date.
+     * to his personal page.
      *
      * # use case 4.2
      *
@@ -112,7 +110,6 @@ public class Player extends AUser {
         }
 
     }
-
 
     /**
      * With this function you can view player information.
