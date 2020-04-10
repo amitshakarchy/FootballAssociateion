@@ -4,6 +4,8 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 class PlayerTest {
 
+    
+    // TODO: 10/04/2020 Missing: details on viewing privileges, removing details, updating details
     @Test
     void addFeedToMyPage() {
         Player player = new Player("newPlayer", "yossi","cohen", new Date(),EPlayerRole.GoalKeeper);
