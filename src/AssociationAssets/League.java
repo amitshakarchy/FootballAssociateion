@@ -36,6 +36,18 @@ public class League {
             binder.setScoreTablePolicy(scoreTablePolicy);
         }
     }
+
+    public  ScoreTablePolicy getScoreTablePolicy(String year){
+        return seasonBinders.get(year).getScoreTablePolicy();
+    }
+
+    public HashMap<String,Team> getTeams(String year){
+        return seasonBinders.get(year).getTeams();
+    }
+
+    public HashMap<String,Game> getGames(String year){
+        return  seasonBinders.get(year).getGames();
+    }
     public String getLeagueName() {
         return name;
     }

@@ -8,15 +8,14 @@ public class AdditionalInfo {
 
     Team team;
     Season season;
-    TeamOwner owner;
+    HashMap<String,TeamOwner> owners;
     HashMap<String, Coach> coaches;
     HashMap<String, TeamManager> managers;
     HashMap<String, Player> players;
 
-    public AdditionalInfo(Team team, Season season, TeamOwner owner, HashMap<String, Coach> coaches, HashMap<String, TeamManager> managers, HashMap<String, Player> players) {
-        this.team = team;
+    public AdditionalInfo(Season season, HashMap<String,TeamOwner> owners, HashMap<String, Coach> coaches, HashMap<String, TeamManager> managers, HashMap<String, Player> players) {
         this.season = season;
-        this.owner = owner;
+        this.owners = owners;
         this.coaches = coaches;
         this.managers = managers;
         this.players = players;
@@ -41,12 +40,12 @@ public class AdditionalInfo {
         this.season = season;
     }
 
-    public TeamOwner getOwner() {
-        return owner;
+    public HashMap<String,TeamOwner> getOwners() {
+        return owners;
     }
 
-    public void setOwner(TeamOwner owner) {
-        this.owner = owner;
+    public void setOwners(HashMap<String,TeamOwner> owner) {
+        this.owners = owners;
     }
 
     public HashMap<String, Coach> getCoaches() {
@@ -92,6 +91,12 @@ public class AdditionalInfo {
         }
     }
 
+    public void addTeamOwner(TeamOwner owner) {
+        if (!owners.containsKey(owner.getUID())) {
+            owners.put(owner.getUID(), owner);
+        }
+    }
+
     public void removePlayer(Player player) {
         if (players.containsKey(player.getUID())) {
             players.remove(player.getUID());
@@ -110,4 +115,35 @@ public class AdditionalInfo {
             managers.remove(manager.getUID());
         }
     }
+    public void removeTeamOwner(TeamOwner owner) {
+        if (owners.containsKey(owner.getUID())) {
+            owners.remove(owner.getUID());
+        }
+    }
+
+    public Player findPlayer(String pid) {
+        if(players.containsKey(pid))
+            return players.get(pid);
+        else return null;
+    }
+
+    public Coach findCoach(String cid){
+        if(coaches.containsKey(cid))
+            return coaches.get(cid);
+        else return null;
+    }
+
+    public TeamManager findManager(String mid){
+        if(managers.containsKey(mid))
+            return managers.get(mid);
+        else return null;
+    }
+
+    public TeamOwner findTeamOwner(String oid){
+        if(owners.containsKey(oid))
+            return owners.get(oid);
+        else return null;
+    }
+
+
 }

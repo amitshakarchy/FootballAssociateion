@@ -35,6 +35,9 @@ public class SeasonLeagueBinder {
     public ScoreTablePolicy getScoreTablePolicy() {
         return scoreTablePolicy;
     }
+    public HashMap<String, Team> getTeams() { return teams; }
+    public HashMap<String, Game> getGames() { return games; }
+
     //endregion
 
 
@@ -54,5 +57,9 @@ public class SeasonLeagueBinder {
     public void addGamesToLeague(HashMap<String, Game> games) {
         this.games.putAll(games);
     }
+
+
+
+
     //endregion
 }

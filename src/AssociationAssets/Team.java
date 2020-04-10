@@ -9,20 +9,35 @@ import java.util.HashMap;
 
 public class Team {
 
+    //region Fields
     int TID;
     Field homeField;
     AdditionalInfo info;
     HashMap<String, Game> homeGames;
     HashMap<String, Game> awayGames;
     Budget budget;
+    //endregion
 
-    public Team(int TID, Field homeField, Budget budget, Season season, TeamOwner owner, HashMap<String, Coach> coaches, HashMap<String, TeamManager> managers, HashMap<String, Player> players) {
+    /**
+     * The constructor receives all needed information in order to generate an AdditionalInfo
+     * object, and binds it with the team.
+     * @param TID
+     * @param homeField
+     * @param budget
+     * @param season
+     * @param owners
+     * @param coaches
+     * @param managers
+     * @param players
+     */
+    public Team(int TID, Field homeField, Budget budget, Season season, HashMap<String,TeamOwner>  owners, HashMap<String, Coach> coaches, HashMap<String, TeamManager> managers, HashMap<String, Player> players) {
         this.TID = TID;
         this.homeField = homeField;
         this.budget = budget;
         this.homeGames = new HashMap<>();
         this.awayGames = new HashMap<>();
-        this.info = new AdditionalInfo(this, season, owner, coaches, managers, players);
+        this.info = new AdditionalInfo( season, owners, coaches, managers, players);
+        info.setTeam(this);
     }
 
     //region Getters
@@ -50,9 +65,9 @@ public class Team {
         return info.getSeason();
     }
 
-    public TeamOwner getOwner() {
+    public HashMap<String,TeamOwner>  getOwners() {
 
-        return info.getOwner();
+        return info.getOwners();
     }
 
     public HashMap<String, Coach> getCoaches() {
@@ -91,9 +106,9 @@ public class Team {
         info.setSeason(season);
     }
 
-    public void setOwner(TeamOwner owner) {
+    public void setOwners(HashMap<String,TeamOwner>  owners) {
 
-        info.setOwner(owner);
+        info.setOwners(owners);
     }
 
     public void setCoaches(HashMap<String, Coach> coaches) {
@@ -110,54 +125,126 @@ public class Team {
 
         info.setPlayers(players);
     }
+
+    public void setInfo(AdditionalInfo info) {
+        this.info = info;
+    }
+
+    public void setHomeGames(HashMap<String, Game> homeGames) {
+        this.homeGames = homeGames;
+    }
+
+    public void setAwayGames(HashMap<String, Game> awayGames) {
+        this.awayGames = awayGames;
+    }
+
+
     //endregion
 
     //region Add/Remove from AdditionalInfo
+
+    /**
+     * Add a player to the players list
+     * @param player
+     */
     public void addPlayer(Player player) {
         info.addPlayer(player);
     }
 
+    /**
+     * Add a coach to the coachs list
+     * @param coach
+     */
     public void addCoach(Coach coach) {
         info.addCoach(coach);
     }
 
+    /**
+     * Add a manager to the managers list
+     * @param manager
+     */
     public void addManager(TeamManager manager) {
         info.addManager(manager);
     }
 
+    /**
+     * Add an owner to the owners list
+     * @param owner
+     */
+    public void addTeamOwner(TeamOwner owner) {
+        info.addTeamOwner(owner);
+    }
+    /**
+     * Remove a player from the players list
+     * @param player
+     */
     public void removePlayer(Player player) {
         info.removePlayer(player);
     }
-
+    /**
+     * Remove a coach from the coaches list
+     * @param coach
+     */
     public void removeCoach(Coach coach) {
         info.removeCoach(coach);
 
     }
 
+    /**
+     * Remove a manager from the managers list
+     * @param manager
+     */
     public void removeManager(TeamManager manager) {
         info.removeManager(manager);
     }
+    /**
+     * Remove an owner from the owners list
+     * @param owner
+     */
+    public void removeTeamOwner(TeamOwner owner) {
+        info.removeTeamOwner(owner);
+    }
+
     //endregion
 
     //region Add/Remove games
+
+    /**
+     *
+     * Add a home game to the home games list
+     * @param homeGame
+     */
     public void addHomeGame(Game homeGame) {
         if (!homeGames.containsKey(homeGame.getGID())) {
             homeGames.put(homeGame.getGID(), homeGame);
         }
     }
-
+    /**
+     *
+     * Add an away game to the away games list
+     * @param awayGame
+     */
     public void addAwayGame(Game awayGame) {
         if (!awayGames.containsKey(awayGame.getGID())) {
             awayGames.put(awayGame.getGID(), awayGame);
         }
     }
 
+    /**
+     *
+     * Remove a home game from the home games list
+     * @param homeGame
+     */
     public void removeHomeGame(Game homeGame) {
         if (homeGames.containsKey(homeGame.getGID())) {
             homeGames.remove(homeGame.getGID());
         }
     }
-
+    /**
+     *
+     * Remove an away game from the away games list
+     * @param awayGame
+     */
     public void removeAwayGame(Game awayGame) {
         if (awayGames.containsKey(awayGame.getGID())) {
             awayGames.remove(awayGame.getGID());
@@ -165,5 +252,36 @@ public class Team {
     }
     //endregion
 
+    /**
+     * Given a user ID, finds the player in the team.
+     * if the player is not in the team, returns NULL
+     * @param PID
+     * @return
+     */
+    public Player findPlayer(String PID){
+        Player p=info.findPlayer(PID);
+        return p;
+    }
 
+    public Coach findCoach(String CID){
+        Coach c=info.findCoach(CID);
+        return c;
+    }
+
+    public TeamManager findManager(String MID){
+        TeamManager m=info.findManager(MID);
+        return m;
+    }
+
+    public TeamOwner findTeamOwner(String OID){
+        TeamOwner o=info.findTeamOwner(OID);
+        return o;
+    }
+
+    public Game findHomeGame(String gid){
+        return homeGames.get(gid);
+    }
+    public Game findAwayGame(String gid){
+        return awayGames.get(gid);
+    }
 }
