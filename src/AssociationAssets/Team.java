@@ -7,6 +7,10 @@ import Users.TeamOwner;
 
 import java.util.HashMap;
 
+/**
+ * Class Team represents a team. It holds a team's home and away games, it's players and
+ * all other team assets.
+ */
 public class Team {
 
     //region Fields
