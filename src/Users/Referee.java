@@ -7,6 +7,10 @@ public class Referee extends AUser {
     ETraining training;
     Logger logger; // singleton
 
+    public Referee(String UID, String fName, String lName) {
+        super(UID, fName, lName);
+    }
+
 
     public void getAssignedGames(){} //10.2
 
@@ -16,7 +20,22 @@ public class Referee extends AUser {
 
     public void exportReport(){//10.4
 
-        //TODO: Use the class "Logger" (FootballSystem package) in order to create a report.
+        //TODO: Use the class "Logger" (System package) in order to create a report.
+
+    }
+
+    @Override
+    public String viewProfile() {
+        return null;
+    }
+
+    @Override
+    public EStatus getStatus() {
+        return null;
+    }
+
+    @Override
+    public void setStatus(EStatus status) {
 
     }
 }

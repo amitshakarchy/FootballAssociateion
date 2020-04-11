@@ -3,6 +3,10 @@ package Users;
 public class representativeFootballAssociation extends AUser {
 
 
+    public representativeFootballAssociation(String UID, String fName, String lName) {
+        super(UID, fName, lName);
+    }
+
     //region Methods
     public void setNewLeague(){} // useCase #9.1
 
@@ -43,6 +47,21 @@ public class representativeFootballAssociation extends AUser {
     public void setGroupBudgetActions(){// useCase #9.9
 
         //TODO: Leave it for now. we will be smarter soon :)
+
+    }
+
+    @Override
+    public String viewProfile() {
+        return null;
+    }
+
+    @Override
+    public EStatus getStatus() {
+        return null;
+    }
+
+    @Override
+    public void setStatus(EStatus status) {
 
     }
     //endregion
