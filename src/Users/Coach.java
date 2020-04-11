@@ -127,6 +127,21 @@ public class Coach extends AUser {
         }
     }
 
+    @Override
+    public void setfName(String fName) {
+        if(fName != null) {
+            super.setfName(fName);
+            this.myPage.setMyFisrtName(fName);
+        }
+    }
+
+    @Override
+    public void setlName(String lName) {
+        if(lName!= null) {
+            super.setlName(lName);
+            this.myPage.setMyLastName(lName);
+        }
+    }
 
     /**
      * With this function you can view coach information.
