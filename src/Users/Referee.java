@@ -1,59 +1,118 @@
 package Users;
+import AssociationAssets.EEventType;
 import AssociationAssets.Game;
 import System.*;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
 public class Referee extends AUser {
 
-    ETraining training;
-    Logger logger; // singleton
+    Logger  logger; // singleton
     List<Game> myGames;
-    EReferee role;
+    EReferee training;
 
-    public Referee(String UID, String fName, String lName, ETraining training, Logger logger,EReferee role) {
+
+    public Referee(String UID, String fName, String lName, EReferee training) {
         super(UID, fName, lName);
-        this.training = training;
-        this.logger = logger;
+        this.logger = Logger.getInstance();
         this.myGames = new ArrayList<>();
-        this.role = role;
+        this.training = training;
     }
 
-    public ETraining getTraining() {
+    public List<Game> getMyGames() {
+        return myGames;
+    }
+
+    public void setMyGames(List<Game> myGames) {
+        if(myGames != null) {
+            this.myGames = myGames;
+        }
+    }
+
+    public EReferee getTraining() {
         return training;
     }
 
-    public void setTraining(ETraining training) {
-        this.training = training;
+    public void setTraining(EReferee training) {
+        if(training != null) {
+            this.training = training;
+        }
     }
 
-    public void getAssignedGames(){
-        if(this.myGames.size() == 0){
-            System.out.println("You haven't selected a game yet");
-        }
-        else{
-            for (Game game:
-                 myGames) {
-                System.out.println(game);
-            }
-        }
+    public List<Game> viewAssignedGames(){
+        return getMyGames();
     } //10.2
 
-    public void addEventToAssignedGame(Date dateOfTheGame){
-
+    public void addEventToAssignedGame(String gameID, EEventType eventType, String description){
+        Game gameToAdd = null;
+        gameToAdd = getGame(gameID, gameToAdd);
+        // TODO: 09/04/2020 check time - during the game
+        if(gameToAdd != null ){
+            gameToAdd.addEvent(eventType,description);
+        }
     } //10.3
 
-    public void updateEventToAssignedGame(){} //10.3
+    public void updateEventToAssignedGame(String gameID,int eventIndex, EEventType eventType, String description){
+        Game gameToAdd = null;
+        gameToAdd = getGame(gameID, gameToAdd);
+        // TODO: 09/04/2020 check time - during the game
+        if(gameToAdd != null ){
+            gameToAdd.editEvent(eventIndex,eventType,description);
+        }
+    } //10.3
 
-    public void editEvents(){} //10.4
+    public void removeEventFromAssignedGame(String gameID,int eventIndex){
+        Game gameToAdd = null;
+        gameToAdd = getGame(gameID, gameToAdd);
+        // TODO: 09/04/2020 check time - during the game
+        if(gameToAdd != null ){
+            gameToAdd.removeEvent(eventIndex);
+        }
+    } //10.3
 
-    public void exportReport(){//10.4
+    public void editEventsAfterGameOver(String gameID,int eventIndex, EEventType eventType, String description){
+        if(this.training.equals(EReferee.MAIN)){
+            Game gameToAdd = null;
+            gameToAdd = getGame(gameID, gameToAdd);
+            // TODO: 09/04/2020 check time - until 5 H after the game
+            if (gameToAdd != null) {
+                gameToAdd.editEvent(eventIndex, eventType, description);
+            }
+        }
+    } //10.4
 
+    public void removeEventsAfterGameOver(String gameID,int eventIndex){
+        if(this.training.equals(EReferee.MAIN)){
+            Game gameToAdd = null;
+            gameToAdd = getGame(gameID, gameToAdd);
+            // TODO: 09/04/2020 check time - until 5 H after the game
+            if (gameToAdd != null){
+                gameToAdd.removeEvent(eventIndex);
+            }
+        }
+    } //10.4
+
+    public void exportReport(String gameID){//10.4
         //TODO: Use the class "Logger" (FootballSystem package) in order to create a report.
+        if(this.training.equals(EReferee.MAIN)){
+            Game gameToAdd = null;
+            gameToAdd = getGame(gameID, gameToAdd);
+            if (gameToAdd != null) {
+                // TODO: 09/04/2020 find what is written in the report
+                this.logger.exportReport(gameToAdd);
+            }
+        }
+    }
 
+    private Game getGame(String gameID, Game gameToAdd) {
+        for (Game game :
+                myGames) {
+            if (game.getGID().equals(gameID)) {
+                gameToAdd = game;
+            }
+        }
+        return gameToAdd;
     }
 
     @Override

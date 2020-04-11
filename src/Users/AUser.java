@@ -7,13 +7,13 @@ public abstract class AUser implements IUser {
     String userName;
     String fName;
     String lName;
-    //EStatus status;
+    EStatus status;
 
     public AUser(String userName, String fName, String lName) {
         this.userName = userName;
         this.fName = fName;
         this.lName = lName;
-      //  this.status = EStatus.ONLINE;
+        this.status = EStatus.ONLINE;
     }
 //TODO: decide how to represent and use the fields :
     // String username
@@ -30,13 +30,13 @@ public abstract class AUser implements IUser {
 
     @Override
     public void logout() { //useCase 3.1
-    //    this.status = EStatus.OFFLINE;
+        this.status = EStatus.OFFLINE;
     }
-//
-//    @Override
-//    public String viewProfile() { //useCase 3.6
-//        return toString();
-//    }
+
+    @Override
+    public String viewProfile() { //useCase 3.6
+        return toString();
+    }
 
     //endregion
 
@@ -69,13 +69,13 @@ public abstract class AUser implements IUser {
         }
     }
 
-//    public EStatus getStatus() {
-//        return status;
-//    }
-//
-//    public void setStatus(EStatus status) {
-//        this.status = status;
-//    }
+    public EStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EStatus status) {
+        this.status = status;
+    }
 
     @Override
     public String toString() {

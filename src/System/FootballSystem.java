@@ -1,8 +1,6 @@
 package System;
 import Security.SecuritySystem;
 import Users.*;
-import com.sun.org.apache.regexp.internal.RE;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,7 +13,7 @@ public class FootballSystem {
 
     SecuritySystem securitySystem = new SecuritySystem();
     List<Guest> guestList = new LinkedList<>();
-    Map<String,AUser> userHashMap = new HashMap<>();
+    Map<String,AUser> usersHashMap = new HashMap<>();
     /** Create an instance of the class at the time of class loading */
     private static final FootballSystem instance = new FootballSystem();
 
@@ -30,11 +28,10 @@ public class FootballSystem {
     }
 
 
-    // change to AUser !!
     public AUser signIn(String userName, String password,String firstName,
                         String lastName, EUserType userType){
         // check if this user name already exits
-        if(userHashMap.containsKey(userName)){
+        if(usersHashMap.containsKey(userName)){
             System.out.println("This user name is already exist.");
             return null;
         }
@@ -62,34 +59,35 @@ public class FootballSystem {
         AUser user = null;
         if(userType.equals(EUserType.representativeFootballAssociation)){
             user = new representativeFootballAssociation(userName,firstName,lastName);
-            userHashMap.put(userName,user);}
+            usersHashMap.put(userName,user);}
         else if(userType.equals(EUserType.Player)){
-            user = new Player(userName,firstName,lastName);
-            userHashMap.put(userName,user);
+            // TODO: 4/11/2020 check with yuval 
+            user = new Player(userName,firstName,lastName,null,null);
+            usersHashMap.put(userName,user);
         }
         // TODO: 4/9/2020 check with yuval
         //else if(userType.equals(EUserType.Coach)){
-        //    userHashMap.put(userName,new Coach(id,firstName,lastName,));
+        //    usersHashMap.put(userName,new Coach(id,firstName,lastName,));
         //}
         else if(userType.equals(EUserType.Fan)){
             user = new Fan(userName,firstName,lastName);
-            userHashMap.put(userName,user);
+            usersHashMap.put(userName,user);
         }
         else if(userType.equals(EUserType.TeamManager)){
             user = new TeamManager(userName,firstName,lastName);
-            userHashMap.put(userName,user);
+            usersHashMap.put(userName,user);
         }
         else if(userType.equals(EUserType.TeamOwner)){
             user = new TeamOwner(userName,firstName,lastName);
-            userHashMap.put(userName,user);
+            usersHashMap.put(userName,user);
         }
         else if(userType.equals(EUserType.Referee)){
-            user = new Referee(userName,firstName,lastName);
-            userHashMap.put(userName,user);
+            // TODO: 4/11/2020 check with yuval 
+            user = new Referee(userName,firstName,lastName,null);
+            usersHashMap.put(userName,user);
         }
         return user;
     }
-
     /**
      * this function login a user to the system.
      * the function checks if the password and the user name are correct using the security system.
@@ -99,8 +97,8 @@ public class FootballSystem {
      */
     public AUser login(String userName, String password){
         if(securitySystem.checkPasswordForLogIn(userName,password)){
-            if(userHashMap.containsKey(userName)){
-                return userHashMap.get(userName);
+            if(usersHashMap.containsKey(userName)){
+                return usersHashMap.get(userName);
             }
         }
         System.out.println("user name or password incorrect");
@@ -108,9 +106,17 @@ public class FootballSystem {
     }  // useCase 2.3
 
     public void removeUser(String userName){
-        this.userHashMap.remove(userName);
+        this.usersHashMap.remove(userName);
+    }
+
+    public void removeUserFromSecuritySystem(String userName){
         this.securitySystem.removeUser(userName);
     }
 
-
+    public AUser getUserByUserName(String userName){
+        if(this.usersHashMap.containsKey(userName)){
+            return this.usersHashMap.get(userName);
+        }
+        return null;
+    }
 }
