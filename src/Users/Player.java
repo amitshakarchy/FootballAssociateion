@@ -128,6 +128,10 @@ public class Player extends AUser {
         }
     }
 
+    public void setbDate(Date bDate) {
+        this.bDate = bDate;
+    }
+
     /**
      * With this function you can view player information.
      * Provides a brief description of the actor,
