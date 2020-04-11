@@ -11,6 +11,7 @@ import Users.*;
 /**
  * Class Game represents a game in a specific league and season. It is defined by its date, ID, playing teams and referees.
  * The class offers modifying the events on the game.
+ * Aouthors: Amit Shakarchy, Alon Gutman
  */
 public class Game {
 
@@ -31,15 +32,15 @@ public class Game {
     /**
      * The constructor validates that a game does not occur between a team to itself,
      *  and there are 3 different referees
-     * @param date
-     * @param field
-     * @param host
-     * @param guest
-     * @param main
-     * @param side1
-     * @param side2
-     * @param season
-     * @param league
+     * @param date - date of the game
+     * @param field - field in which the game takes place
+     * @param host - hosting team
+     * @param guest - guest team
+     * @param main - main referee
+     * @param side1 - side referee
+     * @param side2 - side referee
+     * @param season - the season
+     * @param league - the league
      */
     public Game(Date date,Time time, Field field, Team host, Team guest, Referee main, Referee side1, Referee side2, Season season, League league) throws Exception {
 
@@ -65,9 +66,9 @@ public class Game {
     //region Validation
     /**
      * Throws an exception in case the to teams are the same
-     * @param host
-     * @param guest
-     * @throws Exception
+     * @param host- hosting team
+     * @param guest - guest team
+     * @throws Exception - duplicate values were entered.
      */
     private void validateTeams(Team host, Team guest) throws Exception {
         if(host.getTID()==guest.getTID())
@@ -76,10 +77,10 @@ public class Game {
 
     /**
      * Throws an exception in case there is a duplicate referee
-     * @param main
-     * @param side1
-     * @param side2
-     * @throws Exception
+     * @param main - main referee
+     * @param side1 - side referee
+     * @param side2 - side referee
+     * @throws Exception- duplicate values were entered.
      */
     private void validateReferees(Referee main, Referee side1, Referee side2) throws Exception {
 
@@ -225,7 +226,7 @@ public class Game {
 
     /**
      *The method receives an event and removes it.
-     * @param eventIndex
+     * @param eventIndex - the index of the event
      */
     public void removeEvent(int eventIndex) {
         events.remove(eventIndex);
@@ -234,9 +235,9 @@ public class Game {
     /**
      * The method offers modifying an event. you must enter its index in order to find it.
      * Time and date cannot be modified.
-     * @param eventIndex
-     * @param eventType
-     * @param description
+     * @param eventIndex- the index of the event
+     * @param eventType - enum
+     * @param description - freestyle description
      */
     public void editEvent(int eventIndex, EEventType eventType, String description) {
         Event event = events.get(eventIndex);// We need to verify that the modification affects the node in the list.

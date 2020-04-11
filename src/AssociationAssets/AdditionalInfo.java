@@ -4,6 +4,11 @@ import Users.*;
 
 import java.util.HashMap;
 
+/**
+ * Class Additional Info holds all team's assets in one place, in order to manage them easily.
+ * Aouthors: Amit Shakarchy, Alon Gutman
+ *
+ */
 public class AdditionalInfo {
 
     //region Fields
@@ -54,7 +59,7 @@ public class AdditionalInfo {
         return owners;
     }
 
-    public void setOwners(HashMap<String,TeamOwner> owner) {
+    public void setOwners(HashMap<String,TeamOwner> owners) {
         this.owners = owners;
     }
 
@@ -124,18 +129,14 @@ public class AdditionalInfo {
      * @param player - a player to remove from the team
      */
     public void removePlayer(Player player) {
-        if (players.containsKey(player.getUserName())) {
-            players.remove(player.getUserName());
-        }
+        players.remove(player.getUserName());
     }
     /**
      * Removes a coach from the team, if he exists.
      * @param coach - a coach to remove from the team
      */
     public void removeCoach(Coach coach) {
-        if (coaches.containsKey(coach.getUserName())) {
-            coaches.remove(coach.getUserName());
-        }
+        coaches.remove(coach.getUserName());
 
     }
     /**
@@ -143,9 +144,7 @@ public class AdditionalInfo {
      * @param manager - a manager to remove from the team
      */
     public void removeManager(TeamManager manager) {
-        if (managers.containsKey(manager.getUserName())) {
-            managers.remove(manager.getUserName());
-        }
+        managers.remove(manager.getUserName());
     }
 
     /**
@@ -153,9 +152,7 @@ public class AdditionalInfo {
      * @param owner - an owner to remove from the team
      */
     public void removeTeamOwner(TeamOwner owner) {
-        if (owners.containsKey(owner.getUserName())) {
-            owners.remove(owner.getUserName());
-        }
+        owners.remove(owner.getUserName());
     }
 
 
@@ -163,45 +160,37 @@ public class AdditionalInfo {
      * find a player in the team, given its username.
      * If he does not exist, returns NULL
      * @param username - player's username
-     * @return
+     * @return - player
      */
     public Player findPlayer(String username) {
-        if(players.containsKey(username))
-            return players.get(username);
-        else return null;
+        return players.getOrDefault(username, null);
     }
     /**
      * find a coach in the team, given its username.
      * If he does not exist, returns NULL
      * @param username - player's username
-     * @return
+     * @return - coach
      */
     public Coach findCoach(String username){
-        if(coaches.containsKey(username))
-            return coaches.get(username);
-        else return null;
+        return coaches.getOrDefault(username, null);
     }
     /**
      * find a manager in the team, given its username.
      * If he does not exist, returns NULL
      * @param username - player's username
-     * @return
+     * @return - manager
      */
     public TeamManager findManager(String username){
-        if(managers.containsKey(username))
-            return managers.get(username);
-        else return null;
+        return managers.getOrDefault(username, null);
     }
     /**
      * find an owner in the team, given its username.
      * If he does not exist, returns NULL
      * @param username - player's username
-     * @return
+     * @return - owner
      */
     public TeamOwner findTeamOwner(String username){
-        if(owners.containsKey(username))
-            return owners.get(username);
-        else return null;
+        return owners.getOrDefault(username, null);
     }
 
 

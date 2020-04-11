@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 /**
  * represent a season of football games.
+ * Aouthors: Amit Shakarchy, Alon Gutman
  */
 public class Season {
 
@@ -25,7 +26,7 @@ public class Season {
 
     /**
      * adding league to the corresponding leagueBinder object
-     * @param league
+     * @param league - the league
      */
     public void addLeagueToSeason(League league) {
         if (!leagueBinders.containsKey(league.getLeagueName())) {
