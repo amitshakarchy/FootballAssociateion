@@ -1,21 +1,28 @@
 package Users;
 import AssociationAssets.EEventType;
+import AssociationAssets.Event;
 import AssociationAssets.Game;
 import System.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * A football referee is a soccer game referee who enforces the rules of the game set
+ * in the football game constitution.
+ */
 public class Referee extends AUser {
+    private List<Game> myGames;
+    private EReferee training;
 
-    Logger  logger; // singleton
-    List<Game> myGames;
-    EReferee training;
-
-
-    public Referee(String UID, String fName, String lName, EReferee training) {
-        super(UID, fName, lName);
-        this.logger = Logger.getInstance();
+    /**
+     * @param userName - Unique user name
+     * @param fName - First name of the referee.
+     * @param lName - Last name of the referee.
+     * @param training - Referee type of training. It could be:
+     *                 VAR,MAIN, //todo: more trainings.
+     */
+    public Referee(String userName, String fName, String lName, EReferee training) {
+        super(userName, fName, lName);
         this.myGames = new ArrayList<>();
         this.training = training;
     }
@@ -40,78 +47,157 @@ public class Referee extends AUser {
         }
     }
 
+    /**
+     * A football referee can watch all the games he is supposed to judge
+     * # use case 10.2
+     * @return A list of all the games the referee needs to judge
+     */
     public List<Game> viewAssignedGames(){
         return getMyGames();
-    } //10.2
+    }
 
-    public void addEventToAssignedGame(String gameID, EEventType eventType, String description){
-        Game gameToAdd = null;
-        gameToAdd = getGame(gameID, gameToAdd);
-        // TODO: 09/04/2020 check time - during the game
+    /**
+     *The referee can add an event during a game in which he is a referee
+     * @param gameID - Game ID
+     * @param eventType - The type of event the referee wants to add
+     * @param description - Verbal description of the event
+     *
+     * # use case 10.3
+     */
+    public void addEventToAssignedGame(int gameID, EEventType eventType, String description){
+        Game gameToAdd = getGame(gameID);
         if(gameToAdd != null ){
-            gameToAdd.addEvent(eventType,description);
-        }
-    } //10.3
-
-    public void updateEventToAssignedGame(String gameID,int eventIndex, EEventType eventType, String description){
-        Game gameToAdd = null;
-        gameToAdd = getGame(gameID, gameToAdd);
-        // TODO: 09/04/2020 check time - during the game
-        if(gameToAdd != null ){
-            gameToAdd.editEvent(eventIndex,eventType,description);
-        }
-    } //10.3
-
-    public void removeEventFromAssignedGame(String gameID,int eventIndex){
-        Game gameToAdd = null;
-        gameToAdd = getGame(gameID, gameToAdd);
-        // TODO: 09/04/2020 check time - during the game
-        if(gameToAdd != null ){
-            gameToAdd.removeEvent(eventIndex);
-        }
-    } //10.3
-
-    public void editEventsAfterGameOver(String gameID,int eventIndex, EEventType eventType, String description){
-        if(this.training.equals(EReferee.MAIN)){
-            Game gameToAdd = null;
-            gameToAdd = getGame(gameID, gameToAdd);
-            // TODO: 09/04/2020 check time - until 5 H after the game
-            if (gameToAdd != null) {
-                gameToAdd.editEvent(eventIndex, eventType, description);
-            }
-        }
-    } //10.4
-
-    public void removeEventsAfterGameOver(String gameID,int eventIndex){
-        if(this.training.equals(EReferee.MAIN)){
-            Game gameToAdd = null;
-            gameToAdd = getGame(gameID, gameToAdd);
-            // TODO: 09/04/2020 check time - until 5 H after the game
-            if (gameToAdd != null){
-                gameToAdd.removeEvent(eventIndex);
-            }
-        }
-    } //10.4
-
-    public void exportReport(String gameID){//10.4
-        //TODO: Use the class "Logger" (FootballSystem package) in order to create a report.
-        if(this.training.equals(EReferee.MAIN)){
-            Game gameToAdd = null;
-            gameToAdd = getGame(gameID, gameToAdd);
-            if (gameToAdd != null) {
-                // TODO: 09/04/2020 find what is written in the report
-                this.logger.exportReport(gameToAdd);
+            if(gameToAdd.isUpdatable(2)) {
+                gameToAdd.addEvent(eventType, description);
             }
         }
     }
 
-    private Game getGame(String gameID, Game gameToAdd) {
-        for (Game game :
-                myGames) {
-            if (game.getGID().equals(gameID)) {
-                gameToAdd = game;
+    /**
+     *The referee can edit the event during the match he is judging
+     * @param gameID -  Game ID
+     * @param eventIndex - The index of the event the referee wants to edit
+     * @param eventType - The type of event the referee wants to update
+     * @param description - Verbal description of the event
+     *
+     * # use case 10.3
+     */
+    public void updateEventToAssignedGame(int gameID,int eventIndex, EEventType eventType, String description){
+        Game gameToAdd = getGame(gameID);
+        if(gameToAdd != null && eventIndex!= -1 ){
+            if(gameToAdd.isUpdatable(2)) {
+                gameToAdd.editEvent(eventIndex, eventType, description);
             }
         }
-        return gameToAdd;
+    }
+
+    /**
+     *The referee can delete the event during the match he is judging
+     * @param gameID -  Game ID
+     * @param eventIndex - The index of the event the referee wants to remove
+     *
+     * # use case 10.3
+     */
+    public void removeEventFromAssignedGame(int gameID,int eventIndex){
+        Game gameToAdd = getGame(gameID);
+        if(gameToAdd != null && eventIndex!= -1){
+            if(gameToAdd.isUpdatable(2)) {
+                gameToAdd.removeEvent(eventIndex);
+            }
+        }
+    }
+
+    /**
+     *The referee can hold events after 5 hours of the match being played
+     * @param gameID -  Game ID
+     * @param eventIndex - The index of the event the referee wants to edit
+     * @param eventType - The type of event the referee wants to update
+     * @param description - Verbal description of the event
+     *
+     * # use case 10.4
+     */
+    public void editEventsAfterGameOver(int gameID,int eventIndex, EEventType eventType, String description){
+        if(this.training.equals(EReferee.MAIN)){
+            Game gameToAdd = getGame(gameID);
+            if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.userName) && eventIndex!= -1) {
+                if(gameToAdd.isUpdatable(7)) {
+                    gameToAdd.editEvent(eventIndex, eventType, description);
+                }
+            }
+        }
+    } //10.4
+
+    /**
+     *A Referee can delete events after 5 hours from the end of the match in which he is a Referee
+     * @param gameID -  Game ID
+     * @param eventIndex - The index of the event the referee wants to remove
+     *
+     * # use case 10.4
+     */
+    public void removeEventsAfterGameOver(int gameID,int eventIndex){
+        if(this.training.equals(EReferee.MAIN)){
+            Game gameToAdd = null;
+            gameToAdd = getGame(gameID);
+            if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.userName)&& eventIndex!= -1){
+                if(gameToAdd.isUpdatable(7)){
+                    gameToAdd.removeEvent(eventIndex);
+                }
+            }
+        }
+    }
+
+    /**
+     *A main referee can produce a game report 5 hours after it has ended
+     * @param gameID -  Game ID
+     *
+     * # use case 10.4
+     */
+    public void exportReport(int gameID){//10.4
+        if(this.training.equals(EReferee.MAIN)){
+            Game gameToAdd = getGame(gameID);
+            if (gameToAdd != null) {
+                if(gameToAdd.isUpdatable(7)) {
+                    Logger.getInstance().exportReport(gameToAdd);
+                }
+            }
+        }
+    }
+
+    /**
+     *This function get a game ID and searches for the game in the referee's games
+     * @param gameID -  Game ID
+     * @return The game we are looking for
+     */
+    private Game getGame(int gameID) {
+        for (Game game :
+                myGames) {
+            if (game.getGID() == gameID) {
+                return game;
+            }
+        }
+        return null;
+    }
+
+    /**
+     *When the referee wants to delete or edit an event he needs to index the event
+     * @param gameID -  Game ID
+     * @param eventType - The type of event
+     * @param description - Verbal description of the event
+     * @return The index of the event the referee wants to edit.
+     *          return "-1" if the event does not exist
+     */
+    public int getIndexOfEvent(int gameID, EEventType eventType, String description){
+        Game gameToAdd = getGame(gameID);
+        int res =-1;
+        if(gameToAdd != null) {
+            List<Event> eventList = gameToAdd.getEvents();
+            for (Event e :
+                    eventList) {
+                if (e.getDescription().equals(description) && e.getEventType().equals(eventType)) {
+                    res = eventList.indexOf(e);
+                }
+            }
+        }
+        return res;
     }
 }
