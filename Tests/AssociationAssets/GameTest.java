@@ -90,6 +90,7 @@ public class GameTest {
         game.setSide2(main);
     }
 
+
     @Test
     public void getters() {
         assertEquals(game.getEvents().size(), 0);
