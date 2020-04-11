@@ -1,7 +1,6 @@
 package Users;
 
 public interface IUser {
-
    void setUserSettings();
    String viewProfile();
    void logout();

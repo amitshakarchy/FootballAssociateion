@@ -5,6 +5,4 @@ public enum ECoachRole {
     HeadCoach,
     AssistantCoach,
     YouthCoach
-
-
 }

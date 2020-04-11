@@ -1,6 +1,6 @@
 package Users;
 /**
- * Each coach has a personal page that they can upload and edit.
+ *Each coach has a personal page that they can upload and edit.
  */
 public class CoachPageEditor extends APageEditor {
     private ETraining training;

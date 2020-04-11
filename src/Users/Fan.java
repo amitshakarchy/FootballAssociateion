@@ -1,5 +1,4 @@
 package Users;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,17 +11,20 @@ public class Fan extends AUser {
         searchHistory = new ArrayList<>();
     }
 
-    public void subscribePersonalPage() {//useCase 3.2
-
-        //TODO: you should discuss with __, who is in charge on notification and observers management
-        // in order to determine how to implement it.
+    public void subscribePlayerPersonalPage(APageEditor pageEditor) {//useCase 3.2
 
     }
 
+    public void subscribeTeamPersonalPage() {//useCase 3.2
+
+
+    }
+    public void subscribeCoachPersonalPage() {//useCase 3.2
+
+
+    }
     public void subscribeGamesNotifications() {//useCase 3.3
 
-        //TODO: you should discuss with __, who is in charge on notification and observers management
-        // in order to determine how to implement it.
 
     }
 
@@ -33,11 +35,16 @@ public class Fan extends AUser {
 
     }
 
-    // return search history in order to display it on the screen.
     public List<String> getSearchHistory() { //useCase 3.5
         return this.searchHistory;
     }
 
+    /**
+     * A fan can view his search history
+     *
+     * # use case 3.5
+     * @return search history in order to display it on the screen.
+     */
     public String viewSearchHistory(){ //useCase 3.5
         StringBuilder res = new StringBuilder();
         for (String aSearchHistory : this.searchHistory) {

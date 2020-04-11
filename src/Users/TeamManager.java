@@ -5,6 +5,7 @@ import java.util.List;
 
 public class TeamManager extends AUser {
     private List<AdditionalInfo> additionalInfoList;
+
     public TeamManager(String UID, String fName, String lName) {
         super(UID, fName, lName);
         this.additionalInfoList = new ArrayList<>();

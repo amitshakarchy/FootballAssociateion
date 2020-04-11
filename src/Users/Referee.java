@@ -157,7 +157,7 @@ public class Referee extends AUser {
             Game gameToAdd = getGame(gameID);
             if (gameToAdd != null) {
                 if(gameToAdd.isUpdatable(7)) {
-                    Logger.getInstance().exportReport(gameToAdd);
+                    Logger.getInstance().exportReport(gameToAdd.getGID(),gameToAdd.getEvents());
                 }
             }
         }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 /**
- *A footballer or a football player is an athlete who plays football, as an amateur or as a professional.
+ * A footballer or a football player is an athlete who plays football, as an amateur or as a professional.
  * This system is about professional football players.
  */
 public class Player extends AUser {

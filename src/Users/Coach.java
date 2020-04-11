@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A trainer is a person who guides an athlete or group of athletes,
+ *A coach is a person who guides an athlete or group of athletes,
  * advises them and manages their actions as they prepare for a sporting
  * competition, and while they are actually participating.
  * The coach is responsible for transferring training before the games.
