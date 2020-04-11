@@ -108,14 +108,13 @@ public class Game {
     //region Getters & Setters
 
 
-    public boolean isUpdatable() {
+    public boolean isUpdatable(int hoursSinceGameStarted) {
         Date currentDate = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         if( sdf.format(date).equals(sdf.format(currentDate))) {
             Calendar cal = Calendar.getInstance();
             SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
-            System.out.println( sdf2.format(cal.getTime()) );
-            Time endUpdateTime = new Time(time.getHours() + 7,time.getMinutes(),time.getSeconds());
+            Time endUpdateTime = new Time(time.getHours() + hoursSinceGameStarted,time.getMinutes(),time.getSeconds());
             if(LocalTime.now().isBefore( LocalTime.parse( endUpdateTime.toString())) &&LocalTime.now().isAfter( LocalTime.parse( time.toString())))
                 return true;
         }

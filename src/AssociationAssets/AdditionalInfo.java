@@ -121,40 +121,40 @@ public class AdditionalInfo {
     }
     /**
      * Removes a player from the team, if he exists.
-     * @param player - a player to remove from the team
+     * @param playerID - a player to remove from the team
      */
-    public void removePlayer(Player player) {
-        if (players.containsKey(player.getUserName())) {
-            players.remove(player.getUserName());
+    public void removePlayer(String playerID) {
+        if (players.containsKey(playerID)) {
+            players.remove(playerID);
         }
     }
     /**
      * Removes a coach from the team, if he exists.
-     * @param coach - a coach to remove from the team
+     * @param coachID - String coach ID to remove from the team
      */
-    public void removeCoach(Coach coach) {
-        if (coaches.containsKey(coach.getUserName())) {
-            coaches.remove(coach.getUserName());
+    public void removeCoach(String coachID) {
+        if (coaches.containsKey(coachID)) {
+            coaches.remove(coachID);
         }
 
     }
     /**
      * Removes a manager from the team, if he exists.
-     * @param manager - a manager to remove from the team
+     * @param managerID - a manager to remove from the team
      */
-    public void removeManager(TeamManager manager) {
-        if (managers.containsKey(manager.getUserName())) {
-            managers.remove(manager.getUserName());
+    public void removeManager(String managerID) {
+        if (managers.containsKey(managerID)) {
+            managers.remove(managerID);
         }
     }
 
     /**
      * Removes an owner from the team, if he exists.
-     * @param owner - an owner to remove from the team
+     * @param ownerID - an owner to remove from the team
      */
-    public void removeTeamOwner(TeamOwner owner) {
-        if (owners.containsKey(owner.getUserName())) {
-            owners.remove(owner.getUserName());
+    public void removeTeamOwner(String ownerID) {
+        if (owners.containsKey(ownerID)) {
+            owners.remove(ownerID);
         }
     }
 

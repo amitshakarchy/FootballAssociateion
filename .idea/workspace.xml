@@ -20,65 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="AES class added , security system class add">
-      <change afterPath="$PROJECT_DIR$/FootballAssociateion-Amit.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/AssociationAssets/EventTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/AssociationAssets/FieldTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/AssociationAssets/GameTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/AssociationAssets/ScoreTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/AssociationAssets/SeasonLeagueBinderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/AssociationAssets/SeasonTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/DuplicateValueException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/SeasonLeagueBinder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/TeamBudget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Users/EStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Football Association.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Football Association.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/EEventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/EEventType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Field.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/League.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/League.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Season.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Notifications/JNotifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notifications/JNotifications.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Notifications/Notifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notifications/Notifications.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Notifications/RFANotifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notifications/RFANotifications.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Notifications/TONotifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notifications/TONotifications.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/GamesAssigningPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/GamesAssigningPolicy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/SimpleGamesAssigningPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/SimpleGamesAssigningPolicy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RecommendationSystem/ComputaionalModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecommendationSystem/ComputaionalModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RecommendationSystem/RecommendationSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecommendationSystem/RecommendationSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/AESEncryption.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/SecuritySystem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/System/FootballSystem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/System/Guest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/Guest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/System/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/AUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/AUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Coach.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Coach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/ECoachRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/ECoachRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/EPlayerRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/EPlayerRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/ETraining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/ETraining.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Fan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Fan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/IUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/IUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/PageEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/PageEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Referee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Referee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/SystemManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/SystemManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/TeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/TeamOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,17 +35,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>HashMap</find>
-      <find>gid</find>
-      <find>isUp</find>
-      <find>UPD</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -242,6 +175,13 @@
       <workItem from="1586556304938" duration="11386000" />
       <workItem from="1586600094767" duration="1330000" />
     </task>
+    <task id="LOCAL‎00001" summary="AES class added , security system class add">
+      <created>1586606462132</created>
+      <option name="number" value="LOCAL‎00001" />
+      <option name="presentableId" value="LOCAL‎00001" />
+      <updated>1586606462132</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -266,6 +206,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="AES class added , security system class add" />
+    <option name="LAST_COMMIT_MESSAGE" value="AES class added , security system class add" />
   </component>
   <component name="WindowStateProjectService">
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1586603188617">
@@ -300,6 +244,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="ShowDiffWithBranchDialog/0.0.1366.728@0.0.1366.728" timestamp="1586603188617" />
+    <state x="275" y="83" key="Vcs.Push.Dialog.v2" timestamp="1586606466159">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="83" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1586606466159" />
+    <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1586606917704">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" width="587" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1586606917704" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1586607132178">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1586607132178" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586607046843">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586607046843" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
