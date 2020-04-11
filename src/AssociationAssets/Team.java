@@ -16,7 +16,8 @@ public class Team {
     //region Fields
     int TID;
     String name;
-    Field homeField;
+    Field mainField;
+    HashMap<String/*field name*/,Field> fields;
     AdditionalInfo info;
     HashMap<Integer, Game> homeGames;
     HashMap<Integer, Game> awayGames;
@@ -39,7 +40,8 @@ public class Team {
 
         this.TID = TID;
         this.name = name;
-        this.homeField = homeField;
+        this.mainField = homeField;
+        fields = new HashMap<>();
         this.budget = budget;
         this.homeGames = new HashMap<>();
         this.awayGames = new HashMap<>();
@@ -55,25 +57,21 @@ public class Team {
         return name;
     }
     public Field getHomeField() {
-        return homeField;
+        return mainField;
     }
-
+    public HashMap<String, Field> getFields() { return fields; }
     public HashMap<Integer, Game> getHomeGames() {
         return homeGames;
     }
-
     public HashMap<Integer, Game> getAwayGames() {
         return awayGames;
     }
-
     public TeamBudget getBudget() {
         return budget;
     }
-
     public Season getSeason() {
         return info.getSeason();
     }
-
     public HashMap<String,TeamOwner>  getOwners() {
 
         return info.getOwners();
@@ -98,7 +96,7 @@ public class Team {
 
     //region Setters
     public void setHomeField(Field homeField) {
-        this.homeField = homeField;
+        this.mainField = homeField;
     }
 
     public void setBudget(TeamBudget budget) {
@@ -108,6 +106,10 @@ public class Team {
     public void setTeam(Team team) {
 
         info.setTeam(team);
+    }
+
+    public void setMainField(Field mainField) {
+        this.mainField = mainField;
     }
 
     public void setSeason(Season season) {
@@ -161,6 +163,14 @@ public class Team {
     }
 
     /**
+     * Add a player to the players list
+     * @param field
+     */
+    public void addField(Field field) {
+        fields.put(field.getName(),field);
+    }
+
+    /**
      * Add a coach to the coachs list
      * @param coach
      */
@@ -188,14 +198,14 @@ public class Team {
      * @param player
      */
     public void removePlayer(Player player) {
-        info.removePlayer(player);
+        info.removePlayer(player.getUserName());
     }
     /**
      * Remove a coach from the coaches list
      * @param coach
      */
     public void removeCoach(Coach coach) {
-        info.removeCoach(coach);
+        info.removeCoach(coach.getUserName());
 
     }
 
@@ -204,14 +214,14 @@ public class Team {
      * @param manager
      */
     public void removeManager(TeamManager manager) {
-        info.removeManager(manager);
+        info.removeManager(manager.getUserName());
     }
     /**
      * Remove an owner from the owners list
      * @param owner
      */
     public void removeTeamOwner(TeamOwner owner) {
-        info.removeTeamOwner(owner);
+        info.removeTeamOwner(owner.getUserName());
     }
 
     //endregion

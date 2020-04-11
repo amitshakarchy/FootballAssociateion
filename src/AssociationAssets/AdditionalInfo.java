@@ -130,31 +130,31 @@ public class AdditionalInfo {
     }
     /**
      * Removes a coach from the team, if he exists.
-     * @param coachID - String coach ID to remove from the team
+     * @param coachUserName - String coach ID to remove from the team
      */
-    public void removeCoach(String coachID) {
-        if (coaches.containsKey(coachID)) {
-            coaches.remove(coachID);
+    public void removeCoach(String coachUserName) {
+        if (coaches.containsKey(coachUserName)) {
+            coaches.remove(coachUserName);
         }
 
     }
     /**
      * Removes a manager from the team, if he exists.
-     * @param managerID - a manager to remove from the team
+     * @param managerUserName - a manager to remove from the team
      */
-    public void removeManager(String managerID) {
-        if (managers.containsKey(managerID)) {
-            managers.remove(managerID);
+    public void removeManager(String managerUserName) {
+        if (managers.containsKey(managerUserName)) {
+            managers.remove(managerUserName);
         }
     }
 
     /**
      * Removes an owner from the team, if he exists.
-     * @param ownerID - an owner to remove from the team
+     * @param ownerUserName - an owner to remove from the team
      */
-    public void removeTeamOwner(String ownerID) {
-        if (owners.containsKey(ownerID)) {
-            owners.remove(ownerID);
+    public void removeTeamOwner(String ownerUserName) {
+        if (owners.containsKey(ownerUserName)) {
+            owners.remove(ownerUserName);
         }
     }
 

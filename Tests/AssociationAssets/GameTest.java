@@ -72,7 +72,7 @@ public class GameTest {
     }
     @Test
     public void isUpdatable() {
-        assertEquals(game.isUpdatable(),false);
+        assertEquals(game.isUpdatable(2),false);
 
     }
     @Test(expected = DuplicateValueException.class)
