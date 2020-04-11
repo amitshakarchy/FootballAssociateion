@@ -1,10 +1,13 @@
 package Users;
+import AssociationAssets.AdditionalInfo;
+
 import java.util.Date;
 
 public class Player extends AUser {
     private Date bDate;
     private EPlayerRole role;
     private PlayerPageEditor myPage;
+    private AdditionalInfo myAdditionalInfo;
 
     /**
      * @param UID - Unique user ID
@@ -21,7 +24,30 @@ public class Player extends AUser {
         this.bDate = bDate;
         this.role = role;
         this.myPage = new PlayerPageEditor(fName,lName,role,bDate);
+        this.myAdditionalInfo = null;
     }
+
+
+    /**
+     * @param UID - Unique user ID
+     * @param fName - First name of the player
+     * @param lName -Last name of the player
+     * @param bDate - Date of birth of the player
+     * @param role - The role of the player. It could be:
+     *             GoalKeeper/Defender/Forward/Midfielder.
+     * @param myAdditionalInfo - Additional Info about player like team , manager..
+     *
+     * When a player is created, a personal page is created for him.
+     */
+    public Player(AdditionalInfo myAdditionalInfo, String UID, String fName, String lName, Date bDate, EPlayerRole role) {
+        super(UID, fName, lName);
+        this.bDate = bDate;
+        this.role = role;
+        this.myPage = new PlayerPageEditor(fName,lName,role,bDate);
+        this.myAdditionalInfo = null;
+        this.myAdditionalInfo = myAdditionalInfo;
+    }
+
 
     /**
      * Players can upload content to their personal page.
@@ -69,9 +95,11 @@ public class Player extends AUser {
         return myPage;
     }
 
+    public AdditionalInfo getMyAdditionalInfo() {
+        return myAdditionalInfo;
+    }
 
-
-    public Player(String UID, String fName, String lName) {
-        super(UID, fName, lName);
+    public void setMyAdditionalInfo(AdditionalInfo myAdditionalInfo) {
+        this.myAdditionalInfo = myAdditionalInfo;
     }
 }
