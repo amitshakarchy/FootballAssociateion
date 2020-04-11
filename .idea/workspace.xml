@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c3b85c3-4333-4e6a-832c-11d20aaf6d10" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_json_json_20190722.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/PoliciesAndAlgorithms/ScoreTablePolicy1Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/Weather.java" afterDir="false" />
+    <list default="true" id="0c3b85c3-4333-4e6a-832c-11d20aaf6d10" name="Default Changelist" comment="Trying to fix the mess i did">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Football Association.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Football Association.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586592235610</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Trying to fix the mess i did">
+      <created>1586599044103</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586599044103</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -262,11 +263,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="91" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1586520528257" />
-    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1586599032788">
+    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1586599094425">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585595846524" />
-    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586599032788" />
+    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586599094425" />
     <state width="655" height="438" key="DebuggerActiveHint" timestamp="1586597038917">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -320,10 +321,10 @@
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585583017612" />
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1586595751916" />
-    <state x="233" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586592254457">
+    <state x="233" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586599756991">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="77" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586592254457" />
+    <state x="233" y="77" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586599756991" />
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1585726095318">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -341,6 +342,18 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="396" y="57" key="git4idea.branch.GitSmartOperationDialog/0.0.1280.680@0.0.1280.680" timestamp="1586518082403" />
+    <state x="414" y="155" key="git4idea.merge.GitMergeDialog" timestamp="1586599701966">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="414" y="155" key="git4idea.merge.GitMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1586599701966" />
+    <state x="329" y="144" key="git4idea.merge.GitPullDialog" timestamp="1586599843827">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="329" y="144" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1586599843827" />
+    <state x="427" y="250" key="git4idea.ui.GitStashDialog" timestamp="1586599772603">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="427" y="250" key="git4idea.ui.GitStashDialog/0.0.1280.680@0.0.1280.680" timestamp="1586599772603" />
     <state x="293" y="8" width="670" height="676" key="search.everywhere.popup" timestamp="1586587097094">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
