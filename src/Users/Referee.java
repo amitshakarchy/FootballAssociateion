@@ -20,7 +20,7 @@ public class Referee extends AUser {
 
     public void exportReport(){//10.4
 
-        //TODO: Use the class "Logger" (System package) in order to create a report.
+        //TODO: Use the class "Logger" (FootballSystem package) in order to create a report.
 
     }
 
