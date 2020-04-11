@@ -3,7 +3,7 @@ package Users;
 import java.util.Date;
 
 /**
- * Each player has a personal page that they can upload and edit.
+ *Each player has a personal page that they can upload and edit.
  */
 public class PlayerPageEditor extends APageEditor {
     Date bDay;

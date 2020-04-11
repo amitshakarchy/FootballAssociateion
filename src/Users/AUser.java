@@ -2,7 +2,6 @@ package Users;
 
 public abstract class AUser implements IUser {
 
-
     //region Fields
     String userName;
     String fName;

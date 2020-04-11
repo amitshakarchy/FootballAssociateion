@@ -11,7 +11,7 @@ class CoachTest {
     @Test
     void addFeedToMyPage() {
         Coach coach = new Coach("newCoach", "yossi","cohen",ETraining.CDiploma, ECoachRole.AssistantCoach);
-        String feed = "this is my first post";
+        String feed =  "this is my first post";
         coach.addFeedToMyPage(feed);
         assertTrue(coach.getMyPage().getMyFeed().size() == 1 && coach.getMyPage().getMyFeed().get(0).equals(feed));
         coach.addFeedToMyPage(null);

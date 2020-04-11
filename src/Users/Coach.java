@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A trainer is a person who guides an athlete or group of athletes,
+ *A coach is a person who guides an athlete or group of athletes,
  * advises them and manages their actions as they prepare for a sporting
  * competition, and while they are actually participating.
  * The coach is responsible for transferring training before the games.
  */
-// TODO: 11/04/2020 Missing: details on viewing privileges, removing details, updating details
 public class Coach extends AUser {
 
     ETraining training;
@@ -34,7 +33,6 @@ public class Coach extends AUser {
         this.myPage = new CoachPageEditor(fName,lName,role,training);
         this.myAdditionalInfo = new ArrayList<>();
     }
-
 
     public List<AdditionalInfo> getMyAdditionalInfo() {
         return myAdditionalInfo;

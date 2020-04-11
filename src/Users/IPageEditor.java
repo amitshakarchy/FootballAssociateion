@@ -1,8 +1,8 @@
 package Users;
 import java.util.List;
+import java.util.Observer;
 
 public interface IPageEditor {
-
      void addFeedToMyPage(String feed);
      void removeFeedFromMyPage(String feed);
      Enum getRole();
@@ -11,4 +11,6 @@ public interface IPageEditor {
      String getMyLastName();
      List<String> getMyFeed();
      String viewMyPersonalPage();
+
+
 }
