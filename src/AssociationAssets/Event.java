@@ -1,18 +1,30 @@
 package AssociationAssets;
 
-import AssociationAssets.EEventType;
 
 import java.sql.Time;
 import java.util.Date;
 
+/**
+ * Class Event represent a single event in a game's log. It is composed of the accurate time of the event, it's type (an enum),
+ * and a description the user may add for additional information.
+ * Authors: Amit Shakarchy, Alon Gutman.
+ */
 public class Event {
 
+    //region Fields
     Date date;
     Time time;
     EEventType EventType;
     String description;
+    //endregion
 
-
+    /**
+     * Constructor.
+     * @param date - date of the event
+     * @param time - time of the event
+     * @param eventType - enum
+     * @param description - freestyle description
+     */
     public Event(Date date, Time time, EEventType eventType, String description) {
         this.date = date;
         this.time = time;
@@ -20,6 +32,7 @@ public class Event {
         this.description = description;
     }
 
+    //region Setters & Getters
     public Date getDate() {
         return date;
     }
@@ -51,4 +64,5 @@ public class Event {
     public void setDescription(String description) {
         this.description = description;
     }
+    //endregion
 }

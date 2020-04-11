@@ -1,16 +1,20 @@
 package Users;
 import AssociationAssets.AdditionalInfo;
-
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
+/**
+ * A footballer or a football player is an athlete who plays football, as an amateur or as a professional.
+ * This system is about professional football players.
+ */
 public class Player extends AUser {
     private Date bDate;
     private EPlayerRole role;
-    private PlayerPageEditor myPage;
-    private AdditionalInfo myAdditionalInfo;
+    //private PlayerPageEditor myPage;
+    private List<AdditionalInfo> myAdditionalInfo;
 
     /**
-     * @param UID - Unique user ID
+     * @param userName - Unique user name
      * @param fName - First name of the player
      * @param lName -Last name of the player
      * @param bDate - Date of birth of the player
@@ -18,59 +22,41 @@ public class Player extends AUser {
      *             GoalKeeper/Defender/Forward/Midfielder.
      *
      * When a player is created, a personal page is created for him.
+     * Each player has one personal page.
      */
-    public Player(String UID, String fName, String lName, Date bDate, EPlayerRole role) {
-        super(UID, fName, lName);
+    public Player(String userName, String fName, String lName, Date bDate, EPlayerRole role) {
+        super(userName, fName, lName);
         this.bDate = bDate;
         this.role = role;
-        this.myPage = new PlayerPageEditor(fName,lName,role,bDate);
-        this.myAdditionalInfo = null;
+       // this.myPage = new PlayerPageEditor(fName,lName,role,bDate);
+        this.myAdditionalInfo = new ArrayList<>();
     }
-
-
-    /**
-     * @param UID - Unique user ID
-     * @param fName - First name of the player
-     * @param lName -Last name of the player
-     * @param bDate - Date of birth of the player
-     * @param role - The role of the player. It could be:
-     *             GoalKeeper/Defender/Forward/Midfielder.
-     * @param myAdditionalInfo - Additional Info about player like team , manager..
-     *
-     * When a player is created, a personal page is created for him.
-     */
-    public Player(AdditionalInfo myAdditionalInfo, String UID, String fName, String lName, Date bDate, EPlayerRole role) {
-        super(UID, fName, lName);
-        this.bDate = bDate;
-        this.role = role;
-        this.myPage = new PlayerPageEditor(fName,lName,role,bDate);
-        this.myAdditionalInfo = null;
-        this.myAdditionalInfo = myAdditionalInfo;
-    }
-
-
-    /**
-     * Players can upload content to their personal page.
-     * The player uploads verbal content and that content goes up
-     * to his personal page along with the current date.
-     *
-     * # use case 4.2
-     *
-     * @param feed verbal content
-     */
-    public void addFeedToMyPage(String feed){
-        this.myPage.addFeedToMyPage(feed);
-    }
-
-    /**
-     * Players can remove content from their personal page.
-     * # use case 4.2
-     * @param publishDate Content publication date
-     * @param feed Verbal content
-     */
-    public void addFeedToMyPage(Date publishDate, String feed){
-        this.myPage.removeFeedFromMyPage(publishDate,feed);
-    }
+//
+//    /**
+//     * Players can upload content to their personal page.
+//     * The player uploads verbal content and that content goes up
+//     * to his personal page.
+//     *
+//     * # use case 4.2
+//     *
+//     * @param feed verbal content
+//     */
+//    public void addFeedToMyPage(String feed){
+//        if(feed != null){
+//            this.myPage.addFeedToMyPage(feed);
+//        }
+//    }
+//
+//    /**
+//     * Players can remove content from their personal page.
+//     * # use case 4.2
+//     * @param feed Verbal content
+//     */
+//    public void removeFeedFromMyPage(String feed){
+//        if(feed != null) {
+//            this.myPage.removeFeedFromMyPage(feed);
+//        }
+//    }
 
     public Date getbDate() {
         return bDate;
@@ -80,26 +66,78 @@ public class Player extends AUser {
         return role;
     }
 
-    /**
-     * Update the player's role.
-     * The player's role is also updated on his personal page.
-     * @param role The role of the player. It could be:
-     *            GoalKeeper/Defender/Forward/Midfielder.
-     */
-    public void setRole(EPlayerRole role) {
-        this.role = role;
-        this.myPage.setRole(role);
-    }
+//    /**
+//     * Update the player's role.
+//     * The player's role is also updated on his personal page.
+//     * # use case 4.1
+//     * @param role The role of the player. It could be:
+//     *            GoalKeeper/Defender/Forward/Midfielder.
+//     */
+//    public void setRole(EPlayerRole role) {
+//        if(role != null){
+//            this.role = role;
+//            this.myPage.setRole(role);
+//        }
+//    }
+//
+//    public APageEditor getMyPage() {
+//        return myPage;
+//    }
+//
+//    /**
+//     * # use case 4.1
+//     * @param myPage - Personal page.
+//     */
+//    public void setMyPage(PlayerPageEditor myPage) {
+//        if(myPage != null){
+//            this.myPage = myPage;
+//        }
+//    }
 
-    public APageEditor getMyPage() {
-        return myPage;
-    }
-
-    public AdditionalInfo getMyAdditionalInfo() {
+    public List<AdditionalInfo> getMyAdditionalInfo() {
         return myAdditionalInfo;
     }
 
-    public void setMyAdditionalInfo(AdditionalInfo myAdditionalInfo) {
-        this.myAdditionalInfo = myAdditionalInfo;
+    /**
+     The team the player plays in,the team composition the player plays in,
+     and their managers may change according to the season.
+     * @param additionalInfo - This section contains details about the team manager,
+     *                      team, team owner, team players, team coach and season.
+     */
+    public void addAdditionalInfo(AdditionalInfo additionalInfo){
+        if(additionalInfo != null){
+            this.myAdditionalInfo.add(additionalInfo);
+        }
+
     }
+
+    @Override
+    public String viewProfile() {
+        return null;
+    }
+
+    @Override
+    public EStatus getStatus() {
+        return null;
+    }
+
+    @Override
+    public void setStatus(EStatus status) {
+
+    }
+//
+//    /**
+//     * With this function you can view player information.
+//     * Provides a brief description of the actor,
+//     * his full name, date of birth and his role.
+//     * # use case 2.4 - You can view details about the players through
+//     * this function as well as through the personal pages of the players.
+//     */
+//    @Override
+//    public String viewProfile() {
+//        return super.viewProfile()+ " , I am a football player, " +
+//                " I was born on" + bDate +
+//                ", I play as a " + role ;
+//    }
+
 }

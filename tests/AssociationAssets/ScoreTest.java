@@ -24,10 +24,13 @@ public class ScoreTest {
 
     }
 
+
+
     @Test
-    public void setGoalsGuest() {
-        score.setGoalsGuest(1);
-        assertEquals(score.getGoalsGuest(),1);
+    public void toStringTest() {
+        score.setGoalsHost(3);
+        score.setGoalsGuest(2);
+        assertEquals(score.toString(),"Score= {Host=3, Guest=2}");
 
     }
 }

@@ -1,12 +1,18 @@
 package AssociationAssets;
 
+/**
+ * Class Score represents a game's score, including the total points for each group.
+ * Aouthors: Amit Shakarchy, Alon Gutman
+ */
 public class Score {
 
-int goalsHost;
-int goalsGuest;
+    //region Fields
+    int goalsHost;
+    int goalsGuest;
+    //endregion
 
 
-    public Score(){
+    public Score() {
         this.goalsHost = 0;
         this.goalsGuest = 0;
     }
@@ -16,6 +22,7 @@ int goalsGuest;
         this.goalsGuest = goalsGuest;
     }
 
+    //region Setters & Getters
     public int getGoalsHost() {
         return goalsHost;
     }
@@ -31,4 +38,15 @@ int goalsGuest;
     public void setGoalsGuest(int goalsGuest) {
         this.goalsGuest = goalsGuest;
     }
+    //endregion
+
+
+    @Override
+    public String toString() {
+        return "Score= {" +
+                "Host=" + goalsHost +
+                ", Guest=" + goalsGuest +
+                '}';
+    }
 }
+

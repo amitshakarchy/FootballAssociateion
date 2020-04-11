@@ -10,4 +10,19 @@ public class TeamManager extends AUser {
 
         // Improvise :)
     }
+
+    @Override
+    public String viewProfile() {
+        return null;
+    }
+
+    @Override
+    public EStatus getStatus() {
+        return null;
+    }
+
+    @Override
+    public void setStatus(EStatus status) {
+
+    }
 }
