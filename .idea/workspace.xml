@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c3b85c3-4333-4e6a-832c-11d20aaf6d10" name="Default Changelist" comment="Trying to fix the mess i did">
-      <change afterPath="$PROJECT_DIR$/Tests/AssociationAssets/AdditionalInfoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/AssociationAssets/LeagueTest.java" afterDir="false" />
+    <list default="true" id="0c3b85c3-4333-4e6a-832c-11d20aaf6d10" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_json_json_20190722.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/PoliciesAndAlgorithms/ScoreTablePolicy1Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/Weather.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/FieldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/FieldTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/DuplicateValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/DuplicateValueException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/EEventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/EEventType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/League.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/League.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Season.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/SeasonLeagueBinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/SeasonLeagueBinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Football Association.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Football Association.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +23,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -59,6 +50,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
@@ -71,6 +66,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="PoliciesAndAlgorithms" />
       <recent name="AssociationAssets" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -82,7 +78,7 @@
       <recent name="Users" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AdditionalInfoTest">
+  <component name="RunManager" selected="JUnit.ScoreTablePolicy1Test.weatherRequest">
     <configuration name="AdditionalInfoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Football Association" />
       <extension name="coverage">
@@ -144,28 +140,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TeamTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ScoreTablePolicy1Test.weatherRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Football Association" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="AssociationAssets.*" />
+          <option name="PATTERN" value="PoliciesAndAlgorithms.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="AssociationAssets" />
-      <option name="MAIN_CLASS_NAME" value="AssociationAssets.TeamTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="PoliciesAndAlgorithms" />
+      <option name="MAIN_CLASS_NAME" value="PoliciesAndAlgorithms.ScoreTablePolicy1Test" />
+      <option name="METHOD_NAME" value="weatherRequest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ScoreTablePolicy1Test.weatherRequest" />
         <item itemvalue="JUnit.AdditionalInfoTest" />
         <item itemvalue="JUnit.AdditionalInfoTest.removePlayer" />
         <item itemvalue="JUnit.LeagueTest" />
         <item itemvalue="JUnit.FieldTest" />
-        <item itemvalue="JUnit.TeamTest" />
       </list>
     </recent_temporary>
   </component>
@@ -213,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586521880547</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Trying to fix the mess i did">
+      <created>1586592235610</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586592235610</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -233,11 +237,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="Trying to fix the mess i did" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1586589558911">
+    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1586598484224">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585591086081" />
-    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1586589558911" />
+    <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1586598484224" />
+    <state x="471" y="33" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1586595748644">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="471" y="33" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1280.680@0.0.1280.680" timestamp="1586595748644" />
     <state x="323" y="271" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585667285815">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -254,51 +262,51 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="91" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1586520528257" />
-    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1586592197031">
+    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1586599032788">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585595846524" />
-    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586592197031" />
-    <state width="408" height="438" key="DebuggerActiveHint" timestamp="1586590215104">
+    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586599032788" />
+    <state width="655" height="438" key="DebuggerActiveHint" timestamp="1586597038917">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="408" height="438" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1586590215104" />
+    <state width="655" height="438" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1586597038917" />
     <state x="421" y="87" key="FileChooserDialogImpl" timestamp="1585594541426">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="87" key="FileChooserDialogImpl/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585594541426" />
-    <state width="1237" height="161" key="GridCell.Tab.0.bottom" timestamp="1586592197047">
+    <state width="1237" height="77" key="GridCell.Tab.0.bottom" timestamp="1586599032799">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586592197047" />
-    <state width="1237" height="161" key="GridCell.Tab.0.center" timestamp="1586592197047">
+    <state width="1237" height="77" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586599032799" />
+    <state width="1237" height="77" key="GridCell.Tab.0.center" timestamp="1586599032799">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586592197047" />
-    <state width="1237" height="161" key="GridCell.Tab.0.left" timestamp="1586592197047">
+    <state width="1237" height="77" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586599032799" />
+    <state width="1237" height="77" key="GridCell.Tab.0.left" timestamp="1586599032799">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586592197047" />
-    <state width="1237" height="161" key="GridCell.Tab.0.right" timestamp="1586592197047">
+    <state width="1237" height="77" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586599032799" />
+    <state width="1237" height="77" key="GridCell.Tab.0.right" timestamp="1586599032799">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586592197047" />
-    <state width="1237" height="73" key="GridCell.Tab.1.bottom" timestamp="1586592185190">
+    <state width="1237" height="77" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586599032799" />
+    <state width="1237" height="103" key="GridCell.Tab.1.bottom" timestamp="1586598017400">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="73" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586592185190" />
-    <state width="1237" height="73" key="GridCell.Tab.1.center" timestamp="1586592185190">
+    <state width="1237" height="103" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586598017400" />
+    <state width="1237" height="103" key="GridCell.Tab.1.center" timestamp="1586598017399">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="73" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1586592185190" />
-    <state width="1237" height="73" key="GridCell.Tab.1.left" timestamp="1586592185190">
+    <state width="1237" height="103" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1586598017399" />
+    <state width="1237" height="103" key="GridCell.Tab.1.left" timestamp="1586598017399">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="73" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1586592185190" />
-    <state width="1237" height="73" key="GridCell.Tab.1.right" timestamp="1586592185190">
+    <state width="1237" height="103" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1586598017399" />
+    <state width="1237" height="103" key="GridCell.Tab.1.right" timestamp="1586598017400">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="73" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1586592185190" />
+    <state width="1237" height="103" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1586598017400" />
     <state x="354" y="58" key="MultipleFileMergeDialog" timestamp="1586518090971">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -307,24 +315,28 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="316" y="47" key="NewModule_or_Project.wizard/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585594600864" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1586522124241">
+    <state x="121" y="0" key="SettingsEditor" timestamp="1586595751916">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585583017612" />
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1586522124241" />
-    <state x="233" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586521890781">
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1586595751916" />
+    <state x="233" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586592254457">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="77" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586521890781" />
+    <state x="233" y="77" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586592254457" />
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1585726095318">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1585582937422" />
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1585726095318" />
-    <state x="405" y="61" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1586589123915">
+    <state x="375" y="242" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1586595745131">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="405" y="61" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1586589123915" />
+    <state x="375" y="242" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1586595745131" />
+    <state x="405" y="61" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1586594293875">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="405" y="61" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1586594293875" />
     <state x="396" y="57" key="git4idea.branch.GitSmartOperationDialog" timestamp="1586518082403">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -352,8 +364,28 @@
           <line>37</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Tests/AssociationAssets/AdditionalInfoTest.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Tests/AssociationAssets/AdditionalInfoTest.java</url>
+          <line>119</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="((HashMap)map).entrySet().toArray()[2]" custom="java.util.HashMap" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/FootballAssociateion$GameTest_setMain.ic" NAME="GameTest.setMain Coverage Results" MODIFIED="1586503227894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
