@@ -14,7 +14,7 @@ public class Coach extends AUser {
 
     ETraining training;
     ECoachRole role;
-    APageEditor myPage;
+    CoachPageEditor myPage;
     List<AdditionalInfo> myAdditionalInfo;
 
     /**
@@ -87,12 +87,14 @@ public class Coach extends AUser {
 
     /**
      * Coach can change his type of training.
+     * The training also update in his personal page.
      * @param training - Coach type of training. It could be:
      *                  CDiploma, UEFAA, UEFAB, UEFAPro
      */
     public void setTraining(ETraining training) {
         if( training != null){
                 this.training = training;
+                this.myPage.setTraining(training);
         }
     }
 
