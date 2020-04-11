@@ -3,6 +3,13 @@ import AssociationAssets.AdditionalInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A trainer is a person who guides an athlete or group of athletes,
+ * advises them and manages their actions as they prepare for a sporting
+ * competition, and while they are actually participating.
+ * The coach is responsible for transferring training before the games.
+ */
+// TODO: 11/04/2020 Missing: details on viewing privileges, removing details, updating details
 public class Coach extends AUser {
 
     ETraining training;
@@ -11,8 +18,7 @@ public class Coach extends AUser {
     List<AdditionalInfo> myAdditionalInfo;
 
     /**
-     *
-     * @param UID - Unique user ID
+     * @param userName - Unique user name
      * @param fName - First name of the coach
      * @param lName - Last name of the coach
      * @param training - Coach type of training. It could be:
@@ -21,8 +27,8 @@ public class Coach extends AUser {
      *             GoalkeeperCoach, HeadCoach, AssistantCoach, YouthCoach
      * When a coach is created, a personal page is created for him.
      */
-    public Coach(String UID, String fName, String lName, ETraining training, ECoachRole role) {
-        super(UID, fName, lName);
+    public Coach(String userName, String fName, String lName, ETraining training, ECoachRole role) {
+        super(userName, fName, lName);
         this.training = training;
         this.role = role;
         this.myPage = new CoachPageEditor(fName,lName,role,training);
@@ -35,6 +41,7 @@ public class Coach extends AUser {
     }
 
     /**
+     * The position of the coaches varies according to the team and the season
      * @param additionalInfo - This section contains details about the team manager,
      *                      team, team owner, team players, team coach and season.
      */
@@ -78,6 +85,11 @@ public class Coach extends AUser {
         return training;
     }
 
+    /**
+     * Coach can change his type of training.
+     * @param training - Coach type of training. It could be:
+     *                  CDiploma, UEFAA, UEFAB, UEFAPro
+     */
     public void setTraining(ETraining training) {
         if( training != null){
                 this.training = training;
@@ -91,6 +103,7 @@ public class Coach extends AUser {
     /**
      * Update the coach's role.
      * The coach's role is also updated on his personal page.
+     * use case #5.1
      * @param role The role of the coach. It could be:
      *             GoalkeeperCoach, HeadCoach, AssistantCoach, YouthCoach
      */
@@ -102,6 +115,7 @@ public class Coach extends AUser {
     }
 
     /**
+     * Coach can change his personal page.
      * # use case 5.1
      * @param myPage - Personal page.
      */
@@ -113,11 +127,11 @@ public class Coach extends AUser {
 
 
     /**
-     * With this function you can view player information.
+     * With this function you can view coach information.
      * Provides a brief description of the actor,
-     * his full name, date of birth and his role.
-     * # use case 2.4 - You can view details about the players through
-     * this function as well as through the personal pages of the players.
+     * his full name, his training and his role.
+     * # use case 2.4 - You can view details about the coaches through
+     * this function as well as through the personal pages of the coaches.
      */
     @Override
     public String viewProfile() {
