@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="AES class added , security system class add">
+    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="added fields hashmap to Team class, changed remove function to get user name as parameter.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Team.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +186,19 @@
       <option name="presentableId" value="LOCAL‎00002" />
       <updated>1586607814558</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL‎00003" summary="AES class added , security system class add">
+      <created>1586610457125</created>
+      <option name="number" value="LOCAL‎00003" />
+      <option name="presentableId" value="LOCAL‎00003" />
+      <updated>1586610457125</updated>
+    </task>
+    <task id="LOCAL‎00004" summary="added fields hashmap to Team class, changed remove function to get user name as parameter.">
+      <created>1586610613553</created>
+      <option name="number" value="LOCAL‎00004" />
+      <option name="presentableId" value="LOCAL‎00004" />
+      <updated>1586610613553</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -215,7 +226,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="AES class added , security system class add" />
-    <option name="LAST_COMMIT_MESSAGE" value="AES class added , security system class add" />
+    <MESSAGE value="added fields hashmap to Team class, changed remove function to get user name as parameter." />
+    <option name="LAST_COMMIT_MESSAGE" value="added fields hashmap to Team class, changed remove function to get user name as parameter." />
   </component>
   <component name="WindowStateProjectService">
     <state x="621" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1586610320185">
@@ -230,22 +242,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="389" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586602963309" />
-    <state width="660" height="208" key="GridCell.Tab.0.bottom" timestamp="1586603171924">
+    <state width="1323" height="208" key="GridCell.Tab.0.bottom" timestamp="1586610423151">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="660" height="208" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586603171924" />
-    <state width="660" height="208" key="GridCell.Tab.0.center" timestamp="1586603171924">
+    <state width="1323" height="208" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586610423151" />
+    <state width="1323" height="208" key="GridCell.Tab.0.center" timestamp="1586610423150">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="660" height="208" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586603171924" />
-    <state width="660" height="208" key="GridCell.Tab.0.left" timestamp="1586603171923">
+    <state width="1323" height="208" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586610423150" />
+    <state width="1323" height="208" key="GridCell.Tab.0.left" timestamp="1586610423150">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="660" height="208" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586603171923" />
-    <state width="660" height="208" key="GridCell.Tab.0.right" timestamp="1586603171924">
+    <state width="1323" height="208" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586610423150" />
+    <state width="1323" height="208" key="GridCell.Tab.0.right" timestamp="1586610423151">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="660" height="208" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586603171924" />
+    <state width="1323" height="208" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586610423151" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1586602969199">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -254,10 +266,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="ShowDiffWithBranchDialog/0.0.1366.728@0.0.1366.728" timestamp="1586603188617" />
-    <state x="275" y="83" key="Vcs.Push.Dialog.v2" timestamp="1586607825166">
+    <state x="275" y="83" key="Vcs.Push.Dialog.v2" timestamp="1586610620090">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="83" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1586607825166" />
+    <state x="275" y="83" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1586610620090" />
     <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1586606917704">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

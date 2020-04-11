@@ -208,7 +208,11 @@ public class Team {
         info.removeCoach(coach.getUserName());
 
     }
+    public void removeField(String fieldName) {
+        if(fields.containsKey(fieldName))
+        fields.remove(fieldName);
 
+    }
     /**
      * Remove a manager from the managers list
      * @param manager
