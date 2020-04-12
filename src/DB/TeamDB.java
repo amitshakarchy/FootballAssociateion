@@ -17,4 +17,8 @@ public class TeamDB {
     public void removeTeam(int team){
         this.allTeams.remove(team);
     }
+
+    public HashMap<Integer, Team> getAllTeams() {
+        return allTeams;
+    }
 }

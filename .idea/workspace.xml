@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Tests/Security/AESEncryptionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Security/SecuritySystemTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/System/FootballSystemTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Users/TeamOwnerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/ETeamStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Football Association.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Football Association.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DB/TeamDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/TeamDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PoliciesAndAlgorithms/Weather.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/System/FootballSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/FootballSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/TeamOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamOwner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Users/CoachTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Users/CoachTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Users/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Users/PlayerTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11,36 +27,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Users/TeamOwner.java">
+        <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Team.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1386">
-              <caret line="253" lean-forward="true" selection-start-line="253" selection-end-line="253" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#193#364#0" />
-                <element signature="e#717#1866#0" />
-                <element signature="e#1911#2423#0" />
-                <element signature="e#2392#3284#0" />
-                <element signature="e#2661#2939#0" />
-                <element signature="e#4356#4677#0" />
-                <element signature="e#4541#4648#1" />
-                <element signature="e#6139#6646#0" />
-                <element signature="method#removePlayer#0;class#TeamOwner#0" />
-                <element signature="method#removeCoach#0;class#TeamOwner#0" />
-                <element signature="method#removeTeamManager#0;class#TeamOwner#0" />
-                <element signature="method#removeField#0;class#TeamOwner#0" />
-                <element signature="method#nominateTeamOwner#0;class#TeamOwner#0" />
-                <element signature="method#setTeamManagerToAdditionalInfo#1;class#TeamOwner#0" />
-                <element signature="method#discardNominationForTeamOwner#0;class#TeamOwner#0" />
-                <element signature="method#nominateTeamManager#0;class#TeamOwner#0" />
-                <element signature="method#closeTeam#0;class#TeamOwner#0" />
-                <element signature="method#finnacelReport#0;class#TeamOwner#0" />
-                <element signature="e#4186#4622#0" />
-                <element signature="e#7140#7472#0" />
-              </folding>
+            <state relative-caret-position="3987">
+              <caret line="283" column="18" selection-start-line="283" selection-start-column="18" selection-end-line="283" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -48,26 +55,93 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+            <state relative-caret-position="286">
+              <caret line="13" column="2" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Users/SystemManager.java">
+        <entry file="file://$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+            <state relative-caret-position="-558">
+              <caret line="51" column="14" selection-start-line="51" selection-end-line="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;method#AdditionalInfo#0;class#AdditionalInfo#0" />
+                <element signature="method#AdditionalInfo#0;class#AdditionalInfo#0" />
+                <element signature="method#getTeam#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#addPlayer#0;class#AdditionalInfo#0" />
+                <element signature="method#addPlayer#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#addCoach#0;class#AdditionalInfo#0" />
+                <element signature="method#addCoach#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#addManager#0;class#AdditionalInfo#0" />
+                <element signature="method#addManager#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#addTeamOwner#0;class#AdditionalInfo#0" />
+                <element signature="method#addTeamOwner#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#removePlayer#0;class#AdditionalInfo#0" />
+                <element signature="method#removePlayer#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#removeCoach#0;class#AdditionalInfo#0" />
+                <element signature="method#removeCoach#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#removeManager#0;class#AdditionalInfo#0" />
+                <element signature="method#removeManager#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#removeTeamOwner#0;class#AdditionalInfo#0" />
+                <element signature="method#removeTeamOwner#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#findPlayer#0;class#AdditionalInfo#0" />
+                <element signature="method#findPlayer#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#findCoach#0;class#AdditionalInfo#0" />
+                <element signature="method#findCoach#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#findManager#0;class#AdditionalInfo#0" />
+                <element signature="method#findManager#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#findTeamOwner#0;class#AdditionalInfo#0" />
+                <element signature="method#findTeamOwner#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#whoNominateTeamManager#0;class#AdditionalInfo#0" />
+                <element signature="method#whoNominateTeamManager#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#whoNominateTeamOwner#0;class#AdditionalInfo#0" />
+                <element signature="method#whoNominateTeamOwner#0;class#AdditionalInfo#0" />
+                <element signature="docComment;method#removeAllNominations#0;class#AdditionalInfo#0" />
+                <element signature="method#removeAllNominations#0;class#AdditionalInfo#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="942">
-              <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
+            <state relative-caret-position="63">
+              <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+              <folding>
+                <marker date="1586721585604" expanded="true" signature="0:285" ph="..." />
+                <marker date="1586721585604" expanded="true" signature="32:279" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/Weather.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="40" column="16" selection-end-line="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Football Association.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="35" column="8" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FootballAssociateion-Amit.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -75,66 +149,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Users/TeamManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
+            <state relative-caret-position="433">
               <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/System/FootballSystem.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Users/TeamOwner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+            <state relative-caret-position="323">
+              <caret line="179" column="43" lean-forward="true" selection-start-line="179" selection-end-line="180" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#signIn#0;class#FootballSystem#0" />
-                <element signature="method#creatingRepresentativeFootballAssociation#0;class#FootballSystem#0" />
-                <element signature="method#creatingReferee#0;class#FootballSystem#0" />
-                <element signature="method#creatingCoach#0;class#FootballSystem#0" />
-                <element signature="method#login#0;class#FootballSystem#0" />
+                <element signature="method#setPlayerToAdditionalInfo#0;class#TeamOwner#0" />
+                <element signature="method#addCoach#0;class#TeamOwner#0" />
+                <element signature="method#setCoachToAdditionalInfo#0;class#TeamOwner#0" />
+                <element signature="method#addTeamManager#0;class#TeamOwner#0" />
+                <element signature="method#setTeamManagerToAdditionalInfo#0;class#TeamOwner#0" />
+                <element signature="method#removePlayer#0;class#TeamOwner#0" />
+                <element signature="method#removeCoach#0;class#TeamOwner#0" />
+                <element signature="method#removeTeamManager#0;class#TeamOwner#0" />
+                <element signature="method#removeField#0;class#TeamOwner#0" />
+                <element signature="method#nominateTeamOwner#0;class#TeamOwner#0" />
+                <element signature="method#setTeamOwnerToAdditionalInfo#0;class#TeamOwner#0" />
+                <element signature="method#discardNominationForTeamOwner#0;class#TeamOwner#0" />
+                <element signature="method#nominateTeamManager#0;class#TeamOwner#0" />
+                <element signature="method#closeTeam#0;class#TeamOwner#0" />
+                <element signature="method#finnacelReport#0;class#TeamOwner#0" />
+                <element signature="method#getAdditionalInfo#1;class#TeamOwner#0" />
+                <element signature="method#signIn#0;class#TeamOwner#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="48" column="19" lean-forward="true" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Field.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AssociationAssets/SeasonLeagueBinder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AssociationAssets/TeamBudget.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/.gitattributes">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -144,6 +196,7 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -194,19 +247,49 @@
         <option value="$PROJECT_DIR$/src/Users/AUser.java" />
         <option value="$PROJECT_DIR$/src/Users/User.java" />
         <option value="$PROJECT_DIR$/src/Users/Referee.java" />
-        <option value="$PROJECT_DIR$/src/System/FootballSystem.java" />
         <option value="$PROJECT_DIR$/src/Controllers/TeamOwnerController.java" />
         <option value="$PROJECT_DIR$/src/Users/Guest.java" />
+        <option value="$PROJECT_DIR$/src/AssociationAssets/Team.java" />
+        <option value="$PROJECT_DIR$/src/DB/GameDB.java" />
+        <option value="$PROJECT_DIR$/src/DB/SeasonDB.java" />
+        <option value="$PROJECT_DIR$/src/DB/FieldDB.java" />
+        <option value="$PROJECT_DIR$/src/DB/LeagueDB.java" />
+        <option value="$PROJECT_DIR$/src/DB/TeamDB.java" />
+        <option value="$PROJECT_DIR$/src/System/FootballSystem.java" />
+        <option value="$PROJECT_DIR$/tests/Users/TeamOwnerTest.java" />
+        <option value="$PROJECT_DIR$/tests/System/FootballSystemTest.java" />
+        <option value="$PROJECT_DIR$/tests/Security/SecuritySystemTest.java" />
+        <option value="$PROJECT_DIR$/tests/Security/AESEncryptionTest.java" />
         <option value="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" />
+        <option value="$PROJECT_DIR$/src/Users/CoachPageEditor.java" />
+        <option value="$PROJECT_DIR$/src/AssociationAssets/ETeamStatus.java" />
+        <option value="$PROJECT_DIR$/tests/Users/CoachTest.java" />
+        <option value="$PROJECT_DIR$/tests/Users/PlayerTest.java" />
+        <option value="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java" />
+        <option value="$PROJECT_DIR$/src/PoliciesAndAlgorithms/Weather.java" />
+        <option value="$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java" />
         <option value="$PROJECT_DIR$/src/Users/TeamOwner.java" />
       </list>
     </option>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="workOffline" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1142" />
-    <option name="y" value="-7" />
-    <option name="width" value="1618" />
-    <option name="height" value="868" />
+    <option name="x" value="2411" />
+    <option name="y" value="51" />
+    <option name="width" value="1348" />
+    <option name="height" value="732" />
   </component>
   <component name="ProjectId" id="1Zr2Xlfccmk1yjMuSshZwv6bqTW" />
   <component name="ProjectView">
@@ -226,11 +309,6 @@
             <path>
               <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
               <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -238,6 +316,24 @@
               <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="AssociationAssets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DB" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="PoliciesAndAlgorithms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Security" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
@@ -251,6 +347,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Users" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -263,17 +368,33 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586704013668" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586721705484" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Security" />
+      <recent name="System" />
+      <recent name="Users" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="AssociationAssets" />
       <recent name="Score" />
@@ -384,17 +505,33 @@
       <option name="project" value="LOCAL" />
       <updated>1586680252117</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add DB-s classes and add/remove functions at football system from DB's">
+      <created>1586708631489</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1586708631489</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88849000" />
+    <option name="totallyTimeSpent" value="98926000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1913" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="1913" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18993288" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18993288" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -411,18 +548,18 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4986577" weight="0.3286119" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5067114" side_tool="true" visible="true" weight="0.28895184" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5080537" side_tool="true" visible="true" weight="0.28895184" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49530202" weight="0.31586403" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" sideWeight="0.49328858" visible="true" weight="0.28895184" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.4919463" visible="true" weight="0.28895184" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.1738255" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" id="Database" order="8" weight="0.3295302" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,7 +613,8 @@
     <MESSAGE value="chagnes at team owner" />
     <MESSAGE value="additional info - recode" />
     <MESSAGE value="try to merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="try to merge" />
+    <MESSAGE value="add DB-s classes and add/remove functions at football system from DB's" />
+    <option name="LAST_COMMIT_MESSAGE" value="add DB-s classes and add/remove functions at football system from DB's" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" />
@@ -499,179 +637,11 @@
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" />
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="950" column="14" selection-start-line="950" selection-start-column="14" selection-end-line="950" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/AbstractMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4488">
-          <caret line="233" column="13" selection-start-line="233" selection-start-column="13" selection-end-line="233" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/ETraining.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/EStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/IPageEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/PlayerPageEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="76" selection-start-line="19" selection-start-column="76" selection-end-line="19" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Security/AESEncryption.java" />
-    <entry file="file://$PROJECT_DIR$/tests/AssociationAssets/GameTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/AssociationAssets/ScoreTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Football Association.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/APageEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/EReferee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/ECoachRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/EPlayerRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/CoachPageEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/IUser.java" />
-    <entry file="file://$PROJECT_DIR$/src/Users/ERoleType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/Weather.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/Coach.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="145" column="12" selection-start-line="143" selection-start-column="2" selection-end-line="155" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="130" column="24" selection-start-line="130" selection-start-column="16" selection-end-line="130" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/DuplicateValueException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/User.java" />
-    <entry file="file://$PROJECT_DIR$/src/Security/SecuritySystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="968">
-          <caret line="77" column="7" lean-forward="true" selection-start-line="77" selection-start-column="7" selection-end-line="77" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addNewUser#0;class#SecuritySystem#0" />
-            <element signature="method#updatePassword#0;class#SecuritySystem#0" />
-            <element signature="method#checkPasswordForLogIn#0;class#SecuritySystem#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/System/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AssociationAssets/League.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
@@ -679,38 +649,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/representativeFootballAssociation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Users/Role.java" />
     <entry file="file://$PROJECT_DIR$/src/System/Guest.java" />
-    <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-550">
-          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding>
-            <element signature="e#934#935#0" expanded="true" />
-            <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#1133#1134#0" expanded="true" />
-            <element signature="e#1164#1165#0" expanded="true" />
-            <element signature="e#1522#1523#0" expanded="true" />
-            <element signature="e#1557#1558#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/TeamOwnerController.java" />
-    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/SeasonLeagueBinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AssociationAssets/TeamBudget.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -742,115 +683,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="48" column="19" lean-forward="true" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/TeamManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/SystemManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/System/FootballSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#signIn#0;class#FootballSystem#0" />
-            <element signature="method#creatingRepresentativeFootballAssociation#0;class#FootballSystem#0" />
-            <element signature="method#creatingReferee#0;class#FootballSystem#0" />
-            <element signature="method#creatingCoach#0;class#FootballSystem#0" />
-            <element signature="method#login#0;class#FootballSystem#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/System/Complains.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="10" column="40" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="260" column="55" selection-start-line="260" selection-start-column="50" selection-end-line="260" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#931#932#0" expanded="true" />
-            <element signature="e#963#964#0" expanded="true" />
-            <element signature="e#996#997#0" expanded="true" />
-            <element signature="e#1025#1026#0" expanded="true" />
-            <element signature="e#1069#1070#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Team.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="e#2482#2483#0" expanded="true" />
-            <element signature="e#2524#2525#0" expanded="true" />
-            <element signature="e#4408#4409#0" expanded="true" />
-            <element signature="e#4448#4449#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Season.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/TeamOwner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1386">
-          <caret line="253" lean-forward="true" selection-start-line="253" selection-end-line="253" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#193#364#0" />
-            <element signature="e#717#1866#0" />
-            <element signature="e#1911#2423#0" />
-            <element signature="e#2392#3284#0" />
-            <element signature="e#2661#2939#0" />
-            <element signature="e#4356#4677#0" />
-            <element signature="e#4541#4648#1" />
-            <element signature="e#6139#6646#0" />
-            <element signature="method#removePlayer#0;class#TeamOwner#0" />
-            <element signature="method#removeCoach#0;class#TeamOwner#0" />
-            <element signature="method#removeTeamManager#0;class#TeamOwner#0" />
-            <element signature="method#removeField#0;class#TeamOwner#0" />
-            <element signature="method#nominateTeamOwner#0;class#TeamOwner#0" />
-            <element signature="method#setTeamManagerToAdditionalInfo#1;class#TeamOwner#0" />
-            <element signature="method#discardNominationForTeamOwner#0;class#TeamOwner#0" />
-            <element signature="method#nominateTeamManager#0;class#TeamOwner#0" />
-            <element signature="method#closeTeam#0;class#TeamOwner#0" />
-            <element signature="method#finnacelReport#0;class#TeamOwner#0" />
-            <element signature="e#4186#4622#0" />
-            <element signature="e#7140#7472#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -861,13 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="942">
@@ -875,5 +704,409 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Budget/AssociationBudget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/SeasonLeagueBinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-638">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Season.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-47">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="26" column="11" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/GameDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/SeasonDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#165#166#0" expanded="true" />
+            <element signature="e#214#215#0" expanded="true" />
+            <element signature="e#277#278#0" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/FieldDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#359#360#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/LeagueDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+          <folding>
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#394#395#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/TeamDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#219#220#0" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#347#348#0" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/representativeFootballAssociation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/RefereeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/representativeFootballAssociationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/TeamManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Referee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="e#934#935#0" expanded="true" />
+            <element signature="e#964#965#0" expanded="true" />
+            <element signature="e#1133#1134#0" expanded="true" />
+            <element signature="e#1164#1165#0" expanded="true" />
+            <element signature="e#1522#1523#0" expanded="true" />
+            <element signature="e#1557#1558#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/System/FootballSystemTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2376">
+          <caret line="112" column="5" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Security/SecuritySystemTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Security/AESEncryptionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/TeamOwnerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1562">
+          <caret line="75" column="27" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Security/AESEncryption.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-690">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/System/FootballSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="136" selection-start-line="136" selection-end-line="136" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#signIn#0;class#FootballSystem#0" />
+            <element signature="method#creatingReferee#0;class#FootballSystem#0" />
+            <element signature="method#creatingCoach#0;class#FootballSystem#0" />
+            <element signature="method#login#0;class#FootballSystem#0" />
+            <element signature="e#4422#4423#0" expanded="true" />
+            <element signature="e#4478#4479#0" expanded="true" />
+            <element signature="method#findPlayerAtTeamByUserName#0;class#FootballSystem#0" />
+            <element signature="method#findCoachAtTeamByUserName#0;class#FootballSystem#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Security/SecuritySystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-536">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#addNewUser#0;class#SecuritySystem#0" />
+            <element signature="method#updatePassword#0;class#SecuritySystem#0" />
+            <element signature="method#checkPasswordForLogIn#0;class#SecuritySystem#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/DuplicateValueException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/EEventType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="32" selection-start-line="4" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/ETraining.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/CoachPageEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/ETeamStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/CoachTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="107" column="3" lean-forward="true" selection-start-column="2" selection-end-line="107" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#3977#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="15" lean-forward="true" selection-start-column="2" selection-end-line="93" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/SystemManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Team.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3987">
+          <caret line="283" column="18" selection-start-line="283" selection-start-column="18" selection-end-line="283" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FootballAssociateion-Amit.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Football Association.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="35" column="8" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-558">
+          <caret line="51" column="14" selection-start-line="51" selection-end-line="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#AdditionalInfo#0;class#AdditionalInfo#0" />
+            <element signature="method#AdditionalInfo#0;class#AdditionalInfo#0" />
+            <element signature="method#getTeam#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#addPlayer#0;class#AdditionalInfo#0" />
+            <element signature="method#addPlayer#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#addCoach#0;class#AdditionalInfo#0" />
+            <element signature="method#addCoach#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#addManager#0;class#AdditionalInfo#0" />
+            <element signature="method#addManager#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#addTeamOwner#0;class#AdditionalInfo#0" />
+            <element signature="method#addTeamOwner#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#removePlayer#0;class#AdditionalInfo#0" />
+            <element signature="method#removePlayer#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#removeCoach#0;class#AdditionalInfo#0" />
+            <element signature="method#removeCoach#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#removeManager#0;class#AdditionalInfo#0" />
+            <element signature="method#removeManager#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#removeTeamOwner#0;class#AdditionalInfo#0" />
+            <element signature="method#removeTeamOwner#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#findPlayer#0;class#AdditionalInfo#0" />
+            <element signature="method#findPlayer#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#findCoach#0;class#AdditionalInfo#0" />
+            <element signature="method#findCoach#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#findManager#0;class#AdditionalInfo#0" />
+            <element signature="method#findManager#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#findTeamOwner#0;class#AdditionalInfo#0" />
+            <element signature="method#findTeamOwner#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#whoNominateTeamManager#0;class#AdditionalInfo#0" />
+            <element signature="method#whoNominateTeamManager#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#whoNominateTeamOwner#0;class#AdditionalInfo#0" />
+            <element signature="method#whoNominateTeamOwner#0;class#AdditionalInfo#0" />
+            <element signature="docComment;method#removeAllNominations#0;class#AdditionalInfo#0" />
+            <element signature="method#removeAllNominations#0;class#AdditionalInfo#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+          <folding>
+            <marker date="1586721585604" expanded="true" signature="0:285" ph="..." />
+            <marker date="1586721585604" expanded="true" signature="32:279" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/Weather.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="40" column="16" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="2" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/TeamManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/TeamOwner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="179" column="43" lean-forward="true" selection-start-line="179" selection-end-line="180" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setPlayerToAdditionalInfo#0;class#TeamOwner#0" />
+            <element signature="method#addCoach#0;class#TeamOwner#0" />
+            <element signature="method#setCoachToAdditionalInfo#0;class#TeamOwner#0" />
+            <element signature="method#addTeamManager#0;class#TeamOwner#0" />
+            <element signature="method#setTeamManagerToAdditionalInfo#0;class#TeamOwner#0" />
+            <element signature="method#removePlayer#0;class#TeamOwner#0" />
+            <element signature="method#removeCoach#0;class#TeamOwner#0" />
+            <element signature="method#removeTeamManager#0;class#TeamOwner#0" />
+            <element signature="method#removeField#0;class#TeamOwner#0" />
+            <element signature="method#nominateTeamOwner#0;class#TeamOwner#0" />
+            <element signature="method#setTeamOwnerToAdditionalInfo#0;class#TeamOwner#0" />
+            <element signature="method#discardNominationForTeamOwner#0;class#TeamOwner#0" />
+            <element signature="method#nominateTeamManager#0;class#TeamOwner#0" />
+            <element signature="method#closeTeam#0;class#TeamOwner#0" />
+            <element signature="method#finnacelReport#0;class#TeamOwner#0" />
+            <element signature="method#getAdditionalInfo#1;class#TeamOwner#0" />
+            <element signature="method#signIn#0;class#TeamOwner#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="JSONObject" />
   </component>
 </project>

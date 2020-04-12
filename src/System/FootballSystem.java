@@ -158,4 +158,21 @@ public class FootballSystem {
     public void removeGameFromDB(int gid){
         this.gameDB.removeGame(gid);
     }
+    public boolean findPlayerAtTeamByUserName(String userName){
+        for (Team team: this.teamDB.getAllTeams().values()) {
+            if(team.findPlayer(userName) != null){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean findCoachAtTeamByUserName(String userName){
+        for (Team team: this.teamDB.getAllTeams().values()) {
+            if(team.findCoach(userName) != null){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

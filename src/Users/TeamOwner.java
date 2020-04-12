@@ -3,28 +3,38 @@ import AssociationAssets.AdditionalInfo;
 import AssociationAssets.Field;
 import AssociationAssets.Season;
 import AssociationAssets.Team;
-import DB.TeamDB;
 import System.FootballSystem;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * This class is the Team Owner Class.
+ * Aouthors: Tair Cohen
+ */
 public class TeamOwner extends Fan {
 
     List<AdditionalInfo> additionalInfoList;
-    TeamDB teamDB;
 
+    /**
+     * The constructor for TeamOwner class.
+     * @param userName
+     * @param firstName
+     * @param lastName
+     */
     public TeamOwner(String userName, String firstName, String lastName) {
         super(userName, firstName, lastName);
         this.additionalInfoList = new ArrayList<>();
     }
 
+    //region Getters & Setters
     public List<AdditionalInfo> getAdditionalInfo() {
         return additionalInfoList;
     }
     public void setAdditionalInfo(List<AdditionalInfo> additionalInfo) {
         this.additionalInfoList = additionalInfo;
     }
+    // end region
 
     // use case 6.1 region
     public boolean addPlayer(Team team, Season season, String userName, String password, String firstName, String lastName, Date birthday, EPlayerRole ePlayerRole) {
@@ -34,6 +44,11 @@ public class TeamOwner extends Fan {
         }
         // if the user exist
         if (FootballSystem.getInstance().existFanByUserName(userName)) {
+            // check if this user name is playing in another team
+            if(FootballSystem.getInstance().findPlayerAtTeamByUserName(userName)){
+                System.out.println("this player is playing in another team, user name is: "+userName);
+                return false;
+            }
             // check if the additional info has this player already
             if (!setPlayerToAdditionalInfo(team, season, userName)) {
                 return false;
@@ -71,10 +86,16 @@ public class TeamOwner extends Fan {
         }
         // if the user exist
         if (FootballSystem.getInstance().existFanByUserName(userName)) {
+            // check if this user name is coaching in another team
+            if(FootballSystem.getInstance().findCoachAtTeamByUserName(userName)){
+                System.out.println("this coach is coaching another team, user name is: "+userName);
+                return false;
+            }
             // check if the additional info has this coach already
             if (!setCoachToAdditionalInfo(team, season, userName)) {
                 return false;
             }
+
             FootballSystem.getInstance().creatingCoach(userName, firstName, lastName, training, eCoachRole);
         }
         // if the user doesnt exist
@@ -156,6 +177,7 @@ public class TeamOwner extends Fan {
         Field field = new Field(name, city, capacity);
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         additionalInfoToSearch.getTeam().addField(field);
+        FootballSystem.getInstance().addFieldToDB(field);
         return true;
     }
     public void removePlayer(Team team, Season season, String userName) {
