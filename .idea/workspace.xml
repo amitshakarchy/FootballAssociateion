@@ -20,7 +20,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="remove field function (removed from team only, not from additinal info because it isn't there)">
+      <change afterPath="$PROJECT_DIR$/src/AssociationAssets/ETeamStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/EventTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/EventTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/FieldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/FieldTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/GameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/ScoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/ScoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/AdditionalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/DuplicateValueException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/EEventType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/Field.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/League.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/Score.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/Season.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/SeasonLeagueBinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/Team.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/AssociationAssets/TeamBudget.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Notifications/JNotifications.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Notifications/Notifications.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Notifications/RFANotifications.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Notifications/TONotifications.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/PoliciesAndAlgorithms/GamesAssigningPolicy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/PoliciesAndAlgorithms/ScoreTablePolicy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/PoliciesAndAlgorithms/ScoreTablePolicy1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/PoliciesAndAlgorithms/ScoreTablePolicy2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/PoliciesAndAlgorithms/SimpleGamesAssigningPolicy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/RecommendationSystem/ComputaionalModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/RecommendationSystem/RecommendationSystem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/System/Guest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/System/Logger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/AUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/Coach.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/ECoachRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/EPlayerRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/EStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/ETraining.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/Fan.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/IUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/PageEditor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/Referee.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/SystemManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/TeamManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/TeamOwner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FootballAssociateion-Amit/Users/representativeFootballAssociation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Team.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +79,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -215,7 +264,19 @@
       <option name="presentableId" value="LOCAL‎00008" />
       <updated>1586676281259</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL‎00009" summary="remove field function (removed from team only, not from additinal info because it isn't there)">
+      <created>1586706156777</created>
+      <option name="number" value="LOCAL‎00009" />
+      <option name="presentableId" value="LOCAL‎00009" />
+      <updated>1586706156777</updated>
+    </task>
+    <task id="LOCAL‎00010" summary="remove field function (removed from team only, not from additinal info because it isn't there)">
+      <created>1586706329262</created>
+      <option name="number" value="LOCAL‎00010" />
+      <option name="presentableId" value="LOCAL‎00010" />
+      <updated>1586706329262</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -252,30 +313,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="621" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586610320185" />
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1586603188617">
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1586706110535">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1586603188617" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1586706110535" />
     <state x="389" y="105" key="FileChooserDialogImpl" timestamp="1586602963309">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="389" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586602963309" />
-    <state width="1323" height="208" key="GridCell.Tab.0.bottom" timestamp="1586610423151">
+    <state width="1323" height="153" key="GridCell.Tab.0.bottom" timestamp="1586706249178">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="208" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586610423151" />
-    <state width="1323" height="208" key="GridCell.Tab.0.center" timestamp="1586610423150">
+    <state width="1323" height="153" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586706249178" />
+    <state width="1323" height="153" key="GridCell.Tab.0.center" timestamp="1586706249178">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="208" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586610423150" />
-    <state width="1323" height="208" key="GridCell.Tab.0.left" timestamp="1586610423150">
+    <state width="1323" height="153" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586706249178" />
+    <state width="1323" height="153" key="GridCell.Tab.0.left" timestamp="1586706249177">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="208" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586610423150" />
-    <state width="1323" height="208" key="GridCell.Tab.0.right" timestamp="1586610423151">
+    <state width="1323" height="153" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586706249177" />
+    <state width="1323" height="153" key="GridCell.Tab.0.right" timestamp="1586706249178">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="208" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586610423151" />
+    <state width="1323" height="153" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586706249178" />
+    <state x="146" y="82" key="MergeDialog" timestamp="1586706435956">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="146" y="82" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1586706435956" />
+    <state x="517" y="147" width="743" height="265" key="MultipleFileMergeDialog" timestamp="1586706439701">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="517" y="147" width="743" height="265" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1586706439701" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1586602969199">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -284,22 +353,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="ShowDiffWithBranchDialog/0.0.1366.728@0.0.1366.728" timestamp="1586603188617" />
-    <state x="275" y="83" key="Vcs.Push.Dialog.v2" timestamp="1586676284068">
+    <state x="275" y="83" key="Vcs.Push.Dialog.v2" timestamp="1586706334036">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="83" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1586676284068" />
+    <state x="275" y="83" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1586706334036" />
     <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1586606917704">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" width="587" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1586606917704" />
+    <state x="364" y="152" key="git4idea.merge.GitPullDialog" timestamp="1586708805339">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="364" y="152" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1586708805339" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1586607132178">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1586607132178" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586607046843">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586710475552">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586607046843" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586710475552" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
