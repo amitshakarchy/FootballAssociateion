@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="" />
+    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Tests/Budget/AssociationBudgetTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Users/representativeFootballAssociationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Budget/AssociationBudget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Budget/TeamBudget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DB/LeagueDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Football Association.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Football Association.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/EEventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/EEventType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Notifications/JNotifications.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Notifications/Notifications.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Notifications/RFANotifications.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Notifications/TONotifications.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,8 +26,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -32,6 +46,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -47,8 +65,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="Users" />
       <recent name="Budget" />
+      <recent name="Users" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -144,7 +162,13 @@
       <option name="presentableId" value="LOCAL‎00003" />
       <updated>1586655591203</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL‎00004" summary="test commit">
+      <created>1586679592419</created>
+      <option name="number" value="LOCAL‎00004" />
+      <option name="presentableId" value="LOCAL‎00004" />
+      <updated>1586679592419</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -157,7 +181,8 @@
     <MESSAGE value="First commit, just to see that everything is connected" />
     <MESSAGE value="AES class added , security system class add" />
     <MESSAGE value="add Budget package&#10;add AssociationBudget class&#10;add TeamBudget class &#10;done AssociationBudget and TeamBudget + tests for each class" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Budget package&#10;add AssociationBudget class&#10;add TeamBudget class &#10;done AssociationBudget and TeamBudget + tests for each class" />
+    <MESSAGE value="test commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="test commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Inspections" timestamp="1586647222189">
@@ -179,11 +204,11 @@
     <state x="443" y="211" width="394" height="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1586519138890" />
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586519138890" />
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1586519138890" />
-    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1586655589518">
+    <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2" timestamp="1586679590162">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="259" y="0" width="979" height="680" key="CommitChangelistDialog2/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1586519138891" />
-    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586655589518" />
+    <state x="259" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1586679590162" />
     <state x="421" y="87" key="FileChooserDialogImpl" timestamp="1586520048710">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -201,17 +226,21 @@
     <state x="316" y="47" key="NewModule_or_Project.wizard/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1586519138891" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1586519138891" />
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1586519138891" />
-    <state x="233" y="62" key="Vcs.Push.Dialog.v2" timestamp="1586655607143">
+    <state x="233" y="62" key="Vcs.Push.Dialog.v2" timestamp="1586679608580">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="62" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586655607143" />
+    <state x="233" y="62" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1586679608580" />
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1586519138891" />
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680/-1920.0.1280.680@0.0.1280.680" timestamp="1586519138891" />
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1586519138891" />
-    <state x="412" y="43" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1586654943769">
+    <state x="383" y="233" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1586680134148">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="412" y="43" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1586654943769" />
+    <state x="383" y="233" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1280.680@0.0.1280.680" timestamp="1586680134148" />
+    <state x="412" y="43" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1586680276157">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="412" y="43" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1586680276157" />
     <state x="325" y="132" key="git4idea.merge.GitPullDialog" timestamp="1586521127649">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
