@@ -6,6 +6,8 @@ import System.*;
 /**
  * A fan of a sports club, national team, team or athlete,
  * is a fan of that club, group or athlete.
+ *
+ * @ Written by Yuval Ben Eliezer
  */
 public class Fan extends Guest implements IFan {
 
@@ -107,10 +109,26 @@ public class Fan extends Guest implements IFan {
                 ", my search History is " + searchHistory ;
     }
 
+    /**
+     *A fan can sign up to track personal pages
+     * With this function, a fan can sign up to track player and coach pages
+     *
+     * # use case 3.2
+     *
+     * @param pageEditor - The page the fan wants to sign up for
+     */
     public void subscribePersonalPage(APageEditor pageEditor){//useCase 3.2
         pageEditor.register(this);
     }
 
+    /**
+     * A fan can delete a subscription to track personal pages
+     * In this function, a fan can delete tracker of player and coach pages
+     *
+     * # use case 3.2
+     *
+     * @param pageEditor - The page the fan wants to stop following
+     */
     public void removeRegisterFromPersonalPage(APageEditor pageEditor){//useCase 3.2
         pageEditor.delete(this);
     }
@@ -128,13 +146,22 @@ public class Fan extends Guest implements IFan {
 
     /**
      * This method should receive a complain text (from the service layer)
-     * and send it as an email to the system managers .
-     * @param complain
+     * and sends the complain to a complaint box .
+     * @param complain - Verbal text describing the complain
      */
     public void submitComplain(String complain) {//useCase 3.4
         Complains.getInstance().addComplain(complain,this);
     }
 
+    /**
+     *A fan can respond to a complaint he has sent to the administrator
+     *
+     * @param systemManager - The administrator who responded to the complaint
+     * @param Complain - The Complaint
+     * @param response - The answer to the complaint
+     *
+     * # use case 3.4
+     */
     public void getResponseForComplain(SystemManager systemManager,String Complain,String response){}
 
     /**

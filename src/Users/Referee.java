@@ -9,6 +9,8 @@ import java.util.List;
 /**
  * A football referee is a soccer game referee who enforces the rules of the game set
  * in the football game constitution.
+ *
+ * @ Written by Yuval Ben Eliezer
  */
 public class Referee extends Fan {
     private List<Game> myGames;

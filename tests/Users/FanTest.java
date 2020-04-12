@@ -1,7 +1,12 @@
 package Users;
 
+import javafx.util.Pair;
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
+import java.util.List;
+
+import System.Complains;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FanTest {
@@ -52,41 +57,55 @@ class FanTest {
         assertEquals(fan.getStatus(),EStatus.OFFLINE);
     }
 
-
-
-
-
-
     @Test
     void subscribePersonalPage() {
+        Player player = new Player("newPlayer", "yossi","cohen", new Date(),EPlayerRole.GoalKeeper);
+        APageEditor pageToFollow = player.getMyPage();
+        Fan fan = new Fan("1","1","1");
+        fan.subscribePersonalPage(pageToFollow);
+        player.addFeedToMyPage("newFeed");
+        assertEquals(player.getMyPage().getObservers().get(0) , fan);
+
+        Coach coach = new Coach("newCoach", "yossi","cohen",ETraining.CDiploma, ECoachRole.AssistantCoach);
+        APageEditor coachPage = coach.getMyPage();
+        fan.subscribePersonalPage(coachPage);
+        coach.addFeedToMyPage("newFeed");
+        assertEquals(coach.getMyPage().getObservers().get(0) , fan);
+
     }
 
     @Test
     void removeRegisterFromPersonalPage() {
+        Player player = new Player("newPlayer", "yossi","cohen", new Date(),EPlayerRole.GoalKeeper);
+        APageEditor pageToFollow = player.getMyPage();
+        Fan fan = new Fan("1","1","1");
+        fan.subscribePersonalPage(pageToFollow);
+        player.addFeedToMyPage("newFeed");
+        assertEquals(player.getMyPage().getObservers().get(0) , fan);
+        fan.removeRegisterFromPersonalPage(pageToFollow);
+        assertEquals(player.getMyPage().getObservers().size() , 0);
+
+
+        Coach coach = new Coach("newCoach", "yossi","cohen",ETraining.CDiploma, ECoachRole.AssistantCoach);
+        APageEditor coachPage = coach.getMyPage();
+        fan.subscribePersonalPage(coachPage);
+        coach.addFeedToMyPage("newFeed");
+        assertEquals(coach.getMyPage().getObservers().get(0) , fan);
+        fan.removeRegisterFromPersonalPage(coachPage);
+        assertEquals(coachPage.getObservers().size() , 0);
     }
 
     @Test
-    void subscribeTeamPersonalPage() {
+    void submitComplainAndgetResponseForComplain() {
+        Fan fan = new Fan("newFan", "yossi","cohen");
+        SystemManager systemManager = new SystemManager("1","1","1");
+        fan.submitComplain("new complain");
+        fan.submitComplain("complain");
+        assertEquals(Complains.getInstance().getComplain().size() , 2 );
+        List<Pair<String, Fan>> complains = systemManager.getComplains();
+        systemManager.responseOnComplain("take care" , complains.get(0));
+        assertEquals(Complains.getInstance().getComplain().size() , 1 );
     }
-
-    @Test
-    void update() {
-    }
-
-    @Test
-    void subscribeGamesNotifications() {
-    }
-
-    @Test
-    void submitComplain() {
-    }
-
-    @Test
-    void getResponseForComplain() {
-    }
-
-
-
 
     @Test
     void getSearchHistory() {

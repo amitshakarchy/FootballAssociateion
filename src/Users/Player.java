@@ -6,6 +6,8 @@ import java.util.List;
 /**
  * A footballer or a football player is an athlete who plays football, as an amateur or as a professional.
  * This system is about professional football players.
+ *
+ * @ Written by Yuval Ben Eliezer
  */
 public class Player extends CanBeOwner {
     private Date bDate;

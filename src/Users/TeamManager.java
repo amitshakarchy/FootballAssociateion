@@ -3,6 +3,9 @@ import AssociationAssets.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @ Written by Yuval Ben Eliezer
+ */
 public class TeamManager extends CanBeOwner {
     private List<AdditionalInfo> additionalInfoList;
 

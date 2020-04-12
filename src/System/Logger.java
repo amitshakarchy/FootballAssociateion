@@ -7,6 +7,9 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @ Written by Yuval Ben Eliezer
+ */
 public class Logger {
 
 // Implement a singleton here

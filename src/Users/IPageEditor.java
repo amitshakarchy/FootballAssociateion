@@ -1,7 +1,9 @@
 package Users;
 import java.util.List;
-import java.util.Observer;
-
+/**
+ * This class is an interface with the APageEditor object
+ * @ Written by Yuval Ben Eliezer
+ */
 public interface IPageEditor {
      void addFeedToMyPage(String feed);
      void removeFeedFromMyPage(String feed);

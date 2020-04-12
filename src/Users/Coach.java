@@ -8,6 +8,8 @@ import java.util.List;
  * advises them and manages their actions as they prepare for a sporting
  * competition, and while they are actually participating.
  * The coach is responsible for transferring training before the games.
+ *
+ * @ Written by Yuval Ben Eliezer
  */
 public class Coach extends CanBeOwner {
 

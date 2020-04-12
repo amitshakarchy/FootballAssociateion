@@ -4,6 +4,9 @@ import System.*;
 import javafx.util.Pair;
 import java.util.List;
 
+/**
+ * @ Written by Yuval Ben Eliezer
+ */
 public class SystemManager extends Fan {
 
     public SystemManager(String UID, String fName, String lName) {

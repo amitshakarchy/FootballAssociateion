@@ -1,5 +1,9 @@
 package Users;
 
+/**
+ * This class is an interface with the fan object
+ * @ Written by Yuval Ben Eliezer
+ */
 public interface IFan {
 
 

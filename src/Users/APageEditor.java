@@ -1,11 +1,12 @@
 package Users;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 
 /**
  * A personal page is a page with official content about the player / coach.
  * The player / coach may upload current content to his or her personal page.
+ *
+ * @ Written by Yuval Ben Eliezer
  */
 public abstract class APageEditor implements IPageEditor {
 
@@ -142,6 +143,10 @@ public abstract class APageEditor implements IPageEditor {
         if(observer != null) {
             this.observers.remove(observer);
         }
+    }
+
+    public List<Fan> getObservers() {
+        return observers;
     }
 
     /**
