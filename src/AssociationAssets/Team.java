@@ -5,7 +5,9 @@ import Users.Player;
 import Users.TeamManager;
 import Users.TeamOwner;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * Class Team represents a team. It holds a team's home and away games, it's players and
@@ -16,12 +18,15 @@ public class Team {
     //region Fields
     int TID;
     String name;
+    Season currentSeason;
     Field mainField;
     HashMap<String/*field name*/,Field> fields;
-    AdditionalInfo info;
-    HashMap<Integer, Game> homeGames;
-    HashMap<Integer, Game> awayGames;
-    TeamBudget budget;
+    HashMap<String, ArrayList<String>> owners;
+    HashMap<String/*season Year*/,AdditionalInfo> additionalInfoWithSeasons ;
+    HashSet<String> coaches;
+    HashMap<String, ArrayList<String>> managers;
+    //HashMap<Integer, Game> homeGames;
+    // HashMap<Integer, Game> awayGames;
     //endregion
 
     /**
@@ -29,23 +34,22 @@ public class Team {
      * object, and binds it with the team.
      * @param TID
      * @param homeField
-     * @param budget
-     * @param season
      * @param owners
      * @param coaches
      * @param managers
      * @param players
      */
-    public Team(int TID,String name, Field homeField, TeamBudget budget, Season season, HashMap<String,TeamOwner>  owners, HashMap<String, Coach> coaches, HashMap<String, TeamManager> managers, HashMap<String, Player> players) {
+    public Team(int TID, String name,Season season, Field homeField, HashMap<String, ArrayList<String>>  owners, HashSet<String> coaches, HashMap<String, ArrayList<String>> managers, HashSet<String> players) {
         this.TID = TID;
         this.name = name;
+        this.currentSeason = season;
+        this.owners = owners;
+        this.managers = managers;
         this.mainField = homeField;
         fields = new HashMap<>();
-        this.budget = budget;
-        this.homeGames = new HashMap<>();
-        this.awayGames = new HashMap<>();
-        this.info = new AdditionalInfo( season, owners, coaches, managers, players);
-        info.setTeam(this);
+     //   this.homeGames = new HashMap<>();
+    //    this.awayGames = new HashMap<>();
+        additionalInfoWithSeasons = new HashMap<>();
     }
 
     //region Getters
@@ -59,37 +63,12 @@ public class Team {
         return mainField;
     }
     public HashMap<String, Field> getFields() { return fields; }
-    public HashMap<Integer, Game> getHomeGames() {
-        return homeGames;
-    }
-    public HashMap<Integer, Game> getAwayGames() {
-        return awayGames;
-    }
-    public TeamBudget getBudget() {
-        return budget;
-    }
-    public Season getSeason() {
-        return info.getSeason();
-    }
-    public HashMap<String,TeamOwner>  getOwners() {
 
-        return info.getOwners();
+    public Season getCurrentSeasonSeason() {
+        return currentSeason;
     }
 
-    public HashMap<String, Coach> getCoaches() {
 
-        return info.getCoaches();
-    }
-
-    public HashMap<String, TeamManager> getManagers() {
-
-        return info.getManagers();
-    }
-
-    public HashMap<String, Player> getPlayers() {
-
-        return info.getPlayers();
-    }
     //endregion
 
 
@@ -98,181 +77,11 @@ public class Team {
         this.mainField = homeField;
     }
 
-    public void setBudget(TeamBudget budget) {
-        this.budget = budget;
-    }
-
-    public void setTeam(Team team) {
-
-        info.setTeam(team);
-    }
 
     public void setMainField(Field mainField) {
         this.mainField = mainField;
     }
 
-    public void setSeason(Season season) {
-
-        info.setSeason(season);
-    }
-
-    public void setOwners(HashMap<String,TeamOwner>  owners) {
-
-        info.setOwners(owners);
-    }
-
-    public void setCoaches(HashMap<String, Coach> coaches) {
-
-        info.setCoaches(coaches);
-    }
-
-    public void setManagers(HashMap<String, TeamManager> managers) {
-
-        info.setManagers(managers);
-    }
-
-    public void setPlayers(HashMap<String, Player> players) {
-
-        info.setPlayers(players);
-    }
-
-    public void setInfo(AdditionalInfo info) {
-        this.info = info;
-    }
-
-    public void setHomeGames(HashMap<Integer, Game> homeGames) {
-        this.homeGames = homeGames;
-    }
-
-    public void setAwayGames(HashMap<Integer, Game> awayGames) {
-        this.awayGames = awayGames;
-    }
-
-
-    //endregion
-
-    //region Add/Remove from AdditionalInfo
-
-    /**
-     * Add a player to the players list
-     * @param player
-     */
-    public void addPlayer(Player player) {
-        info.addPlayer(player);
-    }
-
-    /**
-     * Add a player to the players list
-     * @param field
-     */
-    public void addField(Field field) {
-        fields.put(field.getName(),field);
-    }
-
-    /**
-     * Add a coach to the coachs list
-     * @param coach
-     */
-    public void addCoach(Coach coach) {
-        info.addCoach(coach);
-    }
-
-    /**
-     * Add a manager to the managers list
-     * @param manager
-     */
-    public void addManager(TeamManager manager) {
-        info.addManager(manager);
-    }
-
-    /**
-     * Add an owner to the owners list
-     * @param owner
-     */
-    public void addTeamOwner(TeamOwner owner) {
-        info.addTeamOwner(owner);
-    }
-    /**
-     * Remove a player from the players list
-     * @param player
-     */
-    public void removePlayer(Player player) {
-        info.removePlayer(player.getUserName());
-    }
-    /**
-     * Remove a coach from the coaches list
-     * @param coach
-     */
-    public void removeCoach(Coach coach) {
-        info.removeCoach(coach.getUserName());
-
-    }
-    public void removeField(String fieldName) {
-        if(fields.containsKey(fieldName))
-        fields.remove(fieldName);
-
-    }
-    /**
-     * Remove a manager from the managers list
-     * @param manager
-     */
-    public void removeManager(TeamManager manager) {
-        info.removeManager(manager.getUserName());
-    }
-    /**
-     * Remove an owner from the owners list
-     * @param owner
-     */
-    public void removeTeamOwner(TeamOwner owner) {
-        info.removeTeamOwner(owner.getUserName());
-    }
-
-    //endregion
-
-    //region Add/Remove games
-
-    /**
-     *
-     * Add a home game to the home games list
-     * @param homeGame
-     */
-    public void addHomeGame(Game homeGame) {
-        if (!homeGames.containsKey(homeGame.getGID())) {
-            homeGames.put(homeGame.getGID(), homeGame);
-        }
-    }
-    /**
-     *
-     * Add an away game to the away games list
-     * @param awayGame
-     */
-    public void addAwayGame(Game awayGame) {
-        if (!awayGames.containsKey(awayGame.getGID())) {
-            awayGames.put(awayGame.getGID(), awayGame);
-        }
-    }
-
-    /**
-     *
-     * Remove a home game from the home games list
-     * @param homeGame
-     */
-    public void removeHomeGame(Game homeGame) {
-        if (homeGames.containsKey(homeGame.getGID())) {
-            homeGames.remove(homeGame.getGID());
-        }
-    }
-    /**
-     *
-     * Remove an away game from the away games list
-     * @param awayGame
-     */
-    public void removeAwayGame(Game awayGame) {
-        if (awayGames.containsKey(awayGame.getGID())) {
-            awayGames.remove(awayGame.getGID());
-        }
-    }
-    //endregion
 
     //region Find methods
     /**
@@ -336,4 +145,12 @@ public class Team {
         return awayGames.get(gid);
     }
     //endregion
+
+    public void addSeasonToTeam(Season season){
+        if(!additionalInfoWithSeasons.containsKey(season.getYear())) {
+            AdditionalInfo additionalInfo= new AdditionalInfo(this,currentSeason,owners,coaches,ma );
+            additionalInfo.put(season.getYear(),binder);
+            season.addLeagueToSeason(name,seasonBinders);
+        }
+    }
 }
