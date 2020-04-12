@@ -210,7 +210,7 @@ public class Team {
     }
     public void removeField(String fieldName) {
         if(fields.containsKey(fieldName))
-        fields.remove(fieldName);
+        fields.remove(fieldName);f
 
     }
     /**
