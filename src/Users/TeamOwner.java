@@ -3,6 +3,7 @@ import AssociationAssets.AdditionalInfo;
 import AssociationAssets.Field;
 import AssociationAssets.Season;
 import AssociationAssets.Team;
+import DB.TeamDB;
 import System.FootballSystem;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.List;
 public class TeamOwner extends Fan {
 
     List<AdditionalInfo> additionalInfoList;
+    TeamDB teamDB;
 
     public TeamOwner(String userName, String firstName, String lastName) {
         super(userName, firstName, lastName);

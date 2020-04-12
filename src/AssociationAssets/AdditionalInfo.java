@@ -22,7 +22,7 @@ public class AdditionalInfo {
             , ArrayList<String> /*user names list of the team mangers*/> managers;
     HashSet<String> players;
     HashSet<String> teamManagersHashSet;
-    HashSet<String> teamOwnerssHashSet;
+    HashSet<String> teamOwnersHashSet;
 
     //endregion
 
@@ -35,7 +35,7 @@ public class AdditionalInfo {
         this.managers = managers;
         this.players = players;
         this.teamManagersHashSet = new HashSet<>();
-        this.teamOwnerssHashSet = new HashSet<>();
+        this.teamOwnersHashSet = new HashSet<>();
     }
 
     //region Getters & Setters
@@ -125,11 +125,11 @@ public class AdditionalInfo {
             }
             temp.add(teamOwner);
             owners.put(teamOwnerWhoNominate, temp);
-            this.teamOwnerssHashSet.add(teamOwner);
+            this.teamOwnersHashSet.add(teamOwner);
         } else {
             temp.add(teamOwner);
             owners.put(teamOwnerWhoNominate, temp);
-            this.teamOwnerssHashSet.add(teamOwner);
+            this.teamOwnersHashSet.add(teamOwner);
         }
         return true;
     }
@@ -229,7 +229,7 @@ public class AdditionalInfo {
      * @return
      */
     public TeamOwner findTeamOwner(String username) {
-        if (teamOwnerssHashSet.contains(username)) {
+        if (teamOwnersHashSet.contains(username)) {
             return (TeamOwner) FootballSystem.getInstance().getFanByUserName(username);
         }
         return null;
