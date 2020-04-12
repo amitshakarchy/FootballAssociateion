@@ -7,11 +7,13 @@ import java.util.List;
  * A footballer or a football player is an athlete who plays football, as an amateur or as a professional.
  * This system is about professional football players.
  */
-public class Player extends Role {
+public class Player extends CanBeOwner {
     private Date bDate;
     private EPlayerRole role;
     private PlayerPageEditor myPage;
     private List<AdditionalInfo> myAdditionalInfo;
+
+
 
     /**
      * @param userName - Unique user name
@@ -132,18 +134,18 @@ public class Player extends Role {
         this.bDate = bDate;
     }
 
-//    /**
-//     * With this function you can view player information.
-//     * Provides a brief description of the actor,
-//     * his full name, date of birth and his role.
-//     * # use case 2.4 - You can view details about the players through
-//     * this function as well as through the personal pages of the players.
-//     */
-//    @Override
-//    public String viewProfile() {
-//        return super.viewProfile()+ " , I am a football player, " +
-//                " I was born on" + bDate +
-//                ", I play as a " + role ;
-//    }
+    /**
+     * With this function you can view player information.
+     * Provides a brief description of the actor,
+     * his full name, date of birth and his role.
+     * # use case 2.4 - You can view details about the players through
+     * this function as well as through the personal pages of the players.
+     */
+    @Override
+    public String viewProfile() {
+        return super.viewProfile()+ " , I am a football player, " +
+                " I was born on" + bDate +
+                ", I play as a " + role ;
+    }
 
 }

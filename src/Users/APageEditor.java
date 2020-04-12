@@ -13,7 +13,7 @@ public abstract class APageEditor implements IPageEditor {
     private String myLastName;
     private Enum role;
     private List<String> myFeed;
-
+    private List<Fan> observers;
 
     /**
      * A personal page is a page with official content about the player / coach.
@@ -49,6 +49,7 @@ public abstract class APageEditor implements IPageEditor {
      */
     public void addFeedToMyPage(String feed) {
         this.myFeed.add(feed);
+        notifyObserver(feed);
     }
 
     /**
@@ -109,4 +110,18 @@ public abstract class APageEditor implements IPageEditor {
 
     }
 
+
+    public void register(Fan observer){
+        this.observers.add(observer);
+    }
+    public void delete(Fan observer){
+        this.observers.remove(observer);
+    }
+
+    public void notifyObserver(String feed){
+        for (Fan fan:
+             this.observers) {
+            fan.update(this,feed);
+        }
+    }
 }

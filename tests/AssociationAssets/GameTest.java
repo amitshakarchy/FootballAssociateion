@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,14 +27,15 @@ public class GameTest {
     @Before
     public void setUp() throws Exception {
         String GID = "111";
-        date = new Date(2020, 12, 12);
-        Time time = new Time(19, 21, 0);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        date = sdf.parse("2020-04-11");
+        Time time = new Time(8, 30, 0);
         Score score = new Score();
         league = new League("league");
         season = new Season("1993");
         field = new Field("Teddi", "Beer Sheva", 800);
-        host = new Team(1, field, null, season, null, null, null, null);
-        guest = new Team(2, field, null, season, null, null, null, null);
+        host = new Team(1,"Barcelona", field, null, season, null, null, null, null);
+        guest = new Team(2, "Beitar",field, null, season, null, null, null, null);
         ;
         e1 = new Event(date, time, EEventType.INJURY, "bla");
         e2 = new Event(date, time, EEventType.OFFSIDE, "bli");
@@ -68,7 +70,11 @@ public class GameTest {
         assertEquals(game.getEvents().size(), 0);
 
     }
+    @Test
+    public void isUpdatable() {
+        assertEquals(game.isUpdatable(2),false);
 
+    }
     @Test(expected = DuplicateValueException.class)
     public void setMain() throws Exception {
         game.setMain(side1);
@@ -83,6 +89,7 @@ public class GameTest {
     public void setSide2() throws Exception {
         game.setSide2(main);
     }
+
 
     @Test
     public void getters() {

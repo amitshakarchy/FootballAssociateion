@@ -1,7 +1,12 @@
 package AssociationAssets;
 
-import Users.*;
 import System.FootballSystem;
+import Users.Coach;
+import Users.Player;
+import Users.TeamManager;
+import Users.TeamOwner;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -10,20 +15,27 @@ public class AdditionalInfo {
     //region Fields
     Team team;
     Season season;
-    HashSet<String> owners;
+    HashMap<String/*username of the teamOwner who nominate*/
+            , ArrayList<String> /*user names list of the team Owners*/> owners;
     HashSet<String> coaches;
-    HashSet<String> managers;
+    HashMap<String/*username of the teamOwner who nominate*/
+            , ArrayList<String> /*user names list of the team mangers*/> managers;
     HashSet<String> players;
+    HashSet<String> teamManagersHashSet;
+    HashSet<String> teamOwnerssHashSet;
+
     //endregion
 
 
-    public AdditionalInfo(Team team, Season season, HashSet<String> owners, HashSet<String> coaches, HashSet<String> managers, HashSet<String> players) {
+    public AdditionalInfo(Team team, Season season, HashMap<String, ArrayList<String>> owners, HashSet<String> coaches, HashMap<String, ArrayList<String>> managers, HashSet<String> players) {
         this.team = team;
         this.season = season;
         this.owners = owners;
         this.coaches = coaches;
         this.managers = managers;
         this.players = players;
+        this.teamManagersHashSet = new HashSet<>();
+        this.teamOwnerssHashSet = new HashSet<>();
     }
 
     //region Getters & Setters
@@ -47,47 +59,85 @@ public class AdditionalInfo {
 
     /**
      * Adds a player to the team, if he is not exist.
+     *
      * @param player , the user name of the player
      */
-    public void addPlayer(String player) {
+    public boolean addPlayer(String player) {
         if (!players.contains(player)) {
             players.add(player);
+            return true;
         }
+        return false;
     }
 
     /**
      * Adds a coach to the team, if he is not exist.
+     *
      * @param coach , the user name of the coach
      */
-    public void addCoach(String coach) {
+    public boolean addCoach(String coach) {
         if (!coaches.contains(coach)) {
             coaches.add(coach);
+            return true;
         }
+        return false;
     }
 
     /**
      * Adds a TeamManager to the team, if he is not exist.
-     * @param teamManager , the user name of teamManager.
+     *
+     * @param teamManager           , the user name of teamManager.
+     * @param teamOwnerWhoNominate, the user name of the team owner who nominated this team
+     *                              manager.
      */
-    public void addManager(String teamManager) {
-            if (!managers.contains(teamManager)) {
-                managers.add(teamManager);
+    public boolean addManager(String teamManager, String teamOwnerWhoNominate) {
+        ArrayList temp = new ArrayList();
+        if (managers.containsKey(teamOwnerWhoNominate)) {
+            temp = managers.get(teamOwnerWhoNominate);
+            // this team manager already exists in this team & season
+            if (temp.contains(teamManager)) {
+                return false;
             }
+            temp.add(teamManager);
+            managers.put(teamOwnerWhoNominate, temp);
+            this.teamManagersHashSet.add(teamManager);
+        } else {
+            temp.add(teamManager);
+            managers.put(teamOwnerWhoNominate, temp);
+            this.teamManagersHashSet.add(teamManager);
+        }
+        return true;
     }
 
     /**
-     * Adds a TeamManager to the team, if he is not exist.
-     * @param teamManager , the user name of teamManager.
+     * Adds a TeamOwner to the team, if he is not exist.
+     *
+     * @param teamOwner,            the user name of teamOwner.
+     * @param teamOwnerWhoNominate, the user name of the teamOwner who nominate this team owner.
      */
-    public void addTeamOwner(String teamManager) {
-        if (!managers.contains(teamManager)) {
-            managers.add(teamManager);
+    public boolean addTeamOwner(String teamOwner, String teamOwnerWhoNominate) {
+        ArrayList temp = new ArrayList();
+        if (owners.containsKey(teamOwnerWhoNominate)) {
+            temp = owners.get(teamOwnerWhoNominate);
+            // this team owner already exists in this team & season
+            if (temp.contains(teamOwner)) {
+                return false;
+            }
+            temp.add(teamOwner);
+            owners.put(teamOwnerWhoNominate, temp);
+            this.teamOwnerssHashSet.add(teamOwner);
+        } else {
+            temp.add(teamOwner);
+            owners.put(teamOwnerWhoNominate, temp);
+            this.teamOwnerssHashSet.add(teamOwner);
         }
+        return true;
     }
 
 
     /**
      * Removes a player from the team, if he exists.
+     *
      * @param playerUName - a player to remove from the team
      */
     public void removePlayer(String playerUName) {
@@ -95,8 +145,10 @@ public class AdditionalInfo {
             players.remove(playerUName);
         }
     }
+
     /**
      * Removes a coach from the team, if he exists.
+     *
      * @param coachUserName - String coach ID to remove from the team
      */
     public void removeCoach(String coachUserName) {
@@ -105,23 +157,26 @@ public class AdditionalInfo {
         }
 
     }
+
     /**
      * Removes a manager from the team, if he exists.
+     *
      * @param managerUserName - a manager to remove from the team
      */
-    public void removeManager(String managerUserName) {
-        if (managers.contains(managerUserName)) {
-            managers.remove(managerUserName);
+    public void removeManager(String managerUserName, String userNameWhoNominated) {
+        if (managers.containsKey(userNameWhoNominated)) {
+            managers.get(userNameWhoNominated).remove(managerUserName);
         }
     }
 
     /**
      * Removes an owner from the team, if he exists.
+     *
      * @param ownerUserName - an owner to remove from the team
      */
-    public void removeTeamOwner(String ownerUserName) {
-        if (owners.contains(ownerUserName)) {
-            owners.remove(ownerUserName);
+    public void removeTeamOwner(String ownerUserName, String userNameWhoNominated) {
+        if (owners.containsKey(userNameWhoNominated)) {
+            owners.get(userNameWhoNominated).remove(ownerUserName);
         }
     }
 
@@ -129,47 +184,81 @@ public class AdditionalInfo {
     /**
      * find a player in the team, given its username.
      * If he does not exist, returns NULL
+     *
      * @param username - player's username
      * @return
      */
     public Player findPlayer(String username) {
-        if(players.contains(username))
-            return FootballSystem.getInstance().getUserByUserName(username);
+        if (players.contains(username))
+            return (Player) FootballSystem.getInstance().getFanByUserName(username);
         else return null;
     }
+
     /**
      * find a coach in the team, given its username.
      * If he does not exist, returns NULL
+     *
      * @param username - player's username
      * @return
      */
-    public Coach findCoach(String username){
-        if(coaches.containsKey(username))
-            return coaches.get(username);
+    public Coach findCoach(String username) {
+        if (coaches.contains(username))
+            return (Coach) FootballSystem.getInstance().getFanByUserName(username);
         else return null;
     }
+
     /**
      * find a manager in the team, given its username.
      * If he does not exist, returns NULL
+     *
      * @param username - player's username
      * @return
      */
-    public TeamManager findManager(String username){
-        if(managers.containsKey(username))
-            return managers.get(username);
-        else return null;
+    public TeamManager findManager(String username) {
+        if (teamManagersHashSet.contains(username)) {
+            return (TeamManager) FootballSystem.getInstance().getFanByUserName(username);
+        }
+        return null;
     }
+
     /**
      * find an owner in the team, given its username.
      * If he does not exist, returns NULL
+     *
      * @param username - player's username
      * @return
      */
-    public TeamOwner findTeamOwner(String username){
-        if(owners.containsKey(username))
-            return owners.get(username);
-        else return null;
+    public TeamOwner findTeamOwner(String username) {
+        if (teamOwnerssHashSet.contains(username)) {
+            return (TeamOwner) FootballSystem.getInstance().getFanByUserName(username);
+        }
+        return null;
     }
 
+    public boolean whoNominateTeamManager(String teamOwner, String userNameWhoNominated) {
+        if (this.managers.containsKey(userNameWhoNominated)) {
+            if (this.managers.get(userNameWhoNominated).contains(teamOwner)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public boolean whoNominateTeamOwner(String teamManager, String userNameWhoNominated) {
+        if (this.owners.containsKey(userNameWhoNominated)) {
+            if (this.owners.get(userNameWhoNominated).contains(teamManager)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeAllNominations(String userNameWhoNominated) {
+        if (this.managers.containsKey(userNameWhoNominated)) {
+            this.managers.get(userNameWhoNominated).clear();
+        }
+        if (this.owners.containsKey(userNameWhoNominated)) {
+            this.owners.get(userNameWhoNominated).clear();
+        }
+    }
 }

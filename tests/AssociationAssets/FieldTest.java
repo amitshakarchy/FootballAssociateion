@@ -12,11 +12,12 @@ public class FieldTest {
 
     Field field;
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
 
         field= new Field("Teddi", "Beer Sheva", 800);
 
     }
+
 
 
     @Test
@@ -52,5 +53,4 @@ public class FieldTest {
         field.setCapacity(100);
         assertEquals(field.getCapacity(),100);
     }
-
 }

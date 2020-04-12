@@ -3,7 +3,7 @@ import AssociationAssets.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamManager extends Role {
+public class TeamManager extends CanBeOwner {
     private List<AdditionalInfo> additionalInfoList;
 
     public TeamManager(String UID, String fName, String lName) {
@@ -142,6 +142,8 @@ public class TeamManager extends Role {
                 additionalInfoToSearch.getTeam().removeAwayGame(awayGame);
             }
         }
+
+
     }
 
 

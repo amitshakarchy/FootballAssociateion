@@ -9,7 +9,7 @@ import java.util.List;
  * competition, and while they are actually participating.
  * The coach is responsible for transferring training before the games.
  */
-public class Coach extends Role {
+public class Coach extends CanBeOwner {
 
     ETraining training;
     ECoachRole role;
@@ -141,18 +141,18 @@ public class Coach extends Role {
         }
     }
 
-//    /**
-//     * With this function you can view coach information.
-//     * Provides a brief description of the actor,
-//     * his full name, his training and his role.
-//     * # use case 2.4 - You can view details about the coaches through
-//     * this function as well as through the personal pages of the coaches.
-//     */
-//    @Override
-//    public String viewProfile() {
-//        return super.viewProfile() + ", I am a football coach, " +
-//                ", My training is " + this.training +
-//                ", My role is " + this.role;
-//    }
+    /**
+     * With this function you can view coach information.
+     * Provides a brief description of the actor,
+     * his full name, his training and his role.
+     * # use case 2.4 - You can view details about the coaches through
+     * this function as well as through the personal pages of the coaches.
+     */
+    @Override
+    public String viewProfile() {
+        return super.viewProfile() + ", I am a football coach, " +
+                ", My training is " + this.training +
+                ", My role is " + this.role;
+    }
 
 }

@@ -10,8 +10,7 @@ public class FootballSystem {
 
     SecuritySystem securitySystem = new SecuritySystem();
     List<Guest> guestList = new LinkedList<>();
-    Map<String, User> usersHashMap = new HashMap<>();
-    Map<String,String> usersIDHashMap = new HashMap<>();
+    Map<String,Fan> fansHashMap = new HashMap<>();
 
     /**
      * Create an instance of the class at the time of class loading
@@ -32,10 +31,10 @@ public class FootballSystem {
         return instance;
     }
 
-    public User signIn(String userName, String userID, String password, String firstName,
+    public Fan signIn(String userName, String password, String firstName,
                        String lastName) {
         // check if this user name already exits
-        if (usersHashMap.containsKey(userName)) {
+        if (fansHashMap.containsKey(userName)) {
             System.out.println("This user name is already exist.");
             return null;
         }
@@ -48,65 +47,54 @@ public class FootballSystem {
             return null;
         }
         securitySystem.addNewUser(userName, password);
-        User user = new User(userName,userID);
-        this.usersHashMap.put(userName, user);
-        this.usersIDHashMap.put(userID,userName);
-        user.addRole(ERoleType.Fan, new Fan(userName, firstName, lastName));
-        return user;
+        Fan fan = new Fan(userName,firstName,lastName);
+        this.fansHashMap.put(userName, fan);
+        return fan;
     } // useCase 2.2
 
 
-    public Role creatingRepresentativeFootballAssociation(String userName, String firstName, String lastName) {
-        Role role = new representativeFootballAssociation(userName, firstName, lastName);
-        usersHashMap.get(userName).addRole(ERoleType.representativeFootballAssociation,
-                role);
-        return role;
+    public Fan creatingRepresentativeFootballAssociation(String userName, String firstName, String lastName) {
+        Fan fan = new representativeFootballAssociation(userName, firstName, lastName);
+        this.fansHashMap.put(userName,fan);
+        return fan;
     }
 
-    public Role creatingReferee(String userName, String firstName, String lastName, EReferee training) {
-        Role role = new Referee(userName, firstName, lastName, training);
-        usersHashMap.get(userName).addRole(ERoleType.Referee, role);
-        return role;
+    public Fan creatingReferee(String userName, String firstName, String lastName, EReferee training) {
+        Fan fan = new Referee(userName, firstName, lastName, training);
+        this.fansHashMap.put(userName,fan);
+        return fan;
     }
 
-    public Role creatingCoach(String userName, String firstName, String lastName, ETraining training,
+    public Fan creatingCoach(String userName, String firstName, String lastName, ETraining training,
                               ECoachRole eCoachRole) {
-        Role role = new Coach(userName, firstName, lastName, training, eCoachRole);
-        usersHashMap.get(userName).addRole(ERoleType.Coach, role);
-        return role;
+        Fan fan = new Coach(userName, firstName, lastName, training, eCoachRole);
+        this.fansHashMap.put(userName,fan);
+        return fan;
     }
 
-    public Role creatingTeamOwner(String userName, String firstName, String lastName) {
-        Role role = new TeamOwner(userName, firstName, lastName);
-        usersHashMap.get(userName).addRole(ERoleType.TeamOwner, role);
-        return role;
+    public Fan creatingTeamOwner(String userName, String firstName, String lastName) {
+        Fan fan = new TeamOwner(userName, firstName, lastName);
+        this.fansHashMap.put(userName,fan);
+        return fan;
     }
 
-    public Role creatingTeamManager(String userName, String firstName, String lastName) {
-        Role role = new TeamManager(userName, firstName, lastName);
-        usersHashMap.get(userName).addRole(ERoleType.TeamManager, role);
-        return role;
+    public Fan creatingTeamManager(String userName, String firstName, String lastName) {
+        Fan fan = new TeamManager(userName, firstName, lastName);
+        this.fansHashMap.put(userName,fan);
+        return fan;
     }
 
-    public Role creatingPlayer(String userName, String firstName, String lastName
+    public Fan creatingPlayer(String userName, String firstName, String lastName
             , Date bDate, EPlayerRole playerRole) {
-        Role role = new Player(userName, firstName, lastName, bDate, playerRole);
-        usersHashMap.get(userName).addRole(ERoleType.Player, role);
-        return role;
+        Fan fan = new Player(userName, firstName, lastName, bDate, playerRole);
+        this.fansHashMap.put(userName,fan);
+        return fan;
     }
 
-    /**
-     * this function login a user to the system.
-     * the function checks if the password and the user name are correct using the security system.
-     *
-     * @param userName
-     * @param password
-     * @return User with the user name entered, or null if the user doesnt exist.
-     */
-    public User login(String userName, String password) {
+    public Fan login(String userName, String password) {
         if (securitySystem.checkPasswordForLogIn(userName, password)) {
-            if (usersHashMap.containsKey(userName)) {
-                return usersHashMap.get(userName);
+            if (this.fansHashMap.containsKey(userName)) {
+                return fansHashMap.get(userName);
             }
         }
         System.out.println("user name or password incorrect");
@@ -114,23 +102,19 @@ public class FootballSystem {
     }  // useCase 2.3
 
     public void removeUser(String userName) {
-        this.usersIDHashMap.remove(this.usersHashMap.get(userName).getUserID());
-        this.usersHashMap.remove(userName);
+        this.fansHashMap.remove(userName);
         this.securitySystem.removeUser(userName);
     }
 
-    public User getUserByUserName(String userName) {
-        if (this.usersHashMap.containsKey(userName)) {
-            return this.usersHashMap.get(userName);
+    public Fan getFanByUserName(String userName) {
+        if (this.fansHashMap.containsKey(userName)) {
+            return this.fansHashMap.get(userName);
         }
         return null;
     }
 
-    public boolean existUserByID(String id){
-        return usersIDHashMap.containsKey(id);
+    public boolean existFanByUserName(String userName){
+        return this.fansHashMap.containsKey(userName);
     }
 
-    public User getUserByUserID(String id){
-        return this.usersHashMap.get(this.usersIDHashMap.get(id));
-    }
 }
