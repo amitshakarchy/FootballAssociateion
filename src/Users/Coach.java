@@ -85,7 +85,7 @@ public class Coach extends CanBeOwner {
     /**
      * Coaches can upload content to their personal page.
      * The coach uploads verbal content and that content goes up
-     * to his personal page along with the current date.
+     * to his personal page.
      *
      * # use case 5.2
      *
