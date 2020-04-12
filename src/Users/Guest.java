@@ -6,7 +6,7 @@ public class Guest {
             return null;
         }
 
-        public void search(){ // useCase 2.5
+        public void search(String search){ // useCase 2.5
 
             //TODO: Leave it for now. We will take an open source engine or something.
         }

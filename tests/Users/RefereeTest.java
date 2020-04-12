@@ -254,7 +254,6 @@ class RefereeTest {
         }
     }
 
-
     @Test
     void getIndexOfEvent() {
         try {
