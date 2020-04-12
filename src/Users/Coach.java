@@ -11,10 +11,10 @@ import java.util.List;
  */
 public class Coach extends CanBeOwner {
 
-    ETraining training;
-    ECoachRole role;
-    CoachPageEditor myPage;
-    List<AdditionalInfo> myAdditionalInfo;
+    private ETraining training;
+    private ECoachRole role;
+    private CoachPageEditor myPage;
+    private List<AdditionalInfo> myAdditionalInfo;
 
     /**
      * @param userName - Unique user name
@@ -34,6 +34,38 @@ public class Coach extends CanBeOwner {
         this.myAdditionalInfo = new ArrayList<>();
     }
 
+    /**
+     * @param fan - Getting a fan and a builder copying his fields
+     * @param training - Coach type of training. It could be:
+     *                 CDiploma, UEFAA, UEFAB, UEFAPro
+     * @param role - The role of the coach. It could be:
+     *             GoalkeeperCoach, HeadCoach, AssistantCoach, YouthCoach
+     * When a coach is created, a personal page is created for him.
+     */
+    public Coach(Fan fan, ETraining training, ECoachRole role) {
+        super(fan.getUserName(), fan.getfName(), fan.getlName());
+        this.training = training;
+        this.role = role;
+        this.myPage = new CoachPageEditor(fan.getfName(), fan.getlName(),role,training);
+        this.myAdditionalInfo = new ArrayList<>();
+    }
+
+    /**
+     * @param canBeOwner - Getting a CanBeOwner and a builder copying his fields
+     * @param training - Coach type of training. It could be:
+     *                 CDiploma, UEFAA, UEFAB, UEFAPro
+     * @param role - The role of the coach. It could be:
+     *             GoalkeeperCoach, HeadCoach, AssistantCoach, YouthCoach
+     * When a coach is created, a personal page is created for him.
+     */
+    public Coach(CanBeOwner canBeOwner, ETraining training, ECoachRole role) {
+        super(canBeOwner.getUserName(), canBeOwner.getfName(), canBeOwner.getlName());
+        this.training = training;
+        this.role = role;
+        this.myPage = new CoachPageEditor(canBeOwner.getfName(), canBeOwner.getlName(),role,training);
+        this.myAdditionalInfo = new ArrayList<>();
+    }
+
     public List<AdditionalInfo> getMyAdditionalInfo() {
         return myAdditionalInfo;
     }
@@ -49,7 +81,6 @@ public class Coach extends CanBeOwner {
         }
 
     }
-
 
     /**
      * Coaches can upload content to their personal page.
@@ -72,7 +103,9 @@ public class Coach extends CanBeOwner {
      * @param feed Verbal content
      */
     public void removeFeedFromMyPage(String feed){
-        this.myPage.removeFeedFromMyPage(feed);
+        if(feed != null) {
+            this.myPage.removeFeedFromMyPage(feed);
+        }
     }
 
     public APageEditor getMyPage() {
@@ -125,6 +158,10 @@ public class Coach extends CanBeOwner {
         }
     }
 
+    /**
+     * This function changes the first name in both the coach and his personal page
+     * @param fName - first name
+     */
     @Override
     public void setfName(String fName) {
         if(fName != null) {
@@ -133,6 +170,10 @@ public class Coach extends CanBeOwner {
         }
     }
 
+    /**
+     * This function changes the last name in both the coach and his personal page
+     * @param lName - last name
+     */
     @Override
     public void setlName(String lName) {
         if(lName!= null) {
@@ -154,5 +195,4 @@ public class Coach extends CanBeOwner {
                 ", My training is " + this.training +
                 ", My role is " + this.role;
     }
-
 }
