@@ -26,6 +26,7 @@
       <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/GameTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/ScoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/ScoreTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Season.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Season.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Team.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -240,7 +241,13 @@
       <option name="presentableId" value="LOCAL‎00011" />
       <updated>1586721351006</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL‎00012" summary="remove field function (removed from team only, not from additinal info because it isn't there)">
+      <created>1586722233667</created>
+      <option name="number" value="LOCAL‎00012" />
+      <option name="presentableId" value="LOCAL‎00012" />
+      <updated>1586722233667</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -273,10 +280,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="remove field function (removed from team only, not from additinal info because it isn't there)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="621" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1586610320185">
+    <state x="621" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1586734885985">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="621" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586610320185" />
+    <state x="621" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586734885985" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1586706110535">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -317,10 +324,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="ShowDiffWithBranchDialog/0.0.1366.728@0.0.1366.728" timestamp="1586603188617" />
-    <state x="275" y="83" key="Vcs.Push.Dialog.v2" timestamp="1586721365641">
+    <state x="275" y="83" key="Vcs.Push.Dialog.v2" timestamp="1586722235364">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="83" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1586721365641" />
+    <state x="275" y="83" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1586722235364" />
     <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1586606917704">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -343,7 +350,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/AssociationAssets/Season.java</url>
-          <line>37</line>
+          <line>39</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
