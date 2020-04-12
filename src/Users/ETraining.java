@@ -1,6 +1,9 @@
 package Users;
 
 public enum ETraining {
+    CDiploma,
+    UEFAA,
+    UEFAB,
+    UEFAPro
 
-    //TODO: add enum values here
 }
