@@ -8,14 +8,14 @@ public class Fan extends Guest implements IFan {
     private String userName;
     private String fName;
     private String lName;
-    EStatus status;
+    private EStatus status;
     private List<String> searchHistory;
 
     public Fan(String UID, String fName, String lName) {
         this.userName = UID;
         this.fName = fName;
         this.lName = lName;
-        searchHistory = new ArrayList<>();
+        this.searchHistory = new ArrayList<>();
         this.status = EStatus.ONLINE;
     }
 

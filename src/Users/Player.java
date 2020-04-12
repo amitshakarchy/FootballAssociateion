@@ -13,6 +13,8 @@ public class Player extends CanBeOwner {
     private PlayerPageEditor myPage;
     private List<AdditionalInfo> myAdditionalInfo;
 
+
+
     /**
      * @param userName - Unique user name
      * @param fName - First name of the player
