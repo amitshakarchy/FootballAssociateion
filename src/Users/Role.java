@@ -1,16 +1,17 @@
 package Users;
 
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class Role {
 
     private String userName;
-    private HashSet<EUserType> roleHashSet;
+    private String fName;
+    private String lName;
+    private ERoleType roleType;
 
-    public Role(String userName) {
+    public Role(String userName,String fName,String lName) {
         this.userName = userName;
-        this.roleHashSet = new HashSet<>();
+        this.fName = fName;
+        this .lName = lName;
     }
 
     public String getUserName() {
@@ -21,15 +22,19 @@ public class Role {
         this.userName = userName;
     }
 
-    public void setRoleArrayList(HashSet<EUserType> roleHashSet) {
-        this.roleHashSet = roleHashSet;
+    public String getfName() {
+        return fName;
     }
 
-    public void addRole(EUserType role){
-        this.roleHashSet.add(role);
+    public String getlName() {
+        return lName;
     }
 
-    public void removeRole(EUserType role){
-        this.roleHashSet.remove(role);
+    public void setfName(String fName) {
+        this.fName = fName;
+    }
+
+    public void setlName(String lName) {
+        this.lName = lName;
     }
 }

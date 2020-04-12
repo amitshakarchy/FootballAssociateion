@@ -1,8 +1,5 @@
 package System;
 
-import Users.AUser;
-import Users.IUser;
-
 public class Guest {
 
 

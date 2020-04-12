@@ -1,10 +1,9 @@
 package System;
+
 import Security.SecuritySystem;
 import Users.*;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 /**
  * this class is Singleton for the Football System.
@@ -13,91 +12,102 @@ public class FootballSystem {
 
     SecuritySystem securitySystem = new SecuritySystem();
     List<Guest> guestList = new LinkedList<>();
-    Map<String,AUser> usersHashMap = new HashMap<>();
-    /** Create an instance of the class at the time of class loading */
+    Map<String, User> usersHashMap = new HashMap<>();
+    Map<String,String> usersIDHashMap = new HashMap<>();
+
+    /**
+     * Create an instance of the class at the time of class loading
+     */
     private static final FootballSystem instance = new FootballSystem();
 
-    /** private constructor to prevent others from instantiating this class */
-    private FootballSystem(){
+    /**
+     * private constructor to prevent others from instantiating this class
+     */
+    private FootballSystem() {
 
     }
 
-    /** Provide a global point of access to the instance */
-    public static FootballSystem getInstance(){
+    /**
+     * Provide a global point of access to the instance
+     */
+    public static FootballSystem getInstance() {
         return instance;
     }
 
-
-    public AUser signIn(String userName, String password,String firstName,
-                        String lastName, EUserType userType){
+    public User signIn(String userName, String userID, String password, String firstName,
+                       String lastName) {
         // check if this user name already exits
-        if(usersHashMap.containsKey(userName)){
+        if (usersHashMap.containsKey(userName)) {
             System.out.println("This user name is already exist.");
             return null;
         }
         // input check
-        else if(userName == null || userName.isEmpty() ||
+        else if (userName == null || userName.isEmpty() ||
                 password == null || password.isEmpty() ||
                 firstName == null || firstName.isEmpty() ||
-                lastName == null || lastName.isEmpty()
-                || userType == null){
+                lastName == null || lastName.isEmpty()) {
             System.out.println("please insert valid inputs");
             return null;
         }
-        securitySystem.addNewUser(userName,password);
-        return creatingNewUserByUserType(userName,firstName,lastName,userType);
-    } // useCase 2.2
-    /**
-     * this function creating new user by his instance.
-     * @param userName
-     * @param firstName
-     * @param lastName
-     * @param userType
-     * @return AUser by his instance.
-     */
-    private AUser creatingNewUserByUserType(String userName, String firstName, String lastName,EUserType userType) {
-        AUser user = null;
-        if(userType.equals(EUserType.representativeFootballAssociation)){
-            user = new representativeFootballAssociation(userName,firstName,lastName);
-            usersHashMap.put(userName,user);}
-        else if(userType.equals(EUserType.Player)){
-            // TODO: 4/11/2020 check with yuval 
-            user = new Player(userName,firstName,lastName,null,null);
-            usersHashMap.put(userName,user);
-        }
-        // TODO: 4/9/2020 check with yuval
-        //else if(userType.equals(EUserType.Coach)){
-        //    usersHashMap.put(userName,new Coach(id,firstName,lastName,));
-        //}
-        else if(userType.equals(EUserType.Fan)){
-            user = new Fan(userName,firstName,lastName);
-            usersHashMap.put(userName,user);
-        }
-        else if(userType.equals(EUserType.TeamManager)){
-            user = new TeamManager(userName,firstName,lastName);
-            usersHashMap.put(userName,user);
-        }
-        else if(userType.equals(EUserType.TeamOwner)){
-            user = new TeamOwner(userName,firstName,lastName);
-            usersHashMap.put(userName,user);
-        }
-        else if(userType.equals(EUserType.Referee)){
-            // TODO: 4/11/2020 check with yuval 
-            user = new Referee(userName,firstName,lastName,null);
-            usersHashMap.put(userName,user);
-        }
+        securitySystem.addNewUser(userName, password);
+        User user = new User(userName,userID);
+        this.usersHashMap.put(userName, user);
+        this.usersIDHashMap.put(userID,userName);
+        user.addRole(ERoleType.Fan, new Fan(userName, firstName, lastName));
         return user;
+    } // useCase 2.2
+
+
+    public Role creatingRepresentativeFootballAssociation(String userName, String firstName, String lastName) {
+        Role role = new representativeFootballAssociation(userName, firstName, lastName);
+        usersHashMap.get(userName).addRole(ERoleType.representativeFootballAssociation,
+                role);
+        return role;
     }
+
+    public Role creatingReferee(String userName, String firstName, String lastName, EReferee training) {
+        Role role = new Referee(userName, firstName, lastName, training);
+        usersHashMap.get(userName).addRole(ERoleType.Referee, role);
+        return role;
+    }
+
+    public Role creatingCoach(String userName, String firstName, String lastName, ETraining training,
+                              ECoachRole eCoachRole) {
+        Role role = new Coach(userName, firstName, lastName, training, eCoachRole);
+        usersHashMap.get(userName).addRole(ERoleType.Coach, role);
+        return role;
+    }
+
+    public Role creatingTeamOwner(String userName, String firstName, String lastName) {
+        Role role = new TeamOwner(userName, firstName, lastName);
+        usersHashMap.get(userName).addRole(ERoleType.TeamOwner, role);
+        return role;
+    }
+
+    public Role creatingTeamManager(String userName, String firstName, String lastName) {
+        Role role = new TeamManager(userName, firstName, lastName);
+        usersHashMap.get(userName).addRole(ERoleType.TeamManager, role);
+        return role;
+    }
+
+    public Role creatingPlayer(String userName, String firstName, String lastName
+            , Date bDate, EPlayerRole playerRole) {
+        Role role = new Player(userName, firstName, lastName, bDate, playerRole);
+        usersHashMap.get(userName).addRole(ERoleType.Player, role);
+        return role;
+    }
+
     /**
      * this function login a user to the system.
      * the function checks if the password and the user name are correct using the security system.
+     *
      * @param userName
      * @param password
-     * @return AUser with the user name entered, or null if the user doesnt exist.
+     * @return User with the user name entered, or null if the user doesnt exist.
      */
-    public AUser login(String userName, String password){
-        if(securitySystem.checkPasswordForLogIn(userName,password)){
-            if(usersHashMap.containsKey(userName)){
+    public User login(String userName, String password) {
+        if (securitySystem.checkPasswordForLogIn(userName, password)) {
+            if (usersHashMap.containsKey(userName)) {
                 return usersHashMap.get(userName);
             }
         }
@@ -105,18 +115,24 @@ public class FootballSystem {
         return null;
     }  // useCase 2.3
 
-    public void removeUser(String userName){
+    public void removeUser(String userName) {
+        this.usersIDHashMap.remove(this.usersHashMap.get(userName).getUserID());
         this.usersHashMap.remove(userName);
-    }
-
-    public void removeUserFromSecuritySystem(String userName){
         this.securitySystem.removeUser(userName);
     }
 
-    public AUser getUserByUserName(String userName){
-        if(this.usersHashMap.containsKey(userName)){
+    public User getUserByUserName(String userName) {
+        if (this.usersHashMap.containsKey(userName)) {
             return this.usersHashMap.get(userName);
         }
         return null;
+    }
+
+    public boolean existUserByID(String id){
+        return usersIDHashMap.containsKey(id);
+    }
+
+    public User getUserByUserID(String id){
+        return this.usersHashMap.get(this.usersIDHashMap.get(id));
     }
 }

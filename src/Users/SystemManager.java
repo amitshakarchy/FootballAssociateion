@@ -1,7 +1,7 @@
 package Users;
 import RecommendationSystem.*;
 
-public class SystemManager extends AUser {
+public class SystemManager extends Role {
 
     public SystemManager(String UID, String fName, String lName) {
         super(UID, fName, lName);

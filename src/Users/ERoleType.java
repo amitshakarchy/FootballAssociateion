@@ -1,6 +1,6 @@
 package Users;
 
-public enum EUserType {
+public enum ERoleType {
     representativeFootballAssociation,
     TeamOwner,
     TeamManager,

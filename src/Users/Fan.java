@@ -2,7 +2,7 @@ package Users;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fan extends AUser {
+public class Fan extends Role {
 
     private List<String> searchHistory;
 

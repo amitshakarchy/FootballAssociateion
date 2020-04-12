@@ -1,6 +1,6 @@
 package Users;
 
-public class representativeFootballAssociation extends AUser {
+public class representativeFootballAssociation extends Role {
 
     public representativeFootballAssociation(String UID, String fName, String lName) {
         super(UID, fName, lName);
@@ -49,20 +49,11 @@ public class representativeFootballAssociation extends AUser {
 
     }
 
-    @Override
-    public String viewProfile() {
-        return null;
-    }
+//    @Override
+////    public String viewProfile() {
+////        return null;
+////    }
 
-    @Override
-    public EStatus getStatus() {
-        return null;
-    }
-
-    @Override
-    public void setStatus(EStatus status) {
-
-    }
     //endregion
 
 }

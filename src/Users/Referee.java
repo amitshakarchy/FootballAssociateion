@@ -10,7 +10,7 @@ import java.util.List;
  * A football referee is a soccer game referee who enforces the rules of the game set
  * in the football game constitution.
  */
-public class Referee extends AUser {
+public class Referee extends Role {
     private List<Game> myGames;
     private EReferee training;
 
@@ -200,19 +200,10 @@ public class Referee extends AUser {
         }
         return res;
     }
+//
+//    @Override
+//    public String viewProfile() {
+//        return null;
+//    }
 
-    @Override
-    public String viewProfile() {
-        return null;
-    }
-
-    @Override
-    public EStatus getStatus() {
-        return null;
-    }
-
-    @Override
-    public void setStatus(EStatus status) {
-
-    }
 }
