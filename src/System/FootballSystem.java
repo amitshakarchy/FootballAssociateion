@@ -1,7 +1,11 @@
 package System;
+
 import AssociationAssets.*;
+import DB.*;
+import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import Security.SecuritySystem;
 import Users.*;
+
 import java.util.*;
 
 /**
@@ -11,7 +15,13 @@ public class FootballSystem {
 
     SecuritySystem securitySystem = new SecuritySystem();
     List<Guest> guestList = new LinkedList<>();
-    Map<String,Fan> fansHashMap = new HashMap<>();
+    Map<String, Fan> fansHashMap = new HashMap<>();
+    TeamDB teamDB = new TeamDB();
+    GameDB gameDB = new GameDB();
+    FieldDB fieldDB = new FieldDB();
+    SeasonDB seasonDB = new SeasonDB();
+    LeagueDB leagueDB = new LeagueDB();
+
 
     /**
      * Create an instance of the class at the time of class loading
@@ -33,7 +43,7 @@ public class FootballSystem {
     }
 
     public Fan signIn(String userName, String password, String firstName,
-                       String lastName) {
+                      String lastName) {
         // check if this user name already exits
         if (fansHashMap.containsKey(userName)) {
             System.out.println("This user name is already exist.");
@@ -48,47 +58,47 @@ public class FootballSystem {
             return null;
         }
         securitySystem.addNewUser(userName, password);
-        Fan fan = new Fan(userName,firstName,lastName);
+        Fan fan = new Fan(userName, firstName, lastName);
         this.fansHashMap.put(userName, fan);
         return fan;
     } // useCase 2.2
 
 
-    public Fan creatingRepresentativeFootballAssociation(String userName, String firstName, String lastName) {
-        Fan fan = new representativeFootballAssociation(userName, firstName, lastName);
-        this.fansHashMap.put(userName,fan);
+    public Fan creatingRepresentativeFootballAssociation(String userName, String firstName, String lastName, GamesAssigningPolicy gamesAssigningPolicy) {
+        Fan fan = new representativeFootballAssociation(userName, firstName, lastName, gamesAssigningPolicy);
+        this.fansHashMap.put(userName, fan);
         return fan;
     }
 
     public Fan creatingReferee(String userName, String firstName, String lastName, EReferee training) {
         Fan fan = new Referee(userName, firstName, lastName, training);
-        this.fansHashMap.put(userName,fan);
+        this.fansHashMap.put(userName, fan);
         return fan;
     }
 
     public Fan creatingCoach(String userName, String firstName, String lastName, ETraining training,
-                              ECoachRole eCoachRole) {
+                             ECoachRole eCoachRole) {
         Fan fan = new Coach(userName, firstName, lastName, training, eCoachRole);
-        this.fansHashMap.put(userName,fan);
+        this.fansHashMap.put(userName, fan);
         return fan;
     }
 
     public Fan creatingTeamOwner(String userName, String firstName, String lastName) {
         Fan fan = new TeamOwner(userName, firstName, lastName);
-        this.fansHashMap.put(userName,fan);
+        this.fansHashMap.put(userName, fan);
         return fan;
     }
 
     public Fan creatingTeamManager(String userName, String firstName, String lastName) {
         Fan fan = new TeamManager(userName, firstName, lastName);
-        this.fansHashMap.put(userName,fan);
+        this.fansHashMap.put(userName, fan);
         return fan;
     }
 
     public Fan creatingPlayer(String userName, String firstName, String lastName
             , Date bDate, EPlayerRole playerRole) {
         Fan fan = new Player(userName, firstName, lastName, bDate, playerRole);
-        this.fansHashMap.put(userName,fan);
+        this.fansHashMap.put(userName, fan);
         return fan;
     }
 
@@ -114,8 +124,38 @@ public class FootballSystem {
         return null;
     }
 
-    public boolean existFanByUserName(String userName){
+    public boolean existFanByUserName(String userName) {
         return this.fansHashMap.containsKey(userName);
     }
 
+    public void addTeamToDB(Team team) {
+        this.teamDB.addTeam(team, team.getTID());
+    }
+    public void removeTeamFromDB(int tid){
+        this.teamDB.removeTeam(tid);
+    }
+    public void addLeagueToDB(League league) {
+        this.leagueDB.addLeague(league, league.getLeagueName());
+    }
+    public void removeLeagueFromDB(String league){
+        this.leagueDB.removeLeague(league);
+    }
+    public void addFieldToDB(Field field) {
+        this.fieldDB.addField(field, field.getName());
+    }
+    public void removeFieldFromDB(String fieldName){
+        this.fieldDB.removeField(fieldName);
+    }
+    public void addSeasonToDB(Season season) {
+        this.seasonDB.addSeason(season, season.getYear());
+    }
+    public void removeSeasonFromDB(String year){
+        this.seasonDB.removeSeason(year);
+    }
+    public void addGameToDB(Game game) {
+        this.gameDB.addGame(game, game.getGID());
+    }
+    public void removeGameFromDB(int gid){
+        this.gameDB.removeGame(gid);
+    }
 }

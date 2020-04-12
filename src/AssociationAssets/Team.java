@@ -37,7 +37,6 @@ public class Team {
      * @param players
      */
     public Team(int TID,String name, Field homeField, TeamBudget budget, Season season, HashMap<String,TeamOwner>  owners, HashMap<String, Coach> coaches, HashMap<String, TeamManager> managers, HashMap<String, Player> players) {
-
         this.TID = TID;
         this.name = name;
         this.mainField = homeField;
