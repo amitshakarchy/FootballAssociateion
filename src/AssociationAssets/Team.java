@@ -25,6 +25,7 @@ public class Team {
     HashMap<String/*season Year*/,AdditionalInfo> additionalInfoWithSeasons ;
     HashSet<String> coaches;
     HashMap<String, ArrayList<String>> managers;
+    ETeamStatus isActive;
     //HashMap<Integer, Game> homeGames;
     // HashMap<Integer, Game> awayGames;
     //endregion
@@ -50,6 +51,7 @@ public class Team {
      //   this.homeGames = new HashMap<>();
     //    this.awayGames = new HashMap<>();
         additionalInfoWithSeasons = new HashMap<>();
+        isActive = ETeamStatus.ACTIVE;
     }
 
     //region Getters
