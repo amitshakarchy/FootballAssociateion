@@ -212,4 +212,12 @@ public class Referee extends Fan {
         }
         return res;
     }
+
+
+    /**
+     * Yarin's request
+     */
+    public void LoginInvitation(String userName , String pass){
+        FootballSystem.getInstance().login(userName,pass);
+    }
 }
