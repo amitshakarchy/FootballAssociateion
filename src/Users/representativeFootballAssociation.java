@@ -1,6 +1,6 @@
 package Users;
 
-public class representativeFootballAssociation extends AUser {
+public class representativeFootballAssociation extends Fan {
 
     public representativeFootballAssociation(String UID, String fName, String lName) {
         super(UID, fName, lName);

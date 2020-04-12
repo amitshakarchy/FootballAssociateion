@@ -10,7 +10,7 @@ import java.util.List;
  * A football referee is a soccer game referee who enforces the rules of the game set
  * in the football game constitution.
  */
-public class Referee extends AUser {
+public class Referee extends Fan {
     private List<Game> myGames;
     private EReferee training;
 
@@ -26,6 +26,7 @@ public class Referee extends AUser {
         this.myGames = new ArrayList<>();
         this.training = training;
     }
+
 
     public List<Game> getMyGames() {
         return myGames;
@@ -119,7 +120,7 @@ public class Referee extends AUser {
     public void editEventsAfterGameOver(int gameID,int eventIndex, EEventType eventType, String description){
         if(this.training.equals(EReferee.MAIN)){
             Game gameToAdd = getGame(gameID);
-            if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.userName) && eventIndex!= -1) {
+            if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.getUserName()) && eventIndex!= -1) {
                 if(gameToAdd.isUpdatable(7)) {
                     gameToAdd.editEvent(eventIndex, eventType, description);
                 }
@@ -138,7 +139,7 @@ public class Referee extends AUser {
         if(this.training.equals(EReferee.MAIN)){
             Game gameToAdd = null;
             gameToAdd = getGame(gameID);
-            if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.userName)&& eventIndex!= -1){
+            if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.getUserName())&& eventIndex!= -1){
                 if(gameToAdd.isUpdatable(7)){
                     gameToAdd.removeEvent(eventIndex);
                 }

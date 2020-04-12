@@ -1,9 +1,10 @@
 package Users;
 
-public interface IUser {
-   void setUserSettings();
-   String viewProfile();
-   void logout();
+public interface IFan {
+
+
+    String viewProfile();
+    void logout();
     String getUserName();
     void setUserName(String userName);
     String getfName();

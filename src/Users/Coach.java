@@ -9,7 +9,7 @@ import java.util.List;
  * competition, and while they are actually participating.
  * The coach is responsible for transferring training before the games.
  */
-public class Coach extends AUser {
+public class Coach extends CanBeOwner {
 
     ETraining training;
     ECoachRole role;

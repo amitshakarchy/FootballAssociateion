@@ -1,9 +1,9 @@
 package Users;
 
-public class TeamOwner extends AUser {
+public class TeamOwner {
 
 
-    public TeamOwner(String UID, String fName, String lName) {
-        super(UID, fName, lName);
+    public TeamOwner() {
+
     }
 }

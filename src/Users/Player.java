@@ -7,7 +7,7 @@ import java.util.List;
  * A footballer or a football player is an athlete who plays football, as an amateur or as a professional.
  * This system is about professional football players.
  */
-public class Player extends AUser {
+public class Player extends CanBeOwner {
     private Date bDate;
     private EPlayerRole role;
     private PlayerPageEditor myPage;
