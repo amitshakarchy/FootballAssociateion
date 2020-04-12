@@ -1,41 +1,30 @@
 package AssociationAssets;
 
 import Users.*;
-
+import System.FootballSystem;
 import java.util.HashMap;
+import java.util.HashSet;
 
-/**
- * Class Additional Info holds all team's assets in one place, in order to manage them easily.
- * Aouthors: Amit Shakarchy, Alon Gutman
- *
- */
 public class AdditionalInfo {
 
     //region Fields
     Team team;
     Season season;
-    HashMap<String,TeamOwner> owners;
-    HashMap<String, Coach> coaches;
-    HashMap<String, TeamManager> managers;
-    HashMap<String, Player> players;
+    HashSet<String> owners;
+    HashSet<String> coaches;
+    HashSet<String> managers;
+    HashSet<String> players;
     //endregion
 
-    /**
-     * Constructor.
-     * @param season - The season in which the game is in.
-     * @param owners - A Hashmap of all team owners.
-     * @param coaches - A Hashmap of all team coaches.
-     * @param managers - A Hashmap of all team managers.
-     * @param players - A Hashmap of all team players.
-     */
-    public AdditionalInfo(Season season, HashMap<String,TeamOwner> owners, HashMap<String, Coach> coaches, HashMap<String, TeamManager> managers, HashMap<String, Player> players) {
+
+    public AdditionalInfo(Team team, Season season, HashSet<String> owners, HashSet<String> coaches, HashSet<String> managers, HashSet<String> players) {
+        this.team = team;
         this.season = season;
         this.owners = owners;
         this.coaches = coaches;
         this.managers = managers;
         this.players = players;
     }
-
 
     //region Getters & Setters
     public Team getTeam() {
@@ -54,105 +43,86 @@ public class AdditionalInfo {
     public void setSeason(Season season) {
         this.season = season;
     }
-
-    public HashMap<String,TeamOwner> getOwners() {
-        return owners;
-    }
-
-    public void setOwners(HashMap<String,TeamOwner> owners) {
-        this.owners = owners;
-    }
-
-    public HashMap<String, Coach> getCoaches() {
-        return coaches;
-    }
-
-    public void setCoaches(HashMap<String, Coach> coaches) {
-        this.coaches = coaches;
-    }
-
-    public HashMap<String, TeamManager> getManagers() {
-        return managers;
-    }
-
-    public void setManagers(HashMap<String, TeamManager> managers) {
-        this.managers = managers;
-    }
-
-    public HashMap<String, Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(HashMap<String, Player> players) {
-        this.players = players;
-    }
     //endregion
 
     /**
      * Adds a player to the team, if he is not exist.
-     * @param player - a new player to add to the team
+     * @param player , the user name of the player
      */
-    public void addPlayer(Player player) {
-        if (!players.containsKey(player.getUserName())) {
-            players.put(player.getUserName(), player);
+    public void addPlayer(String player) {
+        if (!players.contains(player)) {
+            players.add(player);
         }
     }
+
     /**
      * Adds a coach to the team, if he is not exist.
-     * @param coach - a new coach to add to the team
+     * @param coach , the user name of the coach
      */
-    public void addCoach(Coach coach) {
-        if (!coaches.containsKey(coach.getUserName())) {
-            coaches.put(coach.getUserName(), coach);
+    public void addCoach(String coach) {
+        if (!coaches.contains(coach)) {
+            coaches.add(coach);
         }
     }
+
     /**
-     * Adds a manager to the team, if he is not exist.
-     * @param manager - a new manager to add to the team
+     * Adds a TeamManager to the team, if he is not exist.
+     * @param teamManager , the user name of teamManager.
      */
-    public void addManager(TeamManager manager) {
-        if (!managers.containsKey(manager.getUserName())) {
-            managers.put(manager.getUserName(), manager);
-        }
+    public void addManager(String teamManager) {
+            if (!managers.contains(teamManager)) {
+                managers.add(teamManager);
+            }
     }
+
     /**
-     * Adds an owner to the team, if he is not exist.
-     * @param owner - a new owner to add to the team
+     * Adds a TeamManager to the team, if he is not exist.
+     * @param teamManager , the user name of teamManager.
      */
-    public void addTeamOwner(TeamOwner owner) {
-        if (!owners.containsKey(owner.getUserName())) {
-            owners.put(owner.getUserName(), owner);
+    public void addTeamOwner(String teamManager) {
+        if (!managers.contains(teamManager)) {
+            managers.add(teamManager);
         }
     }
+
+
     /**
      * Removes a player from the team, if he exists.
-     * @param player - a player to remove from the team
+     * @param playerUName - a player to remove from the team
      */
-    public void removePlayer(Player player) {
-        players.remove(player.getUserName());
+    public void removePlayer(String playerUName) {
+        if (players.contains(playerUName)) {
+            players.remove(playerUName);
+        }
     }
     /**
      * Removes a coach from the team, if he exists.
-     * @param coach - a coach to remove from the team
+     * @param coachUserName - String coach ID to remove from the team
      */
-    public void removeCoach(Coach coach) {
-        coaches.remove(coach.getUserName());
+    public void removeCoach(String coachUserName) {
+        if (coaches.contains(coachUserName)) {
+            coaches.remove(coachUserName);
+        }
 
     }
     /**
      * Removes a manager from the team, if he exists.
-     * @param manager - a manager to remove from the team
+     * @param managerUserName - a manager to remove from the team
      */
-    public void removeManager(TeamManager manager) {
-        managers.remove(manager.getUserName());
+    public void removeManager(String managerUserName) {
+        if (managers.contains(managerUserName)) {
+            managers.remove(managerUserName);
+        }
     }
 
     /**
      * Removes an owner from the team, if he exists.
-     * @param owner - an owner to remove from the team
+     * @param ownerUserName - an owner to remove from the team
      */
-    public void removeTeamOwner(TeamOwner owner) {
-        owners.remove(owner.getUserName());
+    public void removeTeamOwner(String ownerUserName) {
+        if (owners.contains(ownerUserName)) {
+            owners.remove(ownerUserName);
+        }
     }
 
 
@@ -160,37 +130,45 @@ public class AdditionalInfo {
      * find a player in the team, given its username.
      * If he does not exist, returns NULL
      * @param username - player's username
-     * @return - player
+     * @return
      */
     public Player findPlayer(String username) {
-        return players.getOrDefault(username, null);
+        if(players.contains(username))
+            return FootballSystem.getInstance().getUserByUserName(username);
+        else return null;
     }
     /**
      * find a coach in the team, given its username.
      * If he does not exist, returns NULL
      * @param username - player's username
-     * @return - coach
+     * @return
      */
     public Coach findCoach(String username){
-        return coaches.getOrDefault(username, null);
+        if(coaches.containsKey(username))
+            return coaches.get(username);
+        else return null;
     }
     /**
      * find a manager in the team, given its username.
      * If he does not exist, returns NULL
      * @param username - player's username
-     * @return - manager
+     * @return
      */
     public TeamManager findManager(String username){
-        return managers.getOrDefault(username, null);
+        if(managers.containsKey(username))
+            return managers.get(username);
+        else return null;
     }
     /**
      * find an owner in the team, given its username.
      * If he does not exist, returns NULL
      * @param username - player's username
-     * @return - owner
+     * @return
      */
     public TeamOwner findTeamOwner(String username){
-        return owners.getOrDefault(username, null);
+        if(owners.containsKey(username))
+            return owners.get(username);
+        else return null;
     }
 
 

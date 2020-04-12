@@ -150,17 +150,11 @@ public class TeamOwnerController {
     public void nominateTeamOwner(String userID, String firstName, String lastName) {
 
     }
-
     public void removeTeamOwner(String userID) {
         // TODO: 4/12/2020 check if this team manger was the one that nominate this user id
     }
-
     public void closeTeam(){
 
     }
-
     // TODO: 4/12/2020 budget of the team
-
-
-
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TeamOwner extends Role {
+
     List<AdditionalInfo> additionalInfo;
 
     public TeamOwner(String userName, String firstName, String lastName) {

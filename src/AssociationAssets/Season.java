@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 /**
  * represent a season of football games.
- * Aouthors: Amit Shakarchy, Alon Gutman
  */
 public class Season {
 
@@ -26,14 +25,17 @@ public class Season {
 
     /**
      * adding league to the corresponding leagueBinder object
-     * @param league - the league
+     * @param leagueName
+     * @param bindersHashMap
      */
-    public void addLeagueToSeason(League league) {
-        if (!leagueBinders.containsKey(league.getLeagueName())) {
-            SeasonLeagueBinder binder= league.getSeasonBinders().get(year);
-            leagueBinders.put(league.getLeagueName(), binder);
-        }
+    public void addLeagueToSeason(String leagueName, HashMap<String, SeasonLeagueBinder> bindersHashMap) {
+
+        this.leagueBinders.put(leagueName,bindersHashMap.get(this.year));
     }
     //endregion
-
+    public void removeLeagueFromSeason(League league) {
+        if (leagueBinders.containsKey(league.getLeagueName())) {
+            leagueBinders.remove(league.getLeagueName());
+        }
+    }
 }
