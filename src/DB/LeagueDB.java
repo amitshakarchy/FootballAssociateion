@@ -16,4 +16,8 @@ public class LeagueDB {
     public void removeLeague(String leagueName){
         this.allLeagues.remove(leagueName);
     }
+
+    public HashMap<String, League> getAllLeagues() {
+        return allLeagues;
+    }
 }

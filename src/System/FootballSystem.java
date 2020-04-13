@@ -174,5 +174,7 @@ public class FootballSystem {
         }
         return false;
     }
-
+    public boolean existLeagueByName(String leagueName){
+        return this.leagueDB.getAllLeagues().containsKey(leagueName);
+    }
 }
