@@ -115,7 +115,14 @@ public class Team {
         this.budget = budget;
     }
 
-    //endregion
+    public void setMainField(Field mainField) {
+        this.mainField = mainField;
+    }
+
+    public void setIsActive(ETeamStatus isActive) {
+        this.isActive = isActive;
+    }
+//endregion
     /**
      * Given a user ID, finds the player in the team.
      * if the player is not in the team, returns NULL

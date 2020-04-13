@@ -127,7 +127,6 @@ public class FootballSystem {
     public boolean existFanByUserName(String userName) {
         return this.fansHashMap.containsKey(userName);
     }
-
     public void addTeamToDB(Team team) {
         this.teamDB.addTeam(team, team.getTID());
     }
@@ -169,6 +168,22 @@ public class FootballSystem {
     public boolean findCoachAtTeamByUserName(String userName){
         for (Team team: this.teamDB.getAllTeams().values()) {
             if(team.findCoach(userName) != null){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean findTeamOwnerAtTeamByUserName(String userName){
+        for (Team team: this.teamDB.getAllTeams().values()) {
+            if(team.findTeamOwner(userName) != null){
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean findTeamManagerAtTeamByUserName(String userName){
+        for (Team team: this.teamDB.getAllTeams().values()) {
+            if(team.findManager(userName) != null){
                 return true;
             }
         }

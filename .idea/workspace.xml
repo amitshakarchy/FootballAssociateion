@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="" />
+    <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/System/FootballSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/FootballSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/TeamOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamOwner.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,32 +30,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5126">
-              <caret line="233" column="13" selection-start-line="233" selection-start-column="13" selection-end-line="233" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Users/TeamOwner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="245" column="11" selection-start-line="245" selection-start-column="11" selection-end-line="245" selection-end-column="11" />
+            <state relative-caret-position="-439">
+              <caret line="314" column="90" lean-forward="true" selection-start-line="314" selection-start-column="90" selection-end-line="314" selection-end-column="90" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="docComment;method#TeamOwner#0;class#TeamOwner#0" />
+                <element signature="method#TeamOwner#0;class#TeamOwner#0" />
                 <element signature="docComment;method#addPlayer#0;class#TeamOwner#0" />
                 <element signature="method#addPlayer#0;class#TeamOwner#0" />
                 <element signature="docComment;method#setPlayerToAdditionalInfo#0;class#TeamOwner#0" />
                 <element signature="method#setPlayerToAdditionalInfo#0;class#TeamOwner#0" />
                 <element signature="docComment;method#addCoach#0;class#TeamOwner#0" />
                 <element signature="method#addCoach#0;class#TeamOwner#0" />
+                <element signature="method#TeamIsActive#0;class#TeamOwner#0" />
                 <element signature="docComment;method#setCoachToAdditionalInfo#0;class#TeamOwner#0" />
                 <element signature="method#setCoachToAdditionalInfo#0;class#TeamOwner#0" />
+                <element signature="docComment;method#addTeamManager#0;class#TeamOwner#0" />
                 <element signature="method#addTeamManager#0;class#TeamOwner#0" />
                 <element signature="method#setTeamManagerToAdditionalInfo#0;class#TeamOwner#0" />
+                <element signature="method#addField#0;class#TeamOwner#0" />
                 <element signature="method#removePlayer#0;class#TeamOwner#0" />
                 <element signature="method#removeCoach#0;class#TeamOwner#0" />
                 <element signature="method#removeTeamManager#0;class#TeamOwner#0" />
@@ -58,10 +59,9 @@
                 <element signature="method#nominateTeamOwner#0;class#TeamOwner#0" />
                 <element signature="method#setTeamOwnerToAdditionalInfo#0;class#TeamOwner#0" />
                 <element signature="method#discardNominationForTeamOwner#0;class#TeamOwner#0" />
-                <element signature="method#nominateTeamManager#0;class#TeamOwner#0" />
-                <element signature="method#closeTeam#0;class#TeamOwner#0" />
-                <element signature="method#finnacelReport#0;class#TeamOwner#0" />
-                <element signature="method#getAdditionalInfo#1;class#TeamOwner#0" />
+                <element signature="e#15243#15244#0" expanded="true" />
+                <element signature="e#15296#15297#0" expanded="true" />
+                <element signature="e#15408#15779#1" />
                 <element signature="method#signIn#0;class#TeamOwner#0" />
               </folding>
             </state>
@@ -71,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Team.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="197" selection-start-line="197" selection-end-line="208" selection-end-column="5" />
+            <state relative-caret-position="292">
+              <caret line="124" column="11" lean-forward="true" selection-start-line="124" selection-start-column="11" selection-end-line="124" selection-end-column="11" />
               <folding>
                 <element signature="e#1310#1311#0" expanded="true" />
                 <element signature="e#1336#1337#0" expanded="true" />
@@ -108,6 +108,10 @@
                 <element signature="e#2779#2780#0" expanded="true" />
                 <element signature="e#2827#2828#0" expanded="true" />
                 <element signature="e#2863#2864#0" expanded="true" />
+                <element signature="e#2870#2871#0" expanded="true" />
+                <element signature="e#2912#2913#0" expanded="true" />
+                <element signature="e#2965#2966#0" expanded="true" />
+                <element signature="e#3005#3006#0" expanded="true" />
                 <element signature="docComment;method#findPlayer#0;class#Team#0" />
                 <element signature="method#findPlayer#0;class#Team#0" />
                 <element signature="docComment;method#findCoach#0;class#Team#0" />
@@ -118,10 +122,10 @@
                 <element signature="method#findTeamOwner#0;class#Team#0" />
                 <element signature="docComment;method#findHomeGame#0;class#Team#0" />
                 <element signature="n#!!block;n#findHomeGame#0;n#Team#0" />
-                <element signature="e#4423#4424#0" expanded="true" />
+                <element signature="e#4602#4603#0" expanded="true" />
                 <element signature="docComment;method#findAwayGame#0;class#Team#0" />
                 <element signature="n#!!block;n#findAwayGame#0;n#Team#0" />
-                <element signature="e#4666#4667#0" expanded="true" />
+                <element signature="e#4845#4846#0" expanded="true" />
                 <element signature="method#addSeasonToTeam#0;class#Team#0" />
                 <element signature="method#addField#0;class#Team#0" />
                 <element signature="e#5323#5324#0" expanded="true" />
@@ -186,16 +190,48 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/System/FootballSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="162" column="47" selection-start-line="162" selection-start-column="47" selection-end-line="162" selection-end-column="47" />
+            <state relative-caret-position="176">
+              <caret line="183" column="67" selection-start-line="183" selection-start-column="67" selection-end-line="183" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#signIn#0;class#FootballSystem#0" />
                 <element signature="method#creatingReferee#0;class#FootballSystem#0" />
                 <element signature="method#creatingCoach#0;class#FootballSystem#0" />
                 <element signature="method#login#0;class#FootballSystem#0" />
-                <element signature="e#4422#4423#0" expanded="true" />
-                <element signature="e#4478#4479#0" expanded="true" />
+                <element signature="method#findPlayerAtTeamByUserName#0;class#FootballSystem#0" />
+                <element signature="method#findCoachAtTeamByUserName#0;class#FootballSystem#0" />
+                <element signature="method#findCoachAtTeamByUserName#1;class#FootballSystem#0" />
+                <element signature="method#findCoachAtTeamByUserName#2;class#FootballSystem#0" />
+                <element signature="method#existLeagueByName#0;class#FootballSystem#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DB/TeamDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#328#329#0" expanded="true" />
+                <element signature="e#370#371#0" expanded="true" />
+                <element signature="e#452#453#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DB/LeagueDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+              <folding>
+                <element signature="e#374#375#0" expanded="true" />
+                <element signature="e#424#425#0" expanded="true" />
+                <element signature="e#511#512#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -204,7 +240,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Users/representativeFootballAssociation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
+            <state relative-caret-position="-418">
               <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
             </state>
           </provider>
@@ -219,11 +255,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Users/TeamManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+            <state relative-caret-position="-110">
+              <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -242,7 +278,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>set</find>
       <find>teamO</find>
       <find>usersHashMap</find>
       <find>createNewUserName</find>
@@ -256,6 +291,7 @@
       <find>owner</find>
       <find>add</find>
       <find>find</find>
+      <find>set</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -292,9 +328,7 @@
         <option value="$PROJECT_DIR$/src/DB/GameDB.java" />
         <option value="$PROJECT_DIR$/src/DB/SeasonDB.java" />
         <option value="$PROJECT_DIR$/src/DB/FieldDB.java" />
-        <option value="$PROJECT_DIR$/src/DB/LeagueDB.java" />
         <option value="$PROJECT_DIR$/src/DB/TeamDB.java" />
-        <option value="$PROJECT_DIR$/src/System/FootballSystem.java" />
         <option value="$PROJECT_DIR$/tests/Users/TeamOwnerTest.java" />
         <option value="$PROJECT_DIR$/tests/System/FootballSystemTest.java" />
         <option value="$PROJECT_DIR$/tests/Security/SecuritySystemTest.java" />
@@ -306,9 +340,11 @@
         <option value="$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java" />
         <option value="$PROJECT_DIR$/src/PoliciesAndAlgorithms/Weather.java" />
         <option value="$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java" />
-        <option value="$PROJECT_DIR$/src/Users/TeamOwner.java" />
         <option value="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" />
+        <option value="$PROJECT_DIR$/src/DB/LeagueDB.java" />
+        <option value="$PROJECT_DIR$/src/System/FootballSystem.java" />
         <option value="$PROJECT_DIR$/src/AssociationAssets/Team.java" />
+        <option value="$PROJECT_DIR$/src/Users/TeamOwner.java" />
       </list>
     </option>
   </component>
@@ -370,12 +406,6 @@
               <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
               <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="PoliciesAndAlgorithms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Security" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -420,9 +450,10 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586765559186" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586772430183" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -578,11 +609,18 @@
       <option name="project" value="LOCAL" />
       <updated>1586765556170</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="adding existLeagueByName function at football system">
+      <created>1586765779553</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1586765779553</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103476000" />
+    <option name="totallyTimeSpent" value="108194000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -595,7 +633,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19595142" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -682,7 +719,8 @@
     <MESSAGE value="add DB-s classes and add/remove functions at football system from DB's" />
     <MESSAGE value="Merge branch 'Alon' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="changes at team" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes at team" />
+    <MESSAGE value="adding existLeagueByName function at football system" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding existLeagueByName function at football system" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" />
@@ -828,32 +866,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#359#360#0" expanded="true" />
             <element signature="e#378#379#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DB/LeagueDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-          <folding>
-            <element signature="e#374#375#0" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DB/TeamDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#219#220#0" expanded="true" />
-            <element signature="e#271#272#0" expanded="true" />
-            <element signature="e#328#329#0" expanded="true" />
-            <element signature="e#347#348#0" expanded="true" />
-            <element signature="e#452#453#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1038,8 +1050,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5126">
-          <caret line="233" column="13" selection-start-line="233" selection-start-column="13" selection-end-line="233" selection-end-column="13" />
+        <state relative-caret-position="5038">
+          <caret line="229" column="13" selection-start-line="229" selection-start-column="13" selection-end-line="229" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1053,33 +1065,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/representativeFootballAssociation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Season.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="16" column="44" lean-forward="true" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/System/FootballSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="162" column="47" selection-start-line="162" selection-start-column="47" selection-end-line="162" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#signIn#0;class#FootballSystem#0" />
-            <element signature="method#creatingReferee#0;class#FootballSystem#0" />
-            <element signature="method#creatingCoach#0;class#FootballSystem#0" />
-            <element signature="method#login#0;class#FootballSystem#0" />
-            <element signature="e#4422#4423#0" expanded="true" />
-            <element signature="e#4478#4479#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1124,38 +1113,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/TeamOwner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="245" column="11" selection-start-line="245" selection-start-column="11" selection-end-line="245" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#addPlayer#0;class#TeamOwner#0" />
-            <element signature="method#addPlayer#0;class#TeamOwner#0" />
-            <element signature="docComment;method#setPlayerToAdditionalInfo#0;class#TeamOwner#0" />
-            <element signature="method#setPlayerToAdditionalInfo#0;class#TeamOwner#0" />
-            <element signature="docComment;method#addCoach#0;class#TeamOwner#0" />
-            <element signature="method#addCoach#0;class#TeamOwner#0" />
-            <element signature="docComment;method#setCoachToAdditionalInfo#0;class#TeamOwner#0" />
-            <element signature="method#setCoachToAdditionalInfo#0;class#TeamOwner#0" />
-            <element signature="method#addTeamManager#0;class#TeamOwner#0" />
-            <element signature="method#setTeamManagerToAdditionalInfo#0;class#TeamOwner#0" />
-            <element signature="method#removePlayer#0;class#TeamOwner#0" />
-            <element signature="method#removeCoach#0;class#TeamOwner#0" />
-            <element signature="method#removeTeamManager#0;class#TeamOwner#0" />
-            <element signature="method#removeField#0;class#TeamOwner#0" />
-            <element signature="method#nominateTeamOwner#0;class#TeamOwner#0" />
-            <element signature="method#setTeamOwnerToAdditionalInfo#0;class#TeamOwner#0" />
-            <element signature="method#discardNominationForTeamOwner#0;class#TeamOwner#0" />
-            <element signature="method#nominateTeamManager#0;class#TeamOwner#0" />
-            <element signature="method#closeTeam#0;class#TeamOwner#0" />
-            <element signature="method#finnacelReport#0;class#TeamOwner#0" />
-            <element signature="method#getAdditionalInfo#1;class#TeamOwner#0" />
-            <element signature="method#signIn#0;class#TeamOwner#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Users/SystemManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
@@ -1163,10 +1120,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/TeamDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/LeagueDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+          <folding>
+            <element signature="e#374#375#0" expanded="true" />
+            <element signature="e#424#425#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/TeamManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-110">
+          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/representativeFootballAssociation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-418">
+          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/System/FootballSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="183" column="67" selection-start-line="183" selection-start-column="67" selection-end-line="183" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#signIn#0;class#FootballSystem#0" />
+            <element signature="method#creatingReferee#0;class#FootballSystem#0" />
+            <element signature="method#creatingCoach#0;class#FootballSystem#0" />
+            <element signature="method#login#0;class#FootballSystem#0" />
+            <element signature="method#findPlayerAtTeamByUserName#0;class#FootballSystem#0" />
+            <element signature="method#findCoachAtTeamByUserName#0;class#FootballSystem#0" />
+            <element signature="method#findCoachAtTeamByUserName#1;class#FootballSystem#0" />
+            <element signature="method#findCoachAtTeamByUserName#2;class#FootballSystem#0" />
+            <element signature="method#existLeagueByName#0;class#FootballSystem#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AssociationAssets/Team.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="197" selection-start-line="197" selection-end-line="208" selection-end-column="5" />
+        <state relative-caret-position="292">
+          <caret line="124" column="11" lean-forward="true" selection-start-line="124" selection-start-column="11" selection-end-line="124" selection-end-column="11" />
           <folding>
             <element signature="e#1310#1311#0" expanded="true" />
             <element signature="e#1336#1337#0" expanded="true" />
@@ -1202,6 +1217,10 @@
             <element signature="e#2779#2780#0" expanded="true" />
             <element signature="e#2827#2828#0" expanded="true" />
             <element signature="e#2863#2864#0" expanded="true" />
+            <element signature="e#2870#2871#0" expanded="true" />
+            <element signature="e#2912#2913#0" expanded="true" />
+            <element signature="e#2965#2966#0" expanded="true" />
+            <element signature="e#3005#3006#0" expanded="true" />
             <element signature="docComment;method#findPlayer#0;class#Team#0" />
             <element signature="method#findPlayer#0;class#Team#0" />
             <element signature="docComment;method#findCoach#0;class#Team#0" />
@@ -1212,10 +1231,10 @@
             <element signature="method#findTeamOwner#0;class#Team#0" />
             <element signature="docComment;method#findHomeGame#0;class#Team#0" />
             <element signature="n#!!block;n#findHomeGame#0;n#Team#0" />
-            <element signature="e#4423#4424#0" expanded="true" />
+            <element signature="e#4602#4603#0" expanded="true" />
             <element signature="docComment;method#findAwayGame#0;class#Team#0" />
             <element signature="n#!!block;n#findAwayGame#0;n#Team#0" />
-            <element signature="e#4666#4667#0" expanded="true" />
+            <element signature="e#4845#4846#0" expanded="true" />
             <element signature="method#addSeasonToTeam#0;class#Team#0" />
             <element signature="method#addField#0;class#Team#0" />
             <element signature="e#5323#5324#0" expanded="true" />
@@ -1224,10 +1243,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/TeamManager.java">
+    <entry file="file://$PROJECT_DIR$/src/Users/TeamOwner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+        <state relative-caret-position="-439">
+          <caret line="314" column="90" lean-forward="true" selection-start-line="314" selection-start-column="90" selection-end-line="314" selection-end-column="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#TeamOwner#0;class#TeamOwner#0" />
+            <element signature="method#TeamOwner#0;class#TeamOwner#0" />
+            <element signature="docComment;method#addPlayer#0;class#TeamOwner#0" />
+            <element signature="method#addPlayer#0;class#TeamOwner#0" />
+            <element signature="docComment;method#setPlayerToAdditionalInfo#0;class#TeamOwner#0" />
+            <element signature="method#setPlayerToAdditionalInfo#0;class#TeamOwner#0" />
+            <element signature="docComment;method#addCoach#0;class#TeamOwner#0" />
+            <element signature="method#addCoach#0;class#TeamOwner#0" />
+            <element signature="method#TeamIsActive#0;class#TeamOwner#0" />
+            <element signature="docComment;method#setCoachToAdditionalInfo#0;class#TeamOwner#0" />
+            <element signature="method#setCoachToAdditionalInfo#0;class#TeamOwner#0" />
+            <element signature="docComment;method#addTeamManager#0;class#TeamOwner#0" />
+            <element signature="method#addTeamManager#0;class#TeamOwner#0" />
+            <element signature="method#setTeamManagerToAdditionalInfo#0;class#TeamOwner#0" />
+            <element signature="method#addField#0;class#TeamOwner#0" />
+            <element signature="method#removePlayer#0;class#TeamOwner#0" />
+            <element signature="method#removeCoach#0;class#TeamOwner#0" />
+            <element signature="method#removeTeamManager#0;class#TeamOwner#0" />
+            <element signature="method#removeField#0;class#TeamOwner#0" />
+            <element signature="method#nominateTeamOwner#0;class#TeamOwner#0" />
+            <element signature="method#setTeamOwnerToAdditionalInfo#0;class#TeamOwner#0" />
+            <element signature="method#discardNominationForTeamOwner#0;class#TeamOwner#0" />
+            <element signature="e#15243#15244#0" expanded="true" />
+            <element signature="e#15296#15297#0" expanded="true" />
+            <element signature="e#15408#15779#1" />
+            <element signature="method#signIn#0;class#TeamOwner#0" />
+          </folding>
         </state>
       </provider>
     </entry>
