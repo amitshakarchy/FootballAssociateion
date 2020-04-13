@@ -1,9 +1,11 @@
 package AssociationAssets;
+
 import System.FootballSystem;
 import Users.Coach;
 import Users.Player;
 import Users.TeamManager;
 import Users.TeamOwner;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -31,22 +33,18 @@ public class AdditionalInfo {
     /**
      * constructor of AdditionalInfo class
      *
-     * @param team     - the team in the season the info is about
-     * @param season   - the season that the info is about
-     * @param owners   - the team owners of the team
-     * @param coaches  - the coached of the team
-     * @param managers - the team managers
-     * @param players  - the players of the team
+     * @param team   - the team in the season the info is about
+     * @param season - the season that the info is about
      */
-    public AdditionalInfo(Team team, Season season, HashMap<String, ArrayList<String>> owners, HashSet<String> coaches, HashMap<String, ArrayList<String>> managers, HashSet<String> players) {
+    public AdditionalInfo(Team team, Season season) {
         this.team = team;
         this.season = season;
-        this.owners = owners;
-        this.coaches = coaches;
-        this.managers = managers;
-        this.players = players;
         this.teamManagersHashSet = new HashSet<>();
         this.teamOwnersHashSet = new HashSet<>();
+        this.coaches = new HashSet<>();
+        this.managers = new HashMap<>();
+        this.owners = new HashMap<>();
+        this.players = new HashSet<>();
     }
 
     //region Getters & Setters
@@ -290,6 +288,7 @@ public class AdditionalInfo {
 
     /**
      * this function removes all the nominations that user had nominated before
+     *
      * @param userNameWhoNominated
      */
     public void removeAllNominations(String userNameWhoNominated) {

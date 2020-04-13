@@ -37,6 +37,25 @@ public class TeamOwner extends Fan {
     // end region
 
     // use case 6.1 region
+
+    /**
+     * This function adds player to a team in a season.
+     * the function checks if the player has already username and password,which means
+     * he is sign up already in the system, if he does then
+     * the function only creating new player, otherwise the function sign in the player with his details
+     * and as well creating new player.
+     * the function checks if the player is playing already in another team -
+     * and if so, is not been added to the team.
+     * @param team
+     * @param season
+     * @param userName
+     * @param password
+     * @param firstName
+     * @param lastName
+     * @param birthday
+     * @param ePlayerRole
+     * @return true if the player created successfully.
+     */
     public boolean addPlayer(Team team, Season season, String userName, String password, String firstName, String lastName, Date birthday, EPlayerRole ePlayerRole) {
         if (team == null || season == null) {
             System.out.println("team or season is null");
@@ -55,7 +74,7 @@ public class TeamOwner extends Fan {
             }
             FootballSystem.getInstance().creatingPlayer(userName, firstName, lastName, birthday, ePlayerRole);
         }
-        // if the user doesnt exist
+        // if the user doesnt exist - sign in & creation
         else {
             if (!setPlayerToAdditionalInfo(team, season, userName)) {
                 return false;
@@ -67,6 +86,14 @@ public class TeamOwner extends Fan {
         }
         return true;
     }
+
+    /**
+     * this function set the player to the correct additional info of a specific team in a season.
+     * @param team
+     * @param season
+     * @param userName
+     * @return true if the player was adding successfully
+     */
     private boolean setPlayerToAdditionalInfo(Team team, Season season, String userName) {
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if (additionalInfoToSearch == null) {
@@ -79,6 +106,25 @@ public class TeamOwner extends Fan {
         }
         return true;
     }
+
+    /**
+     * This function adds coach to a team in a season.
+     * the function checks if the coach has already username and password,which means
+     * he is sign up already in the system, if he does then
+     * the function only creating new player, otherwise the function sign in the coach with his details
+     * and as well creating new coach.
+     * the function checks if the coach is coaching already in another team -
+     * and if so, is not been added to the team.
+     * @param team
+     * @param season
+     * @param userName
+     * @param password
+     * @param firstName
+     * @param lastName
+     * @param training
+     * @param eCoachRole
+     * @return true if the coach was added successfully to the team.
+     */
     public boolean addCoach(Team team, Season season, String userName, String password, String firstName, String lastName, ETraining training, ECoachRole eCoachRole) {
         if (team == null || season == null) {
             System.out.println("team or season is null");
@@ -110,6 +156,14 @@ public class TeamOwner extends Fan {
         }
         return true;
     }
+
+    /**
+     * this function set the coach to the correct additional info of a specific team in a season.
+     * @param team
+     * @param season
+     * @param userName
+     * @return true if the coach was adding successfully to the team.
+     */
     private boolean setCoachToAdditionalInfo(Team team, Season season, String userName) {
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if (additionalInfoToSearch == null) {
@@ -122,6 +176,7 @@ public class TeamOwner extends Fan {
         }
         return true;
     }
+
     public boolean addTeamManager(Team team, Season season, String userName, String password, String firstName, String lastName) {
         if (team == null || season == null) {
             System.out.println("team or season is null");
