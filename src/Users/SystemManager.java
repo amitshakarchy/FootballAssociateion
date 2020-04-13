@@ -27,7 +27,7 @@ public class SystemManager extends Fan {
     } //useCase 8.4
 
     public void activateRecommendationSystemModel(ComputaionalModel model){
-        model.activate();
+       // model.activate();
     } //useCase 8.5
 
 }

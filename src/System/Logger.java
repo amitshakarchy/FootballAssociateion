@@ -14,7 +14,6 @@ public class Logger {
         return new Logger();
     }
 
-
     public void exportReport(Game gameToAdd) {
     }
 

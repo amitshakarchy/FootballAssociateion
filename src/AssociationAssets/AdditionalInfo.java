@@ -64,6 +64,31 @@ public class AdditionalInfo {
     public void setSeason(Season season) {
         this.season = season;
     }
+
+    public HashMap<String, ArrayList<String>> getOwners() {
+        return owners;
+    }
+
+    public HashSet<String> getCoaches() {
+        return coaches;
+    }
+
+    public HashMap<String, ArrayList<String>> getManagers() {
+        return managers;
+    }
+
+    public HashSet<String> getPlayers() {
+        return players;
+    }
+
+    public HashSet<String> getTeamManagersHashSet() {
+        return teamManagersHashSet;
+    }
+
+    public HashSet<String> getTeamOwnersHashSet() {
+        return teamOwnersHashSet;
+    }
+
     //endregion
 
     /**
@@ -299,4 +324,6 @@ public class AdditionalInfo {
             this.owners.get(userNameWhoNominated).clear();
         }
     }
+
+
 }

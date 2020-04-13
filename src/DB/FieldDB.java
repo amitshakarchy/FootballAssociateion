@@ -16,4 +16,8 @@ public class FieldDB {
     public void removeField(String fieldName){
         this.allFields.remove(fieldName);
     }
+
+    public HashMap<String, Field> getAllFields() {
+        return allFields;
+    }
 }

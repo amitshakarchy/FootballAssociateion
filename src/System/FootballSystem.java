@@ -35,6 +35,38 @@ public class FootballSystem {
 
     }
 
+    public SecuritySystem getSecuritySystem() {
+        return securitySystem;
+    }
+
+    public List<Guest> getGuestList() {
+        return guestList;
+    }
+
+    public Map<String, Fan> getFansHashMap() {
+        return fansHashMap;
+    }
+
+    public TeamDB getTeamDB() {
+        return teamDB;
+    }
+
+    public GameDB getGameDB() {
+        return gameDB;
+    }
+
+    public FieldDB getFieldDB() {
+        return fieldDB;
+    }
+
+    public SeasonDB getSeasonDB() {
+        return seasonDB;
+    }
+
+    public LeagueDB getLeagueDB() {
+        return leagueDB;
+    }
+
     /**
      * Provide a global point of access to the instance
      */
@@ -102,6 +134,14 @@ public class FootballSystem {
         return fan;
     }
 
+    public Field createField(String name, String city, int capacity){
+        if(fieldDB.getAllFields().containsKey(name)){
+            return fieldDB.getAllFields().get(name);
+        }
+        Field field = new Field(name,city,capacity);
+        this.addFieldToDB(field);
+        return field;
+    }
     public Fan login(String userName, String password) {
         if (securitySystem.checkPasswordForLogIn(userName, password)) {
             if (this.fansHashMap.containsKey(userName)) {
@@ -191,5 +231,9 @@ public class FootballSystem {
     }
     public boolean existLeagueByName(String leagueName){
         return this.leagueDB.getAllLeagues().containsKey(leagueName);
+    }
+
+    public boolean existFieldByName(String fieldName){
+        return this.fieldDB.getAllFields().containsKey(fieldName);
     }
 }

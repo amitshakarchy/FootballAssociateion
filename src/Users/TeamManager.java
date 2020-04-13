@@ -38,7 +38,7 @@ public class TeamManager extends CanBeOwner {
         }
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if(additionalInfoToSearch != null) {
-            additionalInfoToSearch.getTeam().setHomeField(homeField);
+      //      additionalInfoToSearch.getTeam().setHomeField(homeField);
         }
     }
 
@@ -69,7 +69,7 @@ public class TeamManager extends CanBeOwner {
             }
             AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
             if(additionalInfoToSearch != null) {
-                additionalInfoToSearch.getTeam().addPlayer(player);
+                //additionalInfoToSearch.getTeam().addPlayer(player);
             }
     }
 
@@ -79,7 +79,7 @@ public class TeamManager extends CanBeOwner {
             }
             AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
             if(additionalInfoToSearch != null) {
-                additionalInfoToSearch.getTeam().addCoach(coach);
+           //     additionalInfoToSearch.getTeam().addCoach(coach);
             }
         }
 
@@ -89,7 +89,7 @@ public class TeamManager extends CanBeOwner {
         }
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if(additionalInfoToSearch != null) {
-            additionalInfoToSearch.getTeam().removePlayer(player);
+         //   additionalInfoToSearch.getTeam().removePlayer(player);
         }
     }
 
@@ -99,7 +99,7 @@ public class TeamManager extends CanBeOwner {
         }
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if(additionalInfoToSearch != null) {
-            additionalInfoToSearch.getTeam().removeCoach(coach);
+         //   additionalInfoToSearch.getTeam().removeCoach(coach);
         }
     }
 
@@ -109,7 +109,7 @@ public class TeamManager extends CanBeOwner {
         }
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if(additionalInfoToSearch != null) {
-                additionalInfoToSearch.getTeam().addHomeGame(homeGame);
+          //      additionalInfoToSearch.getTeam().addHomeGame(homeGame);
             }
     }
 
@@ -119,7 +119,7 @@ public class TeamManager extends CanBeOwner {
             }
             AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
             if(additionalInfoToSearch != null) {
-                additionalInfoToSearch.getTeam().addAwayGame(awayGame);
+         //       additionalInfoToSearch.getTeam().addAwayGame(awayGame);
             }
     }
 
@@ -129,7 +129,7 @@ public class TeamManager extends CanBeOwner {
             }
             AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
             if(additionalInfoToSearch != null) {
-                additionalInfoToSearch.getTeam().removeHomeGame(homeGame);
+         //       additionalInfoToSearch.getTeam().removeHomeGame(homeGame);
             }
     }
 
@@ -139,7 +139,7 @@ public class TeamManager extends CanBeOwner {
             }
             AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
             if(additionalInfoToSearch != null) {
-                additionalInfoToSearch.getTeam().removeAwayGame(awayGame);
+         //       additionalInfoToSearch.getTeam().removeAwayGame(awayGame);
             }
         }
 

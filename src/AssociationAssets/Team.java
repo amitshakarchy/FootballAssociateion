@@ -5,6 +5,7 @@ import Users.Player;
 import Users.TeamManager;
 import Users.TeamOwner;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -24,10 +25,11 @@ public class Team {
     HashMap<String/*GID*/, Game> awayGames;
     TeamBudget budget;
     ETeamStatus isActive;
+    TeamOwner teamOwner;
     //endregion
 
 
-    public Team(int TID, String name, Season currentSeason, Field mainField, TeamBudget budget) {
+    public Team(int TID, String name, Season currentSeason, Field mainField, TeamBudget budget,TeamOwner teamOwner) {
         this.TID = TID;
         this.name = name;
         this.currentSeason = currentSeason;
@@ -35,10 +37,12 @@ public class Team {
         this.budget = budget;
         this.homeGames = new HashMap<>();
         this.awayGames = new HashMap<>();
+        // TODO: 4/13/2020  need to check that this team owner is not owner of another team already
         this.isActive = ETeamStatus.ACTIVE;
         this.fields = new HashMap<>();
         fields.put(mainField.getName(), mainField);
         this.additionalInfoWithSeasons = new HashMap<>();
+        this.teamOwner  = teamOwner;
     }
 
     //region Getters & Setters
@@ -122,7 +126,12 @@ public class Team {
     public void setIsActive(ETeamStatus isActive) {
         this.isActive = isActive;
     }
-//endregion
+
+    public TeamOwner getTeamOwner() {
+        return teamOwner;
+    }
+
+    //endregion
     /**
      * Given a user ID, finds the player in the team.
      * if the player is not in the team, returns NULL
@@ -131,7 +140,10 @@ public class Team {
      * @return
      **/
     public Player findPlayer(String PID) {
-        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason);
+        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
+        if(info == null){
+            return null;
+        }
         return info.findPlayer(PID);
     }
 
@@ -143,7 +155,10 @@ public class Team {
      * @return
      **/
     public Coach findCoach(String CID) {
-        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason);
+        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
+        if(info == null){
+            return null;
+        }
         return info.findCoach(CID);
     }
 
@@ -155,7 +170,10 @@ public class Team {
      * @return
      */
     public TeamManager findManager(String MID) {
-        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason);
+        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
+        if(info == null){
+            return null;
+        }
         return info.findManager(MID);
     }
 
@@ -167,7 +185,10 @@ public class Team {
      * @return
      **/
     public TeamOwner findTeamOwner(String OID) {
-        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason);
+        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
+        if(info == null){
+            return null;
+        }
         return info.findTeamOwner(OID);
     }
 
@@ -199,6 +220,7 @@ public class Team {
             AdditionalInfo additionalInfo = new AdditionalInfo(this, currentSeason);
             additionalInfoWithSeasons.put(season.getYear(), additionalInfo);
             season.addTeamToSeason(name, additionalInfoWithSeasons);
+            this.teamOwner.addAdditionalInfo(additionalInfo);
         }
     }
 
@@ -213,5 +235,23 @@ public class Team {
 
     public void removeField(String fieldName){
         this.fields.remove(fieldName);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "TID=" + TID +
+                ", name='" + name + '\'' +
+                ", currentSeason=" + currentSeason +
+                ", mainField=" + mainField +
+                ", fields=" + fields +
+                ", additionalInfoWithSeasons=" + additionalInfoWithSeasons +
+                ", homeGames=" + homeGames +
+                ", awayGames=" + awayGames +
+                ", budget=" + budget +
+                ", isActive=" + isActive +
+                ", teamOwner=" + teamOwner +
+                '}';
     }
 }

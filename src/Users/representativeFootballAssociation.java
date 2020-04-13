@@ -4,7 +4,7 @@ import AssociationAssets.Game;
 import AssociationAssets.League;
 import AssociationAssets.Season;
 import AssociationAssets.Team;
-import Budget.AssociationBudget;
+//import Budget.AssociationBudget;
 import Budget.TeamBudget;
 import DB.LeagueDB;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class representativeFootballAssociation extends Fan {
     GamesAssigningPolicy gamePolicy;
-    AssociationBudget associationBudget;
+    //AssociationBudget associationBudget;
     HashMap<Integer, Boolean> teamsExceedBudget; //Integer-teamID, Boolean- team exceed budget or not
     LeagueDB leagueDB;
     /**
@@ -27,7 +27,7 @@ public class representativeFootballAssociation extends Fan {
     public representativeFootballAssociation(String userName, String fName, String lName, GamesAssigningPolicy gamePolicy) {
         super(userName, fName, lName);
         this.gamePolicy = gamePolicy;
-        this.associationBudget = new AssociationBudget();
+      //  this.associationBudget = new AssociationBudget();
         this.teamsExceedBudget= new HashMap<>();
         this.leagueDB = new LeagueDB();
     }
@@ -155,7 +155,7 @@ public class representativeFootballAssociation extends Fan {
      * @param TutuIntakes
      */
     public void setAssociationBudgetTutuIntakes(double TutuIntakes ) {
-        associationBudget.setTutuIntakes(TutuIntakes);
+      //  associationBudget.setTutuIntakes(TutuIntakes);
     }
 
     /**
@@ -163,7 +163,7 @@ public class representativeFootballAssociation extends Fan {
      * @param registrationFee
      */
     public void setAssociationBudgetRegistrationFee(double registrationFee) {
-        associationBudget.setRegistrationFee(registrationFee);
+    //    associationBudget.setRegistrationFee(registrationFee);
     }
 
     /**
@@ -171,8 +171,8 @@ public class representativeFootballAssociation extends Fan {
      * @param user
      * @param salaryUser
      */
-    public void setAssociationBudgetSalaries(AUser user, Double salaryUser){
-        associationBudget.addSalary(user, salaryUser);
-    }
+    //public void setAssociationBudgetSalaries(AUser user, Double salaryUser){
+    //    associationBudget.addSalary(user, salaryUser);
+    //}
 
 }
