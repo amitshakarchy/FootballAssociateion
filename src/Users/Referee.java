@@ -27,6 +27,8 @@ public class Referee extends Fan {
         super(userName, fName, lName);
         this.myGames = new ArrayList<>();
         this.training = training;
+        Logger.getInstance().addActionToLogger("Referee created, user name: "+ userName);
+
     }
 
 

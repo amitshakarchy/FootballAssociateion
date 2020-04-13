@@ -15,10 +15,19 @@ public class Logger {
 // Implement a singleton here
     List<String> log = new ArrayList<>();
     List<Pair<Integer,List<Event>>> report = new ArrayList<>();
-    public static Logger getInstance(){
-        return new Logger();
-    }
+    private static Logger single_instance = null;
 
+    public static Logger getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new Logger();
+
+        return single_instance;
+    }
+    private Logger()
+    {
+
+    }
 
     public void exportReport(int gid, List<Event> events) {
         if(events!= null){
@@ -27,7 +36,7 @@ public class Logger {
     }
 
     public void addActionToLogger(String action){
-        this.log.add(action);
+        getLog().add(action);
     }
 
     public List<String> getLog() {

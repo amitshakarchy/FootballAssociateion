@@ -2,6 +2,7 @@ package Users;
 import AssociationAssets.*;
 import java.util.ArrayList;
 import java.util.List;
+import System.*;
 
 /**
  * @ Written by Yuval Ben Eliezer
@@ -9,9 +10,11 @@ import java.util.List;
 public class TeamManager extends CanBeOwner {
     private List<AdditionalInfo> additionalInfoList;
 
-    public TeamManager(String UID, String fName, String lName) {
-        super(UID, fName, lName);
+    public TeamManager(String userName, String fName, String lName) {
+        super(userName, fName, lName);
         this.additionalInfoList = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("Team Manager created, user name: "+ userName);
+
     }
 
     public List<AdditionalInfo> getAdditionalInfoList() {

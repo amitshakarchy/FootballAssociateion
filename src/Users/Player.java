@@ -3,6 +3,7 @@ import AssociationAssets.AdditionalInfo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import System.*;
 /**
  * A footballer or a football player is an athlete who plays football, as an amateur or as a professional.
  * This system is about professional football players.
@@ -32,6 +33,8 @@ public class Player extends CanBeOwner {
         this.role = role;
         this.myPage = new PlayerPageEditor(fName,lName,role,bDate);
         this.myAdditionalInfo = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("Player created, user name: "+ userName);
+
     }
 
     /**
