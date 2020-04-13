@@ -25,7 +25,7 @@ class RefereeTest {
 
     @Before
     public void setUp() throws Exception {
-        String GID = "111";
+        String GID = "11";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         date = sdf.parse("2020-04-12");
         Time time = new Time(hour, 30, 0);
@@ -33,8 +33,8 @@ class RefereeTest {
         league = new League("league");
         season = new Season("1993");
         field = new Field("Teddi", "Beer Sheva", 800);
-        host = new Team(1,"Barcelona", field, null, season, null, null, null, null);
-        guest = new Team(2, "Beitar",field, null, season, null, null, null, null);
+        host = new Team(1,"Barcelona", null, null, null);
+        guest = new Team(2, "Beitar",null, null, null);
         ;
         e1 = new Event(date, time, EEventType.INJURY, "bla");
         e2 = new Event(date, time, EEventType.OFFSIDE, "bli");

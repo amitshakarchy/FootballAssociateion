@@ -27,25 +27,29 @@ public class SystemManager extends Fan {
     public void removeUser(){} //useCase 8.2
 
     /**
+     *  An administrator can view the complaint box
+     * @return - List all complaints and who filed them
      *
-     * @return
+     * # use case 8.3
      */
     public List<Pair<String, Fan>> getComplains(){
         return Complains.getInstance().getComplain();
-    } //useCase 8.3
+    }
 
     /**
+     * An administrator may respond to complaints received from fans
+     * @param response -The answer from the administrator
+     * @param compain - The complaint and the fan who filed it
      *
-     * @param response
-     * @param compain
+     * # use case 8.3
      */
     public void responseOnComplain(String response, Pair<String,Fan> compain){
         Complains.getInstance().responseToComplain(this,compain,response);
-    } //useCase 8.3
+    }
 
     /**
-     *
-     * @return
+     * An administrator can view system behavior information
+     * @return - List all actions done on the system
      *
      * # use case 8.4
      */

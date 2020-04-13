@@ -1,6 +1,8 @@
 package Users;
 import java.util.ArrayList;
 import java.util.List;
+
+import AssociationAssets.Game;
 import System.*;
 
 /**
@@ -140,9 +142,33 @@ public class Fan extends Guest implements IFan {
     public void update(APageEditor pageEditor,String feed){}
 
 
-    public void subscribeGamesNotifications() {//useCase 3.3
-        // TODO: 12/04/2020 yarin
+    /**
+     *A fan can sign up to track games
+     * With this function, a fan can sign up to games
+     *
+     * # use case 3.3
+     *
+     * @param game - The game the fan wants to sign up for
+     */
+    public void subscribeGames(Game game){//useCase 3.2
+        game.register(this);
     }
+
+    /**
+     * A fan can delete a subscription to track game
+     * In this function, a fan can delete tracker of game
+     *
+     * # use case 3.2
+     *
+     * @param game - The game the fan wants to stop following
+     */
+    public void removeRegisterFromGames(Game game){//useCase 3.2
+        game.delete(this);
+    }
+
+
+    public void updateGame(Game game) { }
+
 
     /**
      * This method should receive a complain text (from the service layer)
@@ -206,5 +232,4 @@ public class Fan extends Guest implements IFan {
             this.searchHistory.add(search);
         }
     }
-
 }
