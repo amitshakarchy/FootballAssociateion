@@ -1,28 +1,31 @@
 package Users;
+import AssociationAssets.*;
+import java.util.ArrayList;
+import java.util.List;
+import System.*;
 
-public class TeamManager extends AUser {
+/**
+ * @ Written by Yuval Ben Eliezer
+ */
+public class TeamManager extends CanBeOwner {
+    private List<AdditionalInfo> additionalInfoList;
 
-    public TeamManager(String UID, String fName, String lName) {
-        super(UID, fName, lName);
-    }
-
-    public void manageTeam(){//useCase 7.1
-
-        // Improvise :)
-    }
-
-    @Override
-    public String viewProfile() {
-        return null;
-    }
-
-    @Override
-    public EStatus getStatus() {
-        return null;
-    }
-
-    @Override
-    public void setStatus(EStatus status) {
+    public TeamManager(String userName, String fName, String lName) {
+        super(userName, fName, lName);
+        this.additionalInfoList = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("Team Manager created, user name: "+ userName);
 
     }
+
+    public List<AdditionalInfo> getAdditionalInfoList() {
+        return additionalInfoList;
+    }
+
+    public void setAdditionalInfoList(List<AdditionalInfo> additionalInfoList) {
+        this.additionalInfoList = additionalInfoList;
+    }
+
+
 }
+
+

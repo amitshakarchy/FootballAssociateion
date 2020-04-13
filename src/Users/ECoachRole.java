@@ -1,6 +1,12 @@
 package Users;
 
+/**
+ * This class defines coach role types
+ * @ Written by Yuval Ben Eliezer
+ */
 public enum ECoachRole {
-
-    //TODO: add enum values here
+    GoalkeeperCoach,
+    HeadCoach,
+    AssistantCoach,
+    YouthCoach
 }
