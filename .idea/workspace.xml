@@ -42,14 +42,33 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/Users/FanTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="1417" column="16" lean-forward="true" selection-start-line="1417" selection-start-column="16" selection-end-line="1417" selection-end-column="16" />
+            <state relative-caret-position="88">
+              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/Users/CoachTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="125" column="19" lean-forward="true" selection-start-line="125" selection-start-column="19" selection-end-line="125" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Users/Fan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="160" column="21" lean-forward="true" selection-start-line="160" selection-start-column="21" selection-end-line="160" selection-end-column="21" />
               <folding>
-                <element signature="e#46883#46889#0" expanded="true" />
-                <element signature="e#46894#46900#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#3841#3842#0" expanded="true" />
+                <element signature="e#3889#3890#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,24 +155,6 @@
               <folding>
                 <element signature="e#562#563#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Budget/AssociationBudget.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Budget/TeamBudget.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -413,7 +414,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586847859759" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586848530900" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
@@ -684,7 +685,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586806957316</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add tests at Team Owner test class&#10;changes at Team&#10;changes at FootballSystem&#10;changes at FieldDB - add getter for the hash map&#10;changes at team owner">
+      <created>1586847886973</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1586847886973</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Final&#10;&#10;# Conflicts:&#10;#&#9;src/System/Logger.java&#10;#&#9;src/Users/Guest.java&#10;#&#9;src/Users/SystemManager.java&#10;#&#9;src/Users/TeamManager.java&#10;#&#9;tests/Users/CoachTest.java&#10;#&#9;tests/Users/PlayerTest.java">
+      <created>1586848106770</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1586848106770</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -720,7 +735,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135816000" />
+    <option name="totallyTimeSpent" value="136485000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -733,9 +748,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1913" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18657719" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18657719" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -753,8 +767,8 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4986577" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.51073825" side_tool="true" weight="0.41784704" />
-      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49530202" weight="0.31586403" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.48016194" weight="0.22557727" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49530202" visible="true" weight="0.31586403" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.48016194" weight="0.22521247" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -823,7 +837,8 @@
     <MESSAGE value="adding existLeagueByName function at football system" />
     <MESSAGE value="add conditions at teamOwner for close team" />
     <MESSAGE value="add tests at Team Owner test class&#10;changes at Team&#10;changes at FootballSystem&#10;changes at FieldDB - add getter for the hash map&#10;changes at team owner" />
-    <option name="LAST_COMMIT_MESSAGE" value="add tests at Team Owner test class&#10;changes at Team&#10;changes at FootballSystem&#10;changes at FieldDB - add getter for the hash map&#10;changes at team owner" />
+    <MESSAGE value="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Final&#10;&#10;# Conflicts:&#10;#&#9;src/System/Logger.java&#10;#&#9;src/Users/Guest.java&#10;#&#9;src/Users/SystemManager.java&#10;#&#9;src/Users/TeamManager.java&#10;#&#9;tests/Users/CoachTest.java&#10;#&#9;tests/Users/PlayerTest.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Final&#10;&#10;# Conflicts:&#10;#&#9;src/System/Logger.java&#10;#&#9;src/Users/Guest.java&#10;#&#9;src/Users/SystemManager.java&#10;#&#9;src/Users/TeamManager.java&#10;#&#9;tests/Users/CoachTest.java&#10;#&#9;tests/Users/PlayerTest.java" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" />
@@ -889,13 +904,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/HeuristicGamesAssigningPolicy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="2" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PoliciesAndAlgorithms/ScoreTablePolicy1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -931,10 +939,10 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
-          <caret line="1417" column="16" lean-forward="true" selection-start-line="1417" selection-start-column="16" selection-end-line="1417" selection-end-column="16" />
+          <caret line="1399" column="16" selection-start-line="1399" selection-start-column="16" selection-end-line="1399" selection-end-column="16" />
           <folding>
-            <element signature="e#46883#46889#0" expanded="true" />
-            <element signature="e#46894#46900#0" expanded="true" />
+            <element signature="e#45980#45986#0" expanded="true" />
+            <element signature="e#45991#45997#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1074,20 +1082,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Users/Fan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#871#872#0" expanded="true" />
-            <element signature="e#899#900#0" expanded="true" />
-            <element signature="e#1048#1049#0" expanded="true" />
-            <element signature="e#1076#1077#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Users/TeamManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
@@ -1107,13 +1101,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Users/CoachTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1401,6 +1388,32 @@
             <element signature="method#addField#0;class#TeamOwnerTest#0" />
             <element signature="method#removePlayer#0;class#TeamOwnerTest#0" />
             <element signature="method#nominateTeamOwner#0;class#TeamOwnerTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/FanTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Users/CoachTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="125" column="19" lean-forward="true" selection-start-line="125" selection-start-column="19" selection-end-line="125" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Users/Fan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="160" column="21" lean-forward="true" selection-start-line="160" selection-start-column="21" selection-end-line="160" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3841#3842#0" expanded="true" />
+            <element signature="e#3889#3890#0" expanded="true" />
           </folding>
         </state>
       </provider>
