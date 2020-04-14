@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7e63316b-c29a-4266-92ce-9e4362c5e3d2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FootballAssociateion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FootballAssociateion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586853228408" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="" />
+      <created>1585582933875</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585582933875</updated>
+      <workItem from="1586067272534" duration="16563000" />
+      <workItem from="1586155847688" duration="1012000" />
+      <workItem from="1586169330588" duration="1286000" />
+      <workItem from="1586262055488" duration="3018000" />
+      <workItem from="1586265466511" duration="10692000" />
+      <workItem from="1586332921466" duration="7263000" />
+      <workItem from="1586760751460" duration="308000" />
+    </task>
+    <task id="LOCAL-00001" summary="First commit, just to see that everything is connected">
+      <created>1585595847583</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585595847583</updated>
+    </task>
+    <task id="LOCAL-00002" summary="AES class added , security system class add">
+      <created>1586100744604</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586100744604</updated>
+    </task>
+    <task id="LOCAL-00003" summary="test">
+      <created>1586104704652</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586104704652</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;Team owner adding+removing team property">
+      <created>1586155960001</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586155960001</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;Team owner adding+removing team property">
+      <created>1586435914795</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1586435914795</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;Team owner adding+removing team property">
+      <created>1586435945456</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1586435945456</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;Team owner adding+removing team property">
+      <created>1586436074268</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1586436074268</updated>
+    </task>
+    <task id="LOCAL-00008" summary="chagnes at team owner">
+      <created>1586619366584</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1586619366584</updated>
+    </task>
+    <task id="LOCAL-00009" summary="additional info - recode">
+      <created>1586680252117</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1586680252117</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add DB-s classes and add/remove functions at football system from DB's">
+      <created>1586708631489</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1586708631489</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Merge branch 'Alon' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1586760849376</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1586760849376</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Merge branch 'Alon' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1586760914867</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1586760914867</updated>
+    </task>
+    <task id="LOCAL-00013" summary="changes at team">
+      <created>1586765556170</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1586765556170</updated>
+    </task>
+    <task id="LOCAL-00014" summary="adding existLeagueByName function at football system">
+      <created>1586765779553</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1586765779553</updated>
+    </task>
+    <task id="LOCAL-00015" summary="add conditions at teamOwner for close team">
+      <created>1586772632083</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1586772632083</updated>
+    </task>
+    <task id="LOCAL-00016" summary="add tests at Team Owner test class&#10;changes at Team&#10;changes at FootballSystem&#10;changes at FieldDB - add getter for the hash map&#10;changes at team owner">
+      <created>1586806957316</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1586806957316</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 21h 19m 09s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 21h 21m 09s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 31m 44s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 31m 50s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 32m 45s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 34m 17s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 34m 24s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 38m 31s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 41m 04s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 41m 11s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="67000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1913" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18926175" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4979757" weight="0.3285968" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.490604" weight="0.34844193" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.48926175" weight="0.41784704" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49798658" weight="0.3286119" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4986577" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.51073825" side_tool="true" weight="0.41784704" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49530202" visible="true" weight="0.31586403" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.48016194" weight="0.22557727" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24966443" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" weight="0.17327935" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" weight="0.3295302" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First commit, just to see that everything is connected" />
+    <MESSAGE value="AES class added , security system class add" />
+    <MESSAGE value="test" />
+    <MESSAGE value="Merge branch 'yuval' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;Team owner adding+removing team property" />
+    <MESSAGE value="chagnes at team owner" />
+    <MESSAGE value="additional info - recode" />
+    <MESSAGE value="try to merge" />
+    <MESSAGE value="add DB-s classes and add/remove functions at football system from DB's" />
+    <MESSAGE value="Merge branch 'Alon' of https://github.com/amitshakarchy/FootballAssociateion into Tair&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="changes at team" />
+    <MESSAGE value="adding existLeagueByName function at football system" />
+    <MESSAGE value="add conditions at teamOwner for close team" />
+    <MESSAGE value="add tests at Team Owner test class&#10;changes at Team&#10;changes at FootballSystem&#10;changes at FieldDB - add getter for the hash map&#10;changes at team owner" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tests at Team Owner test class&#10;changes at Team&#10;changes at FootballSystem&#10;changes at FieldDB - add getter for the hash map&#10;changes at team owner" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tests/Users/TeamOwnerTest.java</url>
+          <line>236</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="team1.getAdditionalInfoWithSeasons().get(season.getYear()).getManagers()" language="JAVA" />
+        <watch expression="team1.getAdditionalInfoWithSeasons()&#10;                .get(season.getYear()).getManagers().get(team1.getTeamOwner())" />
+        <watch expression="team1.getTeamOwner()" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
