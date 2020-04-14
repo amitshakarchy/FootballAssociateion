@@ -4,24 +4,7 @@
     <list default="true" id="d7878326-5970-4b5c-b4f4-96b9957f6a94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/GameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/SeasonLeagueBinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/SeasonLeagueBinderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/AssociationAssets/TeamTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Budget/AssociationBudgetTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Budget/AssociationBudgetTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Budget/TeamBudgetTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Budget/TeamBudgetTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Users/TeamOwnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Users/TeamOwnerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/AdditionalInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AssociationAssets/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AssociationAssets/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Budget/AssociationBudget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Budget/AssociationBudget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DB/FieldDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/FieldDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/System/FootballSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/FootballSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/System/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/System/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/ERoleType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/SystemManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/SystemManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/TeamManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/TeamOwner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/TeamOwner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/representativeFootballAssociation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/AssociationAssets/AdditionalInfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/AssociationAssets/AdditionalInfoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/AssociationAssets/LeagueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/AssociationAssets/LeagueTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,7 +32,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/Users/TeamOwnerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
+            <state relative-caret-position="-863">
               <caret line="135" column="8" selection-start-line="135" selection-start-column="8" selection-end-line="135" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -342,10 +325,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1962" />
-    <option name="y" value="52" />
+    <option name="x" value="1961" />
+    <option name="y" value="51" />
     <option name="width" value="1200" />
-    <option name="height" value="638" />
+    <option name="height" value="639" />
   </component>
   <component name="ProjectId" id="1Zr2Xlfccmk1yjMuSshZwv6bqTW" />
   <component name="ProjectView">
@@ -438,7 +421,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586806864655" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586806884717" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
@@ -702,16 +685,17 @@
       <option name="project" value="LOCAL" />
       <updated>1586772632083</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="add tests at Team Owner test class&#10;changes at Team&#10;changes at FootballSystem&#10;changes at FieldDB - add getter for the hash map&#10;changes at team owner">
+      <created>1586806957316</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1586806957316</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 21h 10m 08s.xml">
-      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 21h 15m 52s.xml">
-      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 21h 19m 09s.xml">
       <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
     </history-entry>
@@ -736,9 +720,15 @@
     <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 38m 31s.xml">
       <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 41m 04s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TeamOwnerTest_addTeamManager - 2020.04.13 at 22h 41m 11s.xml">
+      <configuration name="TeamOwnerTest.addTeamManager" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135693000" />
+    <option name="totallyTimeSpent" value="135799000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -763,7 +753,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4979757" weight="0.3285968" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.490604" weight="0.34844193" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.48926175" visible="true" weight="0.41784704" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.48926175" weight="0.41784704" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49798658" weight="0.3286119" />
@@ -840,7 +830,8 @@
     <MESSAGE value="changes at team" />
     <MESSAGE value="adding existLeagueByName function at football system" />
     <MESSAGE value="add conditions at teamOwner for close team" />
-    <option name="LAST_COMMIT_MESSAGE" value="add conditions at teamOwner for close team" />
+    <MESSAGE value="add tests at Team Owner test class&#10;changes at Team&#10;changes at FootballSystem&#10;changes at FieldDB - add getter for the hash map&#10;changes at team owner" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tests at Team Owner test class&#10;changes at Team&#10;changes at FootballSystem&#10;changes at FieldDB - add getter for the hash map&#10;changes at team owner" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" />
@@ -1419,7 +1410,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Users/TeamOwnerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
+        <state relative-caret-position="-863">
           <caret line="135" column="8" selection-start-line="135" selection-start-column="8" selection-end-line="135" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
