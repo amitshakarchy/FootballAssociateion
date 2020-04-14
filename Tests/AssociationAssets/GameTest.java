@@ -35,8 +35,8 @@ public class GameTest {
         season = new Season("1993");
         field = new Field("Teddi", "Beer Sheva", 800);
         // TODO: 4/14/2020 fix test
-     //   host = new Team(1,"Barcelona", field, null, season, null, null, null, null);
-    //    guest = new Team(2, "Beitar",field, null, season, null, null, null, null);
+        //   host = new Team(1,"Barcelona", field, null, season, null, null, null, null);
+        //    guest = new Team(2, "Beitar",field, null, season, null, null, null, null);
         ;
         e1 = new Event(date, time, EEventType.INJURY, "bla");
         e2 = new Event(date, time, EEventType.OFFSIDE, "bli");
@@ -106,4 +106,3 @@ public class GameTest {
 
 
 }
-
