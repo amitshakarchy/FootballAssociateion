@@ -1,7 +1,11 @@
 package Users;
 
+/**
+ * This class defines types of referee training
+ * @ Written by Yuval Ben Eliezer
+ */
 public enum EReferee {
     VAR,
-    MAIN
-    // TODO: 06/04/2020 kavan , 4th
+    MAIN,
+    ASSISTANT
 }
