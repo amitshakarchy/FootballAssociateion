@@ -2,19 +2,21 @@ package Users;
 import AssociationAssets.AdditionalInfo;
 import java.util.ArrayList;
 import java.util.List;
-
+import System.*;
 /**
  *A coach is a person who guides an athlete or group of athletes,
  * advises them and manages their actions as they prepare for a sporting
  * competition, and while they are actually participating.
  * The coach is responsible for transferring training before the games.
+ *
+ * @ Written by Yuval Ben Eliezer
  */
 public class Coach extends CanBeOwner {
 
-    ETraining training;
-    ECoachRole role;
-    CoachPageEditor myPage;
-    List<AdditionalInfo> myAdditionalInfo;
+    private ETraining training;
+    private ECoachRole role;
+    private CoachPageEditor myPage;
+    private List<AdditionalInfo> myAdditionalInfo;
 
     /**
      * @param userName - Unique user name
@@ -31,6 +33,39 @@ public class Coach extends CanBeOwner {
         this.training = training;
         this.role = role;
         this.myPage = new CoachPageEditor(fName,lName,role,training);
+        this.myAdditionalInfo = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("Coach created, user name: "+ userName);
+    }
+
+    /**
+     * @param fan - Getting a fan and a builder copying his fields
+     * @param training - Coach type of training. It could be:
+     *                 CDiploma, UEFAA, UEFAB, UEFAPro
+     * @param role - The role of the coach. It could be:
+     *             GoalkeeperCoach, HeadCoach, AssistantCoach, YouthCoach
+     * When a coach is created, a personal page is created for him.
+     */
+    public Coach(Fan fan, ETraining training, ECoachRole role) {
+        super(fan.getUserName(), fan.getfName(), fan.getlName());
+        this.training = training;
+        this.role = role;
+        this.myPage = new CoachPageEditor(fan.getfName(), fan.getlName(),role,training);
+        this.myAdditionalInfo = new ArrayList<>();
+    }
+
+    /**
+     * @param canBeOwner - Getting a CanBeOwner and a builder copying his fields
+     * @param training - Coach type of training. It could be:
+     *                 CDiploma, UEFAA, UEFAB, UEFAPro
+     * @param role - The role of the coach. It could be:
+     *             GoalkeeperCoach, HeadCoach, AssistantCoach, YouthCoach
+     * When a coach is created, a personal page is created for him.
+     */
+    public Coach(CanBeOwner canBeOwner, ETraining training, ECoachRole role) {
+        super(canBeOwner.getUserName(), canBeOwner.getfName(), canBeOwner.getlName());
+        this.training = training;
+        this.role = role;
+        this.myPage = new CoachPageEditor(canBeOwner.getfName(), canBeOwner.getlName(),role,training);
         this.myAdditionalInfo = new ArrayList<>();
     }
 
@@ -50,11 +85,10 @@ public class Coach extends CanBeOwner {
 
     }
 
-
     /**
      * Coaches can upload content to their personal page.
      * The coach uploads verbal content and that content goes up
-     * to his personal page along with the current date.
+     * to his personal page.
      *
      * # use case 5.2
      *
@@ -72,7 +106,9 @@ public class Coach extends CanBeOwner {
      * @param feed Verbal content
      */
     public void removeFeedFromMyPage(String feed){
-        this.myPage.removeFeedFromMyPage(feed);
+        if(feed != null) {
+            this.myPage.removeFeedFromMyPage(feed);
+        }
     }
 
     public APageEditor getMyPage() {
@@ -125,6 +161,10 @@ public class Coach extends CanBeOwner {
         }
     }
 
+    /**
+     * This function changes the first name in both the coach and his personal page
+     * @param fName - first name
+     */
     @Override
     public void setfName(String fName) {
         if(fName != null) {
@@ -133,6 +173,10 @@ public class Coach extends CanBeOwner {
         }
     }
 
+    /**
+     * This function changes the last name in both the coach and his personal page
+     * @param lName - last name
+     */
     @Override
     public void setlName(String lName) {
         if(lName!= null) {
@@ -154,5 +198,4 @@ public class Coach extends CanBeOwner {
                 ", My training is " + this.training +
                 ", My role is " + this.role;
     }
-
 }

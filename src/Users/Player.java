@@ -3,17 +3,18 @@ import AssociationAssets.AdditionalInfo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import System.*;
 /**
  * A footballer or a football player is an athlete who plays football, as an amateur or as a professional.
  * This system is about professional football players.
+ *
+ * @ Written by Yuval Ben Eliezer
  */
 public class Player extends CanBeOwner {
     private Date bDate;
     private EPlayerRole role;
     private PlayerPageEditor myPage;
     private List<AdditionalInfo> myAdditionalInfo;
-
-
 
     /**
      * @param userName - Unique user name
@@ -31,6 +32,42 @@ public class Player extends CanBeOwner {
         this.bDate = bDate;
         this.role = role;
         this.myPage = new PlayerPageEditor(fName,lName,role,bDate);
+        this.myAdditionalInfo = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("Player created, user name: "+ userName);
+
+    }
+
+    /**
+     * @param fan - Getting a fan and a builder copying his fields
+     * @param bDate - Date of birth of the player
+     * @param role - The role of the player. It could be:
+     *             GoalKeeper/Defender/Forward/Midfielder.
+     *
+     * When a player is created, a personal page is created for him.
+     * Each player has one personal page.
+     */
+    public Player(Fan fan,Date bDate, EPlayerRole role ){
+        super(fan.getUserName(),fan.getfName(),fan.getlName());
+        this.bDate = bDate;
+        this.role = role;
+        this.myPage = new PlayerPageEditor(fan.getfName(),fan.getlName(),role,bDate);
+        this.myAdditionalInfo = new ArrayList<>();
+    }
+
+    /**
+     * @param canBeOwner - Getting a CanBeOwner and a builder copying his fields
+     * @param bDate - Date of birth of the player
+     * @param role - The role of the player. It could be:
+     *             GoalKeeper/Defender/Forward/Midfielder.
+     *
+     * When a player is created, a personal page is created for him.
+     * Each player has one personal page.
+     */
+    public Player(CanBeOwner canBeOwner,Date bDate, EPlayerRole role ){
+        super(canBeOwner.getUserName(),canBeOwner.getfName(),canBeOwner.getlName());
+        this.bDate = bDate;
+        this.role = role;
+        this.myPage = new PlayerPageEditor(canBeOwner.getfName(),canBeOwner.getlName(),role,bDate);
         this.myAdditionalInfo = new ArrayList<>();
     }
 
@@ -113,7 +150,10 @@ public class Player extends CanBeOwner {
 
     }
 
-
+    /**
+     * This function changes the first name in both the player and his personal page
+     * @param fName - first name
+     */
     @Override
     public void setfName(String fName) {
         if(fName != null) {
@@ -122,6 +162,10 @@ public class Player extends CanBeOwner {
         }
     }
 
+    /**
+     * This function changes the last name in both the player and his personal page
+     * @param lName - last name
+     */
     @Override
     public void setlName(String lName) {
         if(lName!= null) {

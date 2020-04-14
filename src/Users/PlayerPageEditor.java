@@ -4,6 +4,8 @@ import java.util.Date;
 
 /**
  *Each player has a personal page that they can upload and edit.
+ *
+ * @ Written by Yuval Ben Eliezer
  */
 public class PlayerPageEditor extends APageEditor {
     Date bDay;

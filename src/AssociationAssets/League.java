@@ -25,10 +25,10 @@ public class League {
 
 
     public void setAssigningPolicy(String year, GamesAssigningPolicy assigningPolicy){
-       if(seasonBinders.containsKey(year)){
-           SeasonLeagueBinder binder= seasonBinders.get(year);
-           binder.setAssigningPolicy(assigningPolicy);
-       }
+        if(seasonBinders.containsKey(year)){
+            SeasonLeagueBinder binder= seasonBinders.get(year);
+            binder.setAssigningPolicy(assigningPolicy);
+        }
     }
 
     public void setScoreTablePolicy(String year, ScoreTablePolicy scoreTablePolicy){

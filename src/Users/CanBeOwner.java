@@ -1,5 +1,4 @@
 package Users;
-
 public class CanBeOwner extends Fan {
 
     TeamOwner teamOwner;

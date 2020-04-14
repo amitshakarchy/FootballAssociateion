@@ -1,11 +1,12 @@
 package Users;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 
 /**
  * A personal page is a page with official content about the player / coach.
  * The player / coach may upload current content to his or her personal page.
+ *
+ * @ Written by Yuval Ben Eliezer
  */
 public abstract class APageEditor implements IPageEditor {
 
@@ -27,6 +28,7 @@ public abstract class APageEditor implements IPageEditor {
         this.myLastName = myLastName;
         this.role = role;
         this.myFeed = new ArrayList<>();
+        this.observers = new ArrayList<>();
     }
 
     public Enum getRole() {
@@ -39,7 +41,9 @@ public abstract class APageEditor implements IPageEditor {
      * @param role - his role in the team.
      */
     public void setRole(Enum role) {
-        this.role = role;
+        if(role != null) {
+            this.role = role;
+        }
     }
 
     /**
@@ -48,8 +52,10 @@ public abstract class APageEditor implements IPageEditor {
      * @param feed - The content the player/coach want to upload
      */
     public void addFeedToMyPage(String feed) {
-        this.myFeed.add(feed);
-        notifyObserver(feed);
+        if(feed != null) {
+            this.myFeed.add(feed);
+            notifyObserver(feed);
+        }
     }
 
     /**
@@ -60,7 +66,9 @@ public abstract class APageEditor implements IPageEditor {
      */
     public void removeFeedFromMyPage(String feed) {
         try {
-            this.myFeed.remove(feed);
+            if(feed != null) {
+                this.myFeed.remove(feed);
+            }
 
         } catch (Exception e) {
             System.out.println("There is no content like this in your feed");
@@ -73,7 +81,9 @@ public abstract class APageEditor implements IPageEditor {
 
 
     public void setMyFisrtName(String myFirstName) {
-        this.myFirstName = myFirstName;
+        if(myFirstName != null) {
+            this.myFirstName = myFirstName;
+        }
     }
 
     public String getMyLastName() {
@@ -82,7 +92,9 @@ public abstract class APageEditor implements IPageEditor {
 
 
     public void setMyLastName(String myLastName) {
-        this.myLastName = myLastName;
+        if(myLastName != null) {
+            this.myLastName = myLastName;
+        }
     }
 
 
@@ -91,7 +103,9 @@ public abstract class APageEditor implements IPageEditor {
     }
 
     public void setMyFeed(List<String> myFeed) {
-        this.myFeed = myFeed;
+        if(myFeed!= null) {
+            this.myFeed = myFeed;
+        }
     }
 
     /**
@@ -111,17 +125,44 @@ public abstract class APageEditor implements IPageEditor {
     }
 
 
+    /**
+     * This function allows you to register for updates to the player's/coach's personal page
+     * @param observer - The fan who wants to sign up for updates
+     */
     public void register(Fan observer){
-        this.observers.add(observer);
-    }
-    public void delete(Fan observer){
-        this.observers.remove(observer);
+        if(observer != null) {
+            this.observers.add(observer);
+        }
     }
 
+    /**
+     * With this function you can stop receiving updates from the player's/coach's personal page
+     * @param observer- The fan who wants to stop receiving updates
+     */
+    public void delete(Fan observer){
+        if(observer != null) {
+            this.observers.remove(observer);
+        }
+    }
+
+    public List<Fan> getObservers() {
+        return observers;
+    }
+
+    /**
+     * With this function, we send updates for anyone who wants to receive
+     *  updates from the personal page
+     * @param feed - New feed
+     */
     public void notifyObserver(String feed){
-        for (Fan fan:
-             this.observers) {
-            fan.update(this,feed);
+        if(feed != null) {
+            if (this.observers.size() > 0) {
+                for (Fan fan :
+                        this.observers) {
+                    fan.update(this, feed);
+                }
+            }
         }
     }
 }
+

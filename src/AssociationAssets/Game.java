@@ -5,10 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import Users.*;
 
@@ -35,6 +32,7 @@ public class Game {
     Team guest;
     Referee main, side1, side2;
     List<Event> events;
+    private List<Fan> observers;
     //endregion
 
 
@@ -74,6 +72,7 @@ public class Game {
         this.side2 = side2;
         this.score = new Score(); // initializing score, with no value (on game assigning before the game starts.)
         events = new LinkedList<>();
+        observers = new ArrayList<>();
     }
 
     //region Validation
@@ -119,11 +118,7 @@ public class Game {
                 return true;
         }
         return false;
-
-
-
-
-
+        
     }
 
     public Season getSeason() {
@@ -275,6 +270,35 @@ public class Game {
         event.setEventType(eventType);
         event.setDescription(description);
     }
+
+
     //endregion
 
+    public void register(Fan observer){
+        if(observer != null) {
+            this.observers.add(observer);
+        }
+    }
+
+    public void delete(Fan observer){
+        if(observer != null) {
+            this.observers.remove(observer);
+        }
+    }
+
+    public List<Fan> getObservers() {
+        return observers;
+    }
+
+
+    public void notifyObserver() {
+
+        if (this.observers.size() > 0) {
+            for (Fan fan :
+                    this.observers) {
+                fan.updateGame(this);
+            }
+
+        }
+    }
 }

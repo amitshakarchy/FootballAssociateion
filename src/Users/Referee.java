@@ -9,6 +9,8 @@ import java.util.List;
 /**
  * A football referee is a soccer game referee who enforces the rules of the game set
  * in the football game constitution.
+ *
+ * @ Written by Yuval Ben Eliezer
  */
 public class Referee extends Fan {
     private List<Game> myGames;
@@ -19,12 +21,14 @@ public class Referee extends Fan {
      * @param fName - First name of the referee.
      * @param lName - Last name of the referee.
      * @param training - Referee type of training. It could be:
-     *                 VAR,MAIN, //todo: more trainings.
+     *                 VAR,MAIN, ASSISTANT
      */
     public Referee(String userName, String fName, String lName, EReferee training) {
         super(userName, fName, lName);
         this.myGames = new ArrayList<>();
         this.training = training;
+        Logger.getInstance().addActionToLogger("Referee created, user name: "+ userName);
+
     }
 
 
@@ -55,6 +59,12 @@ public class Referee extends Fan {
      */
     public List<Game> viewAssignedGames(){
         return getMyGames();
+    }
+
+    public void addGame(Game game){
+        if(game!= null){
+            this.myGames.add(game);
+        }
     }
 
     /**
@@ -188,6 +198,9 @@ public class Referee extends Fan {
      *          return "-1" if the event does not exist
      */
     public int getIndexOfEvent(int gameID, EEventType eventType, String description){
+        if(eventType == null || description == null || gameID < 0 ){
+            return -1;
+        }
         Game gameToAdd = getGame(gameID);
         int res =-1;
         if(gameToAdd != null) {
@@ -200,5 +213,13 @@ public class Referee extends Fan {
             }
         }
         return res;
+    }
+
+
+    /**
+     * Yarin's request
+     */
+    public void LoginInvitation(String userName , String pass){
+        FootballSystem.getInstance().login(userName,pass);
     }
 }
