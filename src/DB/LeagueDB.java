@@ -10,10 +10,12 @@ public class LeagueDB {
     public LeagueDB() {
         this.allLeagues = new HashMap<>();
     }
-    public void addLeague(League newLeague,String leagueName){
-        allLeagues.put(leagueName,newLeague);
+
+    public void addLeague(League newLeague, String leagueName) {
+        allLeagues.put(leagueName, newLeague);
     }
-    public void removeLeague(String leagueName){
+
+    public void removeLeague(String leagueName) {
         this.allLeagues.remove(leagueName);
     }
 

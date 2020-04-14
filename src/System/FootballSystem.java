@@ -97,7 +97,7 @@ public class FootballSystem {
 
 
     public Fan creatingRepresentativeFootballAssociation(String userName, String firstName, String lastName, GamesAssigningPolicy gamesAssigningPolicy) {
-        Fan fan = new representativeFootballAssociation(userName, firstName, lastName, gamesAssigningPolicy);
+        Fan fan = new RepresentativeFootballAssociation(userName, firstName, lastName, gamesAssigningPolicy);
         this.fansHashMap.put(userName, fan);
         return fan;
     }

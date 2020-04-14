@@ -93,6 +93,9 @@ public class League {
     public void addGamesToLeague(String year,HashMap<String,Game> Games){
         seasonBinders.get(year).addGamesToLeague(Games);
     }
+
+    public void viewProfile() {
+    }
     //endregion
 
 }

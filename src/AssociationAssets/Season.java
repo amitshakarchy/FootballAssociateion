@@ -49,4 +49,7 @@ public class Season {
     public void addTeamToSeason(String teamName, HashMap<String, AdditionalInfo> team) {
         this.teamAdditionalInfo.put(teamName,team.get(this.year));
     }
+
+    public void viewProfile() {
+    }
 }

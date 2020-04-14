@@ -4,7 +4,7 @@ import Users.Coach;
 import Users.Player;
 import Users.TeamManager;
 import Users.TeamOwner;
-
+import Budget.TeamBudget;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -253,5 +253,8 @@ public class Team {
                 ", isActive=" + isActive +
                 ", teamOwner=" + teamOwner +
                 '}';
+    }
+
+    public void viewProfile() {
     }
 }

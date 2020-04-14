@@ -1,50 +1,68 @@
-//package AssociationAssets;
-//
-//import Users.*;
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import java.sql.Time;
-//import java.util.Date;
-//import java.util.HashMap;
-//
-//import static org.junit.Assert.*;
-//
-//public class TeamTest {
-//
-//    Team team1, team2;
-//    Player p;
-//    Coach c;
-//    Field field;
-//    TeamManager m;
-//    TeamOwner o;
-//    Season season;
-//    Referee r1,r2,r3;
-//    Game game;
-//    @Before
-//    public void setUp() throws Exception {
-//        c= new Coach("1","a","a", null, null);
-//        p= new Player("1", "a", "a", null, null);
-//        m= new TeamManager("1", "a", "a");
-//        o= new TeamOwner("1", "a", "a");
-//        field= new Field("Teddi", "Beer Sheva", 800);
-//        season=new Season("season");
-//        r1= new Referee("1","a","a");
-//        r2= new Referee("2","a","a");
-//        r3= new Referee("3","a","a");
-//        team1= new Team(1,"Barcelona", field, null, season, new HashMap<>(), new HashMap<>(),new HashMap<>(),new HashMap<>());
-//        team2= new Team(2, "Beitar",field, null, season, new HashMap<>(), new HashMap<>(),new HashMap<>(),new HashMap<>());
-//        game= new Game(new Date(10,10,2020),
-//                new Time(19,30,0),
-//                field,team1,team2,r1,r2,r3,season,
-//                new League("l"));
-//    }
-//
-//    @Test
-//    public void addPlayer() {
-//        team1.addPlayer(p);
-//        assertEquals(team1.getPlayers().size(),1);
-//    }
+package AssociationAssets;
+
+import Users.*;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.sql.Time;
+import java.util.Date;
+import java.util.HashMap;
+
+import static org.junit.Assert.*;
+
+public class TeamTest {
+
+    Team team1, team2;
+    Player p;
+    Coach c;
+    Field field;
+    TeamManager m;
+    TeamOwner o;
+    Season season;
+    Referee r1,r2,r3;
+    Game game;
+    @Before
+    public void setUp() throws Exception {
+        c= new Coach("1","a","a", null, null);
+        p= new Player("1", "a", "a", null, null);
+        m= new TeamManager("1", "a", "a");
+        o= new TeamOwner("1", "a", "a");
+        field= new Field("Teddy", "Jerusalem", 31000);
+        season=new Season("season");
+
+        r1= new Referee("1","a","a",EReferee.MAIN);
+        r2= new Referee("2","a","a",EReferee.VAR);
+        r3= new Referee("3","a","a",EReferee.VAR);
+        team1= new Team(1,"Barcelona", season, null,null,null);
+        team2= new Team(2, "Beitar",season, null,null,null);
+        team2.addField(field);
+        game= new Game(new Date(10,10,2020),
+                new Time(19,30,0),
+                field,team1,team2,r1,r2,r3,season,
+                new League("l"));
+
+    }
+
+    @Test
+    public void checkActivness() {
+        assertEquals(team1.getIsActive(),true);
+    }
+
+    @Test
+    public void fieldAdding() {
+
+        assertEquals(team1.getFields().size(),0);
+        assertEquals(team2.getFields().size(),1);
+        team2.removeField("Teddy");
+        assertEquals(team2.getFields().size(),0);
+
+    }
+    @Test
+    public void cheddkActivness() {
+        assertEquals(team1.getIsActive(),true);
+    }
+
+
 //    @Test
 //    public void findPlayer() {
 //        team1.addPlayer(p);
@@ -153,5 +171,5 @@
 //        team1.addAwayGame(game);
 //        assertNotNull(team1.findAwayGame(game.getGID()));
 //    }
-//
-//}
+
+}

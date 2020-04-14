@@ -1,13 +1,11 @@
 package Budget;
-
 import AssociationAssets.Season;
 import AssociationAssets.Team;
 import javafx.util.Pair;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
-public class TeamBudget {
+public class TeamBudget extends Observable {
     Team team;
     Season season;
     HashMap<String, Pair<Double,String>> incomes; // String- income name, pair: double-cost, String-description
@@ -25,6 +23,13 @@ public class TeamBudget {
         this.threshHold = threshHold;
         this.incomes = new HashMap<>();
         this.outcomes= new HashMap<>();
+    }
+
+    public void checkTeamBudgetExceedRule(){
+        if((1+threshHold)*totalIncomes() < totalOutcomes()){
+           setChanged();
+           notifyAll();
+        }
     }
 
     /**
@@ -57,6 +62,7 @@ public class TeamBudget {
      */
     public  void addOutcome (String outcomeName,Double outcomeValue, String description){
         outcomes.put(outcomeName, new Pair<>(outcomeValue,description));
+        checkTeamBudgetExceedRule();
     }
 
     /**
@@ -67,6 +73,7 @@ public class TeamBudget {
      */
     public  void addIncome (String incomeName,Double incomeValue, String description ){
         incomes.put(incomeName, new Pair<>(incomeValue,description));
+        checkTeamBudgetExceedRule();
     }
 
     //region Getters: getThreshHold, getTeam, getIncomes, getOutcomes
@@ -89,7 +96,9 @@ public class TeamBudget {
     //region Setter: setThreshHold
     public void setThreshHold(double threshHold) {
         this.threshHold = threshHold;
+        checkTeamBudgetExceedRule();
     }
+
     //endregion
 
 }
