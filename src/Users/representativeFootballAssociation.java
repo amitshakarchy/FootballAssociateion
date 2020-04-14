@@ -1,8 +1,10 @@
 package Users;
 
+import PoliciesAndAlgorithms.GamesAssigningPolicy;
+
 public class representativeFootballAssociation extends Fan {
 
-    public representativeFootballAssociation(String UID, String fName, String lName) {
+    public representativeFootballAssociation(String UID, String fName, String lName, GamesAssigningPolicy gamesAssigningPolicy) {
         super(UID, fName, lName);
     }
 

@@ -141,7 +141,6 @@ public class Fan extends Guest implements IFan {
 
     public void update(APageEditor pageEditor,String feed){}
 
-
     /**
      *A fan can sign up to track games
      * With this function, a fan can sign up to games
@@ -166,9 +165,7 @@ public class Fan extends Guest implements IFan {
         game.delete(this);
     }
 
-
     public void updateGame(Game game) { }
-
 
     /**
      * This method should receive a complain text (from the service layer)

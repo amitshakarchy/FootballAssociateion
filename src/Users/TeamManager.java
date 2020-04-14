@@ -26,6 +26,8 @@ public class TeamManager extends CanBeOwner {
     }
 
 
+    public void addAdditionalInfo(AdditionalInfo additionalInfoToSearch) {
+    }
 }
 
 

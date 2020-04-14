@@ -65,5 +65,6 @@ public class SecuritySystem {
     }
 
 
-
+    public void removeUser(String userName) {
+    }
 }
