@@ -2,6 +2,7 @@ package AssociationAssets;
 
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy;
+import com.sun.xml.internal.bind.v2.TODO;
 
 import java.util.HashMap;
 
@@ -57,8 +58,7 @@ public class SeasonLeagueBinder {
     public void addGamesToLeague(HashMap<String, Game> games) {
         this.games.putAll(games);
     }
-
-
+    //TODO remove game & remove team functions (not sure this is necessary)
 
 
     //endregion

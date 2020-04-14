@@ -110,7 +110,7 @@ public class representativeFootballAssociation extends Fan {
      */
     public void assignReferees(Referee mainRef, Referee sideRef1, Referee sideRef2, Game game) throws Exception {
         game.setMain(mainRef);
-        game.setSide1(sideRef1);
+        game.setSide1(sideRef1); 
         game.setSide2(sideRef2);
     }
 
