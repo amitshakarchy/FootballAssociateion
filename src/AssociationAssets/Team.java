@@ -5,53 +5,70 @@ import Users.Player;
 import Users.TeamManager;
 import Users.TeamOwner;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Class Team represents a team. It holds a team's home and away games, it's players and
  * all other team assets.
- * Aouthors: Amit Shakarchy, Alon Gutman
  */
 public class Team {
 
     //region Fields
     int TID;
-    Field homeField;
-    AdditionalInfo info;
-    HashMap<String, Game> homeGames;
-    HashMap<String, Game> awayGames;
+    String name;
+    Season currentSeason;
+    Field mainField;
+    HashMap<String/*field name*/, Field> fields;
+    HashMap<String/*season Year*/, AdditionalInfo> additionalInfoWithSeasons;
+    HashMap<String/*GID*/, Game> homeGames;
+    HashMap<String/*GID*/, Game> awayGames;
     TeamBudget budget;
+    ETeamStatus isActive;
+    TeamOwner teamOwner;
     //endregion
 
-    /**
-     * The constructor receives all needed information in order to generate an AdditionalInfo
-     * object, and binds it with the team.
-     * @param TID - team ID
-     * @param homeField - the home field
-     * @param budget - budget of the team
-     * @param season - the season
-     * @param owners - list of team's owners
-     * @param coaches - list of team's coaches
-     * @param managers - list of team's managers
-     * @param players - list of team's players
-     */
-    public Team(int TID, Field homeField, TeamBudget budget, Season season, HashMap<String,TeamOwner>  owners, HashMap<String, Coach> coaches, HashMap<String, TeamManager> managers, HashMap<String, Player> players) {
+
+    public Team(int TID, String name, Season currentSeason, Field mainField, TeamBudget budget,TeamOwner teamOwner) {
         this.TID = TID;
-        this.homeField = homeField;
+        this.name = name;
+        this.currentSeason = currentSeason;
+        this.mainField = mainField;
         this.budget = budget;
         this.homeGames = new HashMap<>();
         this.awayGames = new HashMap<>();
-        this.info = new AdditionalInfo( season, owners, coaches, managers, players);
-        info.setTeam(this);
+        // TODO: 4/13/2020  need to check that this team owner is not owner of another team already
+        this.isActive = ETeamStatus.ACTIVE;
+        this.fields = new HashMap<>();
+        fields.put(mainField.getName(), mainField);
+        this.additionalInfoWithSeasons = new HashMap<>();
+        this.teamOwner  = teamOwner;
     }
 
-    //region Getters
+    //region Getters & Setters
+
     public int getTID() {
         return TID;
     }
 
-    public Field getHomeField() {
-        return homeField;
+    public String getName() {
+        return name;
+    }
+
+    public Season getCurrentSeason() {
+        return currentSeason;
+    }
+
+    public Field getMainField() {
+        return mainField;
+    }
+
+    public HashMap<String, Field> getFields() {
+        return fields;
+    }
+
+    public HashMap<String, AdditionalInfo> getAdditionalInfoWithSeasons() {
+        return additionalInfoWithSeasons;
     }
 
     public HashMap<String, Game> getHomeGames() {
@@ -66,73 +83,28 @@ public class Team {
         return budget;
     }
 
-    public Season getSeason() {
-        return info.getSeason();
+    public ETeamStatus getIsActive() {
+        return isActive;
     }
 
-    public HashMap<String,TeamOwner>  getOwners() {
-
-        return info.getOwners();
+    public void setTID(int TID) {
+        this.TID = TID;
     }
 
-    public HashMap<String, Coach> getCoaches() {
-
-        return info.getCoaches();
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public HashMap<String, TeamManager> getManagers() {
-
-        return info.getManagers();
+    public void setCurrentSeason(Season currentSeason) {
+        this.currentSeason = currentSeason;
     }
 
-    public HashMap<String, Player> getPlayers() {
-
-        return info.getPlayers();
-    }
-    //endregion
-
-
-    //region Setters
-    public void setHomeField(Field homeField) {
-        this.homeField = homeField;
+    public void setFields(HashMap<String, Field> fields) {
+        this.fields = fields;
     }
 
-    public void setBudget(TeamBudget budget) {
-        this.budget = budget;
-    }
-
-    public void setTeam(Team team) {
-
-        info.setTeam(team);
-    }
-
-    public void setSeason(Season season) {
-
-        info.setSeason(season);
-    }
-
-    public void setOwners(HashMap<String,TeamOwner>  owners) {
-
-        info.setOwners(owners);
-    }
-
-    public void setCoaches(HashMap<String, Coach> coaches) {
-
-        info.setCoaches(coaches);
-    }
-
-    public void setManagers(HashMap<String, TeamManager> managers) {
-
-        info.setManagers(managers);
-    }
-
-    public void setPlayers(HashMap<String, Player> players) {
-
-        info.setPlayers(players);
-    }
-
-    public void setInfo(AdditionalInfo info) {
-        this.info = info;
+    public void setAdditionalInfoWithSeasons(HashMap<String, AdditionalInfo> additionalInfoWithSeasons) {
+        this.additionalInfoWithSeasons = additionalInfoWithSeasons;
     }
 
     public void setHomeGames(HashMap<String, Game> homeGames) {
@@ -143,172 +115,143 @@ public class Team {
         this.awayGames = awayGames;
     }
 
-
-    //endregion
-
-    //region Add/Remove from AdditionalInfo
-
-    /**
-     * Add a player to the players list
-     * @param player - a new player
-     */
-    public void addPlayer(Player player) {
-        info.addPlayer(player);
+    public void setBudget(TeamBudget budget) {
+        this.budget = budget;
     }
 
-    /**
-     * Add a coach to the coachs list
-     * @param coach - a new coach
-     */
-    public void addCoach(Coach coach) {
-        info.addCoach(coach);
+    public void setMainField(Field mainField) {
+        this.mainField = mainField;
     }
 
-    /**
-     * Add a manager to the managers list
-     * @param manager - a new manager
-     */
-    public void addManager(TeamManager manager) {
-        info.addManager(manager);
+    public void setIsActive(ETeamStatus isActive) {
+        this.isActive = isActive;
     }
 
-    /**
-     * Add an owner to the owners list
-     * @param owner - a new owner
-     */
-    public void addTeamOwner(TeamOwner owner) {
-        info.addTeamOwner(owner);
-    }
-    /**
-     * Remove a player from the players list
-     * @param player - a player to remove
-     */
-    public void removePlayer(Player player) {
-        info.removePlayer(player);
-    }
-    /**
-     * Remove a coach from the coaches list
-     * @param coach - a coach to remove
-     */
-    public void removeCoach(Coach coach) {
-        info.removeCoach(coach);
-
-    }
-
-    /**
-     * Remove a manager from the managers list
-     * @param manager - a manager to remove
-     */
-    public void removeManager(TeamManager manager) {
-        info.removeManager(manager);
-    }
-    /**
-     * Remove an owner from the owners list
-     * @param owner - an owner to remove
-     */
-    public void removeTeamOwner(TeamOwner owner) {
-        info.removeTeamOwner(owner);
+    public TeamOwner getTeamOwner() {
+        return teamOwner;
     }
 
     //endregion
-
-    //region Add/Remove games
-
-    /**
-     *
-     * Add a home game to the home games list
-     * @param homeGame - a new home game
-     */
-    public void addHomeGame(Game homeGame) {
-        if (!homeGames.containsKey(homeGame.getGID())) {
-            homeGames.put(homeGame.getGID(), homeGame);
-        }
-    }
-    /**
-     *
-     * Add an away game to the away games list
-     * @param awayGame - a new away game
-     */
-    public void addAwayGame(Game awayGame) {
-        if (!awayGames.containsKey(awayGame.getGID())) {
-            awayGames.put(awayGame.getGID(), awayGame);
-        }
-    }
-
-    /**
-     *
-     * Remove a home game from the home games list
-     * @param homeGame - a home game to remove
-     */
-    public void removeHomeGame(Game homeGame) {
-        homeGames.remove(homeGame.getGID());
-    }
-    /**
-     *
-     * Remove an away game from the away games list
-     * @param awayGame - an away game to remove
-     */
-    public void removeAwayGame(Game awayGame) {
-        awayGames.remove(awayGame.getGID());
-    }
-    //endregion
-
-    //region Find methods
     /**
      * Given a user ID, finds the player in the team.
      * if the player is not in the team, returns NULL
-     * @param PID - player ID
-     * @return - player
-     */
-    public Player findPlayer(String PID){
+     *
+     * @param PID
+     * @return
+     **/
+    public Player findPlayer(String PID) {
+        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
+        if(info == null){
+            return null;
+        }
         return info.findPlayer(PID);
     }
 
     /**
      * Given a user ID, finds the coach in the team.
      * if the coach is not in the team, returns NULL
-     * @param CID - coach ID
-     * @return - coach
-     */
-    public Coach findCoach(String CID){
+     *
+     * @param CID
+     * @return
+     **/
+    public Coach findCoach(String CID) {
+        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
+        if(info == null){
+            return null;
+        }
         return info.findCoach(CID);
     }
+
     /**
      * Given a user ID, finds the manager in the team.
      * if the manager is not in the team, returns NULL
-     * @param MID - manager ID
-     * @return - manager
+     *
+     * @param MID
+     * @return
      */
-    public TeamManager findManager(String MID){
+    public TeamManager findManager(String MID) {
+        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
+        if(info == null){
+            return null;
+        }
         return info.findManager(MID);
     }
+
     /**
      * Given a user ID, finds the owner in the team.
      * if the owner is not in the team, returns NULL
-     * @param OID - owner ID
-     * @return - owner
-     */
-    public TeamOwner findTeamOwner(String OID){
+     *
+     * @param OID
+     * @return
+     **/
+    public TeamOwner findTeamOwner(String OID) {
+        AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
+        if(info == null){
+            return null;
+        }
         return info.findTeamOwner(OID);
     }
+
     /**
      * Given a game ID, finds the relevant home-game
      * if the game is not in the team, returns NULL
-     * @param gid - game ID
-     * @return - game
-     */
-    public Game findHomeGame(String gid){
+     *
+     * @param gid
+     * @return
+     **/
+    public Game findHomeGame(int gid) {
         return homeGames.get(gid);
     }
 
     /**
      * Given a game ID, finds the relevant away-game
      * if the game is not in the team, returns NULL
-     * @param gid - game ID
-     * @return - game
+     *
+     * @param gid
+     * @return
      */
-    public Game findAwayGame(String gid){
+    public Game findAwayGame(int gid) {
         return awayGames.get(gid);
     }
     //endregion
+
+    public void addSeasonToTeam(Season season) {
+        if (!additionalInfoWithSeasons.containsKey(season.getYear())) {
+            AdditionalInfo additionalInfo = new AdditionalInfo(this, currentSeason);
+            additionalInfoWithSeasons.put(season.getYear(), additionalInfo);
+            season.addTeamToSeason(name, additionalInfoWithSeasons);
+            this.teamOwner.addAdditionalInfo(additionalInfo);
+        }
+    }
+
+    public void addField(Field field){
+        if(field == null){
+            return;
+        }
+        if(!this.fields.containsKey(field.getName())){
+            this.fields.put(field.getName(),field);
+        }
+    }
+
+    public void removeField(String fieldName){
+        this.fields.remove(fieldName);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "TID=" + TID +
+                ", name='" + name + '\'' +
+                ", currentSeason=" + currentSeason +
+                ", mainField=" + mainField +
+                ", fields=" + fields +
+                ", additionalInfoWithSeasons=" + additionalInfoWithSeasons +
+                ", homeGames=" + homeGames +
+                ", awayGames=" + awayGames +
+                ", budget=" + budget +
+                ", isActive=" + isActive +
+                ", teamOwner=" + teamOwner +
+                '}';
+    }
 }

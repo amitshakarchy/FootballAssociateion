@@ -3,7 +3,6 @@ package AssociationAssets;
 /**
  * Class Field represents a football field in which games take place.
  * It is defined by a name, a city and it's capacity.
- * Aouthors: Amit Shakarchy, Alon Gutman
  */
 public class Field {
 

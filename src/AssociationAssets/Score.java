@@ -2,7 +2,6 @@ package AssociationAssets;
 
 /**
  * Class Score represents a game's score, including the total points for each group.
- * Aouthors: Amit Shakarchy, Alon Gutman
  */
 public class Score {
 

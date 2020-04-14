@@ -33,10 +33,10 @@ class SystemManagerTest {
 
     @Test
     void getLogInformation() {
-     //   Logger.getInstance();
+        Logger.getInstance();
         Coach coach = new Coach("newCoach", "yossi","cohen",ETraining.CDiploma, ECoachRole.AssistantCoach);
         SystemManager systemManager = new SystemManager("1","1","1");
-        assertEquals(systemManager.getLogInformation().size() , 1);
+        assertEquals(systemManager.getLogInformation().size() , 2);
     }
 
 }

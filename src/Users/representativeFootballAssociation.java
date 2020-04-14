@@ -1,12 +1,10 @@
 package Users;
 
+import PoliciesAndAlgorithms.GamesAssigningPolicy;
+
 public class representativeFootballAssociation extends Fan {
 
-    public representativeFootballAssociation(String UID, String fName, String lName) {
-        super(UID, fName, lName);
-    }
-
-    public representativeFootballAssociation(String UID, String fName, String lName) {
+    public representativeFootballAssociation(String UID, String fName, String lName, GamesAssigningPolicy gamesAssigningPolicy) {
         super(UID, fName, lName);
     }
 
@@ -50,21 +48,6 @@ public class representativeFootballAssociation extends Fan {
     public void setGroupBudgetActions(){// useCase #9.9
 
         //TODO: Leave it for now. we will be smarter soon :)
-
-    }
-
-    @Override
-    public String viewProfile() {
-        return null;
-    }
-
-    @Override
-    public EStatus getStatus() {
-        return null;
-    }
-
-    @Override
-    public void setStatus(EStatus status) {
 
     }
     //endregion

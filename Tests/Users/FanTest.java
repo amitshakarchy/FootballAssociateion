@@ -38,8 +38,8 @@ class FanTest {
         league = new League("league");
         season = new Season("1993");
         field = new Field("Teddi", "Beer Sheva", 800);
-        host = new Team(1, "Barcelona", null, null, null);
-        guest = new Team(2, "Beitar", null, null, null);
+        host = new Team(1, "Barcelona", season, field, null,null);
+        guest = new Team(2, "Beitar", season, field, null,null);
         ;
         e1 = new Event(date, time, EEventType.INJURY, "bla");
         e2 = new Event(date, time, EEventType.OFFSIDE, "bli");

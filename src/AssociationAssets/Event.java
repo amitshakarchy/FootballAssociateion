@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Class Event represent a single event in a game's log. It is composed of the accurate time of the event, it's type (an enum),
  * and a description the user may add for additional information.
- * Authors: Amit Shakarchy, Alon Gutman.
+ * @Authors: Amit Shakarchy, Alon Gutman.
  */
 public class Event {
 
@@ -18,13 +18,7 @@ public class Event {
     String description;
     //endregion
 
-    /**
-     * Constructor.
-     * @param date - date of the event
-     * @param time - time of the event
-     * @param eventType - enum
-     * @param description - freestyle description
-     */
+
     public Event(Date date, Time time, EEventType eventType, String description) {
         this.date = date;
         this.time = time;

@@ -1,46 +1,53 @@
 package AssociationAssets;
 
 import java.sql.Time;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.*;
+import java.util.*;
 
 import Users.*;
 
 /**
  * Class Game represents a game in a specific league and season. It is defined by its date, ID, playing teams and referees.
  * The class offers modifying the events on the game.
- * Aouthors: Amit Shakarchy, Alon Gutman
  */
 public class Game {
 
     //region Fields
+    public static final long HOUR = 3600*1000; // in milli-seconds.
+    static int runningID = 0;
+    boolean isUpdatable;
     Season season;
     League league;
-    String GID;
+    int GID;
     Date date;
     Time time;
+    //LocalDateTime dateTime = LocalDateTime.of(date, time.toLocalTime());
+    Instant endOfUpdateTime;
     Score score;
     Field field;
     Team host;
     Team guest;
     Referee main, side1, side2;
     List<Event> events;
+    private List<Fan> observers;
     //endregion
+
 
     /**
      * The constructor validates that a game does not occur between a team to itself,
      *  and there are 3 different referees
-     * @param date - date of the game
-     * @param field - field in which the game takes place
-     * @param host - hosting team
-     * @param guest - guest team
-     * @param main - main referee
-     * @param side1 - side referee
-     * @param side2 - side referee
-     * @param season - the season
-     * @param league - the league
+     * @param date
+     * @param field
+     * @param host
+     * @param guest
+     * @param main
+     * @param side1
+     * @param side2
+     * @param season
+     * @param league
      */
     public Game(Date date,Time time, Field field, Team host, Team guest, Referee main, Referee side1, Referee side2, Season season, League league) throws Exception {
 
@@ -49,8 +56,12 @@ public class Game {
         validateTeams(host,guest);
 
         // In case all details are valid, create a new game:
+
+        this.GID = ++runningID;
+        isUpdatable = true;
         this.date = date;
         this.time = time;
+        //endOfUpdateTime = time.toInstant().plus(Duration.ofHours(7));
         this.field = field;
         this.host = host;
         this.guest = guest;
@@ -61,14 +72,15 @@ public class Game {
         this.side2 = side2;
         this.score = new Score(); // initializing score, with no value (on game assigning before the game starts.)
         events = new LinkedList<>();
+        observers = new ArrayList<>();
     }
 
     //region Validation
     /**
      * Throws an exception in case the to teams are the same
-     * @param host- hosting team
-     * @param guest - guest team
-     * @throws Exception - duplicate values were entered.
+     * @param host
+     * @param guest
+     * @throws Exception
      */
     private void validateTeams(Team host, Team guest) throws Exception {
         if(host.getTID()==guest.getTID())
@@ -77,23 +89,37 @@ public class Game {
 
     /**
      * Throws an exception in case there is a duplicate referee
-     * @param main - main referee
-     * @param side1 - side referee
-     * @param side2 - side referee
-     * @throws Exception- duplicate values were entered.
+     * @param main
+     * @param side1
+     * @param side2
+     * @throws Exception
      */
     private void validateReferees(Referee main, Referee side1, Referee side2) throws Exception {
 
-            if(main.getUserName().equals(side1.getUserName())||
+        if(main.getUserName().equals(side1.getUserName())||
                 main.getUserName().equals(side2.getUserName())||
                 side1.getUserName().equals(side2.getUserName()))
-                throw new DuplicateValueException();
+            throw new DuplicateValueException();
     }
     //endregion
 
 
     //region Getters & Setters
 
+
+    public boolean isUpdatable(int hoursSinceGameStarted) {
+        Date currentDate = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        if( sdf.format(date).equals(sdf.format(currentDate))) {
+            Calendar cal = Calendar.getInstance();
+            SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
+            Time endUpdateTime = new Time(time.getHours() + hoursSinceGameStarted,time.getMinutes(),time.getSeconds());
+            if(LocalTime.now().isBefore( LocalTime.parse( endUpdateTime.toString())) &&LocalTime.now().isAfter( LocalTime.parse( time.toString())))
+                return true;
+        }
+        return false;
+        
+    }
 
     public Season getSeason() {
         return season;
@@ -116,9 +142,9 @@ public class Game {
     }
 
     public void setHost(Team host) throws Exception {
-       // Checking teams are valid
+        // Checking teams are valid
         validateTeams(guest, host);
-       // If everything is ok, set the new team
+        // If everything is ok, set the new team
         this.host = host;
     }
 
@@ -175,7 +201,7 @@ public class Game {
         this.time = time;
     }
 
-    public String getGID() {
+    public int getGID() {
         return GID;
     }
 
@@ -226,7 +252,7 @@ public class Game {
 
     /**
      *The method receives an event and removes it.
-     * @param eventIndex - the index of the event
+     * @param eventIndex
      */
     public void removeEvent(int eventIndex) {
         events.remove(eventIndex);
@@ -235,15 +261,44 @@ public class Game {
     /**
      * The method offers modifying an event. you must enter its index in order to find it.
      * Time and date cannot be modified.
-     * @param eventIndex- the index of the event
-     * @param eventType - enum
-     * @param description - freestyle description
+     * @param eventIndex
+     * @param eventType
+     * @param description
      */
     public void editEvent(int eventIndex, EEventType eventType, String description) {
         Event event = events.get(eventIndex);// We need to verify that the modification affects the node in the list.
         event.setEventType(eventType);
         event.setDescription(description);
     }
+
+
     //endregion
 
+    public void register(Fan observer){
+        if(observer != null) {
+            this.observers.add(observer);
+        }
+    }
+
+    public void delete(Fan observer){
+        if(observer != null) {
+            this.observers.remove(observer);
+        }
+    }
+
+    public List<Fan> getObservers() {
+        return observers;
+    }
+
+
+    public void notifyObserver() {
+
+        if (this.observers.size() > 0) {
+            for (Fan fan :
+                    this.observers) {
+                fan.updateGame(this);
+            }
+
+        }
+    }
 }

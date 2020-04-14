@@ -2,12 +2,12 @@ package AssociationAssets;
 
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy;
+import com.sun.xml.internal.bind.v2.TODO;
 
 import java.util.HashMap;
 
 /**
  * this class goal is to connect between pairs of league and season.
- * Aouthors: Amit Shakarchy, Alon Gutman
  */
 public class SeasonLeagueBinder {
 
@@ -34,12 +34,10 @@ public class SeasonLeagueBinder {
         this.scoreTablePolicy = scoreTablePolicy;
     }
     public ScoreTablePolicy getScoreTablePolicy() {
-
         return scoreTablePolicy;
     }
     public HashMap<String, Team> getTeams() { return teams; }
     public HashMap<String, Game> getGames() { return games; }
-    public GamesAssigningPolicy getAssigningPolicy() { return assigningPolicy;}
 
     //endregion
 
@@ -48,20 +46,19 @@ public class SeasonLeagueBinder {
 
     /**
      * adding teams to this specific combination of season and league
-     * @param teams - season's teams
+     * @param teams
      */
     public void addTeamsToLeague(HashMap<String, Team> teams) {
         this.teams.putAll(teams);
     }
     /**
      * adding games to this specific combination of season and league
-     * @param games - season's games
+     * @param games
      */
     public void addGamesToLeague(HashMap<String, Game> games) {
         this.games.putAll(games);
     }
-
-
+    //TODO remove game & remove team functions (not sure this is necessary)
 
 
     //endregion
