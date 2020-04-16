@@ -17,8 +17,7 @@ import System.*;
 public class RepresentativeFootballAssociation extends Fan implements Observer  {
     private GamesAssigningPolicy gamePolicy;
     private AssociationBudget associationBudget;
-    private TeamBudget teamBudget;
-    private HashMap<String, Boolean> NotificationTeamsExceedBudget; //String-teamName, Boolean- team exceed budget or not
+    private HashMap<String/*teamName*/, Boolean> NotificationTeamsExceedBudget;
     /**
      * Constructor
      * @param userName - Unique football association representative username
@@ -131,7 +130,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     /**
      * useCase #9.6 - define assign game policy
      */
-    public void SetGamesAssigningPolicy(GamesAssigningPolicy newGamePolicy) {
+    public void SetGamesAssigningPolicy(String newGamePolicy) {
         if(newGamePolicy !=null) {
             gamePolicy.setPolicy(newGamePolicy);
         }
@@ -146,27 +145,24 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
 
     /**
      * useCase #9.8
-     * set rule for budget control by define threshHold
+     * set rule for budget control by define threshHold for budget control rule
      */
-    public void setTeamBudgetControlRules(Team team, Season season,double threshHold) {
+    public void setTeamBudgetControlRules(Team team, Season season,double threshHold, TeamBudget teamBudget) {
         if(team == null || season == null || threshHold < 0){
             return;
         }
-        TeamBudget teamBudget= new TeamBudget(team,season,threshHold);
-        setTeamBudget(teamBudget);
-        teamBudget.setThreshHold(threshHold);
+        teamBudget.setThreshHold(threshHold,this);
     }
 
     /**
-     * This update function called when a team exceeds its budget
+     * This function called when the team exceeds its budget
      * @param o - TeamBudget Observable
-     * @param arg
+     * @param teamName
      */
     @Override
-    public void update(Observable o, Object arg) {
-        if(o == teamBudget){
-            NotificationTeamsExceedBudget.put(this.teamBudget.getTeam().getName(),true);
-        }
+    public void update(Observable o, Object teamName) {
+            NotificationTeamsExceedBudget.put((String)teamName , true);
+
     }
 
     /**
@@ -205,10 +201,6 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
 
     public HashMap<String, Boolean> getTeamsExceedBudget() {
         return NotificationTeamsExceedBudget;
-    }
-
-    public void setTeamBudget(TeamBudget teamBudget){
-        this.teamBudget= teamBudget;
     }
 
 }

@@ -2,7 +2,6 @@ package Users;
 
 import AssociationAssets.*;
 import Budget.AssociationBudget;
-import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy1;
 import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
 import Budget.TeamBudget;
@@ -49,9 +48,8 @@ public class RepresentativeFootballAssociationTest {
         r1= new Referee("1","a","a",EReferee.MAIN);
         r2= new Referee("2","a","a",EReferee.ASSISTANT);
         r3= new Referee("3","a","a",EReferee.ASSISTANT);
-        // TODO: 4/14/2020 fix test
-       // team1= new Team(1,"Barcelona" ,field, null, season, owners, coaches,managers,players);
-       // team2= new Team(2,"Real Madrid" ,field, null, season, owners, coaches,managers,players);
+        team1 = new Team(1,"Barcelona",season,field,null,null);
+        team2= new Team(2,"Real Madrid",season ,field, null, null);
         game1= new Game(new Date(10,10,2020),
                 new Time(19,30,0),
                 field,team1,team2,r1,r2,r3,season,
@@ -66,8 +64,9 @@ public class RepresentativeFootballAssociationTest {
         teams = new HashMap<>();
         teams.put(team1.getName(),team1);
         teams.put(team2.getName(),team2);
-        teamBudget =  new TeamBudget(team1,season,10.5);
         representative = new RepresentativeFootballAssociation("representative","Dan","Levi",gamePolicy);
+        teamBudget =  new TeamBudget(team1,season);
+
     }
 
     @Test
@@ -86,12 +85,14 @@ public class RepresentativeFootballAssociationTest {
     public void nominateReferee() {
         representative.nominateReferee("Dani","Mizrahi",EReferee.MAIN);
         assertTrue(FootballSystem.getInstance().existFanByUserName("DaniMizrahi1"));
+        representative.nominateReferee("Dani","Mizrahi",EReferee.MAIN);
+        assertTrue(FootballSystem.getInstance().existFanByUserName("DaniMizrahi2"));
     }
 
     @Test
     public void signInReferee() {
-        String userName = representative.signInReferee("Alon","Mizrahi","1234567");
-        assertEquals(userName,"AlonMizrahi1");
+        String userName = representative.signInReferee("Alon","Dan","1234567");
+        assertEquals(userName,"AlonDan1");
     }
 
     @Test
@@ -103,37 +104,31 @@ public class RepresentativeFootballAssociationTest {
 
     @Test
     public void assignReferees() throws Exception {
-        Referee ref1= new Referee("ref1","ref1","a",EReferee.MAIN);
-        Referee  ref2= new Referee("ref2","ref2","a",EReferee.ASSISTANT);
-        Referee ref3= new Referee("ref3","ref3","a",EReferee.ASSISTANT);
-        representative.assignReferees(ref1,ref2,ref3,game1);
-        assertEquals(game1.getMain().getfName(),"ref1");
-        assertEquals(game1.getSide1().getfName(),"ref2");
-        assertEquals(game1.getSide2().getfName(),"ref3");
+       Referee ref1= new Referee("ref1","ref1","a",EReferee.MAIN);
+       Referee  ref2= new Referee("ref2","ref2","a",EReferee.ASSISTANT);
+       Referee ref3= new Referee("ref3","ref3","a",EReferee.ASSISTANT);
+       representative.assignReferees(ref1,ref2,ref3,game1);
+       assertEquals(game1.getMain().getfName(),"ref1");
+       assertEquals(game1.getSide1().getfName(),"ref2");
+       assertEquals(game1.getSide2().getfName(),"ref3");
     }
-    /////////////////TODO
+
     @Test
     public void setGamesAssigningPolicy() {
-        representative.SetGamesAssigningPolicy(gamePolicy);
-
+        representative.SetGamesAssigningPolicy("SimplePolicy");
+        assertEquals(gamePolicy.getPolicy(),"SimplePolicy");
     }
-    /////////////////TODO
+
+    //next iteration
     @Test
     public void activateGamesAssigning() {
     }
 
-    /////////////////TODO
     @Test
     public void setTeamBudgetControlRules() {
-        representative.setTeamBudgetControlRules(team1,season,20.2);
-        ///////??????????????????
+        representative.setTeamBudgetControlRules(team1,season,20.2, teamBudget);
+        assertEquals(teamBudget.getThreshHold(),20.2,0);
     }
-
-    ////////////////TODO!!
-    @Test
-    public void alertTeamExceedBudget() {
-    }
-
 
     @Test
     public void setAssociationBudgetTutuIntakes() {
@@ -156,9 +151,10 @@ public class RepresentativeFootballAssociationTest {
         assertTrue(associationBudget.userSalaryIsExist(user));
     }
 
-    /////////////////TODO
     @Test
     public void getTeamsExceedBudget(){
+        representative.getTeamsExceedBudget().put("TeamExceedBudget",true);
+        assertNotNull(representative.getTeamsExceedBudget());
 
     }
 }

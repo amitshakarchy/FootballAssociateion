@@ -21,6 +21,9 @@ public class FootballSystem {
     FieldDB fieldDB = new FieldDB();
     SeasonDB seasonDB = new SeasonDB();
     LeagueDB leagueDB = new LeagueDB();
+    Map<String,Referee> refereeMap = new HashMap<>();
+    Map<String,Player> playerMap  = new HashMap<>();
+    Map<String,Coach> coachMap = new HashMap<>();
 
 
     /**
@@ -67,6 +70,18 @@ public class FootballSystem {
         return leagueDB;
     }
 
+    public Map<String, Referee> getRefereeMap() {
+        return refereeMap;
+    }
+
+    public Map<String, Player> getPlayerMap() {
+        return playerMap;
+    }
+
+    public Map<String, Coach> getCoachMap() {
+        return coachMap;
+    }
+
     /**
      * Provide a global point of access to the instance
      */
@@ -97,12 +112,24 @@ public class FootballSystem {
 
 
     public Fan creatingRepresentativeFootballAssociation(String userName, String firstName, String lastName, GamesAssigningPolicy gamesAssigningPolicy) {
+        if(this.getFansHashMap().containsKey(userName)){
+            if(this.getFansHashMap().get(userName) instanceof RepresentativeFootballAssociation){
+                System.out.println("The user name: "+userName+" is already a RepresentativeFootballAssociation");
+                return null;
+            }
+        }
         Fan fan = new RepresentativeFootballAssociation(userName, firstName, lastName, gamesAssigningPolicy);
         this.fansHashMap.put(userName, fan);
         return fan;
     }
 
     public Fan creatingReferee(String userName, String firstName, String lastName, EReferee training) {
+        if(this.getFansHashMap().containsKey(userName)){
+            if(this.getFansHashMap().get(userName) instanceof Referee){
+                System.out.println("The user name: "+userName+" is already a Referee");
+                return null;
+            }
+        }
         Fan fan = new Referee(userName, firstName, lastName, training);
         this.fansHashMap.put(userName, fan);
         return fan;
@@ -110,18 +137,36 @@ public class FootballSystem {
 
     public Fan creatingCoach(String userName, String firstName, String lastName, ETraining training,
                              ECoachRole eCoachRole) {
+        if(this.getFansHashMap().containsKey(userName)){
+            if(this.getFansHashMap().get(userName) instanceof Coach){
+                System.out.println("The user name: "+userName+" is already a Coach");
+                return null;
+            }
+        }
         Fan fan = new Coach(userName, firstName, lastName, training, eCoachRole);
         this.fansHashMap.put(userName, fan);
         return fan;
     }
 
     public Fan creatingTeamOwner(String userName, String firstName, String lastName) {
+        if(this.getFansHashMap().containsKey(userName)){
+            if(this.getFansHashMap().get(userName) instanceof TeamOwner){
+                System.out.println("The user name: "+userName+" is already a Team Owner");
+                return null;
+            }
+        }
         Fan fan = new TeamOwner(userName, firstName, lastName);
         this.fansHashMap.put(userName, fan);
         return fan;
     }
 
     public Fan creatingTeamManager(String userName, String firstName, String lastName) {
+        if(this.getFansHashMap().containsKey(userName)){
+            if(this.getFansHashMap().get(userName) instanceof TeamManager){
+                System.out.println("The user name: "+userName+" is already a Team Manager");
+                return null;
+            }
+        }
         Fan fan = new TeamManager(userName, firstName, lastName);
         this.fansHashMap.put(userName, fan);
         return fan;
@@ -129,6 +174,12 @@ public class FootballSystem {
 
     public Fan creatingPlayer(String userName, String firstName, String lastName
             , Date bDate, EPlayerRole playerRole) {
+        if(this.getFansHashMap().containsKey(userName)){
+            if(this.getFansHashMap().get(userName) instanceof Player){
+                System.out.println("The user name: "+userName+" is already a Player");
+                return null;
+            }
+        }
         Fan fan = new Player(userName, firstName, lastName, bDate, playerRole);
         this.fansHashMap.put(userName, fan);
         return fan;
@@ -153,7 +204,10 @@ public class FootballSystem {
     }  // useCase 2.3
 
     public void removeUser(String userName) {
-        this.fansHashMap.remove(userName);
+        if(this.fansHashMap.containsKey(userName)){
+            this.fansHashMap.remove(userName);
+            System.out.println("The user name: "+userName+"was removed successfully");
+        }
         this.securitySystem.removeUser(userName);
     }
 
@@ -168,31 +222,41 @@ public class FootballSystem {
         return this.fansHashMap.containsKey(userName);
     }
     public void addTeamToDB(Team team) {
-        this.teamDB.addTeam(team, team.getTID());
+        if(team != null) {
+            this.teamDB.addTeam(team,team.getName());
+        }
     }
     public void removeTeamFromDB(int tid){
         this.teamDB.removeTeam(tid);
     }
     public void addLeagueToDB(League league) {
-        this.leagueDB.addLeague(league, league.getLeagueName());
+        if(league != null) {
+            this.leagueDB.addLeague(league, league.getLeagueName());
+        }
     }
     public void removeLeagueFromDB(String league){
         this.leagueDB.removeLeague(league);
     }
     public void addFieldToDB(Field field) {
-        this.fieldDB.addField(field, field.getName());
+        if(field != null) {
+            this.fieldDB.addField(field, field.getName());
+        }
     }
     public void removeFieldFromDB(String fieldName){
         this.fieldDB.removeField(fieldName);
     }
     public void addSeasonToDB(Season season) {
-        this.seasonDB.addSeason(season, season.getYear());
+        if(season != null) {
+            this.seasonDB.addSeason(season, season.getYear());
+        }
     }
     public void removeSeasonFromDB(String year){
         this.seasonDB.removeSeason(year);
     }
     public void addGameToDB(Game game) {
-        this.gameDB.addGame(game, game.getGID());
+        if(game != null) {
+            this.gameDB.addGame(game, game.getGID());
+        }
     }
     public void removeGameFromDB(int gid){
         this.gameDB.removeGame(gid);
