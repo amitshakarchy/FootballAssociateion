@@ -49,6 +49,7 @@ public class Referee extends Fan {
     public void setTraining(EReferee training) {
         if(training != null) {
             this.training = training;
+
         }
     }
 
