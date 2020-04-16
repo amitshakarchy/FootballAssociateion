@@ -205,6 +205,7 @@ public class AdditionalInfo {
     public void removeManager(String managerUserName, String userNameWhoNominated) {
         if (managers.containsKey(userNameWhoNominated)) {
             managers.get(userNameWhoNominated).remove(managerUserName);
+            this.teamManagersHashSet.remove(managerUserName);
         }
     }
 
@@ -218,6 +219,7 @@ public class AdditionalInfo {
     public void removeTeamOwner(String ownerUserName, String userNameWhoNominated) {
         if (owners.containsKey(userNameWhoNominated)) {
             owners.get(userNameWhoNominated).remove(ownerUserName);
+            this.teamOwnersHashSet.remove(ownerUserName);
         }
     }
 
@@ -318,10 +320,18 @@ public class AdditionalInfo {
      */
     public void removeAllNominations(String userNameWhoNominated) {
         if (this.managers.containsKey(userNameWhoNominated)) {
+            for (String userToRemove : this.managers.get(userNameWhoNominated)){
+                this.teamManagersHashSet.remove(userToRemove);
+            }
             this.managers.get(userNameWhoNominated).clear();
+
         }
         if (this.owners.containsKey(userNameWhoNominated)) {
+            for (String userToRemove : this.owners.get(userNameWhoNominated)){
+                this.teamOwnersHashSet.remove(userToRemove);
+            }
             this.owners.get(userNameWhoNominated).clear();
+            this.owners.remove(userNameWhoNominated);
         }
     }
 

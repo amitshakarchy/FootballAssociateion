@@ -22,10 +22,30 @@ class FootballSystemTest {
 
     @Test
     void signIn() {
+        assertEquals(null,FootballSystem.getInstance().signIn(null,"12","tair","cohen"));
+        assertEquals(0,FootballSystem.getInstance().getFansHashMap().size());
+        assertEquals(null,FootballSystem.getInstance().signIn("tair",null,"tair","cohen"));
+        assertEquals(0,FootballSystem.getInstance().getFansHashMap().size());
+        assertEquals(null,FootballSystem.getInstance().signIn("tair","12",null,"cohen"));
+        assertEquals(0,FootballSystem.getInstance().getFansHashMap().size());
+        assertEquals(null,FootballSystem.getInstance().signIn("tair","12","tair",null));
+        assertEquals(0,FootballSystem.getInstance().getFansHashMap().size());
+        assertTrue(null != FootballSystem.getInstance().signIn("tair12","12","tair","cohen"));
+        assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
+        assertEquals(null,FootballSystem.getInstance().signIn("tair12","12","tair","cohen"));
+        assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
     }
 
     @Test
     void creatingRepresentativeFootballAssociation() {
+        assertEquals(0,FootballSystem.getInstance().getFansHashMap().size());
+        assertTrue(null != FootballSystem.getInstance().creatingRepresentativeFootballAssociation("Tair",
+                "tair","cohen",null));
+        assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
+
+        assertTrue(null == FootballSystem.getInstance().creatingRepresentativeFootballAssociation("Tair",
+                "tair","cohen",null));
+        assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
     }
 
     @Test

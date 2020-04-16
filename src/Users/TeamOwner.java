@@ -271,6 +271,10 @@ public class TeamOwner extends Fan {
         if (additionalInfoToSearch.whoNominateTeamManager(userNameToRemove,getUserName())) {
             additionalInfoToSearch.removeManager(userNameToRemove,getUserName());
         }
+        else{
+            System.out.println(getUserName()+" you are not allow to remove "+ userNameToRemove+"! " +
+                    "you wasn't the one that nominated him");
+        }
     }
     public void removeField(Team team, Season season, String fieldName) {
         if (TeamIsInActive(team)) return;
@@ -340,12 +344,18 @@ public class TeamOwner extends Fan {
     public void discardNominationForTeamOwner(Team team, Season season, String userNameToRemove) {
         if (TeamIsInActive(team)) return;
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
+        if(additionalInfoToSearch == null){
+            return;
+        }
         // checking if this team owner was the one that nominated the team manager
         if (additionalInfoToSearch.whoNominateTeamOwner(userNameToRemove,getUserName())) {
             additionalInfoToSearch.removeTeamOwner(userNameToRemove,getUserName());
+            additionalInfoToSearch.removeAllNominations(userNameToRemove);
         }
+        else{
+            System.out.println(getUserName()+" you are not allow to remove "+ userNameToRemove+"! " +
+                    "you wasn't the one that nominated him");        }
         // removing all nominations that the team owner to be removed had nominated
-        additionalInfoToSearch.removeAllNominations(userNameToRemove);
     }
     // use case 6.3 end region
 
@@ -354,6 +364,10 @@ public class TeamOwner extends Fan {
         Fan fan = FootballSystem.getInstance().getFanByUserName(userName);
         if(fan != null){
             return addTeamManager(team,season,userName,null,fan.getfName(),fan.getlName());
+        }
+        else{
+            System.out.println("Nominate "+userName+"is not possible! " +
+                    "This user name is not exit in the system, user name is: "+userName);
         }
         return false;
     }

@@ -40,7 +40,9 @@ public class Team {
         // TODO: 4/13/2020  need to check that this team owner is not owner of another team already
         this.isActive = ETeamStatus.ACTIVE;
         this.fields = new HashMap<>();
-        fields.put(mainField.getName(), mainField);
+        if(mainField != null) {
+            fields.put(mainField.getName(), mainField);
+        }
         this.additionalInfoWithSeasons = new HashMap<>();
         this.teamOwner  = teamOwner;
     }
@@ -221,6 +223,7 @@ public class Team {
             additionalInfoWithSeasons.put(season.getYear(), additionalInfo);
             season.addTeamToSeason(name, additionalInfoWithSeasons);
             this.teamOwner.addAdditionalInfo(additionalInfo);
+            additionalInfo.addTeamOwner(teamOwner.getUserName(),teamOwner.getUserName());
         }
     }
 
