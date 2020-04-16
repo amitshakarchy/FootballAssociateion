@@ -16,4 +16,8 @@ public class SeasonDB {
     public void removeSeason(String seasonYear){
         allSeasons.remove(seasonYear);
     }
+
+    public HashMap<String, Season> getAllSeasons() {
+        return allSeasons;
+    }
 }

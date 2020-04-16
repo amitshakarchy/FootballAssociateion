@@ -1,6 +1,11 @@
 package ServiceControllers;
 
+import AssociationAssets.Season;
+import AssociationAssets.Team;
 import Users.*;
+
+import java.util.Date;
+import java.util.Scanner;
 
 public class TeamOwnerController {
 
@@ -11,7 +16,12 @@ public class TeamOwnerController {
     }
 
 
-
-
+/**
+ * UC 6.1
+ */
+public void addPlayer(Team team, Season season, String userName, String password, String firstName, String lastName, Date birthday, EPlayerRole ePlayerRole){
+    Scanner input = new Scanner(System.in);
+    System.out.println("Insert ");
+}
 
 }

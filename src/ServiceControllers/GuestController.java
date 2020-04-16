@@ -1,14 +1,15 @@
 package ServiceControllers;
 
 import Users.*;
-
+import System.*;
 import java.util.Scanner;
 
 public class GuestController {
 
     Guest guest;
-
+    Search searcher;
     GuestController(){
+        searcher= new Search();
         guest= new Guest();
     }
 
@@ -62,8 +63,25 @@ public class GuestController {
         int category=Integer.parseInt(input.nextLine());
         System.out.println("type here what you are looking for");
         String toSearch= input.nextLine();
+        switch (category){
 
-       //TODO 15.04.2020 - Talk with Yarin. She has to fix those methods.
+            case 1:
+                System.out.println(searcher.getTeamByTeamName(toSearch).viewProfile());
+                break;
+            case 2:
+                System.out.println(searcher.getUserByUserName(toSearch).viewProfile());
+                break;
+            case 3:
+                System.out.println(searcher.getUserByUserName(toSearch).viewProfile());
+                break;
+            case 4:
+                System.out.println(searcher.getLeagueByLeagueName(toSearch).viewProfile());
+                break;
+            case 5:
+                System.out.println(searcher.getSeasonByYear(toSearch).viewProfile());
+                break;
+        }
+
     }
 
     /**
@@ -71,11 +89,26 @@ public class GuestController {
      */
     public void search(){
         Scanner input = new Scanner(System.in);
+        System.out.println("what would you like to search for?\n" +
+                "1. search by category\n" +
+                "2. search by name\n" +
+                "3. search By Key Word\n" );
+
+        int category= Integer.parseInt(input.nextLine());
         System.out.println("type here what you are looking for");
         String toSearch= input.nextLine();
-        guest.search(toSearch);
+        switch (category) {
+            case 1:
+                System.out.println(guest.searchByCategory(toSearch));
+                break;
+            case 2:
+                System.out.println(guest.searchByName(toSearch));
+                break;
+            case 3:
+                System.out.println(guest.searchByKeyWord(toSearch));
+                break;
+        }
 
-        //TODO 15.04.2020 - Talk with Yarin. She has to fix those methods.
     }
 
 
