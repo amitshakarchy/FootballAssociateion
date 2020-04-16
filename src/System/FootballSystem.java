@@ -21,6 +21,9 @@ public class FootballSystem {
     FieldDB fieldDB = new FieldDB();
     SeasonDB seasonDB = new SeasonDB();
     LeagueDB leagueDB = new LeagueDB();
+    Map<String,Referee> refereeMap = new HashMap<>();
+    Map<String,Player> playerMap  = new HashMap<>();
+    Map<String,Coach> coachMap = new HashMap<>();
 
 
     /**
@@ -65,6 +68,18 @@ public class FootballSystem {
 
     public LeagueDB getLeagueDB() {
         return leagueDB;
+    }
+
+    public Map<String, Referee> getRefereeMap() {
+        return refereeMap;
+    }
+
+    public Map<String, Player> getPlayerMap() {
+        return playerMap;
+    }
+
+    public Map<String, Coach> getCoachMap() {
+        return coachMap;
     }
 
     /**
@@ -189,7 +204,10 @@ public class FootballSystem {
     }  // useCase 2.3
 
     public void removeUser(String userName) {
-        this.fansHashMap.remove(userName);
+        if(this.fansHashMap.containsKey(userName)){
+            this.fansHashMap.remove(userName);
+            System.out.println("The user name: "+userName+"was removed successfully");
+        }
         this.securitySystem.removeUser(userName);
     }
 
@@ -205,7 +223,7 @@ public class FootballSystem {
     }
     public void addTeamToDB(Team team) {
         if(team != null) {
-            this.teamDB.addTeam(team, team.getTID());
+            this.teamDB.addTeam(team, team.getName());
         }
     }
     public void removeTeamFromDB(int tid){
