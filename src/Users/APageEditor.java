@@ -1,6 +1,7 @@
 package Users;
 import java.util.ArrayList;
 import java.util.List;
+import System.Logger;
 
 /**
  * A personal page is a page with official content about the player / coach.
@@ -29,6 +30,8 @@ public abstract class APageEditor implements IPageEditor {
         this.role = role;
         this.myFeed = new ArrayList<>();
         this.observers = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("A new personal page created, user: "+ myFirstName +" "+myLastName);
+
     }
 
     public Enum getRole() {
