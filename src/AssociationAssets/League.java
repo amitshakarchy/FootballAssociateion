@@ -6,6 +6,7 @@ import PoliciesAndAlgorithms.ScoreTablePolicy;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import System.*;
 
 public class League {
 
@@ -17,6 +18,8 @@ public class League {
     public League(String name) {
         this.name = name;
         seasonBinders = new HashMap<>();
+        // Write to the log
+        Logger.getInstance().addActionToLogger("League was created. League Name: "+name+".");
     }
 
     //region Getters & Setters
@@ -98,12 +101,12 @@ public class League {
 
     public String viewProfile() {
 
-        String str = "League name: " + this.name + "\n" +
-                "Seasons under this league: \n";
+        StringBuilder str = new StringBuilder("League name: " + this.name + "\n" +
+                "Seasons under this league: \n");
         for (String year : seasonBinders.keySet()) {
-            str += year + ", ";
+            str.append(year).append("; ");
         }
-        return str;
+        return str.toString();
     }
     //endregion
 

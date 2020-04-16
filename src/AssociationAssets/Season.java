@@ -1,7 +1,7 @@
 package AssociationAssets;
 
 import java.util.HashMap;
-
+import System.*;
 /**
  * represent a season of football games.
  */
@@ -15,6 +15,8 @@ public class Season {
         this.year = year;
         leagueBinders= new HashMap<>();
         teamAdditionalInfo= new HashMap<>();
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Season was created. Season's Year: "+year+".");
     }
 
     //region Setter baseter
@@ -36,9 +38,7 @@ public class Season {
     }
     //endregion
     public void removeLeagueFromSeason(League league) {
-        if (leagueBinders.containsKey(league.getLeagueName())) {
-            leagueBinders.remove(league.getLeagueName());
-        }
+        leagueBinders.remove(league.getLeagueName());
     }
 
     /**
@@ -50,6 +50,12 @@ public class Season {
         this.teamAdditionalInfo.put(teamName,team.get(this.year));
     }
 
-    public void viewProfile() {
+    public String viewProfile() {
+        StringBuilder str= new StringBuilder("Season's year: " + this.year + "\n" +
+                "Season's Leagues:\n");
+        for (String league:leagueBinders.keySet()) {
+            str.append(league).append(";");
+        }
+        return str.toString();
     }
 }
