@@ -66,7 +66,6 @@ public class RepresentativeFootballAssociationTest {
         teams.put(team2.getName(),team2);
         representative = new RepresentativeFootballAssociation("representative","Dan","Levi",gamePolicy);
         teamBudget =  new TeamBudget(team1,season);
-
     }
 
     @Test

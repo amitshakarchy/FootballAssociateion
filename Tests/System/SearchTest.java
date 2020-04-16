@@ -17,32 +17,35 @@ public class SearchTest {
     Search search;
     Coach coach;
     Team team;
+    Team hostTeam;
     League league;
     League league2;
     Season season;
     Game game;
+    Game gameTest;
     Referee ref1,ref2,ref3;
     Field field;
     Player player;
     @Before
-    public void setUp(){
+    public void setUp() throws Exception {
         footballSystem= FootballSystem.getInstance();
         search = new Search();
+        field = new Field("fieldTest","Beer-Sheva",1000);
         coach = new Coach("coachTest","coachFname", "coachLname", ETraining.CDiploma, ECoachRole.AssistantCoach);
-        team = new Team(123,"teamTest",null, null,null, null);
+        team = new Team(123,"teamTest",new Season("2019"), field,null, null);
         league = new League("leagueTest");
         league2 = new League("leagueTest2");
         season = new Season("2020");
-        field = new Field("fieldTest","Beer-Sheva",1000);
-        Team hostTeam = new Team(456,"hostTest",season,field,null,null);
+        hostTeam = new Team(456,"hostTest",season,field,null,null);
         ref1 = new Referee("ref1","refTest1","refTest1", EReferee.MAIN);
         ref2=new Referee("ref2","refTest2","refTest2",EReferee.ASSISTANT);
         ref3 =new Referee("ref3","refTest3","refTest3",EReferee.ASSISTANT);
-        try { game =new Game(new Date(),null,field,hostTeam,team,ref1,ref2,ref3,season,league);
-        } catch (Exception e) { e.printStackTrace(); }
+        game =new Game(new Date(),null,field,hostTeam,team,ref1,ref2,ref3,season,league);
+        gameTest = new Game(null, null, new Field("field", "city1", 30), team, hostTeam, ref1, ref2, ref3, season, league);
         player = new Player("playerTest","playerFname", "playerLname",null,EPlayerRole.GoalKeeper);
-        //footballSystem.addFanHashMap(coach); //TODO: Tair: add addFan(Fan) function to FootballSystem
+        footballSystem.signIn(coach.getUserName(),"12345678",coach.getfName(),coach.getlName());
         footballSystem.addTeamToDB(team);
+        footballSystem.addReferee(ref1);
         search.getTeamDB().addTeam(team,team.getName());
         search.getLeagueDB().addLeague(league,league.getLeagueName());
         search.getSeasonDB().addSeason(season,"2020");
@@ -50,13 +53,11 @@ public class SearchTest {
         search.getFieldDB().addField(field,field.getName());
     }
 
-    //TODO: Tair: add addFan(Fan) function to FootballSystem
     @Test
     public void getUserByUserName() {
-         assertEquals(search.getUserByUserName("coachTest"), coach);
+         assertSame(search.getUserByUserName("ref1"), ref1);
     }
 
-    //Todo: Tair: add team to DB by team name instead of team id
     @Test
     public void getTeamByTeamName() {
         assertSame(search.getTeamByTeamName("teamTest"),team);
@@ -74,7 +75,8 @@ public class SearchTest {
 
     @Test
     public void getGameByGameID() {
-       assertSame(search.getGameByGameID(1),game);
+        search.getGameDB().addGame(gameTest,gameTest.getGID());
+        assertSame(search.getGameByGameID(gameTest.getGID()),gameTest);
     }
 
     @Test
@@ -82,11 +84,10 @@ public class SearchTest {
         assertSame(search.getFieldByFieldName("fieldTest"),field);
     }
 
-    //TODO: Amit&Alon: Add viewProfile() in League
     @Test
     public void getAllLeaguesProfile() {
         HashMap<String,String>testHashMap = new HashMap<>();
-     //   testHashMap.put(league.getLeagueName(),league.viewProfile());
+        testHashMap.put(league.getLeagueName(),league.viewProfile());
         Iterator it = testHashMap.entrySet().iterator();
         Map.Entry entryTest = (Map.Entry) it.next();
         while (it.hasNext()) {
@@ -97,11 +98,10 @@ public class SearchTest {
         }
     }
 
-    //TODO: Amit&Alon: Add viewProfile() in Team
     @Test
     public void getAllTeamsProfile() {
         HashMap<String,String> testHashMap = new HashMap<>();
-     //   testHashMap.put(team.getName(),team.viewProfile());
+        testHashMap.put(team.getName(),team.viewProfile());
         Iterator it = testHashMap.entrySet().iterator();
         Map.Entry entryTest = (Map.Entry) it.next();
         while (it.hasNext()) {
@@ -112,7 +112,6 @@ public class SearchTest {
         }
     }
 
-    // Todo: Tair: add getAllReferees() function to System that return HashMap<String, Referee>
     @Test
     public void getAllRefereesProfile() {
         HashMap<String,String> testHashMap = new HashMap<>();
@@ -127,7 +126,6 @@ public class SearchTest {
         }
     }
 
-    // Todo: Tair: add getAllCoaches() function to System that return HashMap<String, Coach>
     @Test
     public void getAllCoachesProfile() {
         HashMap<String,String> testHashMap = new HashMap<>();
@@ -142,7 +140,6 @@ public class SearchTest {
         }
     }
 
-    // Todo: Tair: add getAllPlayers() function to System that return HashMap<String, player>
     @Test
     public void getAllPlayersProfile() {
         HashMap<String,String> testHashMap = new HashMap<>();
@@ -165,8 +162,22 @@ public class SearchTest {
     }
 
     @Test
+    public void setTeamDB() {
+        TeamDB teamDBTest = new TeamDB();
+        search.setTeamDB(teamDBTest);
+        assertSame(search.getTeamDB(), teamDBTest);
+    }
+
+    @Test
+    public void setSeasonDB() {
+        SeasonDB seasonDBTest = new SeasonDB();
+        search.setSeasonDB(seasonDBTest);
+        assertSame(search.getSeasonDB(), seasonDBTest);
+    }
+
+    @Test
     public void getTeamDB() {
-        assertSame(search.getTeamDB().getAllTeams().get(team.getTID()), team);
+        assertSame(search.getTeamDB().getAllTeams().get(team.getName()), team);
     }
 
     @Test

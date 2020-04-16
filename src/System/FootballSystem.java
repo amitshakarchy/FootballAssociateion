@@ -5,6 +5,7 @@ import DB.*;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import Security.SecuritySystem;
 import Users.*;
+import sun.plugin2.gluegen.runtime.CPU;
 
 import java.util.*;
 
@@ -300,4 +301,5 @@ public class FootballSystem {
     public boolean existFieldByName(String fieldName){
         return this.fieldDB.getAllFields().containsKey(fieldName);
     }
+
 }

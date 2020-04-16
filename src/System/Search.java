@@ -29,14 +29,23 @@ public class Search {
         fieldDB = new FieldDB();
     }
 
-    public Fan getUserByUserName(String uName){
+    public Object getUserByUserName(String uName){
         if(uName != null) {
-            Fan user = footballSystem.getFanByUserName(uName);
-            return user;
+            Referee userRef = footballSystem.getRefereeByUseName(uName);
+            if(userRef!=null){
+                return userRef;
+            }
+            Coach userCoach = footballSystem.getCoachByUserName(uName);
+            if(userCoach!=null){
+                return userCoach;
+            }
+            Player userPlayer = footballSystem.getPlayerByUserName(uName);
+            if(userPlayer!=null){
+                return userPlayer;
+            }
         }
         return null;
     }
-
 
     /**
      * @param teamName
@@ -127,7 +136,6 @@ public class Search {
         return teamsProfile;
     }
 
-
     /**
      * @return Hash map that holds, for each referee, the referee's user name and his profile details
      */
@@ -164,10 +172,15 @@ public class Search {
         return playersProfile;
     }
 
-
-    //<editor-fold desc="Setter: setLeagueDB">
+    //<editor-fold desc="Setters: setLeagueDB">
     public void setLeagueDB(LeagueDB leagueDB) {
         this.leagueDB = leagueDB;
+    }
+    public void setTeamDB(TeamDB teamDB) {
+        this.teamDB = teamDB;
+    }
+    public void setSeasonDB(SeasonDB seasonDB) {
+        this.seasonDB = seasonDB;
     }
     //</editor-fold>
 

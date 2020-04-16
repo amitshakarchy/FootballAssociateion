@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.util.*;
-
+import System.*;
 import Users.*;
 
 /**
@@ -73,6 +73,10 @@ public class Game {
         this.score = new Score(); // initializing score, with no value (on game assigning before the game starts.)
         events = new LinkedList<>();
         observers = new ArrayList<>();
+
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Game created, GameID: "+ GID);
+
     }
 
     //region Validation
@@ -114,8 +118,7 @@ public class Game {
             Calendar cal = Calendar.getInstance();
             SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
             Time endUpdateTime = new Time(time.getHours() + hoursSinceGameStarted,time.getMinutes(),time.getSeconds());
-            if(LocalTime.now().isBefore( LocalTime.parse( endUpdateTime.toString())) &&LocalTime.now().isAfter( LocalTime.parse( time.toString())))
-                return true;
+            return LocalTime.now().isBefore(LocalTime.parse(endUpdateTime.toString())) && LocalTime.now().isAfter(LocalTime.parse(time.toString()));
         }
         return false;
         
@@ -248,6 +251,10 @@ public class Game {
         Time time = Time.valueOf(LocalTime.now());
         Event event = new Event(date, time, eventType, description);
         events.add(event);
+
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Event was added to gameID: "+GID+", Event type: "+ event.getEventType());
+
     }
 
     /**
@@ -255,7 +262,10 @@ public class Game {
      * @param eventIndex
      */
     public void removeEvent(int eventIndex) {
+        Event e= events.get(eventIndex);
         events.remove(eventIndex);
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Event was removed from gameID: "+GID+", Event type: "+ e.getEventType());
     }
 
     /**
@@ -269,6 +279,8 @@ public class Game {
         Event event = events.get(eventIndex);// We need to verify that the modification affects the node in the list.
         event.setEventType(eventType);
         event.setDescription(description);
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Event was edited. gameID: "+GID+", Event type: "+ event.getEventType());
     }
 
 

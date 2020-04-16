@@ -30,6 +30,8 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
         this.gamePolicy = gamePolicy;
         this.associationBudget = new AssociationBudget();
         this.NotificationTeamsExceedBudget= new HashMap<>();
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Representative Football Association was created. representative user name: "+userName);
     }
 
     /**
@@ -81,6 +83,8 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
         String password = String.valueOf(new Random().nextInt(1000000000));
         String userName = signInReferee(fName,lName,password);
         Referee referee =  (Referee) FootballSystem.getInstance().creatingReferee(userName,fName, lName,training);
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Referee "+referee.getUserName()+ "was created"+".");
         referee.LoginInvitation(userName,password);
     }
 
@@ -109,6 +113,8 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     public void removeReferee(Referee refereeToRemove) {
         if(refereeToRemove == null){ return; }
         FootballSystem.getInstance().removeUser(refereeToRemove.getUserName());
+        //Write to log
+        Logger.getInstance().addActionToLogger("Referee "+refereeToRemove.getUserName()+ "was removed from the System");
     }
 
     /**
