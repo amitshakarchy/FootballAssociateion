@@ -29,6 +29,7 @@ public class Complains {
      */
     public void addComplain(String complain, Fan fan) {
         this.complain.add(new Pair<>(complain,fan));
+        Logger.getInstance().addActionToLogger("This fan send new complain, fan-userName:"+fan.getUserName()+", complainTEXT: "+ complain);
     }
 
     /**
@@ -38,6 +39,8 @@ public class Complains {
      */
     private void removeComplain(Pair<String,Fan> complain) {
         this.complain.remove(complain);
+        Logger.getInstance().addActionToLogger("This complain deleted from the system, fan-userName:"+complain.getValue().getUserName()+", complainTEXT: "+ complain.getKey());
+
     }
 
     /**
@@ -51,6 +54,8 @@ public class Complains {
     public void responseToComplain(SystemManager systemManager,Pair<String,Fan> complain, String response ){
         complain.getValue().getResponseForComplain(systemManager,complain.getKey(),response);
         removeComplain(complain);
+        Logger.getInstance().addActionToLogger("This systemManager response to the complain,system-Manager-userName:"+systemManager.getUserName()+" response:"+response+" fan-userName:"+complain.getValue().getUserName()+", complainTEXT: "+ complain.getKey());
+
     }
 
     public List<Pair<String, Fan>> getComplain() {
