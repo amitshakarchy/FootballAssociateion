@@ -33,6 +33,7 @@ public class Game {
     Referee main, side1, side2;
     List<Event> events;
     private List<Fan> observers;
+    private EGameStatus status;
     //endregion
 
 
@@ -73,6 +74,7 @@ public class Game {
         this.score = new Score(); // initializing score, with no value (on game assigning before the game starts.)
         events = new LinkedList<>();
         observers = new ArrayList<>();
+        this.status = EGameStatus.Occurs;
     }
 
     //region Validation
@@ -106,6 +108,16 @@ public class Game {
 
     //region Getters & Setters
 
+
+    public EGameStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EGameStatus status) {
+        if(status != null) {
+            this.status = status;
+        }
+    }
 
     public boolean isUpdatable(int hoursSinceGameStarted) {
         Date currentDate = new Date();

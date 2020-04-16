@@ -1,8 +1,15 @@
 package Users;
+import AssociationAssets.EGameStatus;
+import AssociationAssets.ETeamStatus;
+import AssociationAssets.Game;
+import AssociationAssets.Team;
 import RecommendationSystem.*;
-import System.*;
 import javafx.util.Pair;
+
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import System.*;
 
 /**
  * An administrator is responsible for responding to the various user inquiries
@@ -22,9 +29,32 @@ public class SystemManager extends Fan {
 
     }
 
-    public void closeTeam(){} //useCase 8.1
+    /**
+     *  An administrator may permanently close a group
+     * If there were future games for the team, they were canceled
+     * # use case 8.1
+     *
+     * @param teamId -team ID - to close
+     */
+    public void closeTeam(int teamId){
+        Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamId);
+        if(team != null){
+            List <Game> gamesList = new ArrayList<>();
+            gamesList.addAll(team.getAwayGames().values());
+            gamesList.addAll(team.getHomeGames().values());
+            for (Game game:
+                 gamesList) {
+                if(game.getDate().after(new Date())){
+                    game.setStatus(EGameStatus.Canceled);
+                }
+            }
+            team.setIsActive(ETeamStatus.INACTIVE);
+            Logger.getInstance().addActionToLogger("Team: "+teamId+" closed by the system manager userName: "+getUserName());
+        }
+    }
 
     public void removeUser(){} //useCase 8.2
+
 
     /**
      *  An administrator can view the complaint box
