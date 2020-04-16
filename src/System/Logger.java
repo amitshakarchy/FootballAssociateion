@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * All system operations are kept in this class for tracking and error tracking
+ * Singleton
  * @ Written by Yuval Ben Eliezer
  */
 public class Logger {
@@ -29,12 +31,21 @@ public class Logger {
 
     }
 
+    /**
+     *  Through the Log main referee can generate reports on games
+     * @param gid - game id
+     * @param events - List of events that happened in a game
+     */
     public void exportReport(int gid, List<Event> events) {
         if(events!= null){
             this.report.add(new Pair<>(gid,events));
         }
     }
 
+    /**
+     * Using this function you can add actions that occurred in the system to the logger
+     * @param action - The action we want to add
+     */
     public void addActionToLogger(String action){
         getLog().add(action);
     }
