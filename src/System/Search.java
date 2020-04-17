@@ -2,10 +2,7 @@ package System;
 
 import AssociationAssets.*;
 import DB.*;
-import Users.Coach;
-import Users.Fan;
-import Users.Player;
-import Users.Referee;
+import Users.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +25,7 @@ public class Search {
         gameDB = new GameDB();
         fieldDB = new FieldDB();
     }
-
+    //Todo: systemManager, teamManger, teamOwner, representative
     public Object getUserByUserName(String uName){
         if(uName != null) {
             Referee userRef = footballSystem.getRefereeByUseName(uName);
@@ -42,6 +39,26 @@ public class Search {
             Player userPlayer = footballSystem.getPlayerByUserName(uName);
             if(userPlayer!=null){
                 return userPlayer;
+            }
+//            SystemManager userSystemManager = footballSystem.getSystemManagerByUserName(uName);  ???
+//            if(userSystemManager!=null){
+//                return userSystemManager;
+//            }
+ //            TeamManager userTeamManger = footballSystem.getTeamManagerByUserName(uName); ???
+//             if(userTeamManger!=null){
+//                return userTeamManger;
+//            }
+ //            TeamOwner userTeamOwner =footballSystem.getTeamOwnerByUserName(uName); ???
+//             if(userTeamOwner!=null){
+//                return userTeamOwner;
+//            }
+//           RepresentativeFootballAssociation representativeUser =footballSystem.getRepresentativeFootballAssociationByUserName(uName); ???
+//            if(representativeUser!=null){
+//                return representativeUser;
+//            }
+            Fan userFan = footballSystem.getFanByUserName(uName);
+            if(userFan!=null){
+                return userFan;
             }
         }
         return null;

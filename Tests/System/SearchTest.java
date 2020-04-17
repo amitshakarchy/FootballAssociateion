@@ -46,6 +46,8 @@ public class SearchTest {
         footballSystem.signIn(coach.getUserName(),"12345678",coach.getfName(),coach.getlName());
         footballSystem.addTeamToDB(team);
         footballSystem.addReferee(ref1);
+        footballSystem.addCoach(coach);
+        footballSystem.addPlayer(player);
         search.getTeamDB().addTeam(team,team.getName());
         search.getLeagueDB().addLeague(league,league.getLeagueName());
         search.getSeasonDB().addSeason(season,"2020");
@@ -55,7 +57,11 @@ public class SearchTest {
 
     @Test
     public void getUserByUserName() {
-         assertSame(search.getUserByUserName("ref1"), ref1);
+        assertSame(search.getUserByUserName(ref1.getUserName()), ref1);
+        assertSame(search.getUserByUserName(coach.getUserName()),coach);
+        assertSame(search.getUserByUserName(player.getUserName()),player);
+        Fan fan= footballSystem.signIn("testFan","123456","FanFname","FanLname");
+        assertSame(search.getUserByUserName(fan.getUserName()),fan);
     }
 
     @Test
