@@ -206,7 +206,7 @@ public class FootballSystem {
     public void removeUser(String userName) {
         if(this.fansHashMap.containsKey(userName)){
             this.fansHashMap.remove(userName);
-            System.out.println("The user name: "+userName+"was removed successfully");
+            System.out.println("The user name: "+userName+" was removed successfully");
         }
         this.securitySystem.removeUser(userName);
     }
@@ -223,6 +223,10 @@ public class FootballSystem {
     }
     public void addTeamToDB(Team team) {
         if(team != null) {
+            if(this.teamDB.getAllTeams().containsKey(team.getName())){
+                System.out.println("The team: "+team.getName()+" is already exit in the DB");
+                return;
+            }
             this.teamDB.addTeam(team, team.getName());
         }
     }

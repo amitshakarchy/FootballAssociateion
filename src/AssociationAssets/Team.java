@@ -222,8 +222,10 @@ public class Team {
             AdditionalInfo additionalInfo = new AdditionalInfo(this, currentSeason);
             additionalInfoWithSeasons.put(season.getYear(), additionalInfo);
             season.addTeamToSeason(name, additionalInfoWithSeasons);
-            this.teamOwner.addAdditionalInfo(additionalInfo);
-            additionalInfo.addTeamOwner(teamOwner.getUserName(),teamOwner.getUserName());
+            if(this.teamOwner != null){
+                this.teamOwner.addAdditionalInfo(additionalInfo);
+                additionalInfo.addTeamOwner(teamOwner.getUserName(),teamOwner.getUserName());
+            }
         }
     }
 
