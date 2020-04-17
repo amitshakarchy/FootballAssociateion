@@ -1,5 +1,6 @@
 package Budget;
 
+import AssociationAssets.Field;
 import AssociationAssets.Season;
 import AssociationAssets.Team;
 import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
@@ -20,25 +21,26 @@ public class TeamBudgetTest {
     Team team;
     Season season;
     RepresentativeFootballAssociation representative;
+    Field field;
     @Before
     public void setUp(){
         gamePolicy =new SimpleGamesAssigningPolicy() ;
         outcomes = new HashMap<>();
         incomes = new HashMap<>();
-        team = new Team(123,"teamTest",null,null,null,null);
+        field = new Field("fieldTest","city",10);
+        team= new Team(1,"Barcelona" ,season, field, null, null);
         season = new Season("2020");
         representative = new RepresentativeFootballAssociation("representative","Dani","Levi",gamePolicy);
-        teamBudget = new TeamBudget(team, season,20.2);
+        teamBudget = new TeamBudget(team, season);
     }
 
     @Test
     public void checkTeamBudgetExceedRule() {
-        teamBudget.setThreshHold(1.0);
+        teamBudget.setThreshHold(1.0,representative);
         teamBudget.getOutcomes().put("outcome",new Pair<>(100.5,"outcome test"));
         teamBudget.getIncomes().put("income",new Pair<>(5.0,"income test"));
-        teamBudget.checkTeamBudgetExceedRule();
-        assertEquals(representative.getTeamsExceedBudget().containsKey(team.getName()),"teamTest");
-
+        teamBudget.checkTeamBudgetExceedRule(representative);
+        assertEquals(representative.getTeamsExceedBudget().containsKey(team.getName()),true);
     }
 
     @Test
@@ -69,12 +71,13 @@ public class TeamBudgetTest {
 
     @Test
     public void getThreshHold() {
+        teamBudget.setThreshHold(20.2,representative);
         assertEquals(teamBudget.getThreshHold(),20.2,0);
     }
 
     @Test
     public void getTeam() {
-        assertEquals(teamBudget.getTeam().getTID(),123);
+        assertEquals(teamBudget.getTeam().getTID(),1);
     }
 
     @Test
@@ -93,7 +96,8 @@ public class TeamBudgetTest {
 
     @Test
     public void setThreshHold() {
-        teamBudget.setThreshHold(10.5);
+        teamBudget.setThreshHold(10.5,representative);
         assertEquals(teamBudget.getThreshHold(), 10.5,0);
     }
+
 }

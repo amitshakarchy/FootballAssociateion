@@ -5,6 +5,7 @@ import DB.*;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import Security.SecuritySystem;
 import Users.*;
+import sun.plugin2.gluegen.runtime.CPU;
 
 import java.util.*;
 
@@ -223,7 +224,7 @@ public class FootballSystem {
     }
     public void addTeamToDB(Team team) {
         if(team != null) {
-            this.teamDB.addTeam(team, team.getName());
+            this.teamDB.addTeam(team,team.getName());
         }
     }
     public void removeTeamFromDB(int tid){
@@ -301,7 +302,7 @@ public class FootballSystem {
         return this.fieldDB.getAllFields().containsKey(fieldName);
     }
 
-
+    // TODO:Tair //////////////////////////////////////////////////
     public void addReferee(Referee referee){
         refereeMap.put(referee.getUserName(),referee);
     }
