@@ -85,15 +85,14 @@ public class SearchTest {
     @Test
     public void getUserByUserName() {
         try {
-           setUp();
            assertSame(search.getUserByUserName(ref1.getUserName()), ref1);
            assertSame( search.getUserByUserName(coach.getUserName()),coach);
            assertSame(search.getUserByUserName(player.getUserName()),player);
            assertSame(search.getUserByUserName(fan.getUserName()),fan);
-//           assertSame(search.getUserByUserName(teamOwner.getUserName()),teamOwner);
-//           assertSame(search.getUserByUserName(teamManager.getUserName()),teamManager);
-//           assertSame(search.getUserByUserName(representative.getUserName()),representative);
-//           assertSame(search.getUserByUserName(systemManager.getUserName()),systemManager);
+           assertSame(search.getUserByUserName(teamOwner.getUserName()),teamOwner);
+           assertSame(search.getUserByUserName(teamManager.getUserName()),teamManager);
+           assertSame(search.getUserByUserName(representative.getUserName()),representative);
+           assertSame(search.getUserByUserName(systemManager.getUserName()),systemManager);
        }catch (Exception e){
         }
     }

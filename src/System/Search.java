@@ -41,22 +41,22 @@ public class Search {
             if(userPlayer!=null){
                 return userPlayer;
             }
-//            SystemManager userSystemManager = footballSystem.getSystemManagerByUserName(uName);  ???
-//            if(userSystemManager!=null){
-//                return userSystemManager;
-//            }
- //            TeamManager userTeamManger = footballSystem.getTeamManagerByUserName(uName); ???
-//             if(userTeamManger!=null){
-//                return userTeamManger;
-//            }
- //            TeamOwner userTeamOwner =footballSystem.getTeamOwnerByUserName(uName); ???
-//             if(userTeamOwner!=null){
-//                return userTeamOwner;
-//            }
-//           RepresentativeFootballAssociation representativeUser =footballSystem.getRepresentativeFootballAssociationByUserName(uName); ???
-//            if(representativeUser!=null){
-//                return representativeUser;
-//            }
+            SystemManager userSystemManager = footballSystem.getSystemManagerByUserName(uName);
+            if(userSystemManager!=null){
+                return userSystemManager;
+            }
+             TeamManager userTeamManger = footballSystem.getTeamManagerByUserName(uName);
+             if(userTeamManger!=null){
+                return userTeamManger;
+            }
+             TeamOwner userTeamOwner =footballSystem.getTeamOwnerByUserName(uName);
+             if(userTeamOwner!=null){
+                return userTeamOwner;
+            }
+           RepresentativeFootballAssociation representativeUser =footballSystem.getRepresentativeFootballAssociationByUseName(uName);
+            if(representativeUser!=null){
+                return representativeUser;
+            }
             Fan userFan = footballSystem.getFanByUserName(uName);
             if(userFan!=null){
                 return userFan;

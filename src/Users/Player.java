@@ -52,6 +52,8 @@ public class Player extends CanBeOwner {
         this.role = role;
         this.myPage = new PlayerPageEditor(fan.getfName(),fan.getlName(),role,bDate);
         this.myAdditionalInfo = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("Player created, user name: "+ fan.getUserName());
+
     }
 
     /**
@@ -69,6 +71,8 @@ public class Player extends CanBeOwner {
         this.role = role;
         this.myPage = new PlayerPageEditor(canBeOwner.getfName(),canBeOwner.getlName(),role,bDate);
         this.myAdditionalInfo = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("Player created, user name: "+ canBeOwner.getUserName());
+
     }
 
     /**
@@ -116,6 +120,8 @@ public class Player extends CanBeOwner {
         if(role != null){
             this.role = role;
             this.myPage.setRole(role);
+            Logger.getInstance().addActionToLogger("Player role has changed, user name: "+ getUserName()+" role: "+role);
+
         }
     }
 
@@ -146,6 +152,8 @@ public class Player extends CanBeOwner {
     public void addAdditionalInfo(AdditionalInfo additionalInfo){
         if(additionalInfo != null){
             this.myAdditionalInfo.add(additionalInfo);
+            Logger.getInstance().addActionToLogger("AdditionalInfo added to player, user name: "+ getUserName());
+
         }
 
     }

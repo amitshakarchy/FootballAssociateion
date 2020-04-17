@@ -2,6 +2,7 @@ package AssociationAssets;
 
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -52,15 +53,18 @@ public class League {
     public HashMap<String, Game> getGames(String year) {
         return seasonBinders.get(year).getGames();
     }
+
     public String getLeagueName() {
         return name;
     }
+
     public Map<String, SeasonLeagueBinder> getSeasonBinders() {
         return this.seasonBinders;
     }
     //endregion
 
     //region Adders
+
     /**
      * @param season - the association representative should know and provide the season in order to bind correctly.
      *               this function also call to same function in season class, in order to make

@@ -312,4 +312,23 @@ public class Game {
 
         }
     }
+
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "season=" + season +
+                ", league=" + league +
+                ", GID=" + GID +
+                ", date=" + date +
+                ", time=" + time +
+                ", score=" + score +
+                ", field=" + field +
+                ", host team=" + host +
+                ", guest team=" + guest +
+                ", main referee=" + main +
+                ", side1 referee=" + side1 +
+                ", side2 referee=" + side2 +
+                '}';
+    }
 }
