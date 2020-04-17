@@ -9,7 +9,7 @@ import Users.TeamOwner;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-
+import System.*;
 /**
  * This class is association class for Season and Team.
  * Aouthors: Amit Shakarchy, Alon Gutman, Tair Cohen
@@ -100,6 +100,8 @@ public class AdditionalInfo {
     public boolean addPlayer(String player) {
         if (!players.contains(player)) {
             players.add(player);
+            // Write to the log
+            Logger.getInstance().addActionToLogger("Player "+player+ "was added to the team: "+team.getName()+".");
             return true;
         }
         return false;
@@ -114,6 +116,8 @@ public class AdditionalInfo {
     public boolean addCoach(String coach) {
         if (!coaches.contains(coach)) {
             coaches.add(coach);
+            // Write to the log
+            Logger.getInstance().addActionToLogger("Coach "+coach+ "was added to the team: "+team.getName()+".");
             return true;
         }
         return false;
@@ -143,6 +147,8 @@ public class AdditionalInfo {
             managers.put(teamOwnerWhoNominate, temp);
             this.teamManagersHashSet.add(teamManager);
         }
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Manager "+teamManager+ "was added to the team: "+team.getName()+".");
         return true;
     }
 
@@ -169,6 +175,8 @@ public class AdditionalInfo {
             owners.put(teamOwnerWhoNominate, temp);
             this.teamOwnersHashSet.add(teamOwner);
         }
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Team Owner  "+teamOwner+ "was added to the team: "+team.getName()+".");
         return true;
     }
 
@@ -180,6 +188,8 @@ public class AdditionalInfo {
     public void removePlayer(String playerUName) {
         if (players.contains(playerUName)) {
             players.remove(playerUName);
+            // Write to the log
+            Logger.getInstance().addActionToLogger("Player "+playerUName+ "was removed from the team: "+team.getName());
         }
     }
 
@@ -191,6 +201,8 @@ public class AdditionalInfo {
     public void removeCoach(String coachUserName) {
         if (coaches.contains(coachUserName)) {
             coaches.remove(coachUserName);
+            // Write to the log
+            Logger.getInstance().addActionToLogger("Coach "+coachUserName+ "was removed from the team: "+team.getName());
         }
 
     }
@@ -205,6 +217,8 @@ public class AdditionalInfo {
     public void removeManager(String managerUserName, String userNameWhoNominated) {
         if (managers.containsKey(userNameWhoNominated)) {
             managers.get(userNameWhoNominated).remove(managerUserName);
+            // Write to the log
+            Logger.getInstance().addActionToLogger("Manager "+managerUserName+ "was removed from the team: "+team.getName());
             this.teamManagersHashSet.remove(managerUserName);
         }
     }
@@ -220,6 +234,8 @@ public class AdditionalInfo {
         if (owners.containsKey(userNameWhoNominated)) {
             owners.get(userNameWhoNominated).remove(ownerUserName);
             this.teamOwnersHashSet.remove(ownerUserName);
+            // Write to the log
+            Logger.getInstance().addActionToLogger("Team Owner "+ownerUserName+ "was removed from the team: "+team.getName());
         }
     }
 
@@ -288,9 +304,7 @@ public class AdditionalInfo {
      */
     public boolean whoNominateTeamManager(String teamManager, String userNameWhoNominated) {
         if (this.managers.containsKey(userNameWhoNominated)) {
-            if (this.managers.get(userNameWhoNominated).contains(teamManager)) {
-                return true;
-            }
+            return this.managers.get(userNameWhoNominated).contains(teamManager);
         }
         return false;
     }
@@ -306,9 +320,7 @@ public class AdditionalInfo {
      */
     public boolean whoNominateTeamOwner(String teamOwner, String userNameWhoNominated) {
         if (this.owners.containsKey(userNameWhoNominated)) {
-            if (this.owners.get(userNameWhoNominated).contains(teamOwner)) {
-                return true;
-            }
+            return this.owners.get(userNameWhoNominated).contains(teamOwner);
         }
         return false;
     }

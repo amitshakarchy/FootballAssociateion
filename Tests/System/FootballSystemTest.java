@@ -8,13 +8,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FootballSystemTest {
 
     Field field;
     Team team1, team2;
-    Season season;
     League league;
     Game game;
     TeamOwner teamOwner1,teamOwner2;
@@ -26,17 +27,6 @@ class FootballSystemTest {
 
     @BeforeEach
     void setUp() {
-        season = new Season("2020");
-        FootballSystem.getInstance().addSeasonToDB(season);
-        //field = new Field("blomfield","Tel Aviv",100);
-        FootballSystem.getInstance().addFieldToDB(field);
-        teamBudget = new TeamBudget(null,null,5);
-        teamOwner1 = (TeamOwner)FootballSystem.getInstance().creatingTeamOwner("Tair233","Tair","Cohen");
-        teamOwner2 = (TeamOwner)FootballSystem.getInstance().creatingTeamOwner("Tal12","Tal","Cohen");
-        team1 = new Team(1,"Macabi-Tel-aviv",season,field,teamBudget, teamOwner1);
-        team2 = new Team(2,"Beitar",season,field,teamBudget,teamOwner2);
-        team1.addSeasonToTeam(season);
-        team2.addSeasonToTeam(season);
     }
 
     @AfterEach
@@ -176,6 +166,8 @@ class FootballSystemTest {
 
     @Test
     void addTeamToDB() {
+        team1 = new Team(1,"Macabi-Tel-aviv",null,null,null, null);
+        team2 = new Team(2,"Beitar",null,null,null, null);
         assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
         FootballSystem.getInstance().addTeamToDB(team1);
         assertEquals(1,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
@@ -183,19 +175,34 @@ class FootballSystemTest {
         assertEquals(2,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
         FootballSystem.getInstance().addTeamToDB(team2);
         assertEquals(2,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
+        FootballSystem.getInstance().getFansHashMap().clear();
+        FootballSystem.getInstance().getFieldDB().getAllFields().clear();
+        FootballSystem.getInstance().getTeamDB().getAllTeams().clear();
     }
 
     @Test
     void removeTeamFromDB() {
+        team1 = new Team(1,"Macabi-Tel-aviv",null,null,null, null);
+        team2 = new Team(2,"Beitar",null,null,null, null);
         assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
         FootballSystem.getInstance().addTeamToDB(team1);
         assertEquals(1,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
         FootballSystem.getInstance().removeTeamFromDB(team1.getName());
         assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
+        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
     void addLeagueToDB() {
+        League league1 = new League("Best");
+        League league2 = new League("bad");
+        assertEquals(0,FootballSystem.getInstance().getLeagueDB().getAllLeagues().size());
+        FootballSystem.getInstance().addLeagueToDB(league1);
+        assertEquals(1,FootballSystem.getInstance().getLeagueDB().getAllLeagues().size());
+        FootballSystem.getInstance().addLeagueToDB(league1);
+        assertEquals(1,FootballSystem.getInstance().getLeagueDB().getAllLeagues().size());
+        FootballSystem.getInstance().addLeagueToDB(league2);
+        assertEquals(2,FootballSystem.getInstance().getLeagueDB().getAllLeagues().size());
     }
 
     @Test
@@ -210,34 +217,60 @@ class FootballSystemTest {
 
     @Test
     void addFieldToDB() {
-
+        Field field1 = new Field("Blom","Tel-Aviv",10000);
+        assertEquals(0,FootballSystem.getInstance().getFieldDB().getAllFields().size());
+        FootballSystem.getInstance().addFieldToDB(field1);
+        assertEquals(1,FootballSystem.getInstance().getFieldDB().getAllFields().size());
+        FootballSystem.getInstance().addFieldToDB(field1);
+        assertEquals(1,FootballSystem.getInstance().getFieldDB().getAllFields().size());
+        FootballSystem.getInstance().getFieldDB().getAllFields().clear();
     }
 
     @Test
     void removeFieldFromDB() {
+        Field field1 = new Field("Blom","Tel-Aviv",10000);
+        assertEquals(0,FootballSystem.getInstance().getFieldDB().getAllFields().size());
+        FootballSystem.getInstance().addFieldToDB(field1);
+        assertEquals(1,FootballSystem.getInstance().getFieldDB().getAllFields().size());
+        FootballSystem.getInstance().addFieldToDB(field1);
+        assertEquals(1,FootballSystem.getInstance().getFieldDB().getAllFields().size());
+        FootballSystem.getInstance().removeFieldFromDB("Blomm");
+        assertEquals(1,FootballSystem.getInstance().getFieldDB().getAllFields().size());
+        FootballSystem.getInstance().removeFieldFromDB("Blom");
+        assertEquals(0,FootballSystem.getInstance().getFieldDB().getAllFields().size());
+        FootballSystem.getInstance().getFieldDB().getAllFields().clear();
     }
 
     @Test
     void addSeasonToDB() {
+        Season season1 = new Season("2010");
+        Season season2 = new Season("2011");
+        assertEquals(0,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
+        FootballSystem.getInstance().addSeasonToDB(season1);
+        assertEquals(1,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
+        FootballSystem.getInstance().addSeasonToDB(season1);
+        assertEquals(1,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
+        FootballSystem.getInstance().addSeasonToDB(season2);
+        assertEquals(2,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
+        FootballSystem.getInstance().getSeasonDB().getAllSeasons().clear();
     }
 
     @Test
     void removeSeasonFromDB() {
-    }
-
-    @Test
-    void addGameToDB() {
-    }
-
-    @Test
-    void removeGameFromDB() {
-    }
-
-    @Test
-    void findPlayerAtTeamByUserName() {
-    }
-
-    @Test
-    void findCoachAtTeamByUserName() {
+        Season season1 = new Season("2010");
+        Season season2 = new Season("2011");
+        assertEquals(0,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
+        FootballSystem.getInstance().addSeasonToDB(season1);
+        assertEquals(1,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
+        FootballSystem.getInstance().addSeasonToDB(season1);
+        assertEquals(1,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
+        FootballSystem.getInstance().addSeasonToDB(season2);
+        assertEquals(2,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());        FootballSystem.getInstance().removeSeasonFromDB("2011");
+        assertEquals(1,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
+        FootballSystem.getInstance().removeSeasonFromDB("201");
+        assertEquals(1,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
+        FootballSystem.getInstance().removeSeasonFromDB("2010");
+        assertEquals(0,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
+        FootballSystem.getInstance().getSeasonDB().getAllSeasons().clear();
     }
 }

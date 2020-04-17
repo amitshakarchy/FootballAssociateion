@@ -1,6 +1,8 @@
 package Users;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import System.Logger;
 
 /**
  * A personal page is a page with official content about the player / coach.
@@ -8,7 +10,7 @@ import java.util.List;
  *
  * @ Written by Yuval Ben Eliezer
  */
-public abstract class APageEditor implements IPageEditor {
+public abstract class APageEditor implements IPageEditor,Serializable {
 
     private String myFirstName;
     private String myLastName;
@@ -29,6 +31,8 @@ public abstract class APageEditor implements IPageEditor {
         this.role = role;
         this.myFeed = new ArrayList<>();
         this.observers = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("A new personal page created, user: "+ myFirstName +" "+myLastName);
+
     }
 
     public Enum getRole() {
@@ -55,6 +59,8 @@ public abstract class APageEditor implements IPageEditor {
         if(feed != null) {
             this.myFeed.add(feed);
             notifyObserver(feed);
+            Logger.getInstance().addActionToLogger("A new feed added to personal page, feed:"+feed+", user: "+ myFirstName +" "+myLastName);
+
         }
     }
 
@@ -68,6 +74,8 @@ public abstract class APageEditor implements IPageEditor {
         try {
             if(feed != null) {
                 this.myFeed.remove(feed);
+                Logger.getInstance().addActionToLogger("This feed deleted from personal page, feed:"+feed+", user: "+ myFirstName +" "+myLastName);
+
             }
 
         } catch (Exception e) {
@@ -132,6 +140,8 @@ public abstract class APageEditor implements IPageEditor {
     public void register(Fan observer){
         if(observer != null) {
             this.observers.add(observer);
+            Logger.getInstance().addActionToLogger("This fan register to personal page, fan-userName:"+observer.getUserName()+", user: "+ myFirstName +" "+myLastName);
+
         }
     }
 
@@ -142,6 +152,8 @@ public abstract class APageEditor implements IPageEditor {
     public void delete(Fan observer){
         if(observer != null) {
             this.observers.remove(observer);
+            Logger.getInstance().addActionToLogger("This fan delete his registration from personal page, fan-userName:"+observer.getUserName()+", user: "+ myFirstName +" "+myLastName);
+
         }
     }
 

@@ -5,6 +5,7 @@ import DB.*;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import Security.SecuritySystem;
 import Users.*;
+import sun.tools.jar.CommandLine;
 
 import java.util.*;
 
@@ -21,9 +22,13 @@ public class FootballSystem {
     FieldDB fieldDB = new FieldDB();
     SeasonDB seasonDB = new SeasonDB();
     LeagueDB leagueDB = new LeagueDB();
-    Map<String,Referee> refereeMap = new HashMap<>();
-    Map<String,Player> playerMap  = new HashMap<>();
-    Map<String,Coach> coachMap = new HashMap<>();
+    Map<String, Referee> refereeMap = new HashMap<>();
+    Map<String, Player> playerMap = new HashMap<>();
+    Map<String, Coach> coachMap = new HashMap<>();
+    Map<String, SystemManager> systemManagerMap = new HashMap<>();
+    Map<String, TeamManager> teamManagerMap = new HashMap<>();
+    Map<String, TeamOwner> teamOwnerMap = new HashMap<>();
+    Map<String, RepresentativeFootballAssociation> representativeFootballAssociationMap = new HashMap<>();
 
 
     /**
@@ -82,6 +87,22 @@ public class FootballSystem {
         return coachMap;
     }
 
+    public Map<String, SystemManager> getSystemManagerMap() {
+        return systemManagerMap;
+    }
+
+    public Map<String, TeamManager> getTeamManagerMap() {
+        return teamManagerMap;
+    }
+
+    public Map<String, TeamOwner> getTeamOwnerMap() {
+        return teamOwnerMap;
+    }
+
+    public Map<String, RepresentativeFootballAssociation> getRepresentativeFootballAssociationMap() {
+        return representativeFootballAssociationMap;
+    }
+
     /**
      * Provide a global point of access to the instance
      */
@@ -110,89 +131,95 @@ public class FootballSystem {
         return fan;
     } // useCase 2.2
 
-
     public Fan creatingRepresentativeFootballAssociation(String userName, String firstName, String lastName, GamesAssigningPolicy gamesAssigningPolicy) {
-        if(this.getFansHashMap().containsKey(userName)){
-            if(this.getFansHashMap().get(userName) instanceof RepresentativeFootballAssociation){
-                System.out.println("The user name: "+userName+" is already a RepresentativeFootballAssociation");
+        if (this.getFansHashMap().containsKey(userName)) {
+            if (this.getFansHashMap().get(userName) instanceof RepresentativeFootballAssociation) {
+                System.out.println("The user name: " + userName + " is already a RepresentativeFootballAssociation");
                 return null;
             }
         }
-        Fan fan = new RepresentativeFootballAssociation(userName, firstName, lastName, gamesAssigningPolicy);
+        Fan fan = new RepresentativeFootballAssociation(userName, firstName, lastName);
         this.fansHashMap.put(userName, fan);
+        this.representativeFootballAssociationMap.put(userName,(RepresentativeFootballAssociation)fan);
         return fan;
     }
 
     public Fan creatingReferee(String userName, String firstName, String lastName, EReferee training) {
-        if(this.getFansHashMap().containsKey(userName)){
-            if(this.getFansHashMap().get(userName) instanceof Referee){
-                System.out.println("The user name: "+userName+" is already a Referee");
+        if (this.getFansHashMap().containsKey(userName)) {
+            if (this.getFansHashMap().get(userName) instanceof Referee) {
+                System.out.println("The user name: " + userName + " is already a Referee");
                 return null;
             }
         }
         Fan fan = new Referee(userName, firstName, lastName, training);
         this.fansHashMap.put(userName, fan);
+        this.refereeMap.put(userName,(Referee)fan);
         return fan;
     }
 
     public Fan creatingCoach(String userName, String firstName, String lastName, ETraining training,
                              ECoachRole eCoachRole) {
-        if(this.getFansHashMap().containsKey(userName)){
-            if(this.getFansHashMap().get(userName) instanceof Coach){
-                System.out.println("The user name: "+userName+" is already a Coach");
+        if (this.getFansHashMap().containsKey(userName)) {
+            if (this.getFansHashMap().get(userName) instanceof Coach) {
+                System.out.println("The user name: " + userName + " is already a Coach");
                 return null;
             }
         }
         Fan fan = new Coach(userName, firstName, lastName, training, eCoachRole);
         this.fansHashMap.put(userName, fan);
+        this.coachMap.put(userName,(Coach)fan);
         return fan;
     }
 
     public Fan creatingTeamOwner(String userName, String firstName, String lastName) {
-        if(this.getFansHashMap().containsKey(userName)){
-            if(this.getFansHashMap().get(userName) instanceof TeamOwner){
-                System.out.println("The user name: "+userName+" is already a Team Owner");
+        if (this.getFansHashMap().containsKey(userName)) {
+            if (this.getFansHashMap().get(userName) instanceof TeamOwner) {
+                System.out.println("The user name: " + userName + " is already a Team Owner");
                 return null;
             }
         }
         Fan fan = new TeamOwner(userName, firstName, lastName);
         this.fansHashMap.put(userName, fan);
+        this.teamOwnerMap.put(userName,(TeamOwner)fan);
         return fan;
     }
 
     public Fan creatingTeamManager(String userName, String firstName, String lastName) {
-        if(this.getFansHashMap().containsKey(userName)){
-            if(this.getFansHashMap().get(userName) instanceof TeamManager){
-                System.out.println("The user name: "+userName+" is already a Team Manager");
+        if (this.getFansHashMap().containsKey(userName)) {
+            if (this.getFansHashMap().get(userName) instanceof TeamManager) {
+                System.out.println("The user name: " + userName + " is already a Team Manager");
                 return null;
             }
         }
         Fan fan = new TeamManager(userName, firstName, lastName);
         this.fansHashMap.put(userName, fan);
+        this.teamManagerMap.put(userName,(TeamManager)fan);
         return fan;
     }
 
     public Fan creatingPlayer(String userName, String firstName, String lastName
             , Date bDate, EPlayerRole playerRole) {
-        if(this.getFansHashMap().containsKey(userName)){
-            if(this.getFansHashMap().get(userName) instanceof Player){
-                System.out.println("The user name: "+userName+" is already a Player");
+        if (this.getFansHashMap().containsKey(userName)) {
+            if (this.getFansHashMap().get(userName) instanceof Player) {
+                System.out.println("The user name: " + userName + " is already a Player");
                 return null;
             }
         }
         Fan fan = new Player(userName, firstName, lastName, bDate, playerRole);
         this.fansHashMap.put(userName, fan);
+        this.playerMap.put(userName,(Player)fan);
         return fan;
     }
 
-    public Field createField(String name, String city, int capacity){
-        if(fieldDB.getAllFields().containsKey(name)){
+    public Field createField(String name, String city, int capacity) {
+        if (fieldDB.getAllFields().containsKey(name)) {
             return fieldDB.getAllFields().get(name);
         }
-        Field field = new Field(name,city,capacity);
+        Field field = new Field(name, city, capacity);
         this.addFieldToDB(field);
         return field;
     }
+
     public Fan login(String userName, String password) {
         if (securitySystem.checkPasswordForLogIn(userName, password)) {
             if (this.fansHashMap.containsKey(userName)) {
@@ -204,9 +231,30 @@ public class FootballSystem {
     }  // useCase 2.3
 
     public void removeUser(String userName) {
-        if(this.fansHashMap.containsKey(userName)){
+        if(this.fansHashMap.get(userName) instanceof Player){
+            this.playerMap.remove(userName);
+        }
+        else if(this.fansHashMap.get(userName) instanceof RepresentativeFootballAssociation){
+            this.representativeFootballAssociationMap.remove(userName);
+        }
+        else if(this.fansHashMap.get(userName) instanceof Referee){
+            this.refereeMap.remove(userName);
+        }
+        else if(this.fansHashMap.get(userName) instanceof Coach){
+            this.coachMap.remove(userName);
+        }
+        else if(this.fansHashMap.get(userName) instanceof TeamManager){
+            this.teamManagerMap.remove(userName);
+        }
+        else if(this.fansHashMap.get(userName) instanceof TeamOwner){
+            this.teamOwnerMap.remove(userName);
+        }
+        else if(this.fansHashMap.get(userName) instanceof SystemManager){
+            this.systemManagerMap.remove(userName);
+        }
+        if (this.fansHashMap.containsKey(userName)) {
             this.fansHashMap.remove(userName);
-            System.out.println("The user name: "+userName+" was removed successfully");
+            System.out.println("The user name: " + userName + " was removed successfully");
         }
         this.securitySystem.removeUser(userName);
     }
@@ -221,87 +269,150 @@ public class FootballSystem {
     public boolean existFanByUserName(String userName) {
         return this.fansHashMap.containsKey(userName);
     }
+
     public void addTeamToDB(Team team) {
-        if(team != null) {
-            if(this.teamDB.getAllTeams().containsKey(team.getName())){
-                System.out.println("The team: "+team.getName()+" is already exit in the DB");
+        if (team != null) {
+            if (this.teamDB.getAllTeams().containsKey(team.getName())) {
+                System.out.println("The team: " + team.getName() + " is already exit in the DB");
                 return;
             }
             this.teamDB.addTeam(team, team.getName());
         }
     }
-    public void removeTeamFromDB(String teamName){
+
+    public void removeTeamFromDB(String teamName) {
         this.teamDB.removeTeam(teamName);
     }
+
     public void addLeagueToDB(League league) {
-        if(league != null) {
+        if (league != null) {
             this.leagueDB.addLeague(league, league.getLeagueName());
         }
     }
-    public void removeLeagueFromDB(String league){
+
+    public void removeLeagueFromDB(String league) {
         this.leagueDB.removeLeague(league);
     }
+
     public void addFieldToDB(Field field) {
-        if(field != null) {
+        if (field != null) {
             this.fieldDB.addField(field, field.getName());
         }
     }
-    public void removeFieldFromDB(String fieldName){
+
+    public void removeFieldFromDB(String fieldName) {
         this.fieldDB.removeField(fieldName);
     }
+
     public void addSeasonToDB(Season season) {
-        if(season != null) {
+        if (season != null) {
             this.seasonDB.addSeason(season, season.getYear());
         }
     }
-    public void removeSeasonFromDB(String year){
+
+    public void removeSeasonFromDB(String year) {
         this.seasonDB.removeSeason(year);
     }
+
     public void addGameToDB(Game game) {
-        if(game != null) {
+        if (game != null) {
             this.gameDB.addGame(game, game.getGID());
         }
     }
-    public void removeGameFromDB(int gid){
+
+    public void removeGameFromDB(int gid) {
         this.gameDB.removeGame(gid);
     }
-    public boolean findPlayerAtTeamByUserName(String userName){
-        for (Team team: this.teamDB.getAllTeams().values()) {
-            if(team.findPlayer(userName) != null){
+
+    public boolean findPlayerAtTeamByUserName(String userName) {
+        for (Team team : this.teamDB.getAllTeams().values()) {
+            if (team.findPlayer(userName) != null) {
                 return true;
             }
         }
         return false;
     }
-    public boolean findCoachAtTeamByUserName(String userName){
-        for (Team team: this.teamDB.getAllTeams().values()) {
-            if(team.findCoach(userName) != null){
+
+    public boolean findCoachAtTeamByUserName(String userName) {
+        for (Team team : this.teamDB.getAllTeams().values()) {
+            if (team.findCoach(userName) != null) {
                 return true;
             }
         }
         return false;
     }
-    public boolean findTeamOwnerAtTeamByUserName(String userName){
-        for (Team team: this.teamDB.getAllTeams().values()) {
-            if(team.findTeamOwner(userName) != null){
+
+    public boolean findTeamOwnerAtTeamByUserName(String userName) {
+        for (Team team : this.teamDB.getAllTeams().values()) {
+            if (team.findTeamOwner(userName) != null) {
                 return true;
             }
         }
         return false;
     }
-    public boolean findTeamManagerAtTeamByUserName(String userName){
-        for (Team team: this.teamDB.getAllTeams().values()) {
-            if(team.findManager(userName) != null){
+
+    public boolean findTeamManagerAtTeamByUserName(String userName) {
+        for (Team team : this.teamDB.getAllTeams().values()) {
+            if (team.findManager(userName) != null) {
                 return true;
             }
         }
         return false;
     }
-    public boolean existLeagueByName(String leagueName){
+
+    public boolean existLeagueByName(String leagueName) {
         return this.leagueDB.getAllLeagues().containsKey(leagueName);
     }
 
-    public boolean existFieldByName(String fieldName){
+    public boolean existFieldByName(String fieldName) {
         return this.fieldDB.getAllFields().containsKey(fieldName);
+    }
+
+    public void addReferee(Referee referee) {
+        if(referee == null) return;
+        refereeMap.put(referee.getUserName(), referee);
+    }
+
+    public void addCoach(Coach coach) {
+        if(coach == null) return;
+        coachMap.put(coach.getUserName(), coach);
+    }
+
+    public void addPlayer(Player player) {
+        if(player == null) return;
+        playerMap.put(player.getUserName(), player);
+    }
+
+    public void addSystemManager(SystemManager systemManager){
+        if(systemManager == null) return;
+        this.systemManagerMap.put(systemManager.getUserName(),systemManager);
+    }
+
+    public Referee getRefereeByUseName(String userName) {
+        return this.refereeMap.get(userName);
+    }
+
+    public Coach getCoachByUserName(String userName) {
+        return this.coachMap.get(userName);
+    }
+
+    public Player getPlayerByUserName(String userName) {
+        return this.playerMap.get(userName);
+    }
+
+    public RepresentativeFootballAssociation getRepresentativeFootballAssociationByUseName(String userName) {
+        return this.representativeFootballAssociationMap.get(userName);
+    }
+
+    public TeamOwner getTeamOwnerByUserName(String userName) {
+        return this.teamOwnerMap.get(userName);
+    }
+
+    public SystemManager getSystemManagerByUserName(String userName) {
+        return this.systemManagerMap.get(userName);
+    }
+
+    public TeamManager getTeamManagerByUserName(String userName) {
+        return this.teamManagerMap.get(userName);
     }
 }

@@ -51,6 +51,7 @@ public class Coach extends CanBeOwner {
         this.role = role;
         this.myPage = new CoachPageEditor(fan.getfName(), fan.getlName(),role,training);
         this.myAdditionalInfo = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("Coach created, user name: "+ fan.getUserName());
     }
 
     /**
@@ -67,6 +68,8 @@ public class Coach extends CanBeOwner {
         this.role = role;
         this.myPage = new CoachPageEditor(canBeOwner.getfName(), canBeOwner.getlName(),role,training);
         this.myAdditionalInfo = new ArrayList<>();
+        Logger.getInstance().addActionToLogger("Coach created, user name: "+ canBeOwner.getUserName());
+
     }
 
     public List<AdditionalInfo> getMyAdditionalInfo() {
@@ -81,6 +84,8 @@ public class Coach extends CanBeOwner {
     public void addAdditionalInfo(AdditionalInfo additionalInfo){
         if(additionalInfo != null){
             this.myAdditionalInfo.add(additionalInfo);
+            Logger.getInstance().addActionToLogger("AdditionalInfo added to coach, user name: "+ getUserName());
+
         }
 
     }
@@ -129,6 +134,8 @@ public class Coach extends CanBeOwner {
         if( training != null){
                 this.training = training;
                 this.myPage.setTraining(training);
+            Logger.getInstance().addActionToLogger("Coach training has changed, user name: "+ getUserName()+" training: "+training);
+
         }
     }
 
@@ -147,6 +154,8 @@ public class Coach extends CanBeOwner {
         if(role != null) {
             this.role = role;
             this.myPage.setRole(role);
+            Logger.getInstance().addActionToLogger("Coach role has changed, user name: "+ getUserName()+" role: "+role);
+
         }
     }
 

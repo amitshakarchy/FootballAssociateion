@@ -4,10 +4,15 @@ import AssociationAssets.Event;
 import AssociationAssets.Game;
 import javafx.util.Pair;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * All system operations are kept in this class for tracking and error tracking
+ * Singleton
  * @ Written by Yuval Ben Eliezer
  */
 public class Logger {
@@ -29,12 +34,21 @@ public class Logger {
 
     }
 
+    /**
+     *  Through the Log main referee can generate reports on games
+     * @param gid - game id
+     * @param events - List of events that happened in a game
+     */
     public void exportReport(int gid, List<Event> events) {
         if(events!= null){
             this.report.add(new Pair<>(gid,events));
         }
     }
 
+    /**
+     * Using this function you can add actions that occurred in the system to the logger
+     * @param action - The action we want to add
+     */
     public void addActionToLogger(String action){
         getLog().add(action);
     }
@@ -42,4 +56,20 @@ public class Logger {
     public List<String> getLog() {
         return log;
     }
+
+    public void WriteObjectToFile(File filepath) {
+        try {
+
+            FileOutputStream fileOut = new FileOutputStream(filepath);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(log);
+            objectOut.close();
+            fileOut.close();
+            System.out.println("The Logger was succesfully written to a file");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

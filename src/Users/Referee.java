@@ -49,6 +49,9 @@ public class Referee extends Fan {
     public void setTraining(EReferee training) {
         if(training != null) {
             this.training = training;
+            Logger.getInstance().addActionToLogger("Referee training has changed, user name: "+ getUserName()+" training: "+training);
+
+
         }
     }
 
@@ -64,6 +67,8 @@ public class Referee extends Fan {
     public void addGame(Game game){
         if(game!= null){
             this.myGames.add(game);
+            Logger.getInstance().addActionToLogger("Game added to referee, user name: "+ getUserName()+" game: "+game);
+
         }
     }
 
@@ -80,6 +85,8 @@ public class Referee extends Fan {
         if(gameToAdd != null ){
             if(gameToAdd.isUpdatable(2)) {
                 gameToAdd.addEvent(eventType, description);
+                Logger.getInstance().addActionToLogger("Referee added event to assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
+
             }
         }
     }
@@ -98,6 +105,8 @@ public class Referee extends Fan {
         if(gameToAdd != null && eventIndex!= -1 ){
             if(gameToAdd.isUpdatable(2)) {
                 gameToAdd.editEvent(eventIndex, eventType, description);
+                Logger.getInstance().addActionToLogger("Referee update event to assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
+
             }
         }
     }
@@ -114,6 +123,8 @@ public class Referee extends Fan {
         if(gameToAdd != null && eventIndex!= -1){
             if(gameToAdd.isUpdatable(2)) {
                 gameToAdd.removeEvent(eventIndex);
+                Logger.getInstance().addActionToLogger("Referee remove event from assigned game, user name: "+ getUserName()+" GameID: "+gameID);
+
             }
         }
     }
@@ -133,6 +144,8 @@ public class Referee extends Fan {
             if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.getUserName()) && eventIndex!= -1) {
                 if(gameToAdd.isUpdatable(7)) {
                     gameToAdd.editEvent(eventIndex, eventType, description);
+                    Logger.getInstance().addActionToLogger("Referee edit event from assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
+
                 }
             }
         }
@@ -152,6 +165,8 @@ public class Referee extends Fan {
             if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.getUserName())&& eventIndex!= -1){
                 if(gameToAdd.isUpdatable(7)){
                     gameToAdd.removeEvent(eventIndex);
+                    Logger.getInstance().addActionToLogger("Referee remove event from assigned game, user name: "+ getUserName()+" GameID: "+gameID);
+
                 }
             }
         }
@@ -169,6 +184,8 @@ public class Referee extends Fan {
             if (gameToAdd != null) {
                 if(gameToAdd.isUpdatable(7)) {
                     Logger.getInstance().exportReport(gameToAdd.getGID(),gameToAdd.getEvents());
+                    Logger.getInstance().addActionToLogger("Referee export report from the game, user name: "+ getUserName()+" GameID: "+gameID);
+
                 }
             }
         }
