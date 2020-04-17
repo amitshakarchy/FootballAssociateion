@@ -4,6 +4,9 @@ import AssociationAssets.Event;
 import AssociationAssets.Game;
 import javafx.util.Pair;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,4 +56,20 @@ public class Logger {
     public List<String> getLog() {
         return log;
     }
+
+    public void WriteObjectToFile(File filepath) {
+        try {
+
+            FileOutputStream fileOut = new FileOutputStream(filepath);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(log);
+            objectOut.close();
+            fileOut.close();
+            System.out.println("The Logger was succesfully written to a file");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }
