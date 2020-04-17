@@ -1,6 +1,8 @@
 package Budget;
+
 import AssociationAssets.Season;
 import AssociationAssets.Team;
+import Users.RepresentativeFootballAssociation;
 import javafx.util.Pair;
 import java.util.*;
 
@@ -11,27 +13,32 @@ public class TeamBudget extends Observable {
     HashMap<String, Pair<Double,String>> incomes; // String- income name, pair: double-cost, String-description
     HashMap<String, Pair<Double,String>> outcomes;
     double threshHold;
+    private RepresentativeFootballAssociation representative;
     /**
      * Constructor
      * @param team
      * @param season
-     * @param threshHold - The threshold that defines whether the team has exceeded from its budget
      */
-    public TeamBudget(Team team, Season season,double threshHold) {
+    public TeamBudget(Team team, Season season) {
         this.team = team;
         this.season = season;
-        this.threshHold = threshHold;
         this.incomes = new HashMap<>();
         this.outcomes= new HashMap<>();
     }
 
-    public void checkTeamBudgetExceedRule(){
-        if((1+threshHold)*totalIncomes() < totalOutcomes()){
-           setChanged();
-           notifyAll();
+    public void checkTeamBudgetExceedRule(RepresentativeFootballAssociation representative) {
+        if (representative != null){
+            if ((1 + threshHold) * totalIncomes() < totalOutcomes()) {
+                setNews(representative);
+            }
+       }
+    }
+    public void setNews(RepresentativeFootballAssociation representative) {
+        if(representative!=null) {
+            this.representative = representative;
+            representative.update(this, this.team.getName());
         }
     }
-
     /**
      * @return total team's outcomes
      */
@@ -61,8 +68,10 @@ public class TeamBudget extends Observable {
      * @param description
      */
     public  void addOutcome (String outcomeName,Double outcomeValue, String description){
-        outcomes.put(outcomeName, new Pair<>(outcomeValue,description));
-        checkTeamBudgetExceedRule();
+        if(!(outcomeName == null || outcomeValue <= 0 || description == null)) {
+            outcomes.put(outcomeName, new Pair<>(outcomeValue, description));
+            checkTeamBudgetExceedRule(this.representative);
+        }
     }
 
     /**
@@ -72,31 +81,32 @@ public class TeamBudget extends Observable {
      * @param description
      */
     public  void addIncome (String incomeName,Double incomeValue, String description ){
-        incomes.put(incomeName, new Pair<>(incomeValue,description));
-        checkTeamBudgetExceedRule();
+        if(!(incomeName == null || incomeValue <= 0 || description == null)) {
+            incomes.put(incomeName, new Pair<>(incomeValue, description));
+            checkTeamBudgetExceedRule(this.representative);
+        }
     }
 
     //region Getters: getThreshHold, getTeam, getIncomes, getOutcomes
-    public double getThreshHold() {
-        return threshHold;
-    }
-    public Team getTeam() {
-        return team;
-    }
-    public HashMap<String, Pair<Double, String>> getIncomes() {
-        return incomes;
-    }
-
+    public double getThreshHold() { return threshHold; }
+    public Team getTeam() { return team; }
+    public HashMap<String, Pair<Double, String>> getIncomes() { return incomes; }
     public HashMap<String, Pair<Double, String>> getOutcomes() {
         return outcomes;
     }
 
     //endregion
 
-    //region Setter: setThreshHold
-    public void setThreshHold(double threshHold) {
+    //region Setter: setThreshHold, setRepresentative
+    public void setThreshHold(double threshHold, RepresentativeFootballAssociation representative) {
+        if(threshHold <0){
+            return;
+        }
         this.threshHold = threshHold;
-        checkTeamBudgetExceedRule();
+        checkTeamBudgetExceedRule(representative);
+    }
+    public void setRepresentative(RepresentativeFootballAssociation representative){
+        this.representative = representative;
     }
 
     //endregion

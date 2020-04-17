@@ -97,7 +97,6 @@ public class Game {
      * @throws Exception
      */
     private void validateReferees(Referee main, Referee side1, Referee side2) throws Exception {
-
         if(main.getUserName().equals(side1.getUserName())||
                 main.getUserName().equals(side2.getUserName())||
                 side1.getUserName().equals(side2.getUserName()))
