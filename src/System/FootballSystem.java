@@ -230,8 +230,8 @@ public class FootballSystem {
             this.teamDB.addTeam(team, team.getName());
         }
     }
-    public void removeTeamFromDB(int tid){
-        this.teamDB.removeTeam(tid);
+    public void removeTeamFromDB(String teamName){
+        this.teamDB.removeTeam(teamName);
     }
     public void addLeagueToDB(League league) {
         if(league != null) {

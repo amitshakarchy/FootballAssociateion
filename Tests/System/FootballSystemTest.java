@@ -187,6 +187,11 @@ class FootballSystemTest {
 
     @Test
     void removeTeamFromDB() {
+        assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
+        FootballSystem.getInstance().addTeamToDB(team1);
+        assertEquals(1,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
+        FootballSystem.getInstance().removeTeamFromDB(team1.getName());
+        assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
     }
 
     @Test
@@ -195,10 +200,17 @@ class FootballSystemTest {
 
     @Test
     void removeLeagueFromDB() {
+        league = new League("Best");
+        assertEquals(0,FootballSystem.getInstance().getLeagueDB().getAllLeagues().size());
+        FootballSystem.getInstance().addLeagueToDB(league);
+        assertEquals(1,FootballSystem.getInstance().getLeagueDB().getAllLeagues().size());
+        FootballSystem.getInstance().removeLeagueFromDB(league.getLeagueName());
+        assertEquals(0,FootballSystem.getInstance().getLeagueDB().getAllLeagues().size());
     }
 
     @Test
     void addFieldToDB() {
+
     }
 
     @Test
