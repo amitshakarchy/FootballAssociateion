@@ -109,4 +109,17 @@ public class Guest {
             return;
         }
     }
+
+    protected String searchByName(String name) {
+        return null;
+    }
+
+    protected String searchByCategory(String categoryName) {
+        return null;
+
+    }
+
+    protected String searchByKeyWord(String keyWord) {
+        return null;
+    }
 }

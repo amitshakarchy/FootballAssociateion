@@ -220,13 +220,49 @@ public class Fan extends Guest implements IFan {
     /**
      * A fan can perform system searches
      * A fan search history is saved to the system
-     * @param search - The content for which the fan wants information
+     * @param name - The content for which the fan wants information
+     * return null - If no result is found
      */
     @Override
-    public void search(String search) {
-        if (search != null) {
-            super.search(search);
-            this.searchHistory.add(search);
+    public String searchByName(String name){
+        if (name != null) {
+            String res = super.searchByName(name);
+            this.searchHistory.add(name);
+            return res;
         }
+        return null;
     }
+
+    /**
+     * A fan can perform system searches
+     * A fan search history is saved to the system
+     * @param categoryName - The category for which the fan wants information
+     * return null - If no result is found
+     */
+    @Override
+    public String searchByCategory(String categoryName){
+        if (categoryName != null) {
+            String res = super.searchByCategory(categoryName);
+            this.searchHistory.add(categoryName);
+            return res;
+        }
+        return null;
+    }
+
+    /**
+     * A fan can perform system searches
+     * A fan search history is saved to the system
+     * @param keyWord - The key word for which the fan wants information
+     * return null - If no result is found
+     */
+    @Override
+    public String searchByKeyWord(String keyWord){
+        if (keyWord != null) {
+            String res = super.searchByKeyWord(keyWord);
+            this.searchHistory.add(keyWord);
+            return res;
+        }
+        return null;
+    }
+
 }
