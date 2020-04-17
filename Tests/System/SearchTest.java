@@ -87,7 +87,7 @@ public class SearchTest {
         try {
            setUp();
            assertSame(search.getUserByUserName(ref1.getUserName()), ref1);
-           assertSame((Coach) search.getUserByUserName(coach.getUserName()),coach);
+           assertSame( search.getUserByUserName(coach.getUserName()),coach);
            assertSame(search.getUserByUserName(player.getUserName()),player);
            assertSame(search.getUserByUserName(fan.getUserName()),fan);
 //           assertSame(search.getUserByUserName(teamOwner.getUserName()),teamOwner);
