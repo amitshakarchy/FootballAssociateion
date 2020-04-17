@@ -2,6 +2,11 @@ package System;
 import Users.Fan;
 import Users.SystemManager;
 import javafx.util.Pair;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +14,7 @@ import java.util.List;
  * This class constitutes an Administrator Inquiry Box for improper information
  * @ Written by Yuval Ben Eliezer
  */
-public class Complains {
+public class Complains implements Serializable {
 
     private List<Pair<String, Fan>> complain = new ArrayList<>();
     private static Complains ourInstance = new Complains();
@@ -65,4 +70,19 @@ public class Complains {
     public void setComplain(List<Pair<String, Fan>> complain) {
         this.complain = complain;
     }
+
+    public void WriteObjectToFile(File filepath) {
+        try {
+
+            FileOutputStream fileOut = new FileOutputStream(filepath);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(complain);
+            objectOut.close();
+            fileOut.close();
+            System.out.println("The Complain was succesfully written to a file");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

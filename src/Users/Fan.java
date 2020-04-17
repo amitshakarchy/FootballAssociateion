@@ -1,4 +1,5 @@
 package Users;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import System.*;
  *
  * @ Written by Yuval Ben Eliezer
  */
-public class Fan extends Guest implements IFan {
+public class Fan extends Guest implements IFan ,Serializable {
 
     private String userName;
     private String fName;

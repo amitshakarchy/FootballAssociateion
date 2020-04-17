@@ -7,6 +7,7 @@ import AssociationAssets.Team;
 import Budget.AssociationBudget;
 import Budget.TeamBudget;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
+import PoliciesAndAlgorithms.HeuristicGamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy;
 import java.util.HashMap;
 import java.util.Observable;
@@ -17,22 +18,36 @@ import System.*;
 public class RepresentativeFootballAssociation extends Fan implements Observer  {
     private GamesAssigningPolicy gamePolicy;
     private AssociationBudget associationBudget;
-    private TeamBudget teamBudget;
-    private HashMap<String, Boolean> NotificationTeamsExceedBudget; //String-teamName, Boolean- team exceed budget or not
+    private HashMap<String/*teamName*/, Boolean> NotificationTeamsExceedBudget;
+
     /**
      * Constructor
      * @param userName - Unique football association representative username
      * @param fName - The first name of the football association representative
      * @param lName -The last name of the football association representative
-     * @param gamePolicy - the assigning game policy
      */
-    public RepresentativeFootballAssociation(String userName, String fName, String lName, GamesAssigningPolicy gamePolicy) {
+    public RepresentativeFootballAssociation(String userName, String fName, String lName,GamesAssigningPolicy gamePolicy) {
         super(userName, fName, lName);
-        this.gamePolicy = gamePolicy;
+        this.gamePolicy = gamePolicy; // can be changed by the user later
         this.associationBudget = new AssociationBudget();
         this.NotificationTeamsExceedBudget= new HashMap<>();
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Representative Football Association was created. representative user name: "+userName);
     }
 
+    /**
+     * second constructor
+     * @param userName
+     * @param fName
+     * @param lName
+     */
+    public RepresentativeFootballAssociation(String userName, String fName, String lName){
+    super(userName, fName, lName);
+    this.associationBudget = new AssociationBudget();
+    this.NotificationTeamsExceedBudget= new HashMap<>();
+    // Write to the log
+    Logger.getInstance().addActionToLogger("Representative Football Association was created. representative user name: "+userName);
+}
     /**
      * useCase #9.1 - Define new League
      * @param leagueName  - The name of the new league
@@ -75,14 +90,17 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      * @param lName - referee's last name
      * @param training -  training's referee ID
      */
-    public void nominateReferee(String fName, String lName, EReferee training) {
+    public Referee nominateReferee(String fName, String lName, EReferee training) {
         if(fName == null || lName == null || training == null){
-            return;
+            return null;
         }
         String password = String.valueOf(new Random().nextInt(1000000000));
         String userName = signInReferee(fName,lName,password);
         Referee referee =  (Referee) FootballSystem.getInstance().creatingReferee(userName,fName, lName,training);
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Referee "+referee.getUserName()+ "was created"+".");
         referee.LoginInvitation(userName,password);
+        return referee;
     }
 
     /**
@@ -110,6 +128,8 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     public void removeReferee(Referee refereeToRemove) {
         if(refereeToRemove == null){ return; }
         FootballSystem.getInstance().removeUser(refereeToRemove.getUserName());
+        //Write to log
+        Logger.getInstance().addActionToLogger("Referee "+refereeToRemove.getUserName()+ "was removed from the System");
     }
 
     /**
@@ -131,7 +151,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     /**
      * useCase #9.6 - define assign game policy
      */
-    public void SetGamesAssigningPolicy(GamesAssigningPolicy newGamePolicy) {
+    public void SetGamesAssigningPolicy(String newGamePolicy) {
         if(newGamePolicy !=null) {
             gamePolicy.setPolicy(newGamePolicy);
         }
@@ -146,27 +166,24 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
 
     /**
      * useCase #9.8
-     * set rule for budget control by define threshHold
+     * set rule for budget control by define threshHold for budget control rule
      */
-    public void setTeamBudgetControlRules(Team team, Season season,double threshHold) {
+    public void setTeamBudgetControlRules(Team team, Season season,double threshHold, TeamBudget teamBudget) {
         if(team == null || season == null || threshHold < 0){
             return;
         }
-        TeamBudget teamBudget= new TeamBudget(team,season,threshHold);
-        setTeamBudget(teamBudget);
-        teamBudget.setThreshHold(threshHold);
+        teamBudget.setThreshHold(threshHold,this);
     }
 
     /**
-     * This update function called when a team exceeds its budget
+     * This function called when the team exceeds its budget
      * @param o - TeamBudget Observable
-     * @param arg
+     * @param teamName
      */
     @Override
-    public void update(Observable o, Object arg) {
-        if(o == teamBudget){
-            NotificationTeamsExceedBudget.put(this.teamBudget.getTeam().getName(),true);
-        }
+    public void update(Observable o, Object teamName) {
+            NotificationTeamsExceedBudget.put((String)teamName , true);
+
     }
 
     /**
@@ -205,10 +222,6 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
 
     public HashMap<String, Boolean> getTeamsExceedBudget() {
         return NotificationTeamsExceedBudget;
-    }
-
-    public void setTeamBudget(TeamBudget teamBudget){
-        this.teamBudget= teamBudget;
     }
 
 }

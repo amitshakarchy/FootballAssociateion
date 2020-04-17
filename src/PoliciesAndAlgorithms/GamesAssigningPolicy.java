@@ -1,9 +1,17 @@
 package PoliciesAndAlgorithms;
 
+
 public abstract class GamesAssigningPolicy {
-    public void setPolicy(GamesAssigningPolicy newGamePolicy) {
+    String policy;
+    public void setPolicy(String newGamePolicy) {
+        this.policy = newGamePolicy;
     }
 
     public void executePolicy() {
     }
+
+    public String getPolicy(){
+        return policy;
+    }
+
 }

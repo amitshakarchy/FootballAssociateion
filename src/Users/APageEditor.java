@@ -1,4 +1,5 @@
 package Users;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import System.Logger;
@@ -9,7 +10,7 @@ import System.Logger;
  *
  * @ Written by Yuval Ben Eliezer
  */
-public abstract class APageEditor implements IPageEditor {
+public abstract class APageEditor implements IPageEditor,Serializable {
 
     private String myFirstName;
     private String myLastName;

@@ -151,7 +151,7 @@ class FanTest {
     @Test
     void getSearchHistory() {
         Fan fan = new Fan("newFan", "yossi", "cohen");
-        fan.search("newSearch");
+        //fan.search("newSearch");
         assertEquals(fan.getSearchHistory().size(), 1);
         assertEquals(fan.getSearchHistory().get(0), "newSearch");
 
@@ -161,7 +161,7 @@ class FanTest {
     @Test
     void setSearchHistory() {
         Fan fan = new Fan("newFan", "yossi", "cohen");
-        fan.search("newSearch");
+        //fan.search("newSearch");
         assertEquals(fan.getSearchHistory().size(), 1);
         assertEquals(fan.getSearchHistory().get(0), "newSearch");
         fan.setSearchHistory(null);
@@ -172,10 +172,10 @@ class FanTest {
     @Test
     void search() {
         Fan fan = new Fan("newFan", "yossi", "cohen");
-        fan.search("newSearch");
+        //fan.search("newSearch");
         assertEquals(fan.getSearchHistory().size(), 1);
         assertEquals(fan.getSearchHistory().get(0), "newSearch");
-        fan.search(null);
+        //fan.search(null);
         assertEquals(fan.getSearchHistory().size(), 1);
         assertEquals(fan.getSearchHistory().get(0), "newSearch");
     }
