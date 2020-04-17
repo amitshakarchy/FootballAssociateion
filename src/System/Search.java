@@ -21,10 +21,11 @@ public class Search {
     public Search() {
         teamDB = new TeamDB();
         leagueDB = new LeagueDB();
-        seasonDB =new SeasonDB();
+        seasonDB = new SeasonDB();
         gameDB = new GameDB();
         fieldDB = new FieldDB();
     }
+
     //Todo: systemManager, teamManger, teamOwner, representative
     public Object getUserByUserName(String uName){
         if(uName != null) {
@@ -63,7 +64,6 @@ public class Search {
         }
         return null;
     }
-
     /**
      * @param teamName
      * @return Team by team name
@@ -159,8 +159,9 @@ public class Search {
     public HashMap<String, String> getAllRefereesProfile(){
         HashMap<String, String> refereesProfile = new HashMap<>();
         for (Map.Entry<String, Referee> entry : footballSystem.getRefereeMap().entrySet()) {
-            String profileDetails= entry.getValue().viewProfile();
-            refereesProfile.put(entry.getValue().getUserName(),profileDetails);
+                String profileDetails = entry.getValue().viewProfile();
+                refereesProfile.put(entry.getValue().getUserName(), profileDetails);
+
         }
         return refereesProfile;
     }

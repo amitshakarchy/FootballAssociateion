@@ -72,6 +72,7 @@ public class GuestTest {
 
     @Test
     public void viewInformationCoach(){
+        String test = guest.viewInformationCoach(coach.getUserName());
        assertEquals(guest.viewInformationCoach(coach.getUserName()),coach.viewProfile());
     }
 

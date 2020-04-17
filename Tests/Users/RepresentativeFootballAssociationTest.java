@@ -32,7 +32,6 @@ public class RepresentativeFootballAssociationTest {
     TeamBudget teamBudget;
     HashMap<String,TeamOwner> owners;
     HashMap<String,Coach> coaches;
-    HashMap<String,TeamManager> managers;
     HashMap<String, Player>players;
     @Before
     public void set_up() throws Exception {
@@ -82,10 +81,10 @@ public class RepresentativeFootballAssociationTest {
 
     @Test
     public void nominateReferee() {
-        representative.nominateReferee("Dani","Mizrahi",EReferee.MAIN);
-        assertTrue(FootballSystem.getInstance().existFanByUserName("DaniMizrahi1"));
-        representative.nominateReferee("Dani","Mizrahi",EReferee.MAIN);
-        assertTrue(FootballSystem.getInstance().existFanByUserName("DaniMizrahi2"));
+        Referee referee = representative.nominateReferee("Dani","Mizrahi",EReferee.ASSISTANT);
+        assertTrue(FootballSystem.getInstance().existFanByUserName(referee.getUserName()));
+        Referee referee2=  representative.nominateReferee("Dani","Mizrahi",EReferee.ASSISTANT);
+        assertTrue(FootballSystem.getInstance().existFanByUserName(referee2.getUserName()));
     }
 
     @Test

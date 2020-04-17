@@ -35,6 +35,19 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     }
 
     /**
+     * second constructor
+     * @param userName
+     * @param fName
+     * @param lName
+     */
+    public RepresentativeFootballAssociation(String userName, String fName, String lName){
+    super(userName, fName, lName);
+    this.associationBudget = new AssociationBudget();
+    this.NotificationTeamsExceedBudget= new HashMap<>();
+    // Write to the log
+    Logger.getInstance().addActionToLogger("Representative Football Association was created. representative user name: "+userName);
+}
+    /**
      * useCase #9.1 - Define new League
      * @param leagueName  - The name of the new league
      * @param games - The games in the league season
@@ -76,9 +89,9 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      * @param lName - referee's last name
      * @param training -  training's referee ID
      */
-    public void nominateReferee(String fName, String lName, EReferee training) {
+    public Referee nominateReferee(String fName, String lName, EReferee training) {
         if(fName == null || lName == null || training == null){
-            return;
+            return null;
         }
         String password = String.valueOf(new Random().nextInt(1000000000));
         String userName = signInReferee(fName,lName,password);
@@ -86,6 +99,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
         // Write to the log
         Logger.getInstance().addActionToLogger("Referee "+referee.getUserName()+ "was created"+".");
         referee.LoginInvitation(userName,password);
+        return referee;
     }
 
     /**
