@@ -317,6 +317,12 @@ public class TeamOwner extends Fan {
         return true;
     }
 
+    /**
+     * lalalal
+     * @param team
+     * @param season
+     * @return
+     */
     private boolean checkInputsOfTeamAndSeason(Team team, Season season) {
         if (team == null || season == null) {
             System.out.println("team or season is null");
