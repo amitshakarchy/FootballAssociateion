@@ -7,6 +7,7 @@ import AssociationAssets.Team;
 import Budget.AssociationBudget;
 import Budget.TeamBudget;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
+import PoliciesAndAlgorithms.HeuristicGamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy;
 import java.util.HashMap;
 import java.util.Observable;
@@ -24,11 +25,10 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      * @param userName - Unique football association representative username
      * @param fName - The first name of the football association representative
      * @param lName -The last name of the football association representative
-     * @param gamePolicy - the assigning game policy
      */
-    public RepresentativeFootballAssociation(String userName, String fName, String lName, GamesAssigningPolicy gamePolicy) {
+    public RepresentativeFootballAssociation(String userName, String fName, String lName) {
         super(userName, fName, lName);
-        this.gamePolicy = gamePolicy;
+        this.gamePolicy = new HeuristicGamesAssigningPolicy(); // can be changed by the user later
         this.associationBudget = new AssociationBudget();
         this.NotificationTeamsExceedBudget= new HashMap<>();
     }
