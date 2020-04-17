@@ -7,7 +7,7 @@ import Users.TeamOwner;
 import Budget.TeamBudget;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import System.*;
 /**
  * Class Team represents a team. It holds a team's home and away games, it's players and
  * all other team assets.
@@ -43,6 +43,8 @@ public class Team {
         fields.put(mainField.getName(), mainField);
         this.additionalInfoWithSeasons = new HashMap<>();
         this.teamOwner  = teamOwner;
+        // Write to the log
+        Logger.getInstance().addActionToLogger("Team was created. Team's name: "+name+".");
     }
 
     //region Getters & Setters
@@ -255,6 +257,10 @@ public class Team {
                 '}';
     }
 
-    public void viewProfile() {
+    public String viewProfile() {
+        return  "Team's name: "+this.name+"\n" +
+                "Current Season: "+ this.currentSeason+"\n" +
+                "Home Field: "+ mainField +"\n" +
+                "Team's Owner: "+teamOwner+".";
     }
 }

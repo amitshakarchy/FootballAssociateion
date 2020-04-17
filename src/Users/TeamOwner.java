@@ -254,6 +254,7 @@ public class TeamOwner extends Fan {
         additionalInfoToSearch.getTeam().addField(field);
         return true;
     }
+
     public void removePlayer(Team team, Season season, String userName) {
         if (TeamIsInActive(team)) return;
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
@@ -265,12 +266,12 @@ public class TeamOwner extends Fan {
         additionalInfoToSearch.removeCoach(userName);
     }
     public void removeTeamManager(Team team, Season season, String userNameToRemove) {
-        if (TeamIsInActive(team)) return;
-        AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
-        // checking if this team owner was the one that nominated the team manager
-        if (additionalInfoToSearch.whoNominateTeamManager(userNameToRemove,getUserName())) {
-            additionalInfoToSearch.removeManager(userNameToRemove,getUserName());
-        }
+            if (TeamIsInActive(team)) return;
+            AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
+            // checking if this team owner was the one that nominated the team manager
+            if (additionalInfoToSearch.whoNominateTeamManager(userNameToRemove,getUserName())) {
+                additionalInfoToSearch.removeManager(userNameToRemove,getUserName());
+            }
     }
     public void removeField(Team team, Season season, String fieldName) {
         if (TeamIsInActive(team)) return;
