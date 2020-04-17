@@ -29,7 +29,7 @@ class TeamOwnerTest {
         FootballSystem.getInstance().addSeasonToDB(season);
         //field = new Field("blomfield","Tel Aviv",100);
         FootballSystem.getInstance().addFieldToDB(field);
-        teamBudget = new TeamBudget(null,null,5);
+        teamBudget = new TeamBudget(null,null);
         teamOwner1 = (TeamOwner)FootballSystem.getInstance().creatingTeamOwner("Tair233","Tair","Cohen");
         teamOwner2 = (TeamOwner)FootballSystem.getInstance().creatingTeamOwner("Tal12","Tal","Cohen");
         team1 = new Team(1,"Macabi-Tel-aviv",season,field,teamBudget, teamOwner1);

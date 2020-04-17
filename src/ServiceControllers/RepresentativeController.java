@@ -1,6 +1,7 @@
 package ServiceControllers;
 
 import AssociationAssets.*;
+import Budget.TeamBudget;
 import PoliciesAndAlgorithms.*;
 import Users.*;
 import System.*;
@@ -42,16 +43,16 @@ public class RepresentativeController {
         System.out.println("Choose score-table-policy by its number:\n" +
                 "1. Heuristic 1\n" +
                 "2. Simple 2 ");
-        GamesAssigningPolicy gp = null;
+        String  gp = null;
         switch (input.nextInt()) {
             case 1:
-                gp = new HeuristicGamesAssigningPolicy();
+                gp = "Heuristic";
                 break;
             case 2:
-                gp = new SimpleGamesAssigningPolicy();
+                gp = "Simple";
                 break;
         }
-        rep.addNewLeague(name, new HashMap<>(), new HashMap<>(), sp, gp, year);
+        rep.addNewLeague(name, new HashMap<>(), new HashMap<>(), sp, new SimpleGamesAssigningPolicy(), year);
         System.out.println("A new league was defined with no games and teams, yet.");
     }
 
@@ -152,7 +153,7 @@ public class RepresentativeController {
                 gp = new SimpleGamesAssigningPolicy();
                 break;
         }
-        rep.SetGamesAssigningPolicy(gp);
+        rep.SetGamesAssigningPolicy("Simple");
         System.out.println("Policy was modified successfully");
     }
 
@@ -176,7 +177,7 @@ public class RepresentativeController {
         System.out.println("Insert a threshold ( 0<x<1 )");
         double threshold = input.nextDouble();
 
-        rep.setTeamBudgetControlRules(t, season, threshold);
+        rep.setTeamBudgetControlRules(t, season, threshold,new TeamBudget(t,season));
         System.out.println("threshold was modified successfully.");
     }
 
