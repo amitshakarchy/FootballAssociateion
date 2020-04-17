@@ -98,6 +98,8 @@ public class SystemManager extends Fan {
      */
     public void activateRecommendationSystemModel(ComputaionalModel model){
         model.activate();
+        Logger.getInstance().addActionToLogger("System manager activate recommendation system model, user name: "+ getUserName());
+
     }
 
 }
