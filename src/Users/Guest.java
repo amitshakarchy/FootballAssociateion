@@ -1,4 +1,5 @@
 package Users;
+
 import AssociationAssets.League;
 import AssociationAssets.Season;
 import AssociationAssets.Team;
@@ -8,9 +9,11 @@ import sun.plugin2.os.windows.SECURITY_ATTRIBUTES;
 
 import java.awt.*;
 import java.util.Map;
+import java.util.concurrent.locks.ReadWriteLock;
 
 public class Guest {
     Search search;
+
     /**
      * constructor
      */
@@ -20,14 +23,15 @@ public class Guest {
 
     /**
      * UC 2.2 -  Guest's sign in
+     *
      * @param userName
      * @param password
      * @param firstName
      * @param lastName
      */
-    public Fan signInGuest(String userName, String password, String firstName, String lastName){
-        Fan newFan= FootballSystem.getInstance().signIn(userName, password,firstName, lastName );
-        logInGuest(userName,password);
+    public Fan signInGuest(String userName, String password, String firstName, String lastName) {
+        Fan newFan = FootballSystem.getInstance().signIn(userName, password, firstName, lastName);
+        logInGuest(userName, password);
         return newFan;
     }
 
@@ -36,8 +40,8 @@ public class Guest {
      * @param userName
      * @param password
      */
-    public Fan logInGuest(String userName, String password){
-        Fan user = FootballSystem.getInstance().login(userName,password);
+    public Fan logInGuest(String userName, String password) {
+        Fan user = FootballSystem.getInstance().login(userName, password);
         return user;
     }
 
@@ -45,9 +49,9 @@ public class Guest {
      * useCase 2.4- Guest viewing information about the given coach
      * @param coachUserName
      */
-    public String viewInformationCoach(String coachUserName){
-        if(coachUserName!=null) {
-            Fan coach = search.getUserByUserName(coachUserName);
+    public String viewInformationCoach(String coachUserName) {
+        if (coachUserName != null) {
+            Coach coach = (Coach) search.getUserByUserName(coachUserName);
             if (coach != null) {
                 return coach.viewProfile();
             }
@@ -59,10 +63,10 @@ public class Guest {
      * useCase 2.4- Guest viewing information about the given player
      * @param playerUserName
      */
-    public String viewInformationPlayer(String playerUserName){
-        if(playerUserName != null){
-            Fan player = search.getUserByUserName(playerUserName);
-            if(player!=null) {
+    public String viewInformationPlayer(String playerUserName) {
+        if (playerUserName != null) {
+            Player player = (Player) search.getUserByUserName(playerUserName);
+            if (player != null) {
                 return player.viewProfile();
             }
         }
@@ -73,11 +77,11 @@ public class Guest {
      * useCase 2.4 - Guest viewing information about the given team
      * @param teamName
      */
-    public String  viewInformationTeam(String teamName){
-        if(teamName != null) {
+    public String viewInformationTeam(String teamName) {
+        if (teamName != null) {
             Team team = search.getTeamByTeamName(teamName);
-            if(team!=null) {
-                //return  team.viewProfile();
+            if (team != null) {
+                return team.viewProfile();
             }
         }
         return null;
@@ -87,11 +91,11 @@ public class Guest {
      * useCase 2.4 - Guest viewing information about the given league
      * @param leagueName
      */
-    public String viewInformationLeague(String leagueName){
-        if(leagueName != null) {
+    public String viewInformationLeague(String leagueName) {
+        if (leagueName != null) {
             League league = search.getLeagueByLeagueName(leagueName);
-            if(league!=null) {
-                //return league.viewProfile();
+            if (league != null) {
+                return league.viewProfile();
             }
         }
         return null;
@@ -101,11 +105,11 @@ public class Guest {
      * useCase 2.4 - Guest viewing information about the given season
      * @param year
      */
-    public String viewInformationSeason(String year){
-        if(year != null){
+    public String viewInformationSeason(String year) {
+        if (year != null) {
             Season season = search.getSeasonByYear(year);
-            if(season != null) {
-                // return season.viewProfile();
+            if (season != null) {
+                return season.viewProfile();
             }
         }
         return null;
@@ -118,54 +122,57 @@ public class Guest {
      */
     public String searchByName(String name) {
         if (name != null) {
-            Fan user = search.getUserByUserName(name);
-            if (user != null) {
-                return user.viewProfile();
-            }
-            //Todo: Amit & Alon: add viewProfile() function to League
+            Object user = search.getUserByUserName(name);
+            if (user instanceof Referee) {
+                if (user != null) {
+                    return ((Referee) user).viewProfile();
+                }
+            } else if (user instanceof Coach)
+                if (user != null) {
+                    return ((Coach) user).viewProfile();
+                } else if (user instanceof Player)
+                    if (user != null) {
+                        return ((Player) user).viewProfile();
+                    }
             League league = search.getLeagueByLeagueName(name);
-            if(league!=null){
-                //return league.viewProfile();
+            if (league != null) {
+                return league.viewProfile();
             }
-            //Todo: Tair: add team to DB by team name instead of team id
-            //Todo: Amit & Alon: add viewProfile() function to Team
             Team team = search.getTeamByTeamName(name);
-            if(team!=null){
-                // return team.viewProfile();
+            if (team != null) {
+                return team.viewProfile();
             }
         }
         return null;
     }
+
     /**
      * useCase 2.5 - search by league category, team category, Referee category, player category or coach category
-     *  if the search finds results, their profile will be printed accordingly
+     * if the search finds results, their profile will be printed accordingly
+     *
      * @param categoryName
      */
-    public String searchByCategory(String categoryName){
-        if(categoryName!=null) {
-            if (categoryName.toLowerCase().contains("League")) {
-                for (Map.Entry<String,String> entry : search.getAllLeaguesProfile().entrySet()) {
-                    return entry.getKey()+" "+"League"+":"+"\n"+entry.getValue()+"\n";
+    public String searchByCategory(String categoryName) {
+        if (categoryName != null) {
+            if (categoryName.contains("League")) {
+                for (Map.Entry<String, String> entry : search.getAllLeaguesProfile().entrySet()) {
+                    return entry.getKey() + " " + "League" + ":" + "\n" + entry.getValue();
                 }
-            }
-            else if(categoryName.toLowerCase().contains("Team")){
-                for (Map.Entry<String,String> entry : search.getAllTeamsProfile().entrySet()) {
-                    return entry.getKey()+":"+"\n"+entry.getValue()+"\n";
+            } else if (categoryName.contains("Team")) {
+                for (Map.Entry<String, String> entry : search.getAllTeamsProfile().entrySet()) {
+                    return entry.getKey() + ":" + "\n" + entry.getValue();
                 }
-            }
-            else if(categoryName.toLowerCase().contains("Referee")){
-                for (Map.Entry<String,String> entry : search.getAllRefereesProfile().entrySet()) {
-                    return entry.getKey()+":"+"\n"+entry.getValue()+"\n";
+            } else if (categoryName.contains("Referee")) {
+                for (Map.Entry<String, String> entry : search.getAllRefereesProfile().entrySet()) {
+                    return entry.getKey() + ":" + "\n" + entry.getValue();
                 }
-            }
-            else if(categoryName.toLowerCase().contains("Player")){
-                for (Map.Entry<String,String> entry : search.getAllPlayersProfile().entrySet()) {
-                    return  entry.getKey()+":"+"\n"+entry.getValue()+"\n";
+            } else if (categoryName.contains("Player")) {
+                for (Map.Entry<String, String> entry : search.getAllPlayersProfile().entrySet()) {
+                    return entry.getKey() + ":" + "\n" + entry.getValue();
                 }
-            }
-            else if(categoryName.toLowerCase().contains("Coach")){
-                for (Map.Entry<String,String> entry : search.getAllCoachesProfile().entrySet()) {
-                    return entry.getKey()+":"+"\n"+entry.getValue()+"\n";
+            } else if (categoryName.contains("Coach")) {
+                for (Map.Entry<String, String> entry : search.getAllCoachesProfile().entrySet()) {
+                    return entry.getKey() + ":" + "\n" + entry.getValue();
                 }
             }
         }
@@ -174,11 +181,12 @@ public class Guest {
 
     /**
      * useCase 2.5 - search by key word : search by name and search by category
+     *
      * @param keyWord
      */
-    public String searchByKeyWord(String keyWord){
+    public String searchByKeyWord(String keyWord) {
         String result = searchByName(keyWord);
-        if(result==null) {
+        if (result == null) {
             searchByCategory(keyWord);
         }
         return null;

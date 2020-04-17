@@ -222,10 +222,10 @@ public class Fan extends Guest implements IFan {
      * A fan search history is saved to the system
      * @param search - The content for which the fan wants information
      */
-    @Override
+   // @Override
     public void search(String search) {
         if (search != null) {
-            super.search(search);
+      //      super.search(search);
             this.searchHistory.add(search);
         }
     }

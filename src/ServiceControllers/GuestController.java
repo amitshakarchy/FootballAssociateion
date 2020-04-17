@@ -3,6 +3,7 @@ package ServiceControllers;
 import Users.*;
 import System.*;
 import java.util.Scanner;
+import AssociationAssets.*;
 
 public class GuestController {
 
@@ -69,10 +70,10 @@ public class GuestController {
                 System.out.println(searcher.getTeamByTeamName(toSearch).viewProfile());
                 break;
             case 2:
-                System.out.println(searcher.getUserByUserName(toSearch).viewProfile());
+                System.out.println(((Player)(searcher.getUserByUserName(toSearch))).viewProfile());
                 break;
             case 3:
-                System.out.println(searcher.getUserByUserName(toSearch).viewProfile());
+                System.out.println(((Coach)(searcher.getUserByUserName(toSearch))).viewProfile());
                 break;
             case 4:
                 System.out.println(searcher.getLeagueByLeagueName(toSearch).viewProfile());
