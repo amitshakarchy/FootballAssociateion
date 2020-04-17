@@ -302,4 +302,25 @@ public class FootballSystem {
         return this.fieldDB.getAllFields().containsKey(fieldName);
     }
 
+    // TODO:Tair //////////////////////////////////////////////////
+    public void addReferee(Referee referee){
+        refereeMap.put(referee.getUserName(),referee);
+    }
+    public void addCoach(Coach coach){
+        coachMap.put(coach.getUserName(),coach);
+    }
+    public void addPlayer(Player player){
+        playerMap.put(player.getUserName(),player);
+    }
+
+    public Referee getRefereeByUseName(String userName){
+        return this.refereeMap.get(userName);
+    }
+    public Coach getCoachByUserName(String userName){
+        return this.coachMap.get(userName);
+    }
+
+    public Player getPlayerByUserName(String userName){
+        return this.playerMap.get(userName);
+    }
 }

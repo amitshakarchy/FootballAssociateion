@@ -23,7 +23,6 @@ public class Guest {
 
     /**
      * UC 2.2 -  Guest's sign in
-     *
      * @param userName
      * @param password
      * @param firstName
@@ -122,6 +121,7 @@ public class Guest {
      */
     public String searchByName(String name) {
         if (name != null) {
+            //userName
             Object user = search.getUserByUserName(name);
             if (user instanceof Referee) {
                 if (user != null) {
@@ -134,10 +134,12 @@ public class Guest {
                     if (user != null) {
                         return ((Player) user).viewProfile();
                     }
+            //Leagues name
             League league = search.getLeagueByLeagueName(name);
             if (league != null) {
                 return league.viewProfile();
             }
+            //Team name
             Team team = search.getTeamByTeamName(name);
             if (team != null) {
                 return team.viewProfile();
@@ -181,7 +183,6 @@ public class Guest {
 
     /**
      * useCase 2.5 - search by key word : search by name and search by category
-     *
      * @param keyWord
      */
     public String searchByKeyWord(String keyWord) {

@@ -1,5 +1,6 @@
 package Budget;
 
+import AssociationAssets.Field;
 import AssociationAssets.Season;
 import AssociationAssets.Team;
 import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
@@ -20,12 +21,14 @@ public class TeamBudgetTest {
     Team team;
     Season season;
     RepresentativeFootballAssociation representative;
+    Field field;
     @Before
     public void setUp(){
         gamePolicy =new SimpleGamesAssigningPolicy() ;
         outcomes = new HashMap<>();
         incomes = new HashMap<>();
-        team = new Team(123,"teamTest",null,null,null,null);
+        field = new Field("fieldTest","city",10);
+        team= new Team(1,"Barcelona" ,season, field, null, null);
         season = new Season("2020");
         representative = new RepresentativeFootballAssociation("representative","Dani","Levi",gamePolicy);
         teamBudget = new TeamBudget(team, season);
@@ -74,7 +77,7 @@ public class TeamBudgetTest {
 
     @Test
     public void getTeam() {
-        assertEquals(teamBudget.getTeam().getTID(),123);
+        assertEquals(teamBudget.getTeam().getTID(),1);
     }
 
     @Test

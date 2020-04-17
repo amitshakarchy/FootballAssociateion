@@ -11,10 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 import System.Search;
 import System.*;
-
-
-import java.awt.geom.Area;
-
 import static org.junit.Assert.*;
 
 public class GuestTest {
@@ -100,55 +96,56 @@ public class GuestTest {
         assertEquals(guest.viewInformationSeason(season.getYear()),season.viewProfile());
     }
 
-    //Todo: Tair : add addCoach(Coach) / addPlayer(Player) / addReferee(Referee) functions in FootballSystem
     @Test
-    public void searchByName() {
-        //searchInUsers
-        assertEquals(guest.searchByName("coachTest"),search.getAllCoachesProfile().get("coachTest"));
-        //searchInLeagues
-        assertEquals(guest.searchByName(league.getLeagueName()),league.viewProfile());
-        //searchInTeams
+    public void searchByNameInUsers() {
+        assertEquals(guest.searchByName("coachTest"), search.getAllCoachesProfile().get("coachTest"));
+    }
+    @Test
+    public void searchByNameInLeagues() {
+        assertEquals(guest.searchByName(league.getLeagueName()), league.viewProfile());
+    }
+    @Test
+    public void searchByNameInTeams() {
         assertNull(guest.searchByName(team.getName()),null);
     }
 
     @Test
-    public void searchByCategory() {
-        //case1:
-        String equalLeague = league.getLeagueName()+" "+"League"+":"+"\n"+league.viewProfile();
-       assertEquals(guest.searchByCategory("League"), equalLeague);
+    public void searchByCategory1() {
+        String equalLeague = league.getLeagueName() + " " + "League" + ":" + "\n" + league.viewProfile();
+        assertEquals(guest.searchByCategory("League"), equalLeague);
+    }
+    @Test
+    public void searchByCategory2() {
 
-       //case2:
-//       String equalTeam = team.getName()+":"+"\n"+ team.viewProfile();
-//       assertEquals(guest.searchByCategory("Team"),equalTeam);
-       assertNull((guest.searchByCategory("Team")),null);
-
-        //TODO: Tair: add addReferee(referee) in footballSystem
-        //case 3:
-//        String equalReferee = referee.getUserName()+":"+"\n"+ referee.viewProfile();
-//        assertEquals(guest.searchByCategory("Referee"),equalReferee);
-         assertNull((guest.searchByCategory("Referee")),null);
-
-        //TODO: Tair: add addPlayer(player) in footballSystem
-        //case4:
-//        String equalPlayer = player.getUserName()+":"+"\n"+ player.viewProfile();
-//        assertEquals(guest.searchByCategory("Player"),equalPlayer);
-          assertNull((guest.searchByCategory("Player")),null);
-
-          //case5:
-//        String equalCoach = coach.getUserName()+":"+"\n"+ coach.viewProfile();
-//        assertEquals(guest.searchByCategory("Coach"),equalCoach);
-        assertNull((guest.searchByCategory("Coach")),null);
+        String equalTeam = team.getName() + ":" + "\n" + team.viewProfile();
+        assertEquals(guest.searchByCategory("Team"), equalTeam);
     }
 
     @Test
-    public void searchByKeyWord() {
-        //case1:
-        //assertEquals(guest.searchByName(league.getLeagueName()),league.viewProfile());
+    public void searchByCategory3() {
+        String equalReferee = referee.getUserName() + ":" + "\n" + referee.viewProfile();
+        assertEquals(guest.searchByCategory("Referee"), equalReferee);
+    }
+    @Test
+    public void searchByCategory4() {
+        String equalPlayer = player.getUserName()+":"+"\n"+ player.viewProfile();
+        assertEquals(guest.searchByCategory("Player"),equalPlayer);
+    }
 
-        //case2:
+    @Test
+    public void searchByCategory5() {
+        String equalCoach = coach.getUserName()+":"+"\n"+ coach.viewProfile();
+        assertEquals(guest.searchByCategory("Coach"),equalCoach);
+    }
+
+    @Test
+    public void searchByKeyWord1() {
+        assertEquals(guest.searchByName(league.getLeagueName()),league.viewProfile());
+    }
+    @Test
+    public void searchByKeyWord2() {
         assertNull(guest.searchByName("notExist"),null);
         String equalLeague = league.getLeagueName()+" "+"League"+":"+"\n"+league.viewProfile();
         assertEquals(guest.searchByCategory("League"), equalLeague);
-
     }
 }
