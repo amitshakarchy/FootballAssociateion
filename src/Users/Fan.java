@@ -228,7 +228,7 @@ public class Fan extends Guest implements IFan ,Serializable {
     public String searchByName(String name){
         if (name != null) {
             String res = super.searchByName(name);
-            this.searchHistory.add(name);
+                this.searchHistory.add(name);
             return res;
         }
         return null;
@@ -244,7 +244,7 @@ public class Fan extends Guest implements IFan ,Serializable {
     public String searchByCategory(String categoryName){
         if (categoryName != null) {
             String res = super.searchByCategory(categoryName);
-            this.searchHistory.add(categoryName);
+                this.searchHistory.add(categoryName);
             return res;
         }
         return null;
@@ -260,7 +260,7 @@ public class Fan extends Guest implements IFan ,Serializable {
     public String searchByKeyWord(String keyWord){
         if (keyWord != null) {
             String res = super.searchByKeyWord(keyWord);
-            this.searchHistory.add(keyWord);
+                this.searchHistory.add(keyWord);
             return res;
         }
         return null;

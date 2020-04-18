@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import System.Complains;
 import static org.junit.jupiter.api.Assertions.*;
@@ -161,7 +162,7 @@ class FanTest {
     @Test
     void setSearchHistory() {
         Fan fan = new Fan("newFan", "yossi", "cohen");
-        //fan.search("newSearch");
+        fan.searchByCategory("newSearch");
         assertEquals(fan.getSearchHistory().size(), 1);
         assertEquals(fan.getSearchHistory().get(0), "newSearch");
         fan.setSearchHistory(null);
@@ -170,14 +171,55 @@ class FanTest {
     }
 
     @Test
-    void search() {
+    void searchByCategory() {
         Fan fan = new Fan("newFan", "yossi", "cohen");
-        //fan.search("newSearch");
+        fan.searchByCategory("Team");
         assertEquals(fan.getSearchHistory().size(), 1);
-        assertEquals(fan.getSearchHistory().get(0), "newSearch");
-        //fan.search(null);
+        assertEquals(fan.getSearchHistory().get(0), "Team");
+        fan.searchByCategory(null);
         assertEquals(fan.getSearchHistory().size(), 1);
-        assertEquals(fan.getSearchHistory().get(0), "newSearch");
+        assertEquals(fan.getSearchHistory().get(0), "Team");
+
+        fan.searchByCategory("LeaGue");
+        assertEquals(fan.getSearchHistory().size(), 2);
+        assertEquals(fan.getSearchHistory().get(1), "LeaGue");
+        fan.searchByCategory(null);
+        assertEquals(fan.getSearchHistory().size(), 2);
+
+        fan.searchByCategory("refEree");
+        assertEquals(fan.getSearchHistory().size(), 3);
+        assertEquals(fan.getSearchHistory().get(2), "refEree");
+        fan.searchByCategory(null);
+        assertEquals(fan.getSearchHistory().size(), 3);
+
+        fan.searchByCategory("coaCh");
+        assertEquals(fan.getSearchHistory().size(), 4);
+        assertEquals(fan.getSearchHistory().get(3), "coaCh");
+        fan.searchByCategory(null);
+        assertEquals(fan.getSearchHistory().size(), 4);
+
+        fan.searchByCategory("player");
+        assertEquals(fan.getSearchHistory().size(), 5);
+        assertEquals(fan.getSearchHistory().get(4), "player");
+        fan.searchByCategory(null);
+        assertEquals(fan.getSearchHistory().size(), 5);
+
+    }
+
+    @Test
+    void searchByKeyWord() {
+        Fan fan = new Fan("newFan", "yossi", "cohen");
+        fan.searchByKeyWord("team");
+        assertEquals(fan.getSearchHistory().size(), 3);
+        assertEquals(fan.getSearchHistory().get(0), "team");
+        fan.searchByKeyWord(null);
+        assertEquals(fan.getSearchHistory().size(), 3);
+        assertEquals(fan.getSearchHistory().get(0), "team");
+
+        fan.searchByKeyWord("hello");
+        assertEquals(fan.getSearchHistory().size(), 3);
+
+
     }
 
 
