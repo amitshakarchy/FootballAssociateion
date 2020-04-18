@@ -34,10 +34,10 @@ public class SystemManager extends Fan {
      * If there were future games for the team, they were canceled
      * # use case 8.1
      *
-     * @param teamId -team ID - to close
+     * @param teamName -team name - to close
      */
-    public void closeTeam(int teamId){
-        Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamId);
+    public void closeTeam(String teamName){
+        Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamName);
         if(team != null){
             List <Game> gamesList = new ArrayList<>();
             gamesList.addAll(team.getAwayGames().values());
@@ -49,7 +49,7 @@ public class SystemManager extends Fan {
                 }
             }
             team.setIsActive(ETeamStatus.INACTIVE);
-            Logger.getInstance().addActionToLogger("Team: "+teamId+" closed by the system manager userName: "+getUserName());
+            Logger.getInstance().addActionToLogger("Team: "+teamName+" closed by the system manager userName: "+getUserName());
         }
     }
 
