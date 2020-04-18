@@ -33,6 +33,7 @@ public class Game {
     Referee main, side1, side2;
     List<Event> events;
     private List<Fan> observers;
+    private EGameStatus status;
     //endregion
 
 
@@ -99,6 +100,7 @@ public class Game {
      * @throws Exception
      */
     private void validateReferees(Referee main, Referee side1, Referee side2) throws Exception {
+
         if(main.getUserName().equals(side1.getUserName())||
                 main.getUserName().equals(side2.getUserName())||
                 side1.getUserName().equals(side2.getUserName()))
@@ -109,6 +111,16 @@ public class Game {
 
     //region Getters & Setters
 
+
+    public EGameStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EGameStatus status) {
+        if(status != null) {
+            this.status = status;
+        }
+    }
 
     public boolean isUpdatable(int hoursSinceGameStarted) {
         Date currentDate = new Date();

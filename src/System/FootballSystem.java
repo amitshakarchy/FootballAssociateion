@@ -2,6 +2,8 @@ package System;
 
 import AssociationAssets.*;
 import DB.*;
+import OutSourceSystems.AccountingSystem;
+import OutSourceSystems.TaxRegulationSystem;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import Security.SecuritySystem;
 import Users.*;
@@ -40,9 +42,18 @@ public class FootballSystem {
      * private constructor to prevent others from instantiating this class
      */
     private FootballSystem() {
-
+        initialize();
     }
 
+    private void initialize(){
+        //creating system manager - admin
+        signIn("admin","admin","admin","admin");
+        creatingSystemManager("admin","admin","admin");
+        //connect with accounting system
+        AccountingSystem.connect();
+        //connect with tax regulation system
+        TaxRegulationSystem.connect();
+    }
     public SecuritySystem getSecuritySystem() {
         return securitySystem;
     }
@@ -208,6 +219,19 @@ public class FootballSystem {
         Fan fan = new Player(userName, firstName, lastName, bDate, playerRole);
         this.fansHashMap.put(userName, fan);
         this.playerMap.put(userName,(Player)fan);
+        return fan;
+    }
+
+    public Fan creatingSystemManager(String userName, String firstName, String lastName) {
+        if (this.getFansHashMap().containsKey(userName)) {
+            if (this.getFansHashMap().get(userName) instanceof SystemManager) {
+                System.out.println("The user name: " + userName + " is already a SystemManager");
+                return null;
+            }
+        }
+        Fan fan = new SystemManager(userName, firstName, lastName);
+        this.fansHashMap.put(userName, fan);
+        this.systemManagerMap.put(userName,(SystemManager)fan);
         return fan;
     }
 

@@ -63,6 +63,7 @@ public class AdditionalInfo {
 
     public void setSeason(Season season) {
         this.season = season;
+        team.setCurrentSeason(season);
     }
 
     public HashMap<String, ArrayList<String>> getOwners() {
@@ -98,6 +99,9 @@ public class AdditionalInfo {
      * @return true if the player was adding to the team successfully.
      */
     public boolean addPlayer(String player) {
+        if(player == null || player.isEmpty()){
+            return false;
+        }
         if (!players.contains(player)) {
             players.add(player);
             // Write to the log
@@ -114,6 +118,9 @@ public class AdditionalInfo {
      * @return true if the coach was adding to the team successfully.
      */
     public boolean addCoach(String coach) {
+        if(coach == null || coach.isEmpty()){
+            return false;
+        }
         if (!coaches.contains(coach)) {
             coaches.add(coach);
             // Write to the log
@@ -132,6 +139,10 @@ public class AdditionalInfo {
      * @return true if the team manger was adding to the team successfully.
      */
     public boolean addManager(String teamManager, String teamOwnerWhoNominate) {
+        if( teamOwnerWhoNominate == null || teamManager == null ||
+                teamOwnerWhoNominate.isEmpty() || teamManager.isEmpty()){
+            return false;
+        }
         ArrayList temp = new ArrayList();
         if (managers.containsKey(teamOwnerWhoNominate)) {
             temp = managers.get(teamOwnerWhoNominate);
@@ -161,6 +172,10 @@ public class AdditionalInfo {
      */
     public boolean addTeamOwner(String teamOwner, String teamOwnerWhoNominate) {
         ArrayList temp = new ArrayList();
+        if( teamOwnerWhoNominate == null || teamOwner == null ||
+        teamOwnerWhoNominate.isEmpty() || teamOwner.isEmpty()){
+            return false;
+        }
         if (owners.containsKey(teamOwnerWhoNominate)) {
             temp = owners.get(teamOwnerWhoNominate);
             // this team owner already exists in this team & season
@@ -216,9 +231,11 @@ public class AdditionalInfo {
      */
     public void removeManager(String managerUserName, String userNameWhoNominated) {
         if (managers.containsKey(userNameWhoNominated)) {
-            managers.get(userNameWhoNominated).remove(managerUserName);
-            // Write to the log
-            Logger.getInstance().addActionToLogger("Manager "+managerUserName+ "was removed from the team: "+team.getName());
+            if(managers.get(userNameWhoNominated).remove(managerUserName)) {
+                // Write to the log
+                Logger.getInstance().addActionToLogger("Manager " + managerUserName + "was removed from the team: " + team.getName());
+                this.teamManagersHashSet.remove(managerUserName);
+            }
         }
     }
 
@@ -231,9 +248,11 @@ public class AdditionalInfo {
      */
     public void removeTeamOwner(String ownerUserName, String userNameWhoNominated) {
         if (owners.containsKey(userNameWhoNominated)) {
-            owners.get(userNameWhoNominated).remove(ownerUserName);
-            // Write to the log
-            Logger.getInstance().addActionToLogger("Team Owner "+ownerUserName+ "was removed from the team: "+team.getName());
+            if(owners.get(userNameWhoNominated).remove(ownerUserName)){
+                this.teamOwnersHashSet.remove(ownerUserName);
+                // Write to the log
+                Logger.getInstance().addActionToLogger("Team Owner "+ownerUserName+ "was removed from the team: "+team.getName());
+            }
         }
     }
 
@@ -330,10 +349,18 @@ public class AdditionalInfo {
      */
     public void removeAllNominations(String userNameWhoNominated) {
         if (this.managers.containsKey(userNameWhoNominated)) {
+            for (String userToRemove : this.managers.get(userNameWhoNominated)){
+                this.teamManagersHashSet.remove(userToRemove);
+            }
             this.managers.get(userNameWhoNominated).clear();
+
         }
         if (this.owners.containsKey(userNameWhoNominated)) {
+            for (String userToRemove : this.owners.get(userNameWhoNominated)){
+                this.teamOwnersHashSet.remove(userToRemove);
+            }
             this.owners.get(userNameWhoNominated).clear();
+            this.owners.remove(userNameWhoNominated);
         }
     }
 

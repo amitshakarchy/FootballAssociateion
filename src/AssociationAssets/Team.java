@@ -40,7 +40,9 @@ public class Team {
         // TODO: 4/13/2020  need to check that this team owner is not owner of another team already
         this.isActive = ETeamStatus.ACTIVE;
         this.fields = new HashMap<>();
-        fields.put(mainField.getName(), mainField);
+        if(mainField != null) {
+            fields.put(mainField.getName(), mainField);
+        }
         this.additionalInfoWithSeasons = new HashMap<>();
         this.teamOwner  = teamOwner;
         // Write to the log
@@ -222,7 +224,10 @@ public class Team {
             AdditionalInfo additionalInfo = new AdditionalInfo(this, currentSeason);
             additionalInfoWithSeasons.put(season.getYear(), additionalInfo);
             season.addTeamToSeason(name, additionalInfoWithSeasons);
-            this.teamOwner.addAdditionalInfo(additionalInfo);
+            if(this.teamOwner != null){
+                this.teamOwner.addAdditionalInfo(additionalInfo);
+                additionalInfo.addTeamOwner(teamOwner.getUserName(),teamOwner.getUserName());
+            }
         }
     }
 
@@ -262,5 +267,17 @@ public class Team {
                 "Current Season: "+ this.currentSeason+"\n" +
                 "Home Field: "+ mainField +"\n" +
                 "Team's Owner: "+teamOwner+".";
+    }
+
+    public void addHomeGame(Game game){
+        if(game!= null){
+            this.homeGames.put(String.valueOf(game.GID),game);
+        }
+    }
+
+    public void addAwayGame(Game game){
+        if(game!= null){
+            this.awayGames.put(String.valueOf(game.GID),game);
+        }
     }
 }

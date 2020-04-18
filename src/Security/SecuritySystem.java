@@ -8,15 +8,16 @@ import java.util.Map;
  * the passwords encrypted and saved for each user with AES algorithm.
  */
 public class SecuritySystem {
-    Map<String, String> usersHashMap = new HashMap<>();
-    AESEncryption AES = new AESEncryption();
-    final String secretKey = "ssshhhhhhhhhhh!!!!";
+    private Map<String, String> usersHashMap = new HashMap<>();
+    private AESEncryption AES = new AESEncryption();
+    private final String secretKey = "ssshhhhhhhhhhh!!!!";
 
 
     /**
      * this function add new user to the system.
      * the function is using the AES algorithm to encrypt the password/
      * the function checks if the user name already exist, and if so return false.
+     *
      * @param userName
      * @param password
      * @return true - if the user name and password were adding successfully to the hash map,
@@ -40,6 +41,7 @@ public class SecuritySystem {
 
     /**
      * this function updates a new password for exiting user.
+     *
      * @param userName
      * @param password
      * @return true if the password updated successfully, otherwise - false.
@@ -49,14 +51,20 @@ public class SecuritySystem {
             System.out.println("This user id doesnt exits in the system");
             return false;
         }
+        if(userName == null || password == null || userName.isEmpty() || password.isEmpty()){
+            System.out.println("password and user name are invalid");
+            return false;
+        }
         password = AES.encrypt(password, secretKey);
         usersHashMap.put(userName, password);
+        System.out.println("password has been update to the user: " +userName);
         return true;
     }
 
     /**
      * this function checks if the password of a user is correct for login option.
      * the function is using AES decryption because the hash map holding encrypted passwords.
+     *
      * @param userName
      * @param password
      * @return true if the password is correct, otherwise - false
@@ -77,10 +85,12 @@ public class SecuritySystem {
 
     /**
      * this function removes existing user from the hash map.
+     *
      * @param userName
      */
-    public void removeUser(String userName){
-        this.usersHashMap.remove(userName);
+    public void removeUser(String userName) {
+        if (this.usersHashMap.containsKey(userName)) {
+            this.usersHashMap.remove(userName);
+        }
     }
-
 }
