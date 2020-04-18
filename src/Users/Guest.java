@@ -179,6 +179,10 @@ public class Guest {
         return results;
     }
 
+    public Search getSearch() {
+        return search;
+    }
+}
 //    /**
 //     * useCase 2.5 - search by key word : search by name and search by category
 //     *
@@ -192,7 +196,4 @@ public class Guest {
 //        return result;
 //    }
 
-    public Search getSearch() {
-        return search;
-    }
-}
+

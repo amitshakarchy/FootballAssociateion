@@ -258,14 +258,14 @@ public class Fan extends Guest implements IFan ,Serializable {
      * @param keyWord - The key word for which the fan wants information
      * return null - If no result is found
      */
-    @Override
-    public String searchByKeyWord(String keyWord){
-        if (keyWord != null) {
-            String res = super.searchByKeyWord(keyWord);
-            this.searchHistory.add(keyWord);
-            return res;
-        }
-        return null;
-    }
+//    @Override
+//    public String searchByKeyWord(String keyWord){
+//        if (keyWord != null) {
+//            String res = super.searchByKeyWord(keyWord);
+//            this.searchHistory.add(keyWord);
+//            return res;
+//        }
+//        return null;
+//    }
 
 }

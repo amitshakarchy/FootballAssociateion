@@ -7,7 +7,6 @@ import AssociationAssets.Team;
 import DB.LeagueDB;
 import DB.SeasonDB;
 import DB.TeamDB;
-import com.sun.org.apache.regexp.internal.RE;
 import org.junit.Before;
 import org.junit.Test;
 import System.Search;
