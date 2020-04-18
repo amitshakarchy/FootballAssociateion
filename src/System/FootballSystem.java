@@ -43,9 +43,6 @@ public class FootballSystem {
 
     }
 
-    public SecuritySystem getSecuritySystem() {
-        return securitySystem;
-    }
 
     public List<Guest> getGuestList() {
         return guestList;
