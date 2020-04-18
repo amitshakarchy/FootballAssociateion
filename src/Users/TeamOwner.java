@@ -1,6 +1,8 @@
 package Users;
+
 import AssociationAssets.*;
 import System.FootballSystem;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +17,7 @@ public class TeamOwner extends Fan {
 
     /**
      * The constructor for TeamOwner class.
+     *
      * @param userName
      * @param firstName
      * @param lastName
@@ -28,12 +31,14 @@ public class TeamOwner extends Fan {
     public List<AdditionalInfo> getAdditionalInfo() {
         return additionalInfoList;
     }
+
     public void setAdditionalInfo(List<AdditionalInfo> additionalInfo) {
         this.additionalInfoList = additionalInfo;
     }
     // end region
-    
+
     // use case 6.1 region
+
     /**
      * This function adds player to a team in a season.
      * the function checks if the player has already username and password,which means
@@ -42,6 +47,7 @@ public class TeamOwner extends Fan {
      * and as well creating new player.
      * the function checks if the player is playing already in another team -
      * and if so, is not been added to the team.
+     *
      * @param team
      * @param season
      * @param userName
@@ -58,8 +64,8 @@ public class TeamOwner extends Fan {
         // if the user exist
         if (FootballSystem.getInstance().existFanByUserName(userName)) {
             // check if this user name is playing in another team
-            if(FootballSystem.getInstance().findPlayerAtTeamByUserName(userName)){
-                System.out.println("this player is playing in another team, user name is: "+userName);
+            if (FootballSystem.getInstance().findPlayerAtTeamByUserName(userName)) {
+                System.out.println("this player is playing in another team, user name is: " + userName);
                 return false;
             }
             // check if the additional info has this player already
@@ -67,6 +73,9 @@ public class TeamOwner extends Fan {
                 return false;
             }
             Player player = (Player) FootballSystem.getInstance().creatingPlayer(userName, firstName, lastName, birthday, ePlayerRole);
+            if(player == null){
+                player = (Player) FootballSystem.getInstance().getFanByUserName(userName);
+            }
             player.addAdditionalInfo(additionalInfoToSearch);
         }
         // if the user doesnt exist - sign in & creation
@@ -83,8 +92,10 @@ public class TeamOwner extends Fan {
         }
         return true;
     }
+
     /**
      * this function set the player to the correct additional info of a specific team in a season.
+     *
      * @param team
      * @param season
      * @param userName
@@ -102,14 +113,16 @@ public class TeamOwner extends Fan {
         }
         return true;
     }
+
     /**
      * This function adds coach to a team in a season.
      * the function checks if the coach has already username and password,which means
      * he is sign up already in the system, if he does then
-     * the function only creating new player, otherwise the function sign in the coach with his details
+     * the function only creating new coach, otherwise the function sign in the coach with his details
      * and as well creating new coach.
      * the function checks if the coach is coaching already in another team -
      * and if so, is not been added to the team.
+     *
      * @param team
      * @param season
      * @param userName
@@ -126,8 +139,8 @@ public class TeamOwner extends Fan {
         // if the user exist
         if (FootballSystem.getInstance().existFanByUserName(userName)) {
             // check if this user name is coaching in another team
-            if(FootballSystem.getInstance().findCoachAtTeamByUserName(userName)){
-                System.out.println("this coach is coaching another team, user name is: "+userName);
+            if (FootballSystem.getInstance().findCoachAtTeamByUserName(userName)) {
+                System.out.println("this coach is coaching another team, user name is: " + userName);
                 return false;
             }
             // check if the additional info has this coach already
@@ -135,6 +148,9 @@ public class TeamOwner extends Fan {
                 return false;
             }
             Coach coach = (Coach) FootballSystem.getInstance().creatingCoach(userName, firstName, lastName, training, eCoachRole);
+            if(coach == null){
+                coach = (Coach) FootballSystem.getInstance().getFanByUserName(userName);
+            }
             coach.addAdditionalInfo(additionalInfoToSearch);
         }
         // if the user doesnt exist
@@ -150,8 +166,10 @@ public class TeamOwner extends Fan {
         }
         return true;
     }
+
     /**
      * this function set the coach to the correct additional info of a specific team in a season.
+     *
      * @param team
      * @param season
      * @param userName
@@ -170,30 +188,35 @@ public class TeamOwner extends Fan {
         return true;
     }
 
-    // TODO: 4/13/2020 add comments
     /**
-     * 
+     * This function adds teamManager to a team in a season.
+     * the function checks if the teamManager has already username and password,which means
+     * he is sign up already in the system, if he does then
+     * the function only creating new teamManager, otherwise the function sign in the teamManager with his details
+     * and as well creating new teamManager.
+     * the function checks if the teamManager is manage already in another team -
+     * and if so, is not been added to the team.
      * @param team
      * @param season
      * @param uName
      * @param password
      * @param firstName
      * @param lastName
-     * @return
+     * @return true if the teamManager was added successfully to the team.
      */
     public boolean addTeamManager(Team team, Season season, String uName, String password, String firstName, String lastName) {
         if (checkInputsOfTeamAndSeason(team, season)) return false;
         // checking first if the user name is not team manger/owner in this team & season already.
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
-        if(additionalInfoToSearch == null){
+        if (additionalInfoToSearch == null) {
             return false;
         }
         if (additionalInfoToSearch.findManager(uName) == null &&
                 additionalInfoToSearch.findTeamOwner(uName) == null) {
             // if the user exist
             if (FootballSystem.getInstance().existFanByUserName(uName)) {
-                if(FootballSystem.getInstance().findTeamManagerAtTeamByUserName(uName)){
-                    System.out.println("this manager is manager another team, user name is: "+uName);
+                if (FootballSystem.getInstance().findTeamManagerAtTeamByUserName(uName)) {
+                    System.out.println("this manager is manager another team, user name is: " + uName);
                     return false;
                 }
                 // check if the additional info has this  already
@@ -201,6 +224,9 @@ public class TeamOwner extends Fan {
                     return false;
                 }
                 TeamManager teamManager = (TeamManager) FootballSystem.getInstance().creatingTeamManager(uName, firstName, lastName);
+                if(teamManager == null){
+                    teamManager = (TeamManager) FootballSystem.getInstance().getFanByUserName(getUserName());
+                }
                 teamManager.addAdditionalInfo(additionalInfoToSearch);
             }
             // if the user doesnt exist - need to sign in & create manager.
@@ -222,12 +248,20 @@ public class TeamOwner extends Fan {
         }
         // TODO: 4/12/2020 permissions of manager!
     }
+
+    /**
+     * this function set the Team Manager to the correct additional info of a specific team in a season.
+     * @param team
+     * @param season
+     * @param userName
+     * @return true true if the team Manager was adding successfully
+     */
     private boolean setTeamManagerToAdditionalInfo(Team team, Season season, String userName) {
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if (additionalInfoToSearch == null) {
             return false;
         }
-        if (!additionalInfoToSearch.addManager(userName,getUserName())) {
+        if (!additionalInfoToSearch.addManager(userName, getUserName())) {
             System.out.println("The manager" + userName + "is already exist in the team" +
                     team + "in season" + season);
             return false;
@@ -235,47 +269,83 @@ public class TeamOwner extends Fan {
         return true;
     }
 
+    /**
+     * this function adding field to team in specif season
+     * @param team
+     * @param season
+     * @param name
+     * @param city
+     * @param capacity
+     * @return true if the field was adding successfully to the team
+     */
     public boolean addField(Team team, Season season, String name, String city, int capacity) {
         if (checkInputsOfTeamAndSeason(team, season)) return false;
-        if(name == null || city == null || capacity <0){
+        if (name == null || city == null || capacity < 0) {
             System.out.println("incorrect inputs for field creation");
             return false;
         }
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
-        if(additionalInfoToSearch == null){
+        if (additionalInfoToSearch == null) {
             return false;
         }
-        if(additionalInfoToSearch.getTeam().getFields().containsKey(name)){
-            System.out.println("The field "+name+ " already exits at team fields, team: "+
+        if (additionalInfoToSearch.getTeam().getFields().containsKey(name)) {
+            System.out.println("The field " + name + " already exits at team fields, team: " +
                     team.getName() + " , season: " + season.getYear());
             return false;
         }
-        Field field = FootballSystem.getInstance().createField(name,city,capacity);
+        Field field = FootballSystem.getInstance().createField(name, city, capacity);
         additionalInfoToSearch.getTeam().addField(field);
         return true;
     }
+
+    /**
+     * this function removes player from a team in specif season
+     * @param team
+     * @param season
+     * @param userName
+     */
     public void removePlayer(Team team, Season season, String userName) {
         if (TeamIsInActive(team)) return;
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         additionalInfoToSearch.removePlayer(userName);
     }
+
+    /**
+     * this function removes coach from a team in specif season
+     * @param team
+     * @param season
+     * @param userName
+     */
     public void removeCoach(Team team, Season season, String userName) {
         if (TeamIsInActive(team)) return;
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         additionalInfoToSearch.removeCoach(userName);
     }
+
+    /**
+     * this function removes team manager from a team in specif season
+     * @param team
+     * @param season
+     * @param userNameToRemove
+     */
     public void removeTeamManager(Team team, Season season, String userNameToRemove) {
         if (TeamIsInActive(team)) return;
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         // checking if this team owner was the one that nominated the team manager
-        if (additionalInfoToSearch.whoNominateTeamManager(userNameToRemove,getUserName())) {
-            additionalInfoToSearch.removeManager(userNameToRemove,getUserName());
-        }
-        else{
-            System.out.println(getUserName()+" you are not allow to remove "+ userNameToRemove+"! " +
+        if (additionalInfoToSearch.whoNominateTeamManager(userNameToRemove, getUserName())) {
+            additionalInfoToSearch.removeManager(userNameToRemove, getUserName());
+        } else {
+            System.out.println(getUserName() + " you are not allow to remove " + userNameToRemove + "! " +
                     "you wasn't the one that nominated him");
         }
     }
+
+    /**
+     * * this function removes field from a team in specif season
+     * @param team
+     * @param season
+     * @param fieldName
+     */
     public void removeField(Team team, Season season, String fieldName) {
         if (TeamIsInActive(team)) return;
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
@@ -284,11 +354,20 @@ public class TeamOwner extends Fan {
     // use case 6.1 end region
 
     //use case 6.2 region
-    public boolean nominateTeamOwner(Team team, Season season,String userName) {
+
+    /**
+     * this function nominate exits user in a team in specif season
+     * if the user name is not exits in the system, the nomination discard.
+     * @param team
+     * @param season
+     * @param userName
+     * @return true if the nomination successed
+     */
+    public boolean nominateTeamOwner(Team team, Season season, String userName) {
         if (checkInputsOfTeamAndSeason(team, season)) return false;
         // checking first if the user name is not team owner in this team and season already.
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
-        if(additionalInfoToSearch == null){
+        if (additionalInfoToSearch == null) {
             return false;
         }
         if (additionalInfoToSearch.findTeamOwner(userName) != null) {
@@ -299,8 +378,8 @@ public class TeamOwner extends Fan {
         // checking if the user is in the system.
         if (FootballSystem.getInstance().existFanByUserName(userName)) {
             // checking if the user is owner another team.
-            if(FootballSystem.getInstance().findTeamOwnerAtTeamByUserName(userName)){
-                System.out.println("this team owner is owner another team, user name is: "+userName);
+            if (FootballSystem.getInstance().findTeamOwnerAtTeamByUserName(userName)) {
+                System.out.println("this team owner is owner another team, user name is: " + userName);
                 return false;
             }
             Fan fan = FootballSystem.getInstance().getFanByUserName(userName);
@@ -308,20 +387,22 @@ public class TeamOwner extends Fan {
             if (!setTeamOwnerToAdditionalInfo(team, season, userName)) {
                 return false;
             }
-            TeamOwner teamOwner = (TeamOwner) FootballSystem.getInstance().creatingTeamOwner(userName,fan.getfName(),fan.getlName());
+            TeamOwner teamOwner = (TeamOwner) FootballSystem.getInstance().creatingTeamOwner(userName, fan.getfName(), fan.getlName());
+            if(teamOwner == null){
+                teamOwner = FootballSystem.getInstance().getTeamOwnerByUserName(userName);
+            }
             teamOwner.addAdditionalInfo(additionalInfoToSearch);
-        }
-        else{
+        } else {
             return false;
         }
         return true;
     }
 
     /**
-     * lalalal
+     * check null inputs
      * @param team
      * @param season
-     * @return
+     * @return true if the inputs are ok
      */
     private boolean checkInputsOfTeamAndSeason(Team team, Season season) {
         if (team == null || season == null) {
@@ -332,12 +413,19 @@ public class TeamOwner extends Fan {
         return false;
     }
 
+    /**
+     * this function set the Team owner to the correct additional info of a specific team in a season.
+     * @param team
+     * @param season
+     * @param userName
+     * @return true if the team owner was adding successfully
+     */
     private boolean setTeamOwnerToAdditionalInfo(Team team, Season season, String userName) {
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if (additionalInfoToSearch == null) {
             return false;
         }
-        if (!additionalInfoToSearch.addTeamOwner(userName,getUserName())) {
+        if (!additionalInfoToSearch.addTeamOwner(userName, getUserName())) {
             System.out.println("The team owner" + userName + "is already exist in the team" +
                     team + "in season" + season);
             return false;
@@ -347,51 +435,63 @@ public class TeamOwner extends Fan {
     // use case 6.2 end region
 
     // use case 6.3 region
+
+    /**
+     * this function
+     * @param team
+     * @param season
+     * @param userNameToRemove
+     */
     public void discardNominationForTeamOwner(Team team, Season season, String userNameToRemove) {
         if (TeamIsInActive(team)) return;
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
-        if(additionalInfoToSearch == null){
+        if (additionalInfoToSearch == null) {
             return;
         }
         // checking if this team owner was the one that nominated the team manager
-        if (additionalInfoToSearch.whoNominateTeamOwner(userNameToRemove,getUserName())) {
-            additionalInfoToSearch.removeTeamOwner(userNameToRemove,getUserName());
+        if (additionalInfoToSearch.whoNominateTeamOwner(userNameToRemove, getUserName())) {
+            additionalInfoToSearch.removeTeamOwner(userNameToRemove, getUserName());
             additionalInfoToSearch.removeAllNominations(userNameToRemove);
+        } else {
+            System.out.println(getUserName() + " you are not allow to remove " + userNameToRemove + "! " +
+                    "you wasn't the one that nominated him");
         }
-        else{
-            System.out.println(getUserName()+" you are not allow to remove "+ userNameToRemove+"! " +
-                    "you wasn't the one that nominated him");        }
         // removing all nominations that the team owner to be removed had nominated
     }
     // use case 6.3 end region
 
     // use case 6.4 region
-    public boolean nominateTeamManager(Team team, Season season,String userName){
+    public boolean nominateTeamManager(Team team, Season season, String userName) {
         Fan fan = FootballSystem.getInstance().getFanByUserName(userName);
-        if(fan != null){
-            return addTeamManager(team,season,userName,null,fan.getfName(),fan.getlName());
-        }
-        else{
-            System.out.println("Nominate "+userName+"is not possible! " +
-                    "This user name is not exit in the system, user name is: "+userName);
+        if (fan != null) {
+            return addTeamManager(team, season, userName, null, fan.getfName(), fan.getlName());
+        } else {
+            System.out.println("Nominate " + userName + "is not possible! " +
+                    "This user name is not exit in the system, user name is: " + userName);
         }
         return false;
     }
     // use case 6.4 end region
 
     // use case 6.6 region
-    public void closeTeam(Team team,Season season) {
-        AdditionalInfo additionalInfo = getAdditionalInfo(team,season);
+    public void closeTeam(Team team, Season season) {
+        AdditionalInfo additionalInfo = getAdditionalInfo(team, season);
+        if(additionalInfo == null){
+            return;
+        }
+        Team tempTeam = additionalInfo.getTeam();
+        if(tempTeam == null){
+            return;
+        }
         additionalInfo.getTeam().setIsActive(ETeamStatus.INACTIVE);
     }
     // use case 6.6 end region
 
     // use case 6.7 region
-    public void finnacelReport(Team team){ 
-            if (TeamIsInActive(team)) return;
+    public void finnacelReport(Team team) {
+        if (TeamIsInActive(team)) return;
     }
     // use case 6.7 end region
-
 
     private AdditionalInfo getAdditionalInfo(Team team, Season season) {
         AdditionalInfo additionalInfoToSearch = null;
@@ -402,6 +502,7 @@ public class TeamOwner extends Fan {
         }
         return additionalInfoToSearch;
     }
+
     private boolean signIn(String userName, String password, String firstName, String lastName) {
         Fan fan = FootballSystem.getInstance().signIn(userName, password, firstName, lastName);
         // invalid inputs or username already exist.
@@ -411,7 +512,7 @@ public class TeamOwner extends Fan {
         return true;
     }
 
-    public void addAdditionalInfo(AdditionalInfo additionalInfo){
+    public void addAdditionalInfo(AdditionalInfo additionalInfo) {
         additionalInfoList.add(additionalInfo);
     }
 
