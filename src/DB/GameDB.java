@@ -17,8 +17,8 @@ public class GameDB {
     public void removeGame(int gid){
         this.allGames.remove(gid);
     }
+
     public HashMap<Integer, Game> getAllGames() {
         return allGames;
     }
-
 }
