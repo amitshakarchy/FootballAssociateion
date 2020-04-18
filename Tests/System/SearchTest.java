@@ -62,10 +62,11 @@ public class SearchTest {
         teamManager=(TeamManager)footballSystem.creatingTeamManager("TMUname","TMFname","TMLname");
         //systemManager
         footballSystem.signIn("SMenagerUname","678912","SMenagerFname","SMenagerLname");
+        //TODO: Tair: add creatingSystemManager in FootballSystem
        // systemManager= (SystemManager)footballSystem.creatingSystemManager("SMenagerUname","SMenagerFname","SMenagerLname");
        //representative
-      footballSystem.signIn("repreUname","5689","repreFname","repreLname");
-      representative=(RepresentativeFootballAssociation)footballSystem.creatingRepresentativeFootballAssociation("repreUname","repreFname","repreLname",gamePolicy);
+        footballSystem.signIn("repreUname","5689","repreFname","repreLname");
+        representative=(RepresentativeFootballAssociation)footballSystem.creatingRepresentativeFootballAssociation("repreUname","repreFname","repreLname",gamePolicy);
        //player
         footballSystem.signIn("playerUName","67267", "playerFname","playerLname");
         player = (Player)footballSystem.creatingPlayer("playerUName","playerFname","playerLname",null,EPlayerRole.GoalKeeper);
@@ -105,7 +106,6 @@ public class SearchTest {
     @Test
     public void getLeagueByLeagueName() {
         try {
-            setUp();
             assertSame(search.getLeagueByLeagueName(league.getLeagueName()), league);
         }catch(Exception e){
         }
@@ -114,7 +114,6 @@ public class SearchTest {
     @Test
     public void getSeasonByYear() {
         try {
-            setUp();
             assertSame(search.getSeasonByYear("2020"), season);
         }catch (Exception e){
 

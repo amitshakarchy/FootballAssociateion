@@ -50,9 +50,9 @@ public class GuestTest {
         search.setTeamDB(teamDB);
         search.setSeasonDB(seasonDB);
         footballSystem.signIn(coach.getUserName(),"34567",coach.getfName(),coach.getlName());
-        footballSystem.addCoach(coach); //Todo: Tair : add addCoach(coach) function to FootballSystem
-        footballSystem.addReferee(referee); //Todo: Tair : add addReferee(referee) function to FootballSystem
-        footballSystem.addPlayer(player); //Todo: Tair : add addPlayer(player) function to FootballSystem
+        footballSystem.addCoach(coach);
+        footballSystem.addReferee(referee);
+        footballSystem.addPlayer(player);
     }
 
     @Test

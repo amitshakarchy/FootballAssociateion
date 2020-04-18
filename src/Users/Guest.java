@@ -8,6 +8,9 @@ import org.omg.IOP.ENCODING_CDR_ENCAPS;
 import sun.plugin2.os.windows.SECURITY_ATTRIBUTES;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.locks.ReadWriteLock;
 
@@ -156,13 +159,15 @@ public class Guest {
      */
     public String searchByCategory(String categoryName) {
         if (categoryName != null) {
+            LinkedList<String>results = new LinkedList<>();
             if (categoryName.contains("League")) {
                 for (Map.Entry<String, String> entry : search.getAllLeaguesProfile().entrySet()) {
-                    return entry.getKey() + " " + "League" + ":" + "\n" + entry.getValue();
+                    results.add(entry.getKey() + " " + "League" + ":" + "\n" + entry.getValue());
                 }
+
             } else if (categoryName.contains("Team")) {
                 for (Map.Entry<String, String> entry : search.getAllTeamsProfile().entrySet()) {
-                    return entry.getKey() + ":" + "\n" + entry.getValue();
+                    results.add (entry.getKey() + ":" + "\n" + entry.getValue());
                 }
             } else if (categoryName.contains("Referee")) {
                 for (Map.Entry<String, String> entry : search.getAllRefereesProfile().entrySet()) {
