@@ -58,4 +58,8 @@ public class Season {
         }
         return str.toString();
     }
+
+    public HashMap<String, AdditionalInfo> getTeamAdditionalInfo() {
+        return teamAdditionalInfo;
+    }
 }

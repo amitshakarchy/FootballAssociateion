@@ -33,6 +33,7 @@ public class Game {
     Referee main, side1, side2;
     List<Event> events;
     private List<Fan> observers;
+    private EGameStatus status;
     //endregion
 
 
@@ -110,6 +111,16 @@ public class Game {
 
     //region Getters & Setters
 
+
+    public EGameStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EGameStatus status) {
+        if(status != null) {
+            this.status = status;
+        }
+    }
 
     public boolean isUpdatable(int hoursSinceGameStarted) {
         Date currentDate = new Date();
