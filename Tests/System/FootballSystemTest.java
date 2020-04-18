@@ -31,6 +31,10 @@ class FootballSystemTest {
 
     @AfterEach
     void tearDown() {
+        FootballSystem.getInstance().getFansHashMap().clear();
+        FootballSystem.getInstance().getFieldDB().getAllFields().clear();
+        FootballSystem.getInstance().getTeamDB().getAllTeams().clear();
+        FootballSystem.getInstance().getSeasonDB().getAllSeasons().clear();
     }
 
     @Test
@@ -51,7 +55,6 @@ class FootballSystemTest {
         assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
         assertEquals(null,FootballSystem.getInstance().signIn("tair12","12","tair","cohen"));
         assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
@@ -64,7 +67,6 @@ class FootballSystemTest {
         assertTrue(null == FootballSystem.getInstance().creatingRepresentativeFootballAssociation("Tair",
                 "tair","cohen",null));
         assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
@@ -77,7 +79,6 @@ class FootballSystemTest {
         assertTrue(null == FootballSystem.getInstance().creatingReferee("Tair",
                 "tair","cohen",null));
         assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
@@ -89,7 +90,6 @@ class FootballSystemTest {
         assertTrue(null == FootballSystem.getInstance().creatingCoach("Tair",
                 "tair","cohen",null,null));
         assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
 
@@ -102,19 +102,17 @@ class FootballSystemTest {
         assertTrue(null == FootballSystem.getInstance().creatingTeamOwner("Tair",
                 "tair","cohen"));
         assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
     void creatingTeamManager() {
-        assertEquals(0,FootballSystem.getInstance().getFansHashMap().size());
+        assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
         assertTrue(null != FootballSystem.getInstance().creatingTeamManager("Tair",
                 "tair","cohen"));
-        assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
+        assertEquals(2,FootballSystem.getInstance().getFansHashMap().size());
         assertTrue(null == FootballSystem.getInstance().creatingTeamManager("Tair",
                 "tair","cohen"));
-        assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
-        FootballSystem.getInstance().getFansHashMap().clear();
+        assertEquals(2,FootballSystem.getInstance().getFansHashMap().size());
     }
 
     @Test
@@ -126,7 +124,6 @@ class FootballSystemTest {
         assertTrue(null == FootballSystem.getInstance().creatingPlayer("Tair",
                 "tair","cohen",null,null));
         assertEquals(1,FootballSystem.getInstance().getFansHashMap().size());
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
@@ -135,7 +132,6 @@ class FootballSystemTest {
         assertEquals(1,FootballSystem.getInstance().fansHashMap.size());
         assertTrue(null != FootballSystem.getInstance().login("Tair","12"));
         assertTrue(null == FootballSystem.getInstance().login("Tair","11"));
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
@@ -145,7 +141,6 @@ class FootballSystemTest {
         FootballSystem.getInstance().removeUser("Tair");
         FootballSystem.getInstance().removeUser("lalala");
         assertEquals(0,FootballSystem.getInstance().fansHashMap.size());
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
@@ -153,7 +148,6 @@ class FootballSystemTest {
         Fan fan = FootballSystem.getInstance().signIn("Tair","12","tair",
                 "cohen");
         assertTrue(fan.equals(FootballSystem.getInstance().getFanByUserName("Tair")));
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
@@ -161,7 +155,6 @@ class FootballSystemTest {
         Fan fan = FootballSystem.getInstance().signIn("Tair","12","tair","cohen");
         assertTrue(FootballSystem.getInstance().existFanByUserName("Tair"));
         assertTrue(!FootballSystem.getInstance().existFanByUserName("lala"));
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
@@ -175,9 +168,7 @@ class FootballSystemTest {
         assertEquals(2,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
         FootballSystem.getInstance().addTeamToDB(team2);
         assertEquals(2,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
-        FootballSystem.getInstance().getFansHashMap().clear();
-        FootballSystem.getInstance().getFieldDB().getAllFields().clear();
-        FootballSystem.getInstance().getTeamDB().getAllTeams().clear();
+
     }
 
     @Test
@@ -189,7 +180,6 @@ class FootballSystemTest {
         assertEquals(1,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
         FootballSystem.getInstance().removeTeamFromDB(team1.getName());
         assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
-        FootballSystem.getInstance().getFansHashMap().clear();
     }
 
     @Test
@@ -223,7 +213,6 @@ class FootballSystemTest {
         assertEquals(1,FootballSystem.getInstance().getFieldDB().getAllFields().size());
         FootballSystem.getInstance().addFieldToDB(field1);
         assertEquals(1,FootballSystem.getInstance().getFieldDB().getAllFields().size());
-        FootballSystem.getInstance().getFieldDB().getAllFields().clear();
     }
 
     @Test
@@ -238,7 +227,6 @@ class FootballSystemTest {
         assertEquals(1,FootballSystem.getInstance().getFieldDB().getAllFields().size());
         FootballSystem.getInstance().removeFieldFromDB("Blom");
         assertEquals(0,FootballSystem.getInstance().getFieldDB().getAllFields().size());
-        FootballSystem.getInstance().getFieldDB().getAllFields().clear();
     }
 
     @Test
@@ -252,7 +240,6 @@ class FootballSystemTest {
         assertEquals(1,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
         FootballSystem.getInstance().addSeasonToDB(season2);
         assertEquals(2,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
-        FootballSystem.getInstance().getSeasonDB().getAllSeasons().clear();
     }
 
     @Test
@@ -271,6 +258,10 @@ class FootballSystemTest {
         assertEquals(1,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
         FootballSystem.getInstance().removeSeasonFromDB("2010");
         assertEquals(0,FootballSystem.getInstance().getSeasonDB().getAllSeasons().size());
-        FootballSystem.getInstance().getSeasonDB().getAllSeasons().clear();
+    }
+
+    @Test
+    void initialize() {
+
     }
 }
