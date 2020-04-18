@@ -1,7 +1,6 @@
 package PoliciesAndAlgorithms;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,17 +10,7 @@ import java.util.Map;
 
 public class HeuristicGamesAssigningPolicy extends GamesAssigningPolicy {
 
-    /**
-     * constructor
-     */
-    public HeuristicGamesAssigningPolicy() {
-    }
 
-    /**
-     * activate HeuristicGamesAssigningPolicy
-     */
-    public void executePolicy(){
-    }
 
 
 }

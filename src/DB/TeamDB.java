@@ -1,7 +1,8 @@
- package DB;
-import AssociationAssets.Team;
+package DB;
 
-import java.util.HashMap;
+        import AssociationAssets.Team;
+
+        import java.util.HashMap;
 
 public class TeamDB {
 

@@ -219,6 +219,7 @@ public class AdditionalInfo {
             managers.get(userNameWhoNominated).remove(managerUserName);
             // Write to the log
             Logger.getInstance().addActionToLogger("Manager "+managerUserName+ "was removed from the team: "+team.getName());
+            this.teamManagersHashSet.remove(managerUserName);
         }
     }
 
@@ -232,6 +233,7 @@ public class AdditionalInfo {
     public void removeTeamOwner(String ownerUserName, String userNameWhoNominated) {
         if (owners.containsKey(userNameWhoNominated)) {
             owners.get(userNameWhoNominated).remove(ownerUserName);
+            this.teamOwnersHashSet.remove(ownerUserName);
             // Write to the log
             Logger.getInstance().addActionToLogger("Team Owner "+ownerUserName+ "was removed from the team: "+team.getName());
         }
@@ -330,10 +332,18 @@ public class AdditionalInfo {
      */
     public void removeAllNominations(String userNameWhoNominated) {
         if (this.managers.containsKey(userNameWhoNominated)) {
+            for (String userToRemove : this.managers.get(userNameWhoNominated)){
+                this.teamManagersHashSet.remove(userToRemove);
+            }
             this.managers.get(userNameWhoNominated).clear();
+
         }
         if (this.owners.containsKey(userNameWhoNominated)) {
+            for (String userToRemove : this.owners.get(userNameWhoNominated)){
+                this.teamOwnersHashSet.remove(userToRemove);
+            }
             this.owners.get(userNameWhoNominated).clear();
+            this.owners.remove(userNameWhoNominated);
         }
     }
 
