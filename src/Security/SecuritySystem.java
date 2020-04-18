@@ -8,9 +8,9 @@ import java.util.Map;
  * the passwords encrypted and saved for each user with AES algorithm.
  */
 public class SecuritySystem {
-    Map<String, String> usersHashMap = new HashMap<>();
-    AESEncryption AES = new AESEncryption();
-    final String secretKey = "ssshhhhhhhhhhh!!!!";
+    private Map<String, String> usersHashMap = new HashMap<>();
+    private AESEncryption AES = new AESEncryption();
+    private final String secretKey = "ssshhhhhhhhhhh!!!!";
 
 
     /**
@@ -51,8 +51,13 @@ public class SecuritySystem {
             System.out.println("This user id doesnt exits in the system");
             return false;
         }
+        if(userName == null || password == null || userName.isEmpty() || password.isEmpty()){
+            System.out.println("password and user name are invalid");
+            return false;
+        }
         password = AES.encrypt(password, secretKey);
         usersHashMap.put(userName, password);
+        System.out.println("password has been update to the user: " +userName);
         return true;
     }
 
