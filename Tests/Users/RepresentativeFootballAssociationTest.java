@@ -69,7 +69,7 @@ public class RepresentativeFootballAssociationTest {
 
     @Test
     public void addNewLeague() {
-        representative.addNewLeague("leagueTest",games,teams,scorePolicy,gamePolicy,"2020");
+        representative.addNewLeague("leagueTest",games,teams,scorePolicy,gamePolicy,"2020",season);
         assertTrue(FootballSystem.getInstance().existLeagueByName("leagueTest"));
     }
 

@@ -52,7 +52,7 @@ public class RepresentativeController {
                 gp = "Simple";
                 break;
         }
-        rep.addNewLeague(name, new HashMap<>(), new HashMap<>(), sp, new SimpleGamesAssigningPolicy(), year);
+        rep.addNewLeague(name, new HashMap<>(), new HashMap<>(), sp, new SimpleGamesAssigningPolicy(), year,new Season(year));
         System.out.println("A new league was defined with no games and teams, yet.");
     }
 
