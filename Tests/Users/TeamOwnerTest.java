@@ -48,7 +48,6 @@ class TeamOwnerTest {
 
     @Test
     void addPlayer() {
-        setUp();
         // adding exits user
         assertEquals(team1.getAdditionalInfoWithSeasons().get(season.getYear()).getPlayers().size(),0);
         this.teamOwner1.addPlayer(team1,season,"yuval","123","yuval",
@@ -86,7 +85,6 @@ class TeamOwnerTest {
 
     @Test
     void addCoach() {
-        setUp();
         // adding exits user
         assertEquals(team1.getAdditionalInfoWithSeasons().get(season.getYear()).getCoaches().size(),0);
         this.teamOwner1.addCoach(team1,season,"yuval","123","yuval",
@@ -125,7 +123,6 @@ class TeamOwnerTest {
 
     @Test
     void addTeamManager() {
-        setUp();
         // adding exits user
         assertEquals(true,this.teamOwner1.addTeamManager(team1,season,"yuval","123","yuval",
                 "lala"));
@@ -167,7 +164,6 @@ class TeamOwnerTest {
 
     @Test
     void addField() {
-        setUp();
         // insert new field
         assertEquals(true,teamOwner1.addField(team1,season,"Blom","Tel-Aviv",13000));
         // team owner trying to add field not to his team
@@ -201,7 +197,6 @@ class TeamOwnerTest {
 
     @Test
     void removeTeamManager() {
-        setUp();
         teamOwner1.addTeamManager(team1,season,"Or","1","or","lala");
         teamOwner1.addTeamManager(team1,season,"Gili","1","or","lala");
         teamOwner1.nominateTeamOwner(team1,season,"yuval");
@@ -229,7 +224,6 @@ class TeamOwnerTest {
 
     @Test
     void nominateTeamOwner() {
-        setUp();
         // adding exits user
         // only tair is the owner
         assertEquals(1,team1.getAdditionalInfoWithSeasons()
@@ -269,7 +263,6 @@ class TeamOwnerTest {
 
     @Test
     void discardNominationForTeamOwner() {
-        setUp();
         FootballSystem.getInstance().signIn("Or","1","or","lala");
         FootballSystem.getInstance().signIn("Tali","1","or","lala");
         FootballSystem.getInstance().signIn("Mor","1","or","lala");
@@ -307,7 +300,6 @@ class TeamOwnerTest {
 
     @Test
     void nominateTeamManager() {
-        setUp();
         // adding exits user
         assertEquals(0,team1.getAdditionalInfoWithSeasons()
                 .get(season.getYear()).getTeamManagersHashSet().size());
