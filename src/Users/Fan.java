@@ -1,6 +1,7 @@
 package Users;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import AssociationAssets.Game;
@@ -239,14 +240,15 @@ public class Fan extends Guest implements IFan ,Serializable {
      * A fan search history is saved to the system
      * @param categoryName - The category for which the fan wants information
      * return null - If no result is found
+     * @return
      */
     @Override
-    public String searchByCategory(String categoryName){
-        if (categoryName != null) {
-            String res = super.searchByCategory(categoryName);
-            this.searchHistory.add(categoryName);
-            return res;
-        }
+   public LinkedList<String> searchByCategory(String categoryName){
+//        if (categoryName != null) {
+//            String res = super.searchByCategory(categoryName);
+//            this.searchHistory.add(categoryName);
+//            return res;
+//        }
         return null;
     }
 

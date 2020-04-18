@@ -4,15 +4,9 @@ import AssociationAssets.League;
 import AssociationAssets.Season;
 import AssociationAssets.Team;
 import System.*;
-import org.omg.IOP.ENCODING_CDR_ENCAPS;
-import sun.plugin2.os.windows.SECURITY_ATTRIBUTES;
 
-import java.awt.*;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.concurrent.locks.ReadWriteLock;
 
 public class Guest {
     Search search;
@@ -154,48 +148,49 @@ public class Guest {
      * if the search finds results, their profile will be printed accordingly
      *
      * @param categoryName
+     * @return
      */
-    public String searchByCategory(String categoryName) {
+    public LinkedList<String> searchByCategory(String categoryName) {
+        LinkedList<String> results = null;
         if (categoryName != null) {
-            LinkedList<String>results = new LinkedList<>();
+           results = new LinkedList<>();
             if (categoryName.contains("League")) {
                 for (Map.Entry<String, String> entry : search.getAllLeaguesProfile().entrySet()) {
                     results.add(entry.getKey() + " " + "League" + ":" + "\n" + entry.getValue());
                 }
-
             } else if (categoryName.contains("Team")) {
                 for (Map.Entry<String, String> entry : search.getAllTeamsProfile().entrySet()) {
                     results.add (entry.getKey() + ":" + "\n" + entry.getValue());
                 }
             } else if (categoryName.contains("Referee")) {
                 for (Map.Entry<String, String> entry : search.getAllRefereesProfile().entrySet()) {
-                    return entry.getKey() + ":" + "\n" + entry.getValue();
+                    results.add( entry.getKey() + ":" + "\n" + entry.getValue());
                 }
             } else if (categoryName.contains("Player")) {
                 for (Map.Entry<String, String> entry : search.getAllPlayersProfile().entrySet()) {
-                    return entry.getKey() + ":" + "\n" + entry.getValue();
+                    results.add( entry.getKey() + ":" + "\n" + entry.getValue());
                 }
             } else if (categoryName.contains("Coach")) {
                 for (Map.Entry<String, String> entry : search.getAllCoachesProfile().entrySet()) {
-                    return entry.getKey() + ":" + "\n" + entry.getValue();
+                    results.add( entry.getKey() + ":" + "\n" + entry.getValue());
                 }
             }
         }
-        return null;
+        return results;
     }
 
-    /**
-     * useCase 2.5 - search by key word : search by name and search by category
-     *
-     * @param keyWord
-     */
-    public String searchByKeyWord(String keyWord) {
-        String result = searchByName(keyWord);
-        if (result == null) {
-            searchByCategory(keyWord);
-        }
-        return null;
-    }
+//    /**
+//     * useCase 2.5 - search by key word : search by name and search by category
+//     *
+//     * @param keyWord
+//     */
+//    public String searchByKeyWord(String keyWord) {
+//        String result = searchByName(keyWord);
+//        if (result == null) {
+//            searchByCategory(keyWord);
+//        }
+//        return result;
+//    }
 
     public Search getSearch() {
         return search;
