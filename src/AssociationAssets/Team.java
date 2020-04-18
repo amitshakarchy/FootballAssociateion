@@ -268,4 +268,16 @@ public class Team {
                 "Home Field: "+ mainField +"\n" +
                 "Team's Owner: "+teamOwner+".";
     }
+
+    public void addHomeGame(Game game){
+        if(game!= null){
+            this.homeGames.put(String.valueOf(game.GID),game);
+        }
+    }
+
+    public void addAwayGame(Game game){
+        if(game!= null){
+            this.awayGames.put(String.valueOf(game.GID),game);
+        }
+    }
 }
