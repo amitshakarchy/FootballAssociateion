@@ -57,13 +57,15 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      * @param gamePolicy  - League Game policy
      * @param year - The year's league season
      */
-    public void addNewLeague(String leagueName, HashMap<String, Game> games, HashMap<String, Team> teams, ScoreTablePolicy scorePolicy, GamesAssigningPolicy gamePolicy, String year) {
-        if(leagueName == null || games==null || teams==null || scorePolicy==null ||gamePolicy==null || year==null){
+    public void addNewLeague(String leagueName, HashMap<String, Game> games, HashMap<String, Team> teams, ScoreTablePolicy scorePolicy, GamesAssigningPolicy gamePolicy, String year,
+                             Season season) {
+        if(season == null || leagueName == null || games==null || teams==null || scorePolicy==null ||gamePolicy==null || year==null){
             return;
         }
         League newLeague = new League(leagueName);
         newLeague.setScoreTablePolicy(year, scorePolicy);
         newLeague.setAssigningPolicy(year, gamePolicy);
+        newLeague.addSeasonToLeague(season);
         setSeasonToLeague(newLeague, year, games, teams);
         FootballSystem.getInstance().addLeagueToDB(newLeague);
     }
