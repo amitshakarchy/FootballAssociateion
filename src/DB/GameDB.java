@@ -5,6 +5,10 @@ import AssociationAssets.Game;
 
 import java.util.HashMap;
 
+/**
+ * this class is the GameDB class
+ * Aouthors: Tair Cohen
+ */
 public class GameDB {
     HashMap<Integer, Game> allGames;
 

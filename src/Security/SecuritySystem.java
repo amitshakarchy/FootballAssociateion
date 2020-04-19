@@ -6,6 +6,7 @@ import java.util.Map;
 /**
  * this class responsible for the security of the users.
  * the passwords encrypted and saved for each user with AES algorithm.
+ * Aouthors: Tair Cohen
  */
 public class SecuritySystem {
     private Map<String, String> usersHashMap = new HashMap<>();
