@@ -437,7 +437,7 @@ public class TeamOwner extends Fan {
     // use case 6.3 region
 
     /**
-     * this function
+     * this function discards nomination for team owner
      * @param team
      * @param season
      * @param userNameToRemove
@@ -461,6 +461,15 @@ public class TeamOwner extends Fan {
     // use case 6.3 end region
 
     // use case 6.4 region
+
+    /**
+     * this function nominate exits user in a team in specif season
+     * if the user name is not exits in the system, the nomination discard.
+     * @param team
+     * @param season
+     * @param userName
+     * @return true if the nomination had been successes
+     */
     public boolean nominateTeamManager(Team team, Season season, String userName) {
         Fan fan = FootballSystem.getInstance().getFanByUserName(userName);
         if (fan != null) {
@@ -474,6 +483,12 @@ public class TeamOwner extends Fan {
     // use case 6.4 end region
 
     // use case 6.6 region
+
+    /**
+     * this function closes the team in a specif season
+     * @param team
+     * @param season
+     */
     public void closeTeam(Team team, Season season) {
         AdditionalInfo additionalInfo = getAdditionalInfo(team, season);
         if(additionalInfo == null){
@@ -493,6 +508,12 @@ public class TeamOwner extends Fan {
     }
     // use case 6.7 end region
 
+    /**
+     *
+     * @param team
+     * @param season
+     * @return additional info for specif team in a season
+     */
     private AdditionalInfo getAdditionalInfo(Team team, Season season) {
         AdditionalInfo additionalInfoToSearch = null;
         for (AdditionalInfo additionalInfo : this.additionalInfoList) {
@@ -503,6 +524,14 @@ public class TeamOwner extends Fan {
         return additionalInfoToSearch;
     }
 
+    /**
+     *
+     * @param userName
+     * @param password
+     * @param firstName
+     * @param lastName
+     * @return true if the sign in was succeed
+     */
     private boolean signIn(String userName, String password, String firstName, String lastName) {
         Fan fan = FootballSystem.getInstance().signIn(userName, password, firstName, lastName);
         // invalid inputs or username already exist.
@@ -516,6 +545,11 @@ public class TeamOwner extends Fan {
         additionalInfoList.add(additionalInfo);
     }
 
+    /**
+     *
+     * @param team
+     * @return true if the team is active
+     */
     private boolean TeamIsInActive(Team team) {
         if (team != null && team.getIsActive().equals(ETeamStatus.INACTIVE)) {
             System.out.println("The team is close, you are not allow to make any operation.");
