@@ -4,6 +4,10 @@ import AssociationAssets.Field;
 
 import java.util.HashMap;
 
+/**
+ * this class is the fieldDB class
+ * Aouthors: Tair Cohen
+ */
 public class FieldDB {
     HashMap<String, Field> allFields;
 

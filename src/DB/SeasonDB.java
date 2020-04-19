@@ -3,7 +3,10 @@ package DB;
 import AssociationAssets.Season;
 
 import java.util.HashMap;
-
+/**
+ * this class is the SeasonDB class.
+ * Aouthors: Tair Cohen
+ */
 public class SeasonDB {
     HashMap<String/*season year*/, Season> allSeasons;
 
