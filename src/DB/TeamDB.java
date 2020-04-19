@@ -1,9 +1,13 @@
 package DB;
 
-        import AssociationAssets.Team;
+import AssociationAssets.Team;
 
-        import java.util.HashMap;
+import java.util.HashMap;
 
+/**
+ * this class is the TeamDB class
+ * Aouthors: Tair Cohen
+ */
 public class TeamDB {
 
     HashMap<String, Team> allTeams;
@@ -11,10 +15,12 @@ public class TeamDB {
     public TeamDB() {
         this.allTeams = new HashMap<>();
     }
-    public void addTeam(Team newTeam,String team){
-        allTeams.put(team,newTeam);
+
+    public void addTeam(Team newTeam, String team) {
+        allTeams.put(team, newTeam);
     }
-    public void removeTeam(String team){
+
+    public void removeTeam(String team) {
         this.allTeams.remove(team);
     }
 

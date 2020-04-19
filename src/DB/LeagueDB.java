@@ -5,6 +5,10 @@ import AssociationAssets.League;
 
 import java.util.HashMap;
 
+/**
+ * this class is the LeagueDB class
+ * Aouthors: Tair Cohen
+ */
 public class LeagueDB {
     HashMap<String, League> allLeagues;
 
