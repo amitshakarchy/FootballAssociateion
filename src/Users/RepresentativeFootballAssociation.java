@@ -148,6 +148,9 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
         game.setMain(mainRef);
         game.setSide1(sideRef1);
         game.setSide2(sideRef2);
+        mainRef.addGame(game);
+        sideRef1.addGame(game);
+        sideRef2.addGame(game);
     }
 
     /**

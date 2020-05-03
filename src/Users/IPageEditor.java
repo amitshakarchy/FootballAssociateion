@@ -5,7 +5,7 @@ import java.util.List;
  * @ Written by Yuval Ben Eliezer
  */
 public interface IPageEditor {
-     void addFeedToMyPage(String feed);
+     void addToMyPage(String feed);
      void removeFeedFromMyPage(String feed);
      Enum getRole();
      void setRole(Enum role);

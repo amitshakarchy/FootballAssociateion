@@ -1,8 +1,11 @@
 package Users;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import AssociationAssets.EEventType;
 import AssociationAssets.Game;
 import System.*;
 
@@ -18,6 +21,8 @@ public class Fan extends Guest implements IFan ,Serializable {
     private String fName;
     private String lName;
     private EStatus status;
+    private HashMap<String,EEventType> pendingGameNotifications;
+    private HashMap<String,APageEditor> pendingPageNotifications;
     private List<String> searchHistory;
 
     /**
@@ -31,6 +36,8 @@ public class Fan extends Guest implements IFan ,Serializable {
         this.fName = fName;
         this.lName = lName;
         this.searchHistory = new ArrayList<>();
+        this.pendingGameNotifications = new HashMap<>();
+        this.pendingPageNotifications = new HashMap<>();
         this.status = EStatus.ONLINE;
     }
 
@@ -91,8 +98,29 @@ public class Fan extends Guest implements IFan ,Serializable {
      *      *             ONLINE , OFFLINE
      */
     public void setStatus(EStatus status) {
+        boolean wasOffline = false;
+        if(this.status == EStatus.OFFLINE) wasOffline = true;
         if(status != null) {
             this.status = status;
+            //checking if this fan was offline and now became online
+            if (status == EStatus.ONLINE && wasOffline) {
+                if (pendingGameNotifications.size() != 0) {
+                    for (Map.Entry<String, EEventType> entry : pendingGameNotifications.entrySet()) {
+                        // TODO: 29/04/2020 show some pop up message to the user about each notification
+                        System.out.println(entry.getKey());
+                    }
+                }
+                if (pendingPageNotifications.size() != 0) {
+                    for (Map.Entry<String, APageEditor> entry : pendingPageNotifications.entrySet()) {
+                        // TODO: 29/04/2020 same for page updates
+                        System.out.println(entry.getKey());
+                    }
+                }
+                //clear notifications after the user got them
+                pendingGameNotifications.clear();
+                pendingGameNotifications.clear();
+            }
+
         }
     }
 
@@ -140,7 +168,9 @@ public class Fan extends Guest implements IFan ,Serializable {
         // TODO: 12/04/2020 Ask Alon&Amit about team page
     }
 
-    public void update(APageEditor pageEditor,String feed){}
+    public void update(APageEditor pageEditor,String feed){
+        pendingPageNotifications.put(feed,pageEditor);
+    }
 
     /**
      *A fan can sign up to track games
@@ -166,7 +196,14 @@ public class Fan extends Guest implements IFan ,Serializable {
         game.delete(this);
     }
 
-    public void updateGame(Game game) { }
+    public void updateGame(String description, EEventType eventType) {
+        if(this.status == EStatus.ONLINE){
+            // TODO: 29/04/2020 pop up message
+        }
+    //    else{
+            pendingGameNotifications.put(description,eventType);
+      //  }
+    }
 
     /**
      * This method should receive a complain text (from the service layer)

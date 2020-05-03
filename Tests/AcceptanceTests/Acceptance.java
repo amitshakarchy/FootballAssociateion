@@ -108,8 +108,8 @@ public class Acceptance {
         teams.put(team2.getName(),team2);
         team1.addSeasonToTeam(season);
         team2.addSeasonToTeam(season);
-        time = new Time(18,30,0);
-        game = new Game(new Date(2020,9,3),time,field2,team1,team2,mainRef,sideRef1,sideRef2,season,league1);
+        time = new Time(13,30,0);
+        game = new Game(new Date(2020,3,29),time,field2,team1,team2,mainRef,sideRef1,sideRef2,season,league1);
         game2 = new Game(new Date(2020,10,24),time,field,team2,team1,mainRef,sideRef2,sideRef1,season,league1);
         games.put("1",game);
         games.put("2",game2);
@@ -148,6 +148,7 @@ public class Acceptance {
         System.out.println("The last logger event is: " +logger.getLog().get(logger.getLog().size() -1));
 
         System.out.println("\n* * * * * * *Use case 3.3 Fan subscribes to a game* * * * * * *\n not done yet");
+        fan3.subscribeGames(game);
 
         System.out.println("\n* * * * * * *Use case 3.4 Fan reports wrong information* * * * * * *");
         fan.submitComplain("I hate this app so much! losers! Messi didn't born in that day!!");
@@ -237,6 +238,7 @@ public class Acceptance {
 
         System.out.println("\n* * * * * * *Use case 10.3 Referee updates event in the middle of a game * * * * * * * ");
         //need to create game that is still happening in the time this test is running.
+        mainRef.addEventToAssignedGame(game.getGID(),EEventType.GOAL,"own goal by amit lol");
         System.out.println("\n* * * * * * *Use case 10.4 Referee updates til 5 hours after the game ended * * * * * * * ");
         //need to create game that ended less then 5 hours ago.
 

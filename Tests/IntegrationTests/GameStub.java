@@ -33,6 +33,7 @@ public class GameStub extends Game {
         super(date, time, field, host, guest, main, side1, side2, season, league);
         this.selector = selector;
         events = new ArrayList<>();
+
     }
     public void setSelector(int selector) {
         this.selector = selector;

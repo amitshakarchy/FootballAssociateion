@@ -42,6 +42,7 @@ public class Guest {
      */
     public Fan logInGuest(String userName, String password) {
         Fan user = FootballSystem.getInstance().login(userName, password);
+        if(user != null) user.setStatus(EStatus.ONLINE);
         return user;
     }
 

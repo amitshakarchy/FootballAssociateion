@@ -86,7 +86,7 @@ public class Referee extends Fan {
             if(gameToAdd.isUpdatable(2)) {
                 gameToAdd.addEvent(eventType, description);
                 Logger.getInstance().addActionToLogger("Referee added event to assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
-
+                gameToAdd.notifyObserver(description,eventType);
             }
         }
     }
@@ -106,7 +106,7 @@ public class Referee extends Fan {
             if(gameToAdd.isUpdatable(2)) {
                 gameToAdd.editEvent(eventIndex, eventType, description);
                 Logger.getInstance().addActionToLogger("Referee update event to assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
-
+                gameToAdd.notifyObserver(description,eventType);
             }
         }
     }
