@@ -1,7 +1,6 @@
 package System;
 
 import AssociationAssets.*;
-import DB.*;
 import Users.*;
 
 import java.util.HashMap;
@@ -9,22 +8,11 @@ import java.util.Map;
 
 public class Search {
     private FootballSystem footballSystem = FootballSystem.getInstance();
-    private TeamDB teamDB;
-    private LeagueDB leagueDB;
-    private SeasonDB seasonDB;
-    private GameDB gameDB;
-    private FieldDB fieldDB;
-
     /**
      * constructor
      */
     public Search() {
-        teamDB = new TeamDB();
-        leagueDB = new LeagueDB();
-        seasonDB = new SeasonDB();
-        gameDB = new GameDB();
-        fieldDB = new FieldDB();
-}
+    }
 
     //Todo: systemManager, teamManger, teamOwner, representative
     public Object getUserByUserName(String uName){
@@ -70,8 +58,8 @@ public class Search {
      */
     public Team getTeamByTeamName(String teamName){
         if(teamName!=null) {
-            if (this.teamDB.getAllTeams().containsKey(teamName)) {
-                return this.teamDB.getAllTeams().get(teamName);
+            if (footballSystem.getTeamDB().getAllTeams().containsKey(teamName)) {
+                return footballSystem.getTeamDB().getAllTeams().get(teamName);
             }
         }
         return null;
@@ -83,8 +71,8 @@ public class Search {
      */
     public League getLeagueByLeagueName(String leagueName){
         if(leagueName!=null){
-            if (this.leagueDB.getAllLeagues().containsKey(leagueName)) {
-                return this.leagueDB.getAllLeagues().get(leagueName);
+            if (footballSystem.getLeagueDB().getAllLeagues().containsKey(leagueName)) {
+                return footballSystem.getLeagueDB().getAllLeagues().get(leagueName);
             }
         }
         return null;
@@ -96,8 +84,8 @@ public class Search {
      */
     public Season getSeasonByYear(String year){
         if(year!= null) {
-            if(this.seasonDB.getAllSeasons().containsKey(year)){
-                return this.seasonDB.getAllSeasons().get(year);
+            if(footballSystem.getSeasonDB().getAllSeasons().containsKey(year)){
+                return footballSystem.getSeasonDB().getAllSeasons().get(year);
             }
         }
         return null;
@@ -109,8 +97,8 @@ public class Search {
      */
     public Game getGameByGameID(Integer gameID){
         if(gameID!= null) {
-            if(this.gameDB.getAllGames().containsKey(gameID)){
-                return this.gameDB.getAllGames().get(gameID);
+            if(footballSystem.getGameDB().getAllGames().containsKey(gameID)){
+                return footballSystem.getGameDB().getAllGames().get(gameID);
             }
         }
         return null;
@@ -122,8 +110,8 @@ public class Search {
      */
     public Field getFieldByFieldName(String fieldName){
         if(fieldName!= null) {
-            if(this.fieldDB.getAllFields().containsKey(fieldName)){
-                return this.fieldDB.getAllFields().get(fieldName);
+            if(footballSystem.getFieldDB().getAllFields().containsKey(fieldName)){
+                return footballSystem.getFieldDB().getAllFields().get(fieldName);
             }
         }
         return null;
@@ -134,7 +122,7 @@ public class Search {
      */
     public HashMap<String, String> getAllLeaguesProfile(){
         HashMap<String, String>leaguesProfile = new HashMap<>();
-        for (Map.Entry<String,League> entry : leagueDB.getAllLeagues().entrySet()) {
+        for (Map.Entry<String,League> entry : footballSystem.getLeagueDB().getAllLeagues().entrySet()) {
             String profileDetails=  entry.getValue().viewProfile();
             leaguesProfile.put(entry.getKey(), profileDetails);
         }
@@ -146,7 +134,7 @@ public class Search {
      */
     public HashMap<String, String> getAllTeamsProfile(){
         HashMap<String, String> teamsProfile = new HashMap<>();
-        for (Map.Entry<String,Team> entry : teamDB.getAllTeams().entrySet()) {
+        for (Map.Entry<String,Team> entry : footballSystem.getTeamDB().getAllTeams().entrySet()) {
             String profileDetails=  entry.getValue(). viewProfile();
             teamsProfile.put(entry.getValue().getName(),profileDetails);
         }
@@ -190,37 +178,5 @@ public class Search {
         return playersProfile;
     }
 
-    //<editor-fold desc="Setters: setLeagueDB">
-    public void setLeagueDB(LeagueDB leagueDB) {
-        this.leagueDB = leagueDB;
-    }
-    public void setTeamDB(TeamDB teamDB) {
-        this.teamDB = teamDB;
-    }
-    public void setSeasonDB(SeasonDB seasonDB) {
-        this.seasonDB = seasonDB;
-    }
-    //</editor-fold>
-
-    //<editor-fold desc="Getters:getTeamDB,getLeagueDB,getSeasonDB,getGameDB,getFieldDB ">
-    public TeamDB getTeamDB() {
-        return teamDB;
-    }
-    public LeagueDB getLeagueDB() {
-        return leagueDB;
-    }
-
-    public SeasonDB getSeasonDB() {
-        return seasonDB;
-    }
-
-    public GameDB getGameDB() {
-        return gameDB;
-    }
-
-    public FieldDB getFieldDB() {
-        return fieldDB;
-    }
-    //</editor-fold>
 }
 

@@ -107,9 +107,9 @@ public class GuestController {
             case 2:
                 System.out.println(guest.searchByName(toSearch));
                 break;
-            case 3:
-                System.out.println(guest.searchByKeyWord(toSearch));
-                break;
+//            case 3:
+//                System.out.println(guest.searchByKeyWord(toSearch));
+//                break;
         }
 
     }
