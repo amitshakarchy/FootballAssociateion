@@ -46,13 +46,10 @@ public class GuestTest {
         season = new Season("2020");
         field = new Field("fieldTest","city",10);
         team= new Team(1,"Barcelona" ,season, field, null, null);
-        leagueDB.addLeague(league,league.getLeagueName());
-        leagueDB.addLeague(league1,league1.getLeagueName());
-        teamDB.addTeam(team,team.getName());
-        seasonDB.addSeason(season,season.getYear());
-        search.setLeagueDB(leagueDB);
-        search.setTeamDB(teamDB);
-        search.setSeasonDB(seasonDB);
+        footballSystem.getLeagueDB().addLeague(league,league.getLeagueName());
+        footballSystem.getLeagueDB().addLeague(league1,league1.getLeagueName());
+        footballSystem.getTeamDB().addTeam(team,team.getName());
+        footballSystem.getSeasonDB().addSeason(season,season.getYear());
         footballSystem.signIn(coach.getUserName(),"34567",coach.getfName(),coach.getlName());
         footballSystem.addCoach(coach);
         footballSystem.addReferee(referee);

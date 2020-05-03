@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.locks.ReadWriteLock;
 
 import static org.junit.Assert.*;
 
@@ -24,11 +23,8 @@ public class SearchTest {
     Team team;
     Team hostTeam;
     League league;
-    League league2;
     Season season;
-    Game game;
-    Game gameTest;
-    Referee ref1,ref2,ref3;
+    Referee ref1;
     Field field;
     Player player;
     Fan fan;
@@ -72,10 +68,10 @@ public class SearchTest {
         fan= footballSystem.signIn("testFan","123456","FanFname","FanLname");
         footballSystem.addTeamToDB(team);
 
-        search.getTeamDB().addTeam(team,team.getName());
-        search.getLeagueDB().addLeague(league,league.getLeagueName());
-        search.getSeasonDB().addSeason(season,"2020");
-        search.getFieldDB().addField(field,field.getName());
+        footballSystem.getTeamDB().addTeam(team,team.getName());
+       footballSystem.getLeagueDB().addLeague(league,league.getLeagueName());
+        footballSystem.getSeasonDB().addSeason(season,"2020");
+        footballSystem.getFieldDB().addField(field,field.getName());
     }
 
     @Test
@@ -118,8 +114,8 @@ public class SearchTest {
     @Test
     public void getGameByGameID() throws Exception {
         try{
-         Game   gameTest = new Game(new Date(), null, field, hostTeam, team, new Referee("ref1Test","ref1FName","ref2LName",EReferee.MAIN), new Referee("ref2Test","ref2FName","ref2LName",EReferee.ASSISTANT), new Referee("re3Test","ref3FName","Ref3LName",EReferee.ASSISTANT), season, league);
-        search.getGameDB().addGame(gameTest,gameTest.getGID());
+         Game gameTest = new Game(new Date(), null, field, hostTeam, team, new Referee("ref1Test","ref1FName","ref2LName",EReferee.MAIN), new Referee("ref2Test","ref2FName","ref2LName",EReferee.ASSISTANT), new Referee("re3Test","ref3FName","Ref3LName",EReferee.ASSISTANT), season, league);
+        footballSystem.getGameDB().addGame(gameTest,gameTest.getGID());
             assertSame(search.getGameByGameID(gameTest.getGID()), gameTest);
         }catch (Exception e){}
     }
@@ -218,73 +214,73 @@ public class SearchTest {
         }
     }
 
-    @Test
-    public void setLeagueDB() {
-        try {
-            LeagueDB leagueDBTest = new LeagueDB();
-            search.setLeagueDB(leagueDBTest);
-            assertSame(search.getLeagueDB(), leagueDBTest);
-        }catch (Exception e){
-        }
-    }
-
-    @Test
-    public void setTeamDB() {
-        try {
-            TeamDB teamDBTest = new TeamDB();
-            search.setTeamDB(teamDBTest);
-            assertSame(search.getTeamDB(), teamDBTest);
-        }catch (Exception e){
-        }
-    }
-
-    @Test
-    public void setSeasonDB() {
-        try {
-            SeasonDB seasonDBTest = new SeasonDB();
-            search.setSeasonDB(seasonDBTest);
-            assertSame(search.getSeasonDB(), seasonDBTest);
-        }catch (Exception e) {
-        }
-    }
-
-    @Test
-    public void getTeamDB() {
-        try {
-            assertSame(search.getTeamDB().getAllTeams().get(team.getName()), team);
-        }catch (Exception e){
-        }
-    }
-
-    @Test
-    public void getLeagueDB() {
-        try {
-            assertSame(search.getLeagueDB().getAllLeagues().get(league.getLeagueName()), league);
-        }catch (Exception e){
-        }
-    }
-
-    @Test
-    public void getSeasonDB() {
-        try {
-            assertSame(search.getSeasonDB().getAllSeasons().get(season.getYear()), season);
-        }catch (Exception e){
-        }
-    }
-
-    @Test
-    public void getGameDB() {
-        try {
-            assertSame(search.getGameDB().getAllGames().get(game.getGID()), game);
-        }catch (Exception e){
-        }
-    }
-
-    @Test
-    public void getFieldDB() {
-        try {
-            assertSame(search.getFieldDB().getAllFields().get(field.getName()), field);
-        }catch (Exception e){
-        }
-    }
+//    @Test
+//    public void setLeagueDB() {
+//        try {
+//            LeagueDB leagueDBTest = new LeagueDB();
+//            search.setLeagueDB(leagueDBTest);
+//            assertSame(search.getLeagueDB(), leagueDBTest);
+//        }catch (Exception e){
+//        }
+//    }
+//
+//    @Test
+//    public void setTeamDB() {
+//        try {
+//            TeamDB teamDBTest = new TeamDB();
+//            search.setTeamDB(teamDBTest);
+//            assertSame(search.getTeamDB(), teamDBTest);
+//        }catch (Exception e){
+//        }
+//    }
+//
+//    @Test
+//    public void setSeasonDB() {
+//        try {
+//            SeasonDB seasonDBTest = new SeasonDB();
+//            search.setSeasonDB(seasonDBTest);
+//            assertSame(search.getSeasonDB(), seasonDBTest);
+//        }catch (Exception e) {
+//        }
+//    }
+//
+//    @Test
+//    public void getTeamDB() {
+//        try {
+//            assertSame(search.getTeamDB().getAllTeams().get(team.getName()), team);
+//        }catch (Exception e){
+//        }
+//    }
+//
+//    @Test
+//    public void getLeagueDB() {
+//        try {
+//            assertSame(search.getLeagueDB().getAllLeagues().get(league.getLeagueName()), league);
+//        }catch (Exception e){
+//        }
+//    }
+//
+//    @Test
+//    public void getSeasonDB() {
+//        try {
+//            assertSame(search.getSeasonDB().getAllSeasons().get(season.getYear()), season);
+//        }catch (Exception e){
+//        }
+//    }
+//
+//    @Test
+//    public void getGameDB() {
+//        try {
+//            assertSame(search.getGameDB().getAllGames().get(game.getGID()), game);
+//        }catch (Exception e){
+//        }
+//    }
+//
+//    @Test
+//    public void getFieldDB() {
+//        try {
+//            assertSame(search.getFieldDB().getAllFields().get(field.getName()), field);
+//        }catch (Exception e){
+//        }
+//    }
 }
