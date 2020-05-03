@@ -24,7 +24,7 @@ public class Search {
         seasonDB = new SeasonDB();
         gameDB = new GameDB();
         fieldDB = new FieldDB();
-    }
+}
 
     //Todo: systemManager, teamManger, teamOwner, representative
     public Object getUserByUserName(String uName){
