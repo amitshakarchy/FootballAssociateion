@@ -1,0 +1,193 @@
+package Model;
+
+public interface IModel {
+
+    //region General
+    /**
+     * Returns User's full name in order to display it on screen if needed.
+     * @return - The user's full name.
+     */
+    String getUsersFullName();
+
+    /**
+     * Returns the user's type (Team Owner, Referee.....) in order to maintain authorizations.
+     * @return User's type
+     */
+    String UserType();
+
+    /**
+     * Returns a list of games for a specific season and league.
+     * May be used in order to let the user choose a game by it's ID.
+     * @return list of games, ordered by game's ID.
+     */
+    String getGames(String leagueName, String seasonYear);
+
+
+    //endregion
+
+    //region Login
+    /**
+     * Logs in using user's credentials. Assumes input was already validated for null and empty inputs.
+     * After a successful login, Model saves the user's credentials and user-type in order to maintain authorizations.
+     * @param username - user's username. (should be Email address?)
+     * @param password - password.
+     * @return true or false for success or failure
+     */
+    boolean login(String username, String password);
+    //endregion
+
+    //region Team Management
+    /**
+     * Creates a new team out of the given details.
+     * Assumes input was already validated for null and empty inputs.
+     * Throws exception in any of the following cases: Team's name already exists, No such a season,
+     */
+    boolean createTeam(String name, String SeasonYear, String FieldName, String FieldCity, String TeamOwnerName)throws Exception;
+
+    /**
+     * Closes a team.
+     * Assumes input was already validated for null and empty inputs.
+     * @param teamName - team's name
+     * @param seasonYear - team's name
+     * @return true or false for success / failure
+     */
+    boolean closeTeam(String teamName, String seasonYear);
+
+
+    /**
+     * Adds a player into an existing team. Assumes input was already validated for null and empty inputs.
+     *Assumes input was already validated for null and empty inputs.
+     * @param teamName - team's name
+     * @param SeasonYear - team's name
+     * @param Username - username
+     * @param Password - password
+     * @param firstName - first name
+     * @param lastName - last name
+     * @param bDate - format: dd-mm-yyyy
+     * @param role - role
+     * @return true or false for success / failure
+     * @throws Exception -  in case there is no such team or season, or in case the user is already present in the system.
+     */
+    boolean addPlayer(String teamName, String SeasonYear, String Username, String Password, String firstName, String lastName, String bDate, String role)throws Exception;
+
+    /**
+     * Removes a player from the team.
+     * Assumes input was already validated for null and empty inputs.
+     * @param teamName - team's name
+     * @param seasonYear - team's name
+     * @param username - username
+     * @return true or false for success / failure
+     */
+    boolean removePlayer(String teamName, String seasonYear, String username);
+
+    /**
+     * Adds a coach into an existing team. Assumes input was already validated for null and empty inputs.
+     * Assumes input was already validated for null and empty inputs.
+     * @param teamName - team's name
+     * @param SeasonYear - Requested year in which the team plays
+     * @param Username - username
+     * @param Password - password
+     * @param firstName - first name
+     * @param lastName - last name
+     * @param bDate - format: dd-mm-yyyy
+     * @param role - role
+     * @param training - Coach's trining
+     * @return true or false for success / failure
+     * @throws Exception - in case there is no such team or season, or in case the user is already present in the system.
+     */
+    boolean addCoach(String teamName, String SeasonYear, String Username, String Password, String firstName, String lastName, String bDate, String role, String training)throws Exception;
+
+    /**
+     * Removes a coach from the team.
+     * Assumes input was already validated for null and empty inputs.
+     * @param teamName - team's name
+     * @param seasonYear - team's name
+     * @param username - username
+     * @return true or false for success / failure
+     */
+    boolean removeCoach(String teamName, String seasonYear, String username);
+
+    /**
+     * Adds a Team Manager into an existing team. Assumes input was already validated for null and empty inputs.
+     * Assumes input was already validated for null and empty inputs.
+     * @param teamName - team's name
+     * @param SeasonYear - Requested year in which the team plays
+     * @param Username - username
+     * @param Password - password
+     * @param firstName - first name
+     * @param lastName - last name
+     * @return true or false for success / failure
+     * @throws Exception - in case there is no such team or season, or in case the user is already present in the system.
+     */
+    boolean addTeamManager(String teamName, String SeasonYear, String Username, String Password, String firstName, String lastName)throws Exception;
+
+    /**
+     * Removes a Team Manager from the team.
+     * Assumes input was already validated for null and empty inputs.
+     * @param teamName - team's name
+     * @param seasonYear - team's name
+     * @param username - username
+     * @return true or false for success / failure
+     */
+    boolean removeTeamManager(String teamName, String seasonYear, String username);
+
+    /**
+     * Adds a field into an existing team
+     * Assumes input was already validated for null and empty inputs.
+     * @param teamName - team's name
+     * @param seasonYear - team's name
+     * @param fieldName - Field's name
+     * @param city  - city
+     * @return true or false for success / failure
+     * @throws Exception - in case team/season doesn't exist or a field name is already present in the system.
+     */
+    boolean addField(String teamName, String seasonYear, String fieldName, String city)throws Exception;
+
+    /**
+     * Removes a Field from the team.
+     * Assumes input was already validated for null and empty inputs.
+     * @param teamName - team's name
+     * @param seasonYear - team's name
+     * @param fieldName - Field's name
+     * @return true or false for success / failure
+     */
+    boolean removeField(String teamName, String seasonYear, String fieldName);
+
+    /**
+     * Nominates a team Owner.
+     * Assumes input was already validated for null and empty inputs.
+     * Throws Exception if there is no such a user, team or season.
+     * @param teamName - the requested team
+     * @param SeasonYear - Requested year in which the team plays
+     * @param Username - Team Owner's user
+     * @return true or false for success / failure
+     */
+    boolean nominateTeamOwner(String teamName, String SeasonYear, String Username)throws Exception;
+
+    /**
+     * Removes a nomination of a team owner.
+     * Assumes input was already validated for null and empty inputs.
+     * @param teamName - the requested team
+     * @param SeasonYear - Requested year in which the team plays
+     * @param Username - Team Owner's user
+     * @return true or false for success / failure
+     */
+    boolean discardNominationForTeamOwner(String teamName, String SeasonYear, String Username);
+
+    /**
+     * Nominates a team Manager.
+     * Assumes input was already validated for null and empty inputs.
+     * TODO: think how to specify authorities
+     * @param teamName - the requested team
+     * @param SeasonYear - Requested year in which the team plays
+     * @param Username - Team Owner's user
+     * @return true or false for success / failure
+     * @Exception   - if there is no such a user, team or season.
+     */
+    boolean nominateTeamManager(String teamName, String SeasonYear, String Username)throws Exception;
+    //endregion
+
+
+
+
+}

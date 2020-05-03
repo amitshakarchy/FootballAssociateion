@@ -50,6 +50,8 @@ public class GuestController {
         return fan;
     }
 
+
+
     /**
      * UC 2.4
      */
