@@ -7,17 +7,22 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    static final String RESOURCE = "View/CreateTeam.fxml";
+    static final String RESOURCE = "View/Login.fxml";
     static final String STYLE_SHEET = "View/style.css";
-
+    static Stage stg;
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage stage) throws Exception {
+//        root = FXMLLoader.load(getClass().getResource(RESOURCE));
+//        root.getStylesheets().add(getClass().getResource(STYLE_SHEET).toExternalForm());
+//        Scene scene = new Scene(root,600,500);
+//        primaryStage.setTitle("Football Association System");
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
+        this.stg = stage;
         Parent root = FXMLLoader.load(getClass().getResource(RESOURCE));
-        root.getStylesheets().add(getClass().getResource(STYLE_SHEET).toExternalForm());
-        Scene scene = new Scene(root,400,600);
-        primaryStage.setTitle("Football Association System");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.setTitle("Football Association System");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
     }
 
     public static void main(String[] args) {

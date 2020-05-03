@@ -1,5 +1,6 @@
 package Controllers;
 
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextInputControl;
 
@@ -25,7 +26,20 @@ public class RequiredField extends ValidatorBase {
             evalTextInputField();
         else if (srcControl.get() instanceof ComboBox)
             evalComboBox();
+        else if (srcControl.get() instanceof ChoiceBox)
+            evalChoiceBox();
+    }
 
+    private void evalChoiceBox() {
+
+        ChoiceBox choiceBox = (ChoiceBox) srcControl.get();
+
+        if (choiceBox.getValue() == null || choiceBox.getValue().toString().trim().isEmpty())
+            hasErrors.set(true);
+        else
+            hasErrors.set(false);
+
+        onEval();
     }
 
     protected void evalComboBox() {

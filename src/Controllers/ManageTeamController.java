@@ -9,18 +9,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainPageController {
-
-    public Button manageTeamBtn;
+public class ManageTeamController {
 
     @FXML
-    public void manageTeamClick(){
-        // TODO: 5/3/2020 need to validate the permission of the user
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/ManageTeam.fxml"));
+    public Button createNewTeamBtn;
+
+    @FXML
+    public void createNewTeam(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/CreateTeam.fxml"));
         Stage stage = new Stage();
-        stage.initOwner(manageTeamBtn.getScene().getWindow());
+        stage.initOwner(createNewTeamBtn.getScene().getWindow());
         try {
-            stage.setScene(new Scene((Parent) loader.load()));
+            stage.setScene(new Scene(loader.load()));
         } catch (IOException e) {
             e.printStackTrace();
         }
