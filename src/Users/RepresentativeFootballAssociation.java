@@ -128,7 +128,11 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      * @param refereeToRemove - the referee we remove from the system
      */
     public void removeReferee(Referee refereeToRemove) {
-        if(refereeToRemove == null){ return; }
+        if(refereeToRemove == null){
+           /*next Iteration- need to add hash map to additionalInfo that holds referee and list of games the referee judge.
+             Check if he is a referee in any game, if so the remove will not be allowed */
+                    return;
+         }
         FootballSystem.getInstance().removeUser(refereeToRemove.getUserName());
         //Write to log
         Logger.getInstance().addActionToLogger("Referee "+refereeToRemove.getUserName()+ "was removed from the System");
@@ -142,12 +146,14 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      * @param game
      */
     public void assignReferees(Referee mainRef, Referee sideRef1, Referee sideRef2, Game game) throws Exception {
-        if(mainRef== null || sideRef1==null || sideRef2==null){
+        if(mainRef== null || sideRef1==null || sideRef2==null || game == null)
+          {
             return;
         }
         game.setMain(mainRef);
         game.setSide1(sideRef1);
         game.setSide2(sideRef2);
+        /*next Iteration- need to add this referees to their hash map in additional info*/
     }
 
     /**
