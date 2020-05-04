@@ -2,6 +2,10 @@ package Model;
 
 import AssociationAssets.*;
 import Budget.TeamBudget;
+import PoliciesAndAlgorithms.HeuristicGamesAssigningPolicy;
+import PoliciesAndAlgorithms.ScoreTablePolicy1;
+import PoliciesAndAlgorithms.ScoreTablePolicy2;
+import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
 import Users.*;
 import System.*;
 
@@ -351,33 +355,68 @@ public class Model implements IModel {
     /**
      * Receives a policy by its name for a specific season & league and sets it.
      *
-     * @param Policy     - "Simple Policy" or "Heuristic Policy"
+     * @param policy     - "Simple Policy" or "Heuristic Policy"
      * @param leagueName -
      * @param seasonYear -
      * @return true for success, false for failure
      */
     @Override
-    public boolean defineGameSchedulingPolicy(String Policy, String leagueName, String seasonYear) {
+    public boolean defineGameSchedulingPolicy(String policy, String leagueName, String seasonYear) throws RecordException {
 
-        // Only Representative is allowed to create a team.
+        // Only Representative is allowed to define a policy.
         if (!(user instanceof TeamOwner))
             return false;
         TeamOwner teamOwnerUser = (TeamOwner) user;
 
-        return false;
+        // Validate season & league
+        ValidateObject.getValidatedSeason(leagueName, seasonYear);
+        League league= ValidateObject.getValidatedLeague(leagueName);
+
+        // Set requested policy
+        switch (policy){
+            case "Simple Policy":
+                league.getSeasonBinders().get(seasonYear).setAssigningPolicy(new SimpleGamesAssigningPolicy());
+                break;
+
+            case "Heuristic Policy":
+                league.getSeasonBinders().get(seasonYear).setAssigningPolicy(new HeuristicGamesAssigningPolicy());
+                break;
+        }
+        return true;
     }
 
     /**
      * Receives a policy by its name for a specific season & league and sets it.
      *
-     * @param Policy     - "Policy 1" "Policy 2"
+     * @param policy     - "Policy 1" "Policy 2"
      * @param leagueName -
      * @param seasonYear -
      * @return true for success, false for failure
      */
     @Override
-    public boolean defineScoreTablePolicy(String Policy, String leagueName, String seasonYear) {
-        return false;
+    public boolean defineScoreTablePolicy(String policy, String leagueName, String seasonYear) throws RecordException {
+
+        // Only Representative is allowed to define a policy.
+        if (!(user instanceof RepresentativeFootballAssociation))
+            return false;
+        RepresentativeFootballAssociation RepUser = (RepresentativeFootballAssociation) user;
+
+        // Validate season & league
+        ValidateObject.getValidatedSeason(leagueName, seasonYear);
+        League league= ValidateObject.getValidatedLeague(leagueName);
+
+        // Set requested policy
+        switch (policy){
+            case "Policy 1":
+                //RepUser.SetGamesAssigningPolicy();
+                league.getSeasonBinders().get(seasonYear).setScoreTablePolicy(new ScoreTablePolicy1());
+                break;
+
+            case "Policy 2":
+                league.getSeasonBinders().get(seasonYear).setScoreTablePolicy(new ScoreTablePolicy2());
+                break;
+        }
+        return true;
     }
 
     /**
@@ -389,6 +428,13 @@ public class Model implements IModel {
      */
     @Override
     public boolean runGameSchedulingAlgorithm(String leagueName, String seasonYear) {
+
+        // Only Representative is allowed to define a policy.
+        if (!(user instanceof TeamOwner))
+            return false;
+        TeamOwner teamOwnerUser = (TeamOwner) user;
+
+
         return false;
     }
 }

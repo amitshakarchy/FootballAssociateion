@@ -191,22 +191,22 @@ public interface IModel {
     /**
      * Receives a policy by its name for a specific season & league and sets it.
      *
-     * @param Policy     - "Simple Policy" or "Heuristic Policy"
+     * @param policy     - "Simple Policy" or "Heuristic Policy"
      * @param leagueName -
      * @param seasonYear -
      * @return true for success, false for failure
      */
-    boolean defineGameSchedulingPolicy(String Policy, String leagueName, String seasonYear);
+    boolean defineGameSchedulingPolicy(String policy, String leagueName, String seasonYear) throws RecordException;
 
     /**
      * Receives a policy by its name for a specific season & league and sets it.
      *
-     * @param Policy     - "Policy 1" "Policy 2"
+     * @param policy     - "Policy 1" "Policy 2"
      * @param leagueName -
      * @param seasonYear -
      * @return true for success, false for failure
      */
-    boolean defineScoreTablePolicy(String Policy, String leagueName, String seasonYear);
+    boolean defineScoreTablePolicy(String policy, String leagueName, String seasonYear) throws RecordException;
 
 
     /**

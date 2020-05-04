@@ -30,7 +30,7 @@ public class ValidateObject {
      * @throws RecordException - No such Season in the required league
      */
     public static Season getValidatedSeason(String leagueName, String seasonYear) throws RecordException {
-        Season season = search.getSeasonByYear(/*leagueName,*/ seasonYear);
+        Season season = search.getSeasonByYear(leagueName, seasonYear);
         if (season == null) {
             throw new RecordException("Season " + seasonYear + " does not exist in the requested league.");
         }
