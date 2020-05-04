@@ -145,7 +145,7 @@ public class Acceptance {
 
         System.out.println("\n* * * * * * *Use case 3.2 Fan subscribes to a personal page* * * * * * *");
         fan.subscribePersonalPage(player.getMyPage());
-        System.out.println("The last logger event is: " +logger.getLog().get(logger.getLog().size() -1));
+        System.out.println("The last logger event is: " +logger.getActionLog().get(logger.getActionLog().size() -1));
 
         System.out.println("\n* * * * * * *Use case 3.3 Fan subscribes to a game* * * * * * *\n not done yet");
         fan3.subscribeGames(game);
@@ -218,7 +218,7 @@ public class Acceptance {
         sideRef1 = rep.nominateReferee(sideRef1.getfName(),sideRef1.getlName(),sideRef1.getTraining());
         sideRef2 = rep.nominateReferee(sideRef2.getfName(),sideRef2.getlName(),sideRef2.getTraining());
         if(mainRef != null)System.out.println("Referees nominated");
-        System.out.println("The last logger event is: " +logger.getLog().get(logger.getLog().size() -1));
+        System.out.println("The last logger event is: " +logger.getActionLog().get(logger.getActionLog().size() -1));
 
         System.out.println("\n* * * * * * *Use case 9.4 of Representative of the FA nominates referees to specific league and season * * * * * * * ");
         // TODO: 18/04/2020 I think they meant to nominate to league and season and not to specific game
@@ -246,7 +246,7 @@ public class Acceptance {
         systemManager.closeTeam(team1.getName());
 
         System.out.println("\n* * * * * * *Use case 8.2 System manager removes a user from the site  * * * * * * *\nnot done yet ");
-
+        systemManager.removeFan("ddd");
         System.out.println("\n* * * * * * *Use case 8.3 System manager can read and respond to users complaints.  * * * * * * *\nnot done yet ");
         System.out.println("System manager is reading the first complaint: " + systemManager.getComplains().get(0));
         System.out.println("response option not done yet");

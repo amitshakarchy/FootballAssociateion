@@ -35,6 +35,11 @@ public class CoachPageEditor extends APageEditor {
         this.training = training;
     }
 
+    @Override
+    public void addToMyPage(String feed) {
+
+    }
+
     /**
      *This feature return the content about the coach that is on his personal
      * page and the content that the coach uploads to his site.

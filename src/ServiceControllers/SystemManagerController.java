@@ -1,15 +1,11 @@
 package ServiceControllers;
 
-import AssociationAssets.*;
 import RecommendationSystem.ComputaionalModel;
 import Users.*;
 import System.*;
 import javafx.util.Pair;
 
-import java.text.DateFormat;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Date;
 
 public class SystemManagerController {
 
@@ -63,7 +59,7 @@ public class SystemManagerController {
      * UC 8.4
      */
     public void viewSystemLog() {
-        for (String log : systemManager.getLogInformation()) {
+        for (String log : systemManager.getActionLogInformation()) {
             System.out.println(log);
         }
     }

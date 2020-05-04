@@ -188,6 +188,7 @@ public class Fan extends Guest implements IFan ,Serializable {
      * In this function, a fan can delete tracker of game
      *
      * # use case 3.2
+     * # use case 3.2
      *
      * @param game - The game the fan wants to stop following
      */

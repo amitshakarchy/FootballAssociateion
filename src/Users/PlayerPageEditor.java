@@ -28,6 +28,11 @@ public class PlayerPageEditor extends APageEditor {
         return bDay;
     }
 
+    @Override
+    public void addToMyPage(String feed) {
+
+    }
+
     /**
      *This feature return the content about the player that is on his personal
      * page and the content that the player uploads to his site.

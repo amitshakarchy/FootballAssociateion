@@ -6,6 +6,8 @@ import Users.Player;
 import Users.TeamManager;
 import Users.TeamOwner;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -99,13 +101,16 @@ public class AdditionalInfo {
      * @return true if the player was adding to the team successfully.
      */
     public boolean addPlayer(String player) {
+        LocalDate dateLog = LocalDate.now();
+        LocalTime now = LocalTime.now();
         if(player == null || player.isEmpty()){
+            Logger.getInstance().addErrorToLogger(dateLog + " " + now + ":Adding Player "+player+ "was failed to the team: "+team.getName()+".");
             return false;
         }
         if (!players.contains(player)) {
             players.add(player);
             // Write to the log
-            Logger.getInstance().addActionToLogger("Player "+player+ "was added to the team: "+team.getName()+".");
+            Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Player "+player+ "was added to the team: "+team.getName()+".");
             return true;
         }
         return false;
@@ -124,7 +129,9 @@ public class AdditionalInfo {
         if (!coaches.contains(coach)) {
             coaches.add(coach);
             // Write to the log
-            Logger.getInstance().addActionToLogger("Coach "+coach+ "was added to the team: "+team.getName()+".");
+            LocalDate dateLog = LocalDate.now();
+            LocalTime now = LocalTime.now();
+            Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Coach "+coach+ "was added to the team: "+team.getName()+".");
             return true;
         }
         return false;
@@ -159,7 +166,9 @@ public class AdditionalInfo {
             this.teamManagersHashSet.add(teamManager);
         }
         // Write to the log
-        Logger.getInstance().addActionToLogger("Manager "+teamManager+ "was added to the team: "+team.getName()+".");
+        LocalDate dateLog = LocalDate.now();
+        LocalTime now = LocalTime.now();
+        Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Manager "+teamManager+ "was added to the team: "+team.getName()+".");
         return true;
     }
 
@@ -191,7 +200,9 @@ public class AdditionalInfo {
             this.teamOwnersHashSet.add(teamOwner);
         }
         // Write to the log
-        Logger.getInstance().addActionToLogger("Team Owner  "+teamOwner+ "was added to the team: "+team.getName()+".");
+        LocalDate dateLog = LocalDate.now();
+        LocalTime now = LocalTime.now();
+        Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Team Owner  "+teamOwner+ "was added to the team: "+team.getName()+".");
         return true;
     }
 
@@ -204,7 +215,9 @@ public class AdditionalInfo {
         if (players.contains(playerUName)) {
             players.remove(playerUName);
             // Write to the log
-            Logger.getInstance().addActionToLogger("Player "+playerUName+ "was removed from the team: "+team.getName());
+            LocalDate dateLog = LocalDate.now();
+            LocalTime now = LocalTime.now();
+            Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Player "+playerUName+ "was removed from the team: "+team.getName());
         }
     }
 
@@ -217,7 +230,9 @@ public class AdditionalInfo {
         if (coaches.contains(coachUserName)) {
             coaches.remove(coachUserName);
             // Write to the log
-            Logger.getInstance().addActionToLogger("Coach "+coachUserName+ "was removed from the team: "+team.getName());
+            LocalDate dateLog = LocalDate.now();
+            LocalTime now = LocalTime.now();
+            Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Coach "+coachUserName+ "was removed from the team: "+team.getName());
         }
 
     }
@@ -233,7 +248,9 @@ public class AdditionalInfo {
         if (managers.containsKey(userNameWhoNominated)) {
             if(managers.get(userNameWhoNominated).remove(managerUserName)) {
                 // Write to the log
-                Logger.getInstance().addActionToLogger("Manager " + managerUserName + "was removed from the team: " + team.getName());
+                LocalDate dateLog = LocalDate.now();
+                LocalTime now = LocalTime.now();
+                Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Manager " + managerUserName + "was removed from the team: " + team.getName());
                 this.teamManagersHashSet.remove(managerUserName);
             }
         }
@@ -251,7 +268,9 @@ public class AdditionalInfo {
             if(owners.get(userNameWhoNominated).remove(ownerUserName)){
                 this.teamOwnersHashSet.remove(ownerUserName);
                 // Write to the log
-                Logger.getInstance().addActionToLogger("Team Owner "+ownerUserName+ "was removed from the team: "+team.getName());
+                LocalDate dateLog = LocalDate.now();
+                LocalTime now = LocalTime.now();
+                Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Team Owner "+ownerUserName+ "was removed from the team: "+team.getName());
             }
         }
     }
