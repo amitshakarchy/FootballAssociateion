@@ -1,11 +1,7 @@
 package Model;
 
 import AssociationAssets.*;
-import Budget.TeamBudget;
-import PoliciesAndAlgorithms.HeuristicGamesAssigningPolicy;
-import PoliciesAndAlgorithms.ScoreTablePolicy1;
-import PoliciesAndAlgorithms.ScoreTablePolicy2;
-import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
+import PoliciesAndAlgorithms.*;
 import Users.*;
 import System.*;
 
@@ -166,10 +162,7 @@ public class Model implements IModel {
         systemManagerUser.closeTeam(teamName);
 
         // Make sure team is not active
-        if (toClose.getIsActive()==ETeamStatus.INACTIVE)
-            return true;
-
-        else return false;
+        return toClose.getIsActive() == ETeamStatus.INACTIVE;
     }
 
     /**
@@ -364,22 +357,22 @@ public class Model implements IModel {
     public boolean defineGameSchedulingPolicy(String policy, String leagueName, String seasonYear) throws RecordException {
 
         // Only Representative is allowed to define a policy.
-        if (!(user instanceof TeamOwner))
+        if (!(user instanceof RepresentativeFootballAssociation))
             return false;
-        TeamOwner teamOwnerUser = (TeamOwner) user;
+        RepresentativeFootballAssociation repUser = (RepresentativeFootballAssociation) user;
 
         // Validate season & league
-        ValidateObject.getValidatedSeason(leagueName, seasonYear);
+        Season season=ValidateObject.getValidatedSeason(leagueName, seasonYear);
         League league= ValidateObject.getValidatedLeague(leagueName);
 
         // Set requested policy
         switch (policy){
             case "Simple Policy":
-                league.getSeasonBinders().get(seasonYear).setAssigningPolicy(new SimpleGamesAssigningPolicy());
+                repUser.SetGamesAssigningPolicy(new SimpleGamesAssigningPolicy(), league,season);
                 break;
 
             case "Heuristic Policy":
-                league.getSeasonBinders().get(seasonYear).setAssigningPolicy(new HeuristicGamesAssigningPolicy());
+                repUser.SetGamesAssigningPolicy(new HeuristicGamesAssigningPolicy(), league,season);
                 break;
         }
         return true;
@@ -399,21 +392,20 @@ public class Model implements IModel {
         // Only Representative is allowed to define a policy.
         if (!(user instanceof RepresentativeFootballAssociation))
             return false;
-        RepresentativeFootballAssociation RepUser = (RepresentativeFootballAssociation) user;
+        RepresentativeFootballAssociation repUser = (RepresentativeFootballAssociation) user;
 
         // Validate season & league
-        ValidateObject.getValidatedSeason(leagueName, seasonYear);
+        Season season= ValidateObject.getValidatedSeason(leagueName, seasonYear);
         League league= ValidateObject.getValidatedLeague(leagueName);
 
         // Set requested policy
         switch (policy){
             case "Policy 1":
-                //RepUser.SetGamesAssigningPolicy();
-                league.getSeasonBinders().get(seasonYear).setScoreTablePolicy(new ScoreTablePolicy1());
+                repUser.SetScoreTablePolicy(new ScoreTablePolicy1(), league,season);
                 break;
 
             case "Policy 2":
-                league.getSeasonBinders().get(seasonYear).setScoreTablePolicy(new ScoreTablePolicy2());
+                repUser.SetScoreTablePolicy(new ScoreTablePolicy2(), league,season);
                 break;
         }
         return true;
@@ -430,11 +422,11 @@ public class Model implements IModel {
     public boolean runGameSchedulingAlgorithm(String leagueName, String seasonYear) {
 
         // Only Representative is allowed to define a policy.
-        if (!(user instanceof TeamOwner))
+        if (!(user instanceof RepresentativeFootballAssociation))
             return false;
-        TeamOwner teamOwnerUser = (TeamOwner) user;
+        RepresentativeFootballAssociation repUser = (RepresentativeFootballAssociation) user;
+        repUser.activateGamesAssigning();
 
-
-        return false;
+        return true;
     }
 }
