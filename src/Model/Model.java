@@ -1,15 +1,15 @@
 package Model;
 
-import AssociationAssets.Game;
-import AssociationAssets.League;
-import AssociationAssets.Season;
+import AssociationAssets.*;
+import Budget.TeamBudget;
 import Users.*;
 import System.*;
 
-public class Model implements IModel{
+public class Model implements IModel {
 
     Search search;
-    Fan user;
+    Object user;
+    static int TEAM_ID=1;
 
     /**
      * Returns User's full name in order to display it on screen if needed.
@@ -18,10 +18,10 @@ public class Model implements IModel{
      */
     @Override
     public String getUsersFullName() {
-        if(user==null)
+        if (user == null)
             return "";
 
-        return user.getfName()+" "+user.getlName();
+        return ((Fan)user).getfName() + " " + ((Fan)user).getlName();
     }
 
     /**
@@ -31,32 +31,26 @@ public class Model implements IModel{
      */
     @Override
     public String UserType() {
-        if(user==null)
+        if (user == null)
             return "";
 
-        String type="";
-        Object userObj= search.getUserByUserName(user.getUserName());
+        String type = "";
+        Object userObj = search.getUserByUserName(((Fan)user).getUserName());
 
-        if(userObj instanceof Coach){
-            type= "Coach";
-        }
-        else if (userObj instanceof Player){
-            type= "Player";
-        }
-        else if (userObj instanceof Referee){
-            type= "Referee";
-        }
-        else if (userObj instanceof RepresentativeFootballAssociation){
-            type= "RepresentativeFootballAssociation";
-        }
-        else if (userObj instanceof SystemManager){
-            type= "SystemManager";
-        }
-        else if (userObj instanceof TeamManager){
-            type= "TeamManager";
-        }
-        else if (userObj instanceof TeamOwner){
-            type= "TeamOwner";
+        if (userObj instanceof Coach) {
+            type = "Coach";
+        } else if (userObj instanceof Player) {
+            type = "Player";
+        } else if (userObj instanceof Referee) {
+            type = "Referee";
+        } else if (userObj instanceof RepresentativeFootballAssociation) {
+            type = "RepresentativeFootballAssociation";
+        } else if (userObj instanceof SystemManager) {
+            type = "SystemManager";
+        } else if (userObj instanceof TeamManager) {
+            type = "TeamManager";
+        } else if (userObj instanceof TeamOwner) {
+            type = "TeamOwner";
         }
         return type;
     }
@@ -69,21 +63,23 @@ public class Model implements IModel{
      * @throws RecordException - in case of no such league or season
      */
     @Override
-    public String getGames(String leagueName, String seasonYear)throws RecordException {
+    public String getGames(String leagueName, String seasonYear) throws RecordException {
+
         League league = search.getLeagueByLeagueName(leagueName);
-        Season season = search.getSeasonByYear(seasonYear);
-
         if (league == null) {
-            throw new RecordException("League name "+ leagueName+ " does not exist.");
-        }
-        if(season==null){
-            throw new RecordException("Season "+ seasonYear + " does not exist in the requested league.");
+            throw new RecordException("League name " + leagueName + " does not exist.");
         }
 
-        for (Game game : league.getGames(season.getYear()).values()) {
-            System.out.println("Game's ID: " + game.getGID() + " - Date: " + game.getDate() + "; ");
+        Season season = search.getSeasonByYear(seasonYear);
+        if (season == null) {
+            throw new RecordException("Season " + seasonYear + " does not exist in the requested league.");
         }
-        return null;
+
+        String gameList = "";
+        for (Game game : league.getGames(season.getYear()).values()) {
+            gameList += "Game's ID: " + game.getGID() + ", Date: " + game.getDate().toString() + ";\n ";
+        }
+        return gameList;
     }
 
     /**
@@ -96,7 +92,15 @@ public class Model implements IModel{
      */
     @Override
     public boolean login(String username, String password) {
-        return false;
+        Guest guest = new Guest();
+        Fan tmpUser= guest.logInGuest(username, password);
+        // In case login failed
+        if (tmpUser == null) {
+            return false;
+        }
+        // Save the user as an object
+        user=search.getUserByUserName(tmpUser.getUserName());
+        return true;
     }
 
     /**
@@ -104,17 +108,42 @@ public class Model implements IModel{
      * Assumes input was already validated for null and empty inputs.
      * Throws exception in any of the following cases: Team's name already exists, No such a season,
      *
-     * @param name - - team's name
-     * @param SeasonYear-
-     * @param FieldName-
-     * @param FieldCity-
-     * @param TeamOwnerName-
-     * @throws RecordException-  in case there is no such team or season, or in case the user is already present in the system.
+     * @param name-          team's name
+     * @param seasonYear-
+     * @param fieldName-
+     * @param fieldCity-
+     * @param teamOwnerUserName-
+     * @throws RecordException- in case there is no such league or season or team owner.
      */
     @Override
-    public boolean createTeam(String name, String SeasonYear, String FieldName, String FieldCity, String TeamOwnerName) throws RecordException {
+    public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName, String fieldCity, String teamOwnerUserName) throws RecordException {
+        // Assumes the user is a team owner ans has the authority to perform this action.
+        TeamOwner teamOwnerTmp= (TeamOwner)user;
+        League league = search.getLeagueByLeagueName(leagueName);
+        if (league == null) {
+            throw new RecordException("League name " + leagueName + " does not exist.");
+        }
+        Season season= search.getSeasonByYear(seasonYear);
+        if (season == null) {
+            throw new RecordException("Season " + seasonYear + " does not exist in the requested league.");
+        }
+        Object teamOwnerObj=search.getUserByUserName(teamOwnerUserName);
+        if(teamOwnerObj==null){
+            throw  new RecordException("User "+teamOwnerUserName +"does not exist.");
+        }
+
+        Field field=search.getFieldByFieldName(fieldName);
+        if(field==null){
+            field= FootballSystem.getInstance().createField(fieldName,fieldCity,5000);
+        }
+        Team newTeam= new Team(TEAM_ID++,name,season,field,null,null);
+        teamOwnerTmp.nominateTeamOwner(newTeam,season,teamOwnerUserName);
+
         return false;
     }
+
+
+
 
     /**
      * Closes a team.
