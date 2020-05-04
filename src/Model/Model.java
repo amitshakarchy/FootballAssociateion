@@ -9,7 +9,8 @@ public class Model implements IModel {
 
     Search search;
     Object user;
-    static int TEAM_ID=1;
+    ValidateObject validate;
+    static int TEAM_ID = 1;
 
     /**
      * Returns User's full name in order to display it on screen if needed.
@@ -21,7 +22,7 @@ public class Model implements IModel {
         if (user == null)
             return "";
 
-        return ((Fan)user).getfName() + " " + ((Fan)user).getlName();
+        return ((Fan) user).getfName() + " " + ((Fan) user).getlName();
     }
 
     /**
@@ -35,7 +36,7 @@ public class Model implements IModel {
             return "";
 
         String type = "";
-        Object userObj = search.getUserByUserName(((Fan)user).getUserName());
+        Object userObj = search.getUserByUserName(((Fan) user).getUserName());
 
         if (userObj instanceof Coach) {
             type = "Coach";
@@ -75,11 +76,11 @@ public class Model implements IModel {
             throw new RecordException("Season " + seasonYear + " does not exist in the requested league.");
         }
 
-        String gameList = "";
+        StringBuilder gameList = new StringBuilder();
         for (Game game : league.getGames(season.getYear()).values()) {
-            gameList += "Game's ID: " + game.getGID() + ", Date: " + game.getDate().toString() + ";\n ";
+            gameList.append("Game's ID: ").append(game.getGID()).append(", Date: ").append(game.getDate().toString()).append(";\n ");
         }
-        return gameList;
+        return gameList.toString();
     }
 
     /**
@@ -93,13 +94,13 @@ public class Model implements IModel {
     @Override
     public boolean login(String username, String password) {
         Guest guest = new Guest();
-        Fan tmpUser= guest.logInGuest(username, password);
+        Fan tmpUser = guest.logInGuest(username, password);
         // In case login failed
         if (tmpUser == null) {
             return false;
         }
         // Save the user as an object
-        user=search.getUserByUserName(tmpUser.getUserName());
+        user = search.getUserByUserName(tmpUser.getUserName());
         return true;
     }
 
@@ -108,38 +109,34 @@ public class Model implements IModel {
      * Assumes input was already validated for null and empty inputs.
      * Throws exception in any of the following cases: Team's name already exists, No such a season,
      *
-     * @param name-          team's name
+     * @param name-       team's name
      * @param seasonYear-
      * @param fieldName-
      * @param fieldCity-
-     * @param teamOwnerUserName-
      * @throws RecordException- in case there is no such league or season or team owner.
      */
     @Override
-    public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName, String fieldCity, String teamOwnerUserName) throws RecordException {
-        // Assumes the user is a team owner ans has the authority to perform this action.
-        TeamOwner teamOwnerTmp= (TeamOwner)user;
-        League league = search.getLeagueByLeagueName(leagueName);
-        if (league == null) {
-            throw new RecordException("League name " + leagueName + " does not exist.");
-        }
-        Season season= search.getSeasonByYear(seasonYear);
-        if (season == null) {
-            throw new RecordException("Season " + seasonYear + " does not exist in the requested league.");
-        }
-        Object teamOwnerObj=search.getUserByUserName(teamOwnerUserName);
-        if(teamOwnerObj==null){
-            throw  new RecordException("User "+teamOwnerUserName +"does not exist.");
+    public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName, String fieldCity) throws RecordException {
+
+        // Only TeamOwner is allowed to create a team.
+        if (!(user instanceof TeamOwner)) return false;
+        TeamOwner teamOwnerUser = (TeamOwner) user;
+
+        Season season= ValidateObject.getValidatedSeason(leagueName,seasonYear);
+
+        // Get an existing field or create one and add it TO fields DB
+        Field field = search.getFieldByFieldName(fieldName);
+        if (field == null) {
+            field = FootballSystem.getInstance().createField(fieldName, fieldCity, 5000);
         }
 
-        Field field=search.getFieldByFieldName(fieldName);
-        if(field==null){
-            field= FootballSystem.getInstance().createField(fieldName,fieldCity,5000);
-        }
-        Team newTeam= new Team(TEAM_ID++,name,season,field,null,null);
-        teamOwnerTmp.nominateTeamOwner(newTeam,season,teamOwnerUserName);
+       // Create a new team.
+        Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
 
-        return false;
+        // Now need to add new data to the DB
+        FootballSystem.getInstance().addTeamToDB(newTeam);
+
+        return true;
     }
 
 

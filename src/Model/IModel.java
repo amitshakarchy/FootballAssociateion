@@ -43,7 +43,7 @@ public interface IModel {
      * Assumes input was already validated for null and empty inputs.
      * Throws exception in any of the following cases: Team's name already exists, No such a season,
      */
-    boolean createTeam(String name,String leagueName, String seasonYear, String fieldName, String fieldCity, String teamOwnerUserName)throws RecordException;
+    boolean createTeam(String name,String leagueName, String seasonYear, String fieldName, String fieldCity)throws RecordException;
 
     /**
      * Closes a team.
