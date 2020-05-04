@@ -39,6 +39,18 @@ public class SeasonLeagueBinder {
     public HashMap<String, Team> getTeams() { return teams; }
     public HashMap<String, Game> getGames() { return games; }
 
+    public Season getSeason() {
+        return season;
+    }
+
+    public League getLeague() {
+        return league;
+    }
+
+    public GamesAssigningPolicy getAssigningPolicy() {
+        return assigningPolicy;
+    }
+
     //endregion
 
 
