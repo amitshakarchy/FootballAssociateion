@@ -76,10 +76,12 @@ public class UC1Tests {
         assertFalse(systemOperations.login(null, null));
     }
 
-    //The system registers the system administrator when the system is set up when its username is "admin" and its password is "admin"
+    /**
+     *     The system registers the system administrator when the system is set up when its username is "admin" and its password is "admin"
+     */
     @Test
-    public void InitializeSystem_Test_SuccessScenario(){
-        assertTrue(systemOperations.login("admin", "admin"));
+    public void InitializeSystemTest_SuccessScenario(){
+         assertTrue(systemOperations.login("admin", "admin"));
     }
 
 }
