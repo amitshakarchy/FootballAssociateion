@@ -1,5 +1,8 @@
 package Users;
 import AssociationAssets.*;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import System.*;
@@ -13,7 +16,9 @@ public class TeamManager extends CanBeOwner {
     public TeamManager(String userName, String fName, String lName) {
         super(userName, fName, lName);
         this.additionalInfoList = new ArrayList<>();
-        Logger.getInstance().addActionToLogger("Team Manager created, user name: "+ userName);
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
+        Logger.getInstance().addActionToLogger(date + " " + now + ": Team Manager created, user name: "+ userName);
 
     }
 
