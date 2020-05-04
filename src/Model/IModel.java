@@ -23,6 +23,13 @@ public interface IModel {
      */
     String getGames(String leagueName, String seasonYear)throws RecordException;
 
+    /**
+     * Returns a list of events of a specific game.
+     * May be used in order to let the user choose an event by it's ID.
+     * @param gameID
+     * @return list of events, ordered by event's ID.
+     */
+    String getEvents(int gameID) throws RecordException;
 
     //endregion
 
@@ -219,4 +226,74 @@ public interface IModel {
     boolean runGameSchedulingAlgorithm(String leagueName, String seasonYear);
     //endregion
 
+    /**
+     * Adds an event into a existing game item
+     * @param gameID - should use "getGames" method first in order to receive the correct gameID
+     * @param eventType- out of event type enum
+     * @param description Freestyle Description
+     * @return
+     */
+    boolean addEvent(int gameID, String eventType, String description) throws RecordException;
+
+    /**
+     * Updates an event of an existing game item
+     * @param gameID - should use "getGames" method first in order to receive the correct gameID
+     * @param eventIndex - should use "getEvents" method first
+     * @param eventType- out of event type enum
+     * @param description Freestyle Description
+     * @return
+     */
+    boolean updateEvent(int gameID,int eventIndex, String eventType, String description) throws RecordException;
+
+    /**
+     * Removes an event from an existing game item
+     * @param gameID - should use "getGames" method first in order to receive the correct gameID
+     * @param eventIndex - should use "getEvents" method first
+     * @return
+     */
+    boolean removeEvent(int gameID,int eventIndex) throws RecordException;
+
+    /**
+     * Updates an event of an existing game item, until 5 hours after game is finished.
+     * Can be preformed only by main referee.
+     * @param gameID - should use "getGames" method first in order to receive the correct gameID
+     * @param eventIndex - should use "getEvents" method first
+     * @param eventType- out of event type enum
+     * @param description Freestyle Description
+     * @return
+     */
+    boolean updateEventAfterGameOver(int gameID, int eventIndex, String eventType, String description ) throws RecordException;
+    /**
+     * Updates an event of an existing game item, until 5 hours after game is finished.
+     * Can be preformed only by main referee.
+     * @param gameID - should use "getGames" method first in order to receive the correct gameID
+     * @param eventIndex - should use "getEvents" method first
+     * @return
+     */
+    boolean removeEventAfterGameOver(int gameID, int eventIndex) throws RecordException;
+
+    /**
+     * Export an Excel report holds all events in the required game
+     * @param gameID -
+     * @param pathToSave -
+     * @param reportName -
+     * @return
+     */
+    boolean exportGameReport(int gameID, String pathToSave, String reportName) throws RecordException;
+
+    /**
+     * Change a game's location. Should send a notification to all related referees.
+     * @param gameID-
+     * @param newFieldName-
+     * @return
+     */
+    boolean changeGameLocation(int gameID, String newFieldName);
+
+    /**
+     * Change a game's date. Should send a notification to all related referees.
+     * @param gameID-
+     * @param newDate-
+     * @return
+     */
+    boolean changeGameDate(int gameID, String newDate);
 }

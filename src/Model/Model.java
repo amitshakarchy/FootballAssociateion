@@ -69,14 +69,42 @@ public class Model implements IModel {
 
         League league = ValidateObject.getValidatedLeague(leagueName);
         Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
-
-        StringBuilder gameList = new StringBuilder();
-        for (Game game : league.getGames(season.getYear()).values()) {
-            gameList.append("Game's ID: ").append(game.getGID()).append(", Date: ").append(game.getDate().toString()).append(";\n ");
+        if(league.getGames(season.getYear()).values().size()==0)
+            return "No games were found.";
+        else{
+            StringBuilder gameList = new StringBuilder();
+            for (Game game : league.getGames(season.getYear()).values()) {
+                gameList.append("Game's ID: ").append(game.getGID()).append(", Date: ").append(game.getDate().toString()).append(";\n ");
+            }
+            return gameList.toString();
         }
-        return gameList.toString();
     }
-    //endregion
+
+    /**
+     * Returns a list of events of a specific game.
+     * May be used in order to let the user choose an event by it's ID.
+     *
+     * @param gameID
+     * @return list of events, ordered by event's ID.
+     */
+    @Override
+    public String getEvents(int gameID) throws RecordException {
+        Game game = ValidateObject.getValidatedGame(gameID);
+        if (game.getEvents().size() == 0) {
+            return "No events were found.";
+        } else {
+            String eventList = "";
+            int i = 0;
+            for (Event event : game.getEvents()) {
+                eventList += i + ". " + event.getDate() + "" +
+                        ", " + event.getTime() + "" +
+                        "," + " type:" + event.getEventType() + "" +
+                        ": " + event.getDescription() + ";\n";
+            }
+            return eventList;
+        }
+    }
+//endregion
 
     //region Login
     /**
@@ -345,6 +373,7 @@ public class Model implements IModel {
     //endregion
 
 
+    //region Policy Management
     /**
      * Receives a policy by its name for a specific season & league and sets it.
      *
@@ -429,4 +458,162 @@ public class Model implements IModel {
 
         return true;
     }
+    //endregion
+
+
+    //region Game Management
+
+    /**
+     * Adds an event into a existing game item
+     *
+     * @param gameID      - should use "getGames" method first in order to receive the correct gameID
+     * @param eventType   - out of event type enum
+     * @param description Freestyle Description
+     * @return
+     */
+    @Override
+    public boolean addEvent(int gameID, String eventType, String description) throws RecordException {
+
+        // Only Referee is allowed to add an event.
+        if (!(user instanceof Referee))
+            return false;
+
+        ValidateObject.getValidatedGame(gameID);
+
+        Referee referee= (Referee)user;
+        referee.addEventToAssignedGame(gameID,EEventType.valueOf(eventType),description);
+
+        return true;
+    }
+
+
+    /**
+     * Updates an event of an existing game item
+     *
+     * @param gameID      - should use "getGames" method first in order to receive the correct gameID
+     * @param eventIndex  - should use "getEvents" method first
+     * @param eventType   - out of event type enum
+     * @param description Freestyle Description
+     * @return
+     */
+    @Override
+    public boolean updateEvent(int gameID, int eventIndex, String eventType, String description) throws RecordException {
+        // Only Referee is allowed to update an event.
+        if (!(user instanceof Referee))
+            return false;
+
+        ValidateObject.getValidatedGame(gameID);
+
+        Referee referee= (Referee)user;
+        referee.updateEventToAssignedGame(gameID,eventIndex,EEventType.valueOf(eventType),description);
+
+        return true;
+    }
+
+    /**
+     * Removes an event from an existing game item
+     *
+     * @param gameID     - should use "getGames" method first in order to receive the correct gameID
+     * @param eventIndex - should use "getEvents" method first
+     * @return
+     */
+    @Override
+    public boolean removeEvent(int gameID, int eventIndex) throws RecordException {
+        // Only Referee is allowed to remove an event.
+        if (!(user instanceof Referee))
+            return false;
+
+        ValidateObject.getValidatedGame(gameID);
+        Referee referee= (Referee)user;
+        referee.removeEventFromAssignedGame(gameID,eventIndex);
+
+        return true;
+    }
+
+    /**
+     * Updates an event of an existing game item, until 5 hours after game is finished.
+     * Can be preformed only by main referee.
+     *
+     * @param gameID      - should use "getGames" method first in order to receive the correct gameID
+     * @param eventIndex  - should use "getEvents" method first
+     * @param eventType   - out of event type enum
+     * @param description Freestyle Description
+     * @return
+     */
+    @Override
+    public boolean updateEventAfterGameOver(int gameID, int eventIndex, String eventType, String description) throws RecordException {
+        // Only Referee is allowed to remove an event.
+        if (!(user instanceof Referee))
+            return false;
+
+        ValidateObject.getValidatedGame(gameID);
+        Referee referee= (Referee)user;
+        referee.editEventsAfterGameOver(gameID,eventIndex, EEventType.valueOf(eventType), description);
+
+        return true;
+    }
+
+    /**
+     * Updates an event of an existing game item, until 5 hours after game is finished.
+     * Can be preformed only by main referee.
+     *
+     * @param gameID     - should use "getGames" method first in order to receive the correct gameID
+     * @param eventIndex - should use "getEvents" method first
+     * @return
+     */
+    @Override
+    public boolean removeEventAfterGameOver(int gameID, int eventIndex) throws RecordException {
+        // Only Referee is allowed to remove an event.
+        if (!(user instanceof Referee))
+            return false;
+
+        ValidateObject.getValidatedGame(gameID);
+        Referee referee= (Referee)user;
+        referee.removeEventsAfterGameOver(gameID,eventIndex);
+
+        return true;
+    }
+
+    /**
+     * Export an Excel report holds all events in the required game
+     *  @param gameID     -
+     * @param pathToSave -
+     * @param reportName -
+     * @return
+     */
+    @Override
+    public boolean exportGameReport(int gameID, String pathToSave, String reportName) throws RecordException {
+
+
+        return true;
+    }
+
+    /**
+     * Change a game's location. Should send a notification to all related referees.
+     *
+     * @param gameID       -
+     * @param newFieldName -
+     * @return
+     */
+    @Override
+    public boolean changeGameLocation(int gameID, String newFieldName) {
+        return false;
+    }
+
+    /**
+     * Change a game's date. Should send a notification to all related referees.
+     *
+     * @param gameID  -
+     * @param newDate -
+     * @return
+     */
+    @Override
+    public boolean changeGameDate(int gameID, String newDate) {
+        return false;
+    }
+    //endregion
+
+
+
+
 }

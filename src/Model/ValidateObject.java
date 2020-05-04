@@ -57,4 +57,20 @@ public class ValidateObject {
         }
         return team;
     }
+
+    /**
+     * Returnes a game after validating it's presence.
+     * @param gameID-
+     * @return a game by its ID
+     * @throws RecordException - No such a game!
+     */
+    public static Game getValidatedGame(int gameID) throws RecordException {
+
+        Game game= search.getGameByGameID(gameID);
+        if(game==null){
+            throw new RecordException("No such a game!");
+        }
+        else
+        return game;
+    }
 }
