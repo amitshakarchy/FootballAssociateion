@@ -14,8 +14,12 @@ public class Model implements IModel {
 
     Search search;
     Object user;
-    ValidateObject validate;
     static int TEAM_ID = 1;
+
+    public Model() {
+        search= new Search();
+    }
+
 
     //region General
     /**
@@ -136,11 +140,10 @@ public class Model implements IModel {
      * @param name-       team's name
      * @param seasonYear-
      * @param fieldName-
-     * @param fieldCity-
      * @throws RecordException- in case there is no such league or season or team owner.
      */
     @Override
-    public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName, String fieldCity) throws RecordException {
+    public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName) throws RecordException {
 
         // Only TeamOwner is allowed to create a team.
         if (!(user instanceof TeamOwner))
@@ -151,13 +154,13 @@ public class Model implements IModel {
 
         // Get an existing field or create one and add it TO fields DB
         Field field = search.getFieldByFieldName(fieldName);
-        if (field == null) {
-            field = FootballSystem.getInstance().createField(fieldName, fieldCity, 5000);
-        }
+//        if (field == null) {
+//            field = FootballSystem.getInstance().createField(fieldName, fieldCity, 5000);
+//        }
 
         // Create a new team.
-        Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
-
+        Team newTeam = new Team(TEAM_ID, name, season, field, null, teamOwnerUser);
+        TEAM_ID++;
         // Now need to add new data to the DB
         FootballSystem.getInstance().addTeamToDB(newTeam);
 
