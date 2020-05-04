@@ -1,9 +1,6 @@
 package Users;
 
-import AssociationAssets.Game;
-import AssociationAssets.League;
-import AssociationAssets.Season;
-import AssociationAssets.Team;
+import AssociationAssets.*;
 import Budget.AssociationBudget;
 import Budget.TeamBudget;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
@@ -37,9 +34,9 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
 
     /**
      * second constructor
-     * @param userName
-     * @param fName
-     * @param lName
+     * @param userName-
+     * @param fName-
+     * @param lName-
      */
     public RepresentativeFootballAssociation(String userName, String fName, String lName){
     super(userName, fName, lName);
@@ -72,7 +69,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
 
     /**
      * useCase #9.2 - Define season to League by year
-     * @param league
+     * @param league-
      * @param year - the year of the season
      * @param games- the games in league season
      * @param teams - the teams in league season
@@ -106,9 +103,9 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     }
 
     /**
-     * @param fName
-     * @param lName
-     * @param password
+     * @param fName-
+     * @param lName-
+     * @param password-
      * @return a unique username
      */
     public String signInReferee(String fName,String lName ,String password){
@@ -140,10 +137,10 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
 
     /**
      * useCase #9.4 - assign 3 referees (1 main and 2 sides) to judge the given game in the given league and season
-     * @param mainRef
-     * @param sideRef1
-     * @param sideRef2
-     * @param game
+     * @param mainRef-
+     * @param sideRef1-
+     * @param sideRef2-
+     * @param game-
      */
     public void assignReferees(Referee mainRef, Referee sideRef1, Referee sideRef2, Game game) throws Exception {
         if(mainRef== null || sideRef1==null || sideRef2==null || game == null)
@@ -157,6 +154,14 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     }
 
     /**
+     * useCase #9.5 - define Score Table policy
+     */
+    public void SetScoreTablePolicy(ScoreTablePolicy policy, League league, Season season) {
+        if(policy!=null && league!=null && season!=null){
+            league.getSeasonBinders().get(season.getYear()).setScoreTablePolicy(policy);
+        }
+    }
+    /**
      * useCase #9.6 - define assign game policy
      */
     public void SetGamesAssigningPolicy(String newGamePolicy) {
@@ -166,10 +171,26 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     }
 
     /**
+     * useCase #9.6 - define assign game policy
+     */
+    public void SetGamesAssigningPolicy(GamesAssigningPolicy policy, League league, Season season) {
+        if(policy!=null && league!=null && season!=null){
+            league.getSeasonBinders().get(season.getYear()).setAssigningPolicy(policy);
+        }
+    }
+    /**
      * useCase #9.7 - activate the Games Assigning
      */
     public void activateGamesAssigning() {
         gamePolicy.executePolicy();
+    }
+    /**
+     * useCase #9.7 - activate the Games Assigning
+     */
+    public void activateGamesAssigning(League league, Season season) {
+        if(league!=null && season!=null){
+            league.getSeasonBinders().get(season.getYear()).getAssigningPolicy().executePolicy();
+        }
     }
 
     /**
@@ -186,7 +207,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     /**
      * This function called when the team exceeds its budget
      * @param o - TeamBudget Observable
-     * @param teamName
+     * @param teamName-
      */
     @Override
     public void update(Observable o, Object teamName) {
@@ -196,7 +217,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
 
     /**
      * useCase #9.9 - define Tutu intakes
-     * @param TutuIntakes
+     * @param TutuIntakes-
      */
     public void setAssociationBudgetTutuIntakes(double TutuIntakes ) {
         if(TutuIntakes < 0){
@@ -207,7 +228,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
 
     /**
      * useCase #9.9 - define registration fee
-     * @param registrationFee
+     * @param registrationFee-
      */
     public void setAssociationBudgetRegistrationFee(double registrationFee) {
         if(registrationFee < 0 ){
@@ -218,8 +239,8 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
 
     /**
      * useCase #9.9 - set salary User
-     * @param user
-     * @param salaryUser
+     * @param user-
+     * @param salaryUser-
      */
     public void setAssociationBudgetSalaries(Fan user, Double salaryUser){
         if(user == null || salaryUser < 0){
