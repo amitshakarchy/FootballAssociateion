@@ -10,10 +10,11 @@
 <?import Controllers.RequiredField?>
 <?import Controllers.ErrorLabel?>
 <?import javafx.scene.control.PasswordField?>
-<StackPane prefWidth="231.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
-    <VBox>
+<StackPane prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+    <VBox styleClass="hbox">
+        <Label> Please Login into your account</Label>
         <Label>
-            <text>User Name:</text>
+            <text >User Name:</text>
         </Label>
         <TextField fx:id="userName" id="userName"/>
         <Label>
@@ -21,7 +22,7 @@
         </Label>
         <PasswordField fx:id="password" id="password"/>
 
-        <Button fx:id="loginBtn" text="Submit" onAction="#submitPressed"/>
+        <Button fx:id="loginBtn" text="Submit" prefWidth="400" prefHeight="20" onAction="#submitPressed"/>
 
         <fx:define>
             <RequiredField fx:id="requiredField1" >

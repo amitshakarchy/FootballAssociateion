@@ -10,9 +10,9 @@
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Button layoutX="78.0" layoutY="267.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" text="Manage Policy" />
+            <Button fx:id="managePolicyBtn" onAction="#managePolicyClick" layoutX="78.0" layoutY="267.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" text="Manage Policy" />
             <Button fx:id="manageTeamBtn" onAction="#manageTeamClick" layoutX="78.0" layoutY="32.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" text="Manage Team" />
-            <Button layoutX="78.0" layoutY="149.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" text="Manage Game" />
+            <Button fx:id="manageGameBtn" onAction="#manageGameClick" layoutX="78.0" layoutY="149.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" text="Manage Game" />
             <Label layoutX="269.0" layoutY="72.0" text="Welcome To The Football System!" textFill="#6133bc" textOverrun="CENTER_ELLIPSIS" wrapText="true">
                <font>
                   <Font name="Calibri Bold Italic" size="22.0" />

@@ -23,14 +23,22 @@ public class LoginController {
         requiredField1.eval();
         requiredField2.eval();
         if(!requiredField1.getHasErrors() && !requiredField2.getHasErrors()){
-            Parent newRoot = null;
-            try {
-                newRoot = FXMLLoader.load(getClass().getResource("../View/MainPage.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
-            primaryStage.getScene().setRoot(newRoot);
+            showMainPage();
         }
+    }
+
+    private void showMainPage() {
+        Parent newRoot = null;
+        try {
+            newRoot = FXMLLoader.load(getClass().getResource("../View/MainPage.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage primaryStage = (Stage) loginBtn.getScene().getWindow();
+        primaryStage.getScene().setRoot(newRoot);
+        primaryStage.setResizable(true);
+        primaryStage.setMinWidth(700);
+        primaryStage.setMinHeight(450);
+        primaryStage.setTitle("Football Association System");
     }
 }

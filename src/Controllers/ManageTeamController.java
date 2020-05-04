@@ -24,6 +24,7 @@ public class ManageTeamController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        stage.setTitle("Create New Team");
         // showAndWait will block execution until the window closes...
         stage.showAndWait();
     }
