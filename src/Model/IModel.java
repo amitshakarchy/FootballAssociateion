@@ -15,12 +15,13 @@ public interface IModel {
      */
     String UserType();
 
-    /**
+    /*
      * Returns a list of games for a specific season and league.
      * May be used in order to let the user choose a game by it's ID.
      * @return list of games, ordered by game's ID.
+     * @throws Exception - in case of no such league or season
      */
-    String getGames(String leagueName, String seasonYear);
+    String getGames(String leagueName, String seasonYear)throws RecordException;
 
 
     //endregion
@@ -42,7 +43,7 @@ public interface IModel {
      * Assumes input was already validated for null and empty inputs.
      * Throws exception in any of the following cases: Team's name already exists, No such a season,
      */
-    boolean createTeam(String name, String SeasonYear, String FieldName, String FieldCity, String TeamOwnerName)throws Exception;
+    boolean createTeam(String name, String SeasonYear, String FieldName, String FieldCity, String TeamOwnerName)throws RecordException;
 
     /**
      * Closes a team.
@@ -66,9 +67,9 @@ public interface IModel {
      * @param bDate - format: dd-mm-yyyy
      * @param role - role
      * @return true or false for success / failure
-     * @throws Exception -  in case there is no such team or season, or in case the user is already present in the system.
+     * @throws RecordException -  in case there is no such team or season, or in case the user is already present in the system.
      */
-    boolean addPlayer(String teamName, String SeasonYear, String Username, String Password, String firstName, String lastName, String bDate, String role)throws Exception;
+    boolean addPlayer(String teamName, String SeasonYear, String Username, String Password, String firstName, String lastName, String bDate, String role)throws RecordException;
 
     /**
      * Removes a player from the team.
@@ -93,9 +94,9 @@ public interface IModel {
      * @param role - role
      * @param training - Coach's trining
      * @return true or false for success / failure
-     * @throws Exception - in case there is no such team or season, or in case the user is already present in the system.
+     * @throws RecordException - in case there is no such team or season, or in case the user is already present in the system.
      */
-    boolean addCoach(String teamName, String SeasonYear, String Username, String Password, String firstName, String lastName, String bDate, String role, String training)throws Exception;
+    boolean addCoach(String teamName, String SeasonYear, String Username, String Password, String firstName, String lastName, String bDate, String role, String training)throws RecordException;
 
     /**
      * Removes a coach from the team.
@@ -117,9 +118,9 @@ public interface IModel {
      * @param firstName - first name
      * @param lastName - last name
      * @return true or false for success / failure
-     * @throws Exception - in case there is no such team or season, or in case the user is already present in the system.
+     * @throws RecordException - in case there is no such team or season, or in case the user is already present in the system.
      */
-    boolean addTeamManager(String teamName, String SeasonYear, String Username, String Password, String firstName, String lastName)throws Exception;
+    boolean addTeamManager(String teamName, String SeasonYear, String Username, String Password, String firstName, String lastName)throws RecordException;
 
     /**
      * Removes a Team Manager from the team.
@@ -139,9 +140,9 @@ public interface IModel {
      * @param fieldName - Field's name
      * @param city  - city
      * @return true or false for success / failure
-     * @throws Exception - in case team/season doesn't exist or a field name is already present in the system.
+     * @throws RecordException - in case team/season doesn't exist or a field name is already present in the system.
      */
-    boolean addField(String teamName, String seasonYear, String fieldName, String city)throws Exception;
+    boolean addField(String teamName, String seasonYear, String fieldName, String city)throws RecordException;
 
     /**
      * Removes a Field from the team.
@@ -156,13 +157,13 @@ public interface IModel {
     /**
      * Nominates a team Owner.
      * Assumes input was already validated for null and empty inputs.
-     * Throws Exception if there is no such a user, team or season.
+     * Throws RecordException if there is no such a user, team or season.
      * @param teamName - the requested team
      * @param SeasonYear - Requested year in which the team plays
      * @param Username - Team Owner's user
      * @return true or false for success / failure
      */
-    boolean nominateTeamOwner(String teamName, String SeasonYear, String Username)throws Exception;
+    boolean nominateTeamOwner(String teamName, String SeasonYear, String Username)throws RecordException;
 
     /**
      * Removes a nomination of a team owner.
@@ -182,9 +183,9 @@ public interface IModel {
      * @param SeasonYear - Requested year in which the team plays
      * @param Username - Team Owner's user
      * @return true or false for success / failure
-     * @Exception   - if there is no such a user, team or season.
+     * @throws RecordException  - if there is no such a user, team or season.
      */
-    boolean nominateTeamManager(String teamName, String SeasonYear, String Username)throws Exception;
+    boolean nominateTeamManager(String teamName, String SeasonYear, String Username)throws RecordException;
     //endregion
 
 
