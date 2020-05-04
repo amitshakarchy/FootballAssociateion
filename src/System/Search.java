@@ -103,6 +103,28 @@ public class Search {
         return null;
     }
 
+
+    /**
+     * @param leagueName -
+     * @param year -
+     * @return Season of a specific league, by it's year
+     */
+    public Season getSeasonByYear(String leagueName, String year){
+        if(year!= null && leagueName!=null) {
+            League league = getLeagueByLeagueName(leagueName);
+            if(league==null){
+                return null;
+            }
+            Season season= league.getSeasonBinders().get(year).getSeason();
+            if(season!=null){
+                return season;
+            }
+        }
+        return null;
+    }
+
+
+
     /**
      * @param gameID
      * @return Game by game id
