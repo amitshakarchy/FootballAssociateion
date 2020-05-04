@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import Controllers.RequiredField?>
+<?import Controllers.ErrorLabel?>
+<?import javafx.scene.control.PasswordField?>
+<StackPane prefWidth="231.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+    <VBox>
+        <Label>
+            <text>User Name:</text>
+        </Label>
+        <TextField fx:id="userName" id="userName"/>
+        <Label>
+            <text>Password:</text>
+        </Label>
+        <PasswordField fx:id="password" id="password"/>
+
+        <Button text="Submit" onAction="#submitPressed"/>
+
+        <fx:define>
+            <RequiredField fx:id="requiredField1" >
+                <srcControl>
+                    <fx:reference source="userName"/>
+                </srcControl>
+            </RequiredField>
+            <RequiredField fx:id="requiredField2" >
+                <srcControl>
+                    <fx:reference source="password"/>
+                </srcControl>
+            </RequiredField>
+        </fx:define>
+        <ErrorLabel message="Please enter your username" styleClass="first-error">
+            <validator>
+                <fx:reference source="requiredField1"/>
+            </validator>
+        </ErrorLabel>
+        <ErrorLabel message="Please enter your password" >
+            <validator>
+                <fx:reference source="requiredField2"/>
+            </validator>
+        </ErrorLabel>
+    </VBox>
+
+</StackPane>
+
