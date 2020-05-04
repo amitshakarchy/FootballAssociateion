@@ -49,10 +49,9 @@ public interface IModel {
      * Closes a team.
      * Assumes input was already validated for null and empty inputs.
      * @param teamName - team's name
-     * @param seasonYear - team's name
      * @return true or false for success / failure
      */
-    boolean closeTeam(String teamName, String seasonYear);
+    boolean closeTeam(String teamName);
 
 
     /**
@@ -188,7 +187,36 @@ public interface IModel {
     boolean nominateTeamManager(String teamName, String SeasonYear, String Username)throws RecordException;
     //endregion
 
+    //region Policies Management
+    /**
+     * Receives a policy by its name for a specific season & league and sets it.
+     *
+     * @param Policy     - "Simple Policy" or "Heuristic Policy"
+     * @param leagueName -
+     * @param seasonYear -
+     * @return true for success, false for failure
+     */
+    boolean defineGameSchedulingPolicy(String Policy, String leagueName, String seasonYear);
+
+    /**
+     * Receives a policy by its name for a specific season & league and sets it.
+     *
+     * @param Policy     - "Policy 1" "Policy 2"
+     * @param leagueName -
+     * @param seasonYear -
+     * @return true for success, false for failure
+     */
+    boolean defineScoreTablePolicy(String Policy, String leagueName, String seasonYear);
 
 
+    /**
+     * Activates Game Scheduling Algorithm for a specific season & league and sets it.
+     *
+     * @param leagueName -
+     * @param seasonYear -
+     * @return true for success, false for failure
+     */
+    boolean runGameSchedulingAlgorithm(String leagueName, String seasonYear);
+    //endregion
 
 }

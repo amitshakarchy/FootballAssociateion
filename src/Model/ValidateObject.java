@@ -1,8 +1,6 @@
 package Model;
 
-import AssociationAssets.League;
-
-import AssociationAssets.Season;
+import AssociationAssets.*;
 import System.*;
 
 
@@ -39,5 +37,24 @@ public class ValidateObject {
         return season;
     }
 
-
+    /**
+     * Returns a team after validating it's presence and activeness.
+     * @param leagueName-
+     * @param seasonYear-
+     * @param teamName-
+     * @return A specific team for the required season & league
+     * @throws RecordException - in case team does not exist or team is inactive.
+     */
+    public static Team getValidatedTeam(String leagueName, String seasonYear,String teamName) throws RecordException {
+        Team team;
+        Season season= getValidatedSeason(leagueName,seasonYear);
+        team= season.getTeamAdditionalInfo().get(teamName).getTeam();
+        if(team==null){
+            throw new RecordException("Team " + teamName + " does not exist in the requested league and season.");
+        }
+        if(team.getIsActive()==ETeamStatus.INACTIVE){
+            throw new RecordException("Team " + teamName + " is not active anymore.");
+        }
+        return team;
+    }
 }

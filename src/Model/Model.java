@@ -12,6 +12,7 @@ public class Model implements IModel {
     ValidateObject validate;
     static int TEAM_ID = 1;
 
+    //region General
     /**
      * Returns User's full name in order to display it on screen if needed.
      *
@@ -66,15 +67,8 @@ public class Model implements IModel {
     @Override
     public String getGames(String leagueName, String seasonYear) throws RecordException {
 
-        League league = search.getLeagueByLeagueName(leagueName);
-        if (league == null) {
-            throw new RecordException("League name " + leagueName + " does not exist.");
-        }
-
-        Season season = search.getSeasonByYear(seasonYear);
-        if (season == null) {
-            throw new RecordException("Season " + seasonYear + " does not exist in the requested league.");
-        }
+        League league = ValidateObject.getValidatedLeague(leagueName);
+        Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
 
         StringBuilder gameList = new StringBuilder();
         for (Game game : league.getGames(season.getYear()).values()) {
@@ -82,7 +76,9 @@ public class Model implements IModel {
         }
         return gameList.toString();
     }
+    //endregion
 
+    //region Login
     /**
      * Logs in using user's credentials. Assumes input was already validated for null and empty inputs.
      * After a successful login, Model saves the user's credentials and user-type in order to maintain authorizations.
@@ -103,7 +99,9 @@ public class Model implements IModel {
         user = search.getUserByUserName(tmpUser.getUserName());
         return true;
     }
+    //endregion
 
+    //region Team Management
     /**
      * Creates a new team out of the given details.
      * Assumes input was already validated for null and empty inputs.
@@ -119,10 +117,11 @@ public class Model implements IModel {
     public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName, String fieldCity) throws RecordException {
 
         // Only TeamOwner is allowed to create a team.
-        if (!(user instanceof TeamOwner)) return false;
+        if (!(user instanceof TeamOwner))
+            return false;
         TeamOwner teamOwnerUser = (TeamOwner) user;
 
-        Season season= ValidateObject.getValidatedSeason(leagueName,seasonYear);
+        Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
 
         // Get an existing field or create one and add it TO fields DB
         Field field = search.getFieldByFieldName(fieldName);
@@ -130,7 +129,7 @@ public class Model implements IModel {
             field = FootballSystem.getInstance().createField(fieldName, fieldCity, 5000);
         }
 
-       // Create a new team.
+        // Create a new team.
         Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
 
         // Now need to add new data to the DB
@@ -139,20 +138,34 @@ public class Model implements IModel {
         return true;
     }
 
-
-
-
     /**
      * Closes a team.
      * Assumes input was already validated for null and empty inputs.
      *
-     * @param teamName   - team's name
-     * @param seasonYear - team's name
+     * @param teamName - team's name
      * @return true or false for success / failure
      */
     @Override
-    public boolean closeTeam(String teamName, String seasonYear) {
-        return false;
+    public boolean closeTeam(String teamName) {
+
+        // Only System Manager is allowed to close a team.
+        if (!(user instanceof SystemManager))
+            return false;
+        SystemManager systemManagerUser = (SystemManager) user;
+
+        // Return false if team does not exist
+        Team toClose = search.getTeamByTeamName(teamName);
+        if (toClose == null)
+            return false;
+
+        // Close team
+        systemManagerUser.closeTeam(teamName);
+
+        // Make sure team is not active
+        if (toClose.getIsActive()==ETeamStatus.INACTIVE)
+            return true;
+
+        else return false;
     }
 
     /**
@@ -329,6 +342,53 @@ public class Model implements IModel {
      */
     @Override
     public boolean nominateTeamManager(String teamName, String SeasonYear, String Username) throws RecordException {
+        return false;
+    }
+
+    //endregion
+
+
+    /**
+     * Receives a policy by its name for a specific season & league and sets it.
+     *
+     * @param Policy     - "Simple Policy" or "Heuristic Policy"
+     * @param leagueName -
+     * @param seasonYear -
+     * @return true for success, false for failure
+     */
+    @Override
+    public boolean defineGameSchedulingPolicy(String Policy, String leagueName, String seasonYear) {
+
+        // Only Representative is allowed to create a team.
+        if (!(user instanceof TeamOwner))
+            return false;
+        TeamOwner teamOwnerUser = (TeamOwner) user;
+
+        return false;
+    }
+
+    /**
+     * Receives a policy by its name for a specific season & league and sets it.
+     *
+     * @param Policy     - "Policy 1" "Policy 2"
+     * @param leagueName -
+     * @param seasonYear -
+     * @return true for success, false for failure
+     */
+    @Override
+    public boolean defineScoreTablePolicy(String Policy, String leagueName, String seasonYear) {
+        return false;
+    }
+
+    /**
+     * Activates Game Scheduling Algorithm for a specific season & league and sets it.
+     *
+     * @param leagueName -
+     * @param seasonYear -
+     * @return true for success, false for failure
+     */
+    @Override
+    public boolean runGameSchedulingAlgorithm(String leagueName, String seasonYear) {
         return false;
     }
 }
