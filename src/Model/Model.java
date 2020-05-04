@@ -4,6 +4,11 @@ import AssociationAssets.*;
 import PoliciesAndAlgorithms.*;
 import Users.*;
 import System.*;
+import javafx.util.Pair;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Model implements IModel {
 
@@ -65,20 +70,16 @@ public class Model implements IModel {
      * @throws RecordException - in case of no such league or season
      */
     @Override
-    public String getGames(String leagueName, String seasonYear) throws RecordException {
-
+    public LinkedList<Pair<String,Integer>> getGames(String leagueName, String seasonYear) throws RecordException {
+        LinkedList<Pair<String,Integer>> allGames= new LinkedList<Pair<String, Integer>>();
         League league = ValidateObject.getValidatedLeague(leagueName);
         Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
-        if(league.getGames(season.getYear()).values().size()==0)
-            return "No games were found.";
-        else{
-            StringBuilder gameList = new StringBuilder();
             for (Game game : league.getGames(season.getYear()).values()) {
-                gameList.append("Game's ID: ").append(game.getGID()).append(", Date: ").append(game.getDate().toString()).append(";\n ");
+                    allGames.add(new Pair<String, Integer>(game.getDate().toString(),game.getGID()));
             }
-            return gameList.toString();
+            return allGames;
         }
-    }
+
 
     /**
      * Returns a list of events of a specific game.
@@ -88,21 +89,18 @@ public class Model implements IModel {
      * @return list of events, ordered by event's ID.
      */
     @Override
-    public String getEvents(int gameID) throws RecordException {
+    public LinkedList<Pair<String,Integer>> getEvents(int gameID) throws RecordException {
         Game game = ValidateObject.getValidatedGame(gameID);
-        if (game.getEvents().size() == 0) {
-            return "No events were found.";
-        } else {
+        LinkedList<Pair<String,Integer>> allEvents= new LinkedList<>();
             String eventList = "";
             int i = 0;
             for (Event event : game.getEvents()) {
-                eventList += i + ". " + event.getDate() + "" +
-                        ", " + event.getTime() + "" +
-                        "," + " type:" + event.getEventType() + "" +
-                        ": " + event.getDescription() + ";\n";
+                allEvents.add(new Pair<String, Integer>
+                        ("Type: " +event.getEventType()+ ", Description: "+event.getDescription(),i));
+
+                i++;
             }
-            return eventList;
-        }
+            return allEvents;
     }
 //endregion
 

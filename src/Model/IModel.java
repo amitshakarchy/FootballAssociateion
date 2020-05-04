@@ -1,5 +1,9 @@
 package Model;
 
+import javafx.util.Pair;
+
+import java.util.LinkedList;
+
 public interface IModel {
 
     //region General
@@ -21,7 +25,7 @@ public interface IModel {
      * @return list of games, ordered by game's ID.
      * @throws Exception - in case of no such league or season
      */
-    String getGames(String leagueName, String seasonYear)throws RecordException;
+    LinkedList<Pair<String,Integer>> getGames(String leagueName, String seasonYear)throws RecordException;
 
     /**
      * Returns a list of events of a specific game.
@@ -29,7 +33,7 @@ public interface IModel {
      * @param gameID
      * @return list of events, ordered by event's ID.
      */
-    String getEvents(int gameID) throws RecordException;
+    LinkedList<Pair<String,Integer>> getEvents(int gameID) throws RecordException;
 
     //endregion
 
