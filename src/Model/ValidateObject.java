@@ -65,7 +65,6 @@ public class ValidateObject {
      * @throws RecordException - No such a game!
      */
     public static Game getValidatedGame(int gameID) throws RecordException {
-
         Game game= search.getGameByGameID(gameID);
         if(game==null){
             throw new RecordException("No such a game!");

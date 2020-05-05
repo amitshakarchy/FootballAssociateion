@@ -71,7 +71,7 @@ public class SecuritySystem {
      * @return true if the password is correct, otherwise - false
      */
     public boolean checkPasswordForLogIn(String userName, String password) {
-        if (!userName.contains(userName)) {
+        if (!usersHashMap.containsKey(userName)) {
             System.out.println("the user name is NOT EXISTS in the system");
             return false;
         }
