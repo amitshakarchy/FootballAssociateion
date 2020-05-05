@@ -1,4 +1,7 @@
 package AssociationAssets;
+import System.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  * Class Score represents a game's score, including the total points for each group.
@@ -12,13 +15,23 @@ public class Score {
 
 
     public Score() {
+        /*LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
+        Logger.getInstance().addActionToLogger(date + " " + now + " : Score was created.");
+        */
         this.goalsHost = 0;
         this.goalsGuest = 0;
     }
 
     public Score(int goalsHost, int goalsGuest) {
+        /*
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
+        Logger.getInstance().addActionToLogger(date + " " + now + " : Score "+goalsHost + ":" + goalsGuest + " was created.");
+        */
         this.goalsHost = goalsHost;
         this.goalsGuest = goalsGuest;
+
     }
 
     //region Setters & Getters

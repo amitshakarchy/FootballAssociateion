@@ -76,9 +76,7 @@ public class Game {
         observers = new ArrayList<>();
 
         // Write to the log
-        LocalDate dateLog = LocalDate.now();
-        LocalTime now = LocalTime.now();
-        Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Game created, GameID: "+ GID);
+        Logger.getInstance().addActionToLogger("Game created, GameID: "+ GID);
 
     }
 
@@ -281,9 +279,7 @@ public class Game {
         events.add(event);
 
         // Write to the log
-        LocalDate dateLog = LocalDate.now();
-        LocalTime now = LocalTime.now();
-        Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Event was added to gameID: "+GID+", Event type: "+ event.getEventType());
+        Logger.getInstance().addActionToLogger("Event was added to gameID: "+GID+", Event type: "+ event.getEventType());
 
     }
 
@@ -295,9 +291,7 @@ public class Game {
         Event e= events.get(eventIndex);
         events.remove(eventIndex);
         // Write to the log
-        LocalDate dateLog = LocalDate.now();
-        LocalTime now = LocalTime.now();
-        Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Event was removed from gameID: "+GID+", Event type: "+ e.getEventType());
+        Logger.getInstance().addActionToLogger("Event was removed from gameID: "+GID+", Event type: "+ e.getEventType());
     }
 
     /**
@@ -312,9 +306,7 @@ public class Game {
         event.setEventType(eventType);
         event.setDescription(description);
         // Write to the log
-        LocalDate dateLog = LocalDate.now();
-        LocalTime now = LocalTime.now();
-        Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Event was edited. gameID: "+GID+", Event type: "+ event.getEventType());
+        Logger.getInstance().addActionToLogger("Event was edited. gameID: "+GID+", Event type: "+ event.getEventType());
     }
 
 

@@ -113,6 +113,7 @@ public class AdditionalInfo {
             Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Player "+player+ "was added to the team: "+team.getName()+".");
             return true;
         }
+        Logger.getInstance().addErrorToLogger(dateLog + " " + now + ":Adding Player "+player+ "was failed to the team: "+team.getName()+".");
         return false;
     }
 
@@ -136,6 +137,7 @@ public class AdditionalInfo {
             Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Coach "+coach+ "was added to the team: "+team.getName()+".");
             return true;
         }
+        Logger.getInstance().addErrorToLogger(dateLog + " " + now + ": Coach adding was failed: "+coach+ "was failed to add to the team: "+team.getName()+".");
         return false;
     }
 
@@ -148,11 +150,10 @@ public class AdditionalInfo {
      * @return true if the team manger was adding to the team successfully.
      */
     public boolean addManager(String teamManager, String teamOwnerWhoNominate) {
-        LocalDate dateLog = LocalDate.now();
-        LocalTime now = LocalTime.now();
+
         if( teamOwnerWhoNominate == null || teamManager == null ||
                 teamOwnerWhoNominate.isEmpty() || teamManager.isEmpty()){
-            Logger.getInstance().addErrorToLogger(dateLog + " " + now + ": TeamManager adding was failed: "+teamManager+ "was failed to add to the team: "+team.getName()+".");
+            Logger.getInstance().addErrorToLogger("TeamManager adding was failed: "+teamManager+ "was failed to add to the team: "+team.getName()+".");
             return false;
         }
         ArrayList temp = new ArrayList();
@@ -160,7 +161,7 @@ public class AdditionalInfo {
             temp = managers.get(teamOwnerWhoNominate);
             // this team manager already exists in this team & season
             if (temp.contains(teamManager)) {
-                Logger.getInstance().addErrorToLogger(dateLog + " " + now + ": TeamManager adding was failed: "+teamManager+ "was failed to add to the team: "+team.getName()+".");
+                Logger.getInstance().addErrorToLogger("TeamManager adding was failed: "+teamManager+ "was failed to add to the team: "+team.getName()+".");
                 return false;
             }
             temp.add(teamManager);
@@ -173,7 +174,7 @@ public class AdditionalInfo {
         }
         // Write to the log
 
-        Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Manager "+teamManager+ "was added to the team: "+team.getName()+".");
+        Logger.getInstance().addActionToLogger(" Manager "+teamManager+ "was added to the team: "+team.getName()+".");
         return true;
     }
 
@@ -186,18 +187,16 @@ public class AdditionalInfo {
      */
     public boolean addTeamOwner(String teamOwner, String teamOwnerWhoNominate) {
         ArrayList temp = new ArrayList();
-        LocalDate dateLog = LocalDate.now();
-        LocalTime now = LocalTime.now();
         if( teamOwnerWhoNominate == null || teamOwner == null ||
         teamOwnerWhoNominate.isEmpty() || teamOwner.isEmpty()){
-            Logger.getInstance().addErrorToLogger(dateLog + " " + now + ": TeamOwner adding was failed: "+teamOwner+ "was failed to add to the team: "+team.getName()+".");
+            Logger.getInstance().addErrorToLogger("TeamOwner adding was failed: "+teamOwner+ "was failed to add to the team: "+team.getName()+".");
             return false;
         }
         if (owners.containsKey(teamOwnerWhoNominate)) {
             temp = owners.get(teamOwnerWhoNominate);
             // this team owner already exists in this team & season
             if (temp.contains(teamOwner)) {
-                Logger.getInstance().addErrorToLogger(dateLog + " " + now + ": TeamOwner adding was failed: "+teamOwner+ "was failed to add to the team: "+team.getName()+".");
+                Logger.getInstance().addErrorToLogger("TeamOwner adding was failed: "+teamOwner+ "was failed to add to the team: "+team.getName()+".");
                 return false;
             }
             temp.add(teamOwner);
@@ -209,7 +208,7 @@ public class AdditionalInfo {
             this.teamOwnersHashSet.add(teamOwner);
         }
         // Write to the log
-        Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Team Owner  "+teamOwner+ "was added to the team: "+team.getName()+".");
+        Logger.getInstance().addActionToLogger("Team Owner  "+teamOwner+ "was added to the team: "+team.getName()+".");
         return true;
     }
 
@@ -219,14 +218,12 @@ public class AdditionalInfo {
      * @param playerUName - a player to remove from the team
      */
     public void removePlayer(String playerUName) {
-        LocalDate dateLog = LocalDate.now();
-        LocalTime now = LocalTime.now();
         if (players.contains(playerUName)) {
             players.remove(playerUName);
             // Write to the log
-            Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Player "+playerUName+ "was removed from the team: "+team.getName());
+            Logger.getInstance().addActionToLogger("Player "+playerUName+ "was removed from the team: "+team.getName());
         }
-       else Logger.getInstance().addErrorToLogger(dateLog + " " + now + ": Player removal failed "+playerUName+ "not removed from the team: "+team.getName() + " because it doesnt exists.");
+       else Logger.getInstance().addErrorToLogger("Player removal failed "+playerUName+ "not removed from the team: "+team.getName() + " because it doesnt exists.");
 
     }
 
@@ -241,9 +238,9 @@ public class AdditionalInfo {
         if (coaches.contains(coachUserName)) {
             coaches.remove(coachUserName);
             // Write to the log
-            Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Coach "+coachUserName+ "was removed from the team: "+team.getName());
+            Logger.getInstance().addActionToLogger("Coach "+coachUserName+ "was removed from the team: "+team.getName());
         }
-        else Logger.getInstance().addErrorToLogger(dateLog + " " + now + ": Coach removal failed "+coachUserName+ "not removed from the team: "+team.getName() + " because it doesnt exists.");
+        else Logger.getInstance().addErrorToLogger("Coach removal failed "+coachUserName+ "not removed from the team: "+team.getName() + " because it doesnt exists.");
 
     }
 
@@ -255,16 +252,12 @@ public class AdditionalInfo {
      *                             manager.
      */
     public void removeManager(String managerUserName, String userNameWhoNominated) {
-        LocalDate dateLog = LocalDate.now();
-        LocalTime now = LocalTime.now();
         if (managers.containsKey(userNameWhoNominated)) {
             if(managers.get(userNameWhoNominated).remove(managerUserName)) {
                 // Write to the log
-                Logger.getInstance().addActionToLogger(dateLog + " " + now + ": Manager " + managerUserName + "was removed from the team: " + team.getName());
                 this.teamManagersHashSet.remove(managerUserName);
             }
         }
-        else Logger.getInstance().addErrorToLogger(dateLog + " " + now + ": Manager removal failed "+managerUserName+ "not removed from the team: "+team.getName() + " because it doesnt exists.");
 
     }
 

@@ -16,9 +16,8 @@ public class TeamManager extends CanBeOwner {
     public TeamManager(String userName, String fName, String lName) {
         super(userName, fName, lName);
         this.additionalInfoList = new ArrayList<>();
-        LocalDate date = LocalDate.now();
-        LocalTime now = LocalTime.now();
-        Logger.getInstance().addActionToLogger(date + " " + now + ": Team Manager created, user name: "+ userName);
+
+        Logger.getInstance().addActionToLogger("Team Manager created, user name: "+ userName);
 
     }
 

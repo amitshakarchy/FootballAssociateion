@@ -2,7 +2,9 @@ package Users;
 
 import AssociationAssets.*;
 import System.FootballSystem;
-
+import System.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -65,11 +67,14 @@ public class TeamOwner extends Fan {
         if (FootballSystem.getInstance().existFanByUserName(userName)) {
             // check if this user name is playing in another team
             if (FootballSystem.getInstance().findPlayerAtTeamByUserName(userName)) {
-                System.out.println("this player is playing in another team, user name is: " + userName);
+                Logger.getInstance().addErrorToLogger("Player ("+ userName + ") adding to team" + team.getName() + "was failed");
+                //pop up
                 return false;
             }
             // check if the additional info has this player already
             if (!setPlayerToAdditionalInfo(team, season, userName)) {
+                Logger.getInstance().addErrorToLogger("Player ("+ userName + ") adding to team" + team.getName() + "was failed");
+                //pop up
                 return false;
             }
             Player player = (Player) FootballSystem.getInstance().creatingPlayer(userName, firstName, lastName, birthday, ePlayerRole);
@@ -81,15 +86,21 @@ public class TeamOwner extends Fan {
         // if the user doesnt exist - sign in & creation
         else {
             if (!setPlayerToAdditionalInfo(team, season, userName)) {
+                Logger.getInstance().addErrorToLogger("Player ("+ userName + ") adding to team" + team.getName() + "was failed");
+                //pop up
                 return false;
             }
             if (!signIn(userName, password, firstName, lastName)) {
+                Logger.getInstance().addErrorToLogger("Player ("+ userName + ") adding to team" + team.getName() + "was failed");
+                //pop up
                 return false;
             }
             Player player = (Player) FootballSystem.getInstance().creatingPlayer(userName, firstName, lastName, birthday, ePlayerRole);
             player.addAdditionalInfo(additionalInfoToSearch);
 
         }
+        Logger.getInstance().addActionToLogger("Player ("+ userName + ") adding to team" + team.getName() + ".");
+
         return true;
     }
 
@@ -140,11 +151,13 @@ public class TeamOwner extends Fan {
         if (FootballSystem.getInstance().existFanByUserName(userName)) {
             // check if this user name is coaching in another team
             if (FootballSystem.getInstance().findCoachAtTeamByUserName(userName)) {
-                System.out.println("this coach is coaching another team, user name is: " + userName);
+               // System.out.println("this coach is coaching another team, user name is: " + userName);
+                Logger.getInstance().addErrorToLogger("Coach adding was failed: "+userName+" unsuccessful add of coach by the team owner userName: "+getUserName());
                 return false;
             }
             // check if the additional info has this coach already
             if (!setCoachToAdditionalInfo(team, season, userName)) {
+                Logger.getInstance().addErrorToLogger( "Coach adding was failed: "+userName+" unsuccessful add of coach by the team owner userName: "+getUserName());
                 return false;
             }
             Coach coach = (Coach) FootballSystem.getInstance().creatingCoach(userName, firstName, lastName, training, eCoachRole);
@@ -156,14 +169,18 @@ public class TeamOwner extends Fan {
         // if the user doesnt exist
         else {
             if (!setCoachToAdditionalInfo(team, season, userName)) {
+                Logger.getInstance().addErrorToLogger("Coach adding was failed: "+userName+" unsuccessful add of coach by the team owner userName: "+getUserName());
                 return false;
+
             }
             if (!signIn(userName, password, firstName, lastName)) {
+                Logger.getInstance().addErrorToLogger("Coach adding was failed: "+userName+" unsuccessful add of coach by the team owner userName: "+getUserName());
                 return false;
             }
             Coach coach = (Coach) FootballSystem.getInstance().creatingCoach(userName, firstName, lastName, training, eCoachRole);
             coach.addAdditionalInfo(additionalInfoToSearch);
         }
+        Logger.getInstance().addActionToLogger("Coach added: "+userName+"  add of coach by the team owner userName: "+getUserName());
         return true;
     }
 
@@ -176,6 +193,7 @@ public class TeamOwner extends Fan {
      * @return true if the coach was adding successfully to the team.
      */
     private boolean setCoachToAdditionalInfo(Team team, Season season, String userName) {
+
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if (additionalInfoToSearch == null) {
             return false;
@@ -209,6 +227,7 @@ public class TeamOwner extends Fan {
         // checking first if the user name is not team manger/owner in this team & season already.
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if (additionalInfoToSearch == null) {
+            Logger.getInstance().addErrorToLogger("Team manager adding failed");
             return false;
         }
         if (additionalInfoToSearch.findManager(uName) == null &&
@@ -216,11 +235,13 @@ public class TeamOwner extends Fan {
             // if the user exist
             if (FootballSystem.getInstance().existFanByUserName(uName)) {
                 if (FootballSystem.getInstance().findTeamManagerAtTeamByUserName(uName)) {
+                    Logger.getInstance().addErrorToLogger("Team manager adding failed");
                     System.out.println("this manager is manager another team, user name is: " + uName);
                     return false;
                 }
                 // check if the additional info has this  already
                 if (!setTeamManagerToAdditionalInfo(team, season, uName)) {
+                    Logger.getInstance().addErrorToLogger("Team manager adding failed");
                     return false;
                 }
                 TeamManager teamManager = (TeamManager) FootballSystem.getInstance().creatingTeamManager(uName, firstName, lastName);
@@ -237,24 +258,28 @@ public class TeamOwner extends Fan {
                 if (!signIn(uName, password, firstName, lastName)) {
                     return false;
                 }
+
                 TeamManager teamManager = (TeamManager) FootballSystem.getInstance().creatingTeamManager(uName, firstName, lastName);
                 teamManager.addAdditionalInfo(additionalInfoToSearch);
             }
+            Logger.getInstance().addActionToLogger("Team manager was added");
             return true;
+
         } else {
-            System.out.println("The user " + uName + " is already team owner/manager on the team " +
-                    team + " on the season " + season);
+//            System.out.println("The user " + uName + " is already team owner/manager on the team " +
+//                    team + " on the season " + season);
+            Logger.getInstance().addErrorToLogger("Team manager adding failed");
             return false;
         }
         // TODO: 4/12/2020 permissions of manager!
     }
-
+//continue here!!!!!!!!!!!
     /**
      * this function set the Team Manager to the correct additional info of a specific team in a season.
      * @param team
      * @param season
      * @param userName
-     * @return true true if the team Manager was adding successfully
+     * @return true true if the team Manager was added successfully
      */
     private boolean setTeamManagerToAdditionalInfo(Team team, Season season, String userName) {
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
@@ -368,11 +393,13 @@ public class TeamOwner extends Fan {
         // checking first if the user name is not team owner in this team and season already.
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if (additionalInfoToSearch == null) {
+            Logger.getInstance().addErrorToLogger("Nomination of team owner " + userName +" was failed.");
             return false;
         }
         if (additionalInfoToSearch.findTeamOwner(userName) != null) {
             System.out.println("The user " + userName + " is already team owner on the team " +
                     team + " on the season " + season);
+            Logger.getInstance().addErrorToLogger("Nomination of team owner " + userName +" was failed.");
             return false;
         }
         // checking if the user is in the system.
@@ -380,6 +407,7 @@ public class TeamOwner extends Fan {
             // checking if the user is owner another team.
             if (FootballSystem.getInstance().findTeamOwnerAtTeamByUserName(userName)) {
                 System.out.println("this team owner is owner another team, user name is: " + userName);
+                Logger.getInstance().addErrorToLogger("Nomination of team owner " + userName +" was failed.");
                 return false;
             }
             Fan fan = FootballSystem.getInstance().getFanByUserName(userName);
@@ -393,8 +421,10 @@ public class TeamOwner extends Fan {
             }
             teamOwner.addAdditionalInfo(additionalInfoToSearch);
         } else {
+            Logger.getInstance().addErrorToLogger("Nomination of team owner " + userName +" was failed.");
             return false;
         }
+        Logger.getInstance().addActionToLogger("Nomination of team owner " + userName + " in team "+ team.getName());
         return true;
     }
 
@@ -443,16 +473,23 @@ public class TeamOwner extends Fan {
      * @param userNameToRemove
      */
     public void discardNominationForTeamOwner(Team team, Season season, String userNameToRemove) {
-        if (TeamIsInActive(team)) return;
+        if (TeamIsInActive(team)){
+            Logger.getInstance().addErrorToLogger("Discard nomination  of team owner " + userNameToRemove +" was failed.");
+            return;
+        }
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if (additionalInfoToSearch == null) {
+            Logger.getInstance().addErrorToLogger("Discard nomination  of team owner " + userNameToRemove +" was failed.");
             return;
         }
         // checking if this team owner was the one that nominated the team manager
         if (additionalInfoToSearch.whoNominateTeamOwner(userNameToRemove, getUserName())) {
             additionalInfoToSearch.removeTeamOwner(userNameToRemove, getUserName());
             additionalInfoToSearch.removeAllNominations(userNameToRemove);
+            Logger.getInstance().addActionToLogger("Discard nomination of team owner " + userNameToRemove);
+
         } else {
+            Logger.getInstance().addErrorToLogger("Discard nomination  of team owner " + userNameToRemove +" was failed.");
             System.out.println(getUserName() + " you are not allow to remove " + userNameToRemove + "! " +
                     "you wasn't the one that nominated him");
         }
@@ -473,10 +510,16 @@ public class TeamOwner extends Fan {
     public boolean nominateTeamManager(Team team, Season season, String userName) {
         Fan fan = FootballSystem.getInstance().getFanByUserName(userName);
         if (fan != null) {
-            return addTeamManager(team, season, userName, null, fan.getfName(), fan.getlName());
+            boolean added = addTeamManager(team, season, userName, null, fan.getfName(), fan.getlName());
+            if(added){
+                Logger.getInstance().addActionToLogger("Discard nomination of team owner " + userName);
+
+            }
+            else  Logger.getInstance().addErrorToLogger("Nomination  of team owner " + userName +" was failed.");
         } else {
             System.out.println("Nominate " + userName + "is not possible! " +
                     "This user name is not exit in the system, user name is: " + userName);
+                     Logger.getInstance().addErrorToLogger("Nomination  of team owner " + userName +" was failed.");
         }
         return false;
     }
@@ -492,6 +535,7 @@ public class TeamOwner extends Fan {
     public void closeTeam(Team team, Season season) {
         AdditionalInfo additionalInfo = getAdditionalInfo(team, season);
         if(additionalInfo == null){
+            Logger.getInstance().addErrorToLogger("Closing team failed.");
             return;
         }
         Team tempTeam = additionalInfo.getTeam();
@@ -499,6 +543,7 @@ public class TeamOwner extends Fan {
             return;
         }
         additionalInfo.getTeam().setIsActive(ETeamStatus.INACTIVE);
+        Logger.getInstance().addActionToLogger("Team \"" +tempTeam.getName() + "\" closed");
     }
     // use case 6.6 end region
 
@@ -552,9 +597,10 @@ public class TeamOwner extends Fan {
      */
     private boolean TeamIsInActive(Team team) {
         if (team != null && team.getIsActive().equals(ETeamStatus.INACTIVE)) {
+            //pop up
             System.out.println("The team is close, you are not allow to make any operation.");
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 }

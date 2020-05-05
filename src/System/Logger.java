@@ -5,6 +5,8 @@ import javafx.util.Pair;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,11 +18,7 @@ import java.util.List;
  */
 public class Logger {
 
-// Implement a singleton here
     List<String> actionLog = new ArrayList<>();
-
-
-
     List<String> errorLog = new ArrayList<>();
     List<Pair<Integer,List<Event>>> report = new ArrayList<>();
     private static Logger single_instance = null;
@@ -53,7 +51,9 @@ public class Logger {
      * @param action - The action we want to add
      */
     public void addActionToLogger(String action){
-        getActionLog().add(action);
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        getActionLog().add(date + " " + time + ": " + action);
     }
 
     /**
@@ -61,7 +61,9 @@ public class Logger {
      * @param action - The action we want to add
      */
     public void addErrorToLogger(String action){
-        getErrorActionLog().add(action);
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        getErrorActionLog().add(date + " " + time + ": " + action);
     }
 
     private Collection<String> getErrorActionLog() {

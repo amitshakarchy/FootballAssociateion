@@ -95,6 +95,7 @@ public class Fan extends Guest implements IFan ,Serializable {
 
     /**
      * This function changes the player's status in the system
+     * if the player had notifications while offline, show them to him when online.
      * @param status - It could be:
      *      *             ONLINE , OFFLINE
      */
@@ -200,9 +201,9 @@ public class Fan extends Guest implements IFan ,Serializable {
         if(this.status == EStatus.ONLINE){
             // TODO: 29/04/2020 pop up message
         }
-    //    else{
+        else{
             pendingGameNotifications.put(description,eventType);
-      //  }
+        }
     }
 
     /**

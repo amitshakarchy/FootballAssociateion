@@ -27,7 +27,7 @@ public class SystemManager extends Fan {
         super(userName, fName, lName);
         LocalDate date = LocalDate.now();
         LocalTime now = LocalTime.now();
-        Logger.getInstance().addActionToLogger(date + " " + now + ": nager created, user name: "+ userName);
+        Logger.getInstance().addActionToLogger(date + " " + now + ": System Manager created, user name: "+ userName);
 
     }
 
@@ -51,9 +51,7 @@ public class SystemManager extends Fan {
                 }
             }
             team.setIsActive(ETeamStatus.INACTIVE);
-            LocalDate date = LocalDate.now();
-            LocalTime now = LocalTime.now();
-            Logger.getInstance().addActionToLogger(date + " " + now + ": Team "+teamName+" closed by the nager userName: "+getUserName());
+            Logger.getInstance().addActionToLogger("Team "+teamName+" closed by the nager userName: "+getUserName());
         }
     }
 
@@ -84,9 +82,7 @@ public class SystemManager extends Fan {
                 }
             }
             FootballSystem.getInstance().removeUser(userName);
-            LocalDate date = LocalDate.now();
-            LocalTime now = LocalTime.now();
-            Logger.getInstance().addActionToLogger(date + " " + now + ": Coach "+userName+" deleted by the nager userName: "+getUserName());
+            Logger.getInstance().addActionToLogger( "Coach "+userName+" deleted by the System Manager userName: "+getUserName());
         }
     }
 
@@ -110,6 +106,7 @@ public class SystemManager extends Fan {
                         for (String playerToCompare:
                                 additionalInfo.getPlayers()) {
                             if(playerToCompare.equals(userName)){
+                                Logger.getInstance().addErrorToLogger("Player delete Failed: "+userName+" unsuccessful delete of player by the system Manager userName: "+getUserName());
                                 return;
                             }
                         }
@@ -118,9 +115,7 @@ public class SystemManager extends Fan {
             }
 
             FootballSystem.getInstance().removeUser(userName);
-            LocalDate date = LocalDate.now();
-            LocalTime now = LocalTime.now();
-            Logger.getInstance().addActionToLogger(date + " " + now + ": Player "+userName+" deleted by the nager userName: "+getUserName());
+            Logger.getInstance().addActionToLogger("Player "+userName+" deleted by the system Manager userName: "+getUserName());
         }
     }
 
@@ -144,6 +139,7 @@ public class SystemManager extends Fan {
                         for (String teamOwnerToCompare:
                                 additionalInfo.getTeamOwnersHashSet()) {
                             if(teamOwnerToCompare.equals(userName)){
+                                Logger.getInstance().addErrorToLogger("Team Owner delete Failed: "+userName+" unsuccessful delete of owner by the system Manager userName: "+getUserName());
                                 return;
                             }
                         }
@@ -151,9 +147,8 @@ public class SystemManager extends Fan {
                 }
             }
             FootballSystem.getInstance().removeUser(userName);
-            LocalDate date = LocalDate.now();
-            LocalTime now = LocalTime.now();
-            Logger.getInstance().addActionToLogger(date + " " + now + ": Team Owner "+userName+" deleted by the system manager userName: "+getUserName());
+
+            Logger.getInstance().addActionToLogger("Team Owner "+userName+" deleted by the system manager userName: "+getUserName());
         }
     }
 
@@ -168,12 +163,11 @@ public class SystemManager extends Fan {
         SystemManager systemManager = FootballSystem.getInstance().getSystemManagerByUserName(userName);
         if(systemManager != null){
             if(FootballSystem.getInstance().getSystemManagerMap().values().size() == 1){
+                Logger.getInstance().addErrorToLogger("System Manager delete Failed: "+userName+" unsuccessful delete of system manager by the system Manager userName: "+getUserName());
                 return;
             }
-            LocalDate date = LocalDate.now();
-            LocalTime now = LocalTime.now();
             FootballSystem.getInstance().removeUser(userName);
-            Logger.getInstance().addActionToLogger(date + " " + now +": System Manager: "+userName+" deleted by the system manager userName: "+getUserName());
+            Logger.getInstance().addActionToLogger("System Manager: "+userName+" deleted by the system manager userName: "+getUserName());
         }
     }
 
@@ -187,19 +181,17 @@ public class SystemManager extends Fan {
      *  # use case 8.2
      */
     public void removeFan(String userName){
-        LocalDate date = LocalDate.now();
-        LocalTime now = LocalTime.now();
         Fan fan = FootballSystem.getInstance().getFanByUserName(userName);
         if(fan == null ) {
-                Logger.getInstance().addErrorToLogger(date + " " + now + ": Removing user: " + userName + " has failed. User name not exists.");
+                Logger.getInstance().addErrorToLogger("Removing user: " + userName + " has failed. User name not exists.");
                 return;
         }
         else if(moreThenARegularUser(userName)){
-            Logger.getInstance().addErrorToLogger(date + " " + now + ": Removing user: " + userName + "failed. This user has a role in the system and needs to be removed accordingly.");
+            Logger.getInstance().addErrorToLogger("Removing user: " + userName + "failed. This user has a role in the system and needs to be removed accordingly.");
             return;
         }
             FootballSystem.getInstance().removeUser(userName);
-            Logger.getInstance().addActionToLogger(date + " " + now + ": Fan "+userName+" deleted by the system manager. userName: "+getUserName());
+            Logger.getInstance().addActionToLogger("Fan "+userName+" deleted by the system manager. userName: "+getUserName());
 
     }
 
@@ -268,10 +260,7 @@ public class SystemManager extends Fan {
      */
     public void activateRecommendationSystemModel(ComputaionalModel model){
         model.activate();
-
-        LocalDate date = LocalDate.now();
-        LocalTime now = LocalTime.now();
-        Logger.getInstance().addActionToLogger(date + " " + now + ": System manager activate recommendation system model, user name: "+ getUserName());
+        Logger.getInstance().addActionToLogger("System manager activate recommendation system model, user name: "+ getUserName());
 
     }
 

@@ -6,6 +6,9 @@ import Budget.TeamBudget;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import PoliciesAndAlgorithms.HeuristicGamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
@@ -28,8 +31,10 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
         this.gamePolicy = gamePolicy; // can be changed by the user later
         this.associationBudget = new AssociationBudget();
         this.NotificationTeamsExceedBudget= new HashMap<>();
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
         // Write to the log
-        Logger.getInstance().addActionToLogger("Representative Football Association was created. representative user name: "+userName);
+        Logger.getInstance().addActionToLogger(date + " " + now + ": Representative Football Association was created. representative user name: "+userName);
     }
 
     /**
@@ -42,8 +47,10 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     super(userName, fName, lName);
     this.associationBudget = new AssociationBudget();
     this.NotificationTeamsExceedBudget= new HashMap<>();
+    LocalDate date = LocalDate.now();
+    LocalTime now = LocalTime.now();
     // Write to the log
-    Logger.getInstance().addActionToLogger("Representative Football Association was created. representative user name: "+userName);
+    Logger.getInstance().addActionToLogger(date + " " + now + ": Representative Football Association was created. representative user name: "+userName);
 }
     /**
      * useCase #9.1 - Define new League
