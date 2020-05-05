@@ -4,8 +4,9 @@ import AcceptanceTests.DataObjects.UserDetails;
 import Model.*;
 
 public class RealSystemOperations implements ISystemOperationsBridge{
-    private Model model;
+    private final Model model;
     private static int randomNumberForUser = 0;
+    private static int getRandomNumberForTeam = 0;
 
     public RealSystemOperations() {
         this.model = new Model();
@@ -28,4 +29,6 @@ public class RealSystemOperations implements ISystemOperationsBridge{
     public boolean register(String userName, String password, String firstName, String lastName) {
         return model.signIn(userName,password,firstName,lastName);
     }
+
+
 }

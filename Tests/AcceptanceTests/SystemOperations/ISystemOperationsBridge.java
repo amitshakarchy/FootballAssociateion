@@ -23,5 +23,4 @@ public interface ISystemOperationsBridge {
      */
     boolean register(String userName, String password, String firstName, String lastName);
 
-
 }
