@@ -12,7 +12,7 @@ public class UC1Tests {
 
     @Before
     public void Setup(){
-        systemOperations = new SystemOperationProxy();
+        systemOperations = new RealSystemOperations();
         registeredUser = systemOperations.getNewRegisteredUserForTest(); //Registered!!!
     }
 
@@ -23,6 +23,7 @@ public class UC1Tests {
 
     @Test
     public void RegisterTest_tryToRegisterNewUserWithExistUsername_SuccessScenario(){
+
         assertFalse(systemOperations.register(registeredUser.userName, registeredUser.password,registeredUser.firstName,registeredUser.LastName));
     }
 
