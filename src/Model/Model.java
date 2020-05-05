@@ -6,14 +6,17 @@ import Users.*;
 import System.*;
 import javafx.util.Pair;
 
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Model implements IModel {
 
-    Search search;
-    Object user;
+    //Search search;
+    //Object user;
+    Fan user;
+    FootballSystem footballSystem = FootballSystem.getInstance();
     ValidateObject validate;
     static int TEAM_ID = 1;
 
@@ -28,7 +31,7 @@ public class Model implements IModel {
         if (user == null)
             return "";
 
-        return ((Fan) user).getfName() + " " + ((Fan) user).getlName();
+        return user.getfName() + " " + user.getlName();
     }
 
     /**
@@ -42,21 +45,21 @@ public class Model implements IModel {
             return "";
 
         String type = "";
-        Object userObj = search.getUserByUserName(((Fan) user).getUserName());
+        Fan fanByUserName = footballSystem.getFanByUserName(user.getUserName());
 
-        if (userObj instanceof Coach) {
+        if (fanByUserName instanceof Coach) {
             type = "Coach";
-        } else if (userObj instanceof Player) {
+        } else if (fanByUserName instanceof Player) {
             type = "Player";
-        } else if (userObj instanceof Referee) {
+        } else if (fanByUserName instanceof Referee) {
             type = "Referee";
-        } else if (userObj instanceof RepresentativeFootballAssociation) {
+        } else if (fanByUserName instanceof RepresentativeFootballAssociation) {
             type = "RepresentativeFootballAssociation";
-        } else if (userObj instanceof SystemManager) {
+        } else if (fanByUserName instanceof SystemManager) {
             type = "SystemManager";
-        } else if (userObj instanceof TeamManager) {
+        } else if (fanByUserName instanceof TeamManager) {
             type = "TeamManager";
-        } else if (userObj instanceof TeamOwner) {
+        } else if (fanByUserName instanceof TeamOwner) {
             type = "TeamOwner";
         }
         return type;
@@ -122,11 +125,19 @@ public class Model implements IModel {
             return false;
         }
         // Save the user as an object
-        user = search.getUserByUserName(tmpUser.getUserName());
+        user = FootballSystem.getInstance().getFanByUserName(username);
+        System.out.println(user instanceof SystemManager);
+        //user = search.getUserByUserName(tmpUser.getUserName());
         return true;
     }
     //endregion
 
+    //region Sign In
+    @Override
+    public boolean signIn(String userName, String password, String firstName, String lastName) {
+        return footballSystem.signIn(userName,password,firstName,lastName)!= null;
+    }
+    //endregion
     //region Team Management
     /**
      * Creates a new team out of the given details.
@@ -150,7 +161,7 @@ public class Model implements IModel {
         Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
 
         // Get an existing field or create one and add it TO fields DB
-        Field field = search.getFieldByFieldName(fieldName);
+        Field field = footballSystem.getFieldDB().getAllFields().get(fieldName);
         if (field == null) {
             field = FootballSystem.getInstance().createField(fieldName, fieldCity, 5000);
         }
@@ -180,7 +191,7 @@ public class Model implements IModel {
         SystemManager systemManagerUser = (SystemManager) user;
 
         // Return false if team does not exist
-        Team toClose = search.getTeamByTeamName(teamName);
+        Team toClose = footballSystem.getTeamDB().getAllTeams().get(teamName);
         if (toClose == null)
             return false;
 
