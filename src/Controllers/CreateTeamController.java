@@ -47,7 +47,7 @@ public class CreateTeamController {
             alert.showAndWait();
             try {
                 System.out.println((model.createTeam(teamName.getText(),leagueName.getSelectionModel().getSelectedItem().toString(),
-                        seasonChoiceBox.getValue().toString(),teamName.getText(),null)));
+                        seasonChoiceBox.getValue().toString(),teamName.getText())));
             } catch (RecordException e1) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText(e1.getErrorMessage());
