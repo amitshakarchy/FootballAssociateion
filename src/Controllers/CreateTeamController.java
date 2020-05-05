@@ -1,18 +1,34 @@
 package Controllers;
 
+import Model.Model;
+
+import Model.RecordException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 
 public class CreateTeamController {
 
-
+    Model model;
     public RequiredField requiredField1;
     public RequiredField requiredField2;
     public RequiredField requiredField3;
     public RequiredField requiredField4;
     public RequiredField requiredField5;
     public RequiredField requiredField6;
+
+    public TextField teamID;
+    public TextField teamName;
+    public ChoiceBox leagueName;
+    public TextField teamBudget;
+    public ChoiceBox fieldChoiceBox;
+    public ChoiceBox seasonChoiceBox;
+
+    public CreateTeamController() {
+        this.model = new Model();
+    }
 
     @FXML
     public void clickOnCreateTeam(ActionEvent e) {
@@ -29,6 +45,13 @@ public class CreateTeamController {
             alert.setContentText("The request has been sent to the \n" +
                     " Representative Football Association!");
             alert.showAndWait();
+            try {
+                System.out.println((model.createTeam(teamName.getText(),leagueName.getSelectionModel().getSelectedItem().toString(),
+                        seasonChoiceBox.getValue().toString(),teamName.getText())));
+            } catch (RecordException e1) {
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText(e1.getErrorMessage());
+            }
         }
     }
 }

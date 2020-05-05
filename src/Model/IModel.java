@@ -48,6 +48,11 @@ public interface IModel {
     boolean login(String username, String password);
     //endregion
 
+    //region Sign In
+    public boolean signIn(String userName, String password, String firstName,
+                         String lastName);
+    //endregion
+
     //region Team Management
     /**
      * Creates a new team out of the given details.

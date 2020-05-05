@@ -1,9 +1,11 @@
 package Controllers;
+import Model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -12,18 +14,34 @@ import java.io.IOException;
 
 public class LoginController {
 
+    Model model;
+
     @FXML
     public TextField userName;
     public TextField password;
     public RequiredField requiredField1;
     public RequiredField requiredField2;
     public Button loginBtn;
+
+
+    public LoginController() {
+        this.model = new Model();
+    }
+
     @FXML
     public void submitPressed(ActionEvent actionEvent) {
         requiredField1.eval();
         requiredField2.eval();
         if(!requiredField1.getHasErrors() && !requiredField2.getHasErrors()){
-            showMainPage();
+            if(model.login(userName.getText(),password.getText())){
+                showMainPage();
+            }
+            else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Username or Password incorrect. \n" +
+                        "Please try again.");
+                alert.showAndWait();
+            }
         }
     }
 
