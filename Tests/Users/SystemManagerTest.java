@@ -7,9 +7,7 @@ import System.*;
 
 import java.io.File;
 import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -70,7 +68,7 @@ class SystemManagerTest {
         systemManager.responseOnComplain("take care" , complains.get(0));
         assertEquals(Complains.getInstance().getComplain().size() , 1 );
         Complains.getInstance().WriteObjectToFile(new File("C:\\Users\\יובל בן אליעזר\\Desktop\\complain.txt"));
-        Logger.getInstance().WriteObjectToFile(new File("C:\\Users\\יובל בן אליעזר\\Desktop\\logger.txt"));
+        Logger.getInstance().WriteActionLoggerToFile(new File("C:\\Users\\יובל בן אליעזר\\Desktop\\logger.txt"));
 
     }
 
@@ -80,7 +78,7 @@ class SystemManagerTest {
         Logger.getInstance();
         Coach coach = new Coach("newCoach", "yossi","cohen",ETraining.CDiploma, ECoachRole.AssistantCoach);
         SystemManager systemManager = new SystemManager("1","1","1");
-        assertEquals(systemManager.getLogInformation().size() , 2);
+        assertEquals(systemManager.getActionLogInformation().size() , 2);
     }
 
 }

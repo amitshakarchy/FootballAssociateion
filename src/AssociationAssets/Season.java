@@ -1,5 +1,7 @@
 package AssociationAssets;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import System.*;
 /**
@@ -12,11 +14,15 @@ public class Season {
     HashMap<String,AdditionalInfo> teamAdditionalInfo;
 
     public Season(String year){
+
         this.year = year;
         leagueBinders= new HashMap<>();
         teamAdditionalInfo= new HashMap<>();
+        /*
         // Write to the log
-        Logger.getInstance().addActionToLogger("Season was created. Season's Year: "+year+".");
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
+        Logger.getInstance().addActionToLogger(date + " " + now + ": Season was created. Season's Year: "+year+"."); */
     }
 
     //region Setter baseter

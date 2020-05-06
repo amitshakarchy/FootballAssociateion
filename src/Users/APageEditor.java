@@ -1,5 +1,7 @@
 package Users;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import System.Logger;
@@ -26,12 +28,14 @@ public abstract class APageEditor implements IPageEditor,Serializable {
      * @param role        - his role in the team.
      */
     public APageEditor(String myFirstName, String myLastName, Enum role) {
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
         this.myFirstName = myFirstName;
         this.myLastName = myLastName;
         this.role = role;
         this.myFeed = new ArrayList<>();
         this.observers = new ArrayList<>();
-        Logger.getInstance().addActionToLogger("A new personal page created, user: "+ myFirstName +" "+myLastName);
+        Logger.getInstance().addActionToLogger(date + " " + now + "A new personal page created, user: "+ myFirstName +" "+myLastName);
 
     }
 
@@ -56,10 +60,12 @@ public abstract class APageEditor implements IPageEditor,Serializable {
      * @param feed - The content the player/coach want to upload
      */
     public void addFeedToMyPage(String feed) {
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
         if(feed != null) {
             this.myFeed.add(feed);
             notifyObserver(feed);
-            Logger.getInstance().addActionToLogger("A new feed added to personal page, feed:"+feed+", user: "+ myFirstName +" "+myLastName);
+            Logger.getInstance().addActionToLogger(date + " " + now + ": A new feed added to personal page, feed:"+feed+", user: "+ myFirstName +" "+myLastName);
 
         }
     }
@@ -71,24 +77,27 @@ public abstract class APageEditor implements IPageEditor,Serializable {
      * @param feed - The content the player/coach want to delete
      */
     public void removeFeedFromMyPage(String feed) {
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
         try {
             if(feed != null) {
                 this.myFeed.remove(feed);
-                Logger.getInstance().addActionToLogger("This feed deleted from personal page, feed:"+feed+", user: "+ myFirstName +" "+myLastName);
+                Logger.getInstance().addActionToLogger(date + " " + now + "Feed deleted from personal page, feed:"+feed+", user: "+ myFirstName +" "+myLastName);
 
             }
+            else Logger.getInstance().addErrorToLogger(date + " " + now + "Feed delete has failed - feed not exists. feed:"+feed+", user: "+ myFirstName +" "+myLastName);
 
         } catch (Exception e) {
             System.out.println("There is no content like this in your feed");
         }
     }
 
-    public String getMyFisrtName() {
+    public String getMyFirstName() {
         return myFirstName;
     }
 
 
-    public void setMyFisrtName(String myFirstName) {
+    public void setMyFirstName(String myFirstName) {
         if(myFirstName != null) {
             this.myFirstName = myFirstName;
         }
@@ -138,9 +147,11 @@ public abstract class APageEditor implements IPageEditor,Serializable {
      * @param observer - The fan who wants to sign up for updates
      */
     public void register(Fan observer){
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
         if(observer != null) {
             this.observers.add(observer);
-            Logger.getInstance().addActionToLogger("This fan register to personal page, fan-userName:"+observer.getUserName()+", user: "+ myFirstName +" "+myLastName);
+            Logger.getInstance().addActionToLogger(date + " " + now + "Fan register to personal page, fan-userName:"+observer.getUserName()+", user: "+ myFirstName +" "+myLastName);
 
         }
     }
@@ -150,11 +161,14 @@ public abstract class APageEditor implements IPageEditor,Serializable {
      * @param observer- The fan who wants to stop receiving updates
      */
     public void delete(Fan observer){
-        if(observer != null) {
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
+        if(observer != null && observers.contains(observer)) {
             this.observers.remove(observer);
-            Logger.getInstance().addActionToLogger("This fan delete his registration from personal page, fan-userName:"+observer.getUserName()+", user: "+ myFirstName +" "+myLastName);
-
+            Logger.getInstance().addActionToLogger(date + " " + now + "Fan delete his registration from personal page, fan-userName:"+observer.getUserName()+", user: "+ myFirstName +" "+myLastName);
         }
+        else Logger.getInstance().addErrorToLogger(date + " " + now + "Fan delete of subscription has failed - feed not exists. fan-userName:"+observer.getUserName()+", user: "+ myFirstName +" "+myLastName);
+
     }
 
     public List<Fan> getObservers() {

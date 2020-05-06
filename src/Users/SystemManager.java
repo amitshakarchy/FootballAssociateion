@@ -2,6 +2,9 @@ package Users;
 import AssociationAssets.*;
 import RecommendationSystem.*;
 import javafx.util.Pair;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,12 +20,14 @@ public class SystemManager extends Fan {
 
     /**
      * @param userName - Unique user name
-     * @param fName - First name of the system manager.
-     * @param lName - Last name of the system manager.
+     * @param fName - First name of the nager.
+     * @param lName - Last name of the nager.
      */
     public SystemManager(String userName, String fName, String lName) {
         super(userName, fName, lName);
-        Logger.getInstance().addActionToLogger("System Manager created, user name: "+ userName);
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
+        Logger.getInstance().addActionToLogger(date + " " + now + ": System Manager created, user name: "+ userName);
 
     }
 
@@ -46,7 +51,7 @@ public class SystemManager extends Fan {
                 }
             }
             team.setIsActive(ETeamStatus.INACTIVE);
-            Logger.getInstance().addActionToLogger("Team: "+teamName+" closed by the system manager userName: "+getUserName());
+            Logger.getInstance().addActionToLogger("Team "+teamName+" closed by the nager userName: "+getUserName());
         }
     }
 
@@ -77,7 +82,7 @@ public class SystemManager extends Fan {
                 }
             }
             FootballSystem.getInstance().removeUser(userName);
-            Logger.getInstance().addActionToLogger("Coach: "+userName+" deleted by the system manager userName: "+getUserName());
+            Logger.getInstance().addActionToLogger( "Coach "+userName+" deleted by the System Manager userName: "+getUserName());
         }
     }
 
@@ -101,14 +106,16 @@ public class SystemManager extends Fan {
                         for (String playerToCompare:
                                 additionalInfo.getPlayers()) {
                             if(playerToCompare.equals(userName)){
+                                Logger.getInstance().addErrorToLogger("Player delete Failed: "+userName+" unsuccessful delete of player by the system Manager userName: "+getUserName());
                                 return;
                             }
                         }
                     }
                 }
             }
+
             FootballSystem.getInstance().removeUser(userName);
-            Logger.getInstance().addActionToLogger("Player: "+userName+" deleted by the system manager userName: "+getUserName());
+            Logger.getInstance().addActionToLogger("Player "+userName+" deleted by the system Manager userName: "+getUserName());
         }
     }
 
@@ -132,6 +139,7 @@ public class SystemManager extends Fan {
                         for (String teamOwnerToCompare:
                                 additionalInfo.getTeamOwnersHashSet()) {
                             if(teamOwnerToCompare.equals(userName)){
+                                Logger.getInstance().addErrorToLogger("Team Owner delete Failed: "+userName+" unsuccessful delete of owner by the system Manager userName: "+getUserName());
                                 return;
                             }
                         }
@@ -139,7 +147,8 @@ public class SystemManager extends Fan {
                 }
             }
             FootballSystem.getInstance().removeUser(userName);
-            Logger.getInstance().addActionToLogger("Team Owner: "+userName+" deleted by the system manager userName: "+getUserName());
+
+            Logger.getInstance().addActionToLogger("Team Owner "+userName+" deleted by the system manager userName: "+getUserName());
         }
     }
 
@@ -154,6 +163,7 @@ public class SystemManager extends Fan {
         SystemManager systemManager = FootballSystem.getInstance().getSystemManagerByUserName(userName);
         if(systemManager != null){
             if(FootballSystem.getInstance().getSystemManagerMap().values().size() == 1){
+                Logger.getInstance().addErrorToLogger("System Manager delete Failed: "+userName+" unsuccessful delete of system manager by the system Manager userName: "+getUserName());
                 return;
             }
             FootballSystem.getInstance().removeUser(userName);
@@ -172,19 +182,31 @@ public class SystemManager extends Fan {
      */
     public void removeFan(String userName){
         Fan fan = FootballSystem.getInstance().getFanByUserName(userName);
-        if(FootballSystem.getInstance().getRefereeByUseName(userName) != null ||
+        if(fan == null ) {
+                Logger.getInstance().addErrorToLogger("Removing user: " + userName + " has failed. User name not exists.");
+                return;
+        }
+        else if(moreThenARegularUser(userName)){
+            Logger.getInstance().addErrorToLogger("Removing user: " + userName + "failed. This user has a role in the system and needs to be removed accordingly.");
+            return;
+        }
+            FootballSystem.getInstance().removeUser(userName);
+            Logger.getInstance().addActionToLogger("Fan "+userName+" deleted by the system manager. userName: "+getUserName());
+
+    }
+
+    private boolean moreThenARegularUser(String userName) {
+        if( FootballSystem.getInstance().getRefereeByUseName(userName) != null ||
                 FootballSystem.getInstance().getSystemManagerByUserName(userName) != null ||
                 FootballSystem.getInstance().getRepresentativeFootballAssociationByUseName(userName) != null||
                 FootballSystem.getInstance().getPlayerByUserName(userName) != null||
                 FootballSystem.getInstance().getCoachByUserName(userName) != null||
                 FootballSystem.getInstance().getTeamOwnerByUserName(userName) != null||
-                FootballSystem.getInstance().getTeamManagerByUserName(userName) != null) {
-                return;
-        }
-            FootballSystem.getInstance().removeUser(userName);
-            Logger.getInstance().addActionToLogger("Fan: "+userName+" deleted by the system manager userName: "+getUserName());
-
+                FootballSystem.getInstance().getTeamManagerByUserName(userName) != null)
+            return true;
+        return false;
     }
+
 
     /**
      *  An administrator can view the complaint box
@@ -213,9 +235,19 @@ public class SystemManager extends Fan {
      *
      * # use case 8.4
      */
-    public List<String> getLogInformation(){
-        return Logger.getInstance().getLog();
+    public List<String> getActionLogInformation(){
+        return Logger.getInstance().getActionLog();
     }
+
+    /**
+     * An administrator can view system errors information
+     * @return - List all errors done on the system
+     *
+     */
+    public List<String> getErrorLogInformation(){
+        return Logger.getInstance().getErrorLog();
+    }
+
 
     /**
      * The role of the administrator is to start building the

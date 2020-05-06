@@ -35,6 +35,16 @@ public class CoachPageEditor extends APageEditor {
         this.training = training;
     }
 
+    @Override
+    public void addToMyPage(String feed) {
+
+    }
+
+    @Override
+    public String getMyFisrtName() {
+        return this.getMyFirstName();
+    }
+
     /**
      *This feature return the content about the coach that is on his personal
      * page and the content that the coach uploads to his site.
@@ -43,7 +53,7 @@ public class CoachPageEditor extends APageEditor {
     @Override
     public String viewMyPersonalPage() {
         return "Welcome to my page! "+
-                "My Name is: '" + super.getMyFisrtName() + '\'' +
+                "My Name is: '" + super.getMyFirstName() + '\'' +
                 " " + super.getMyLastName() + '\'' +
                 "My Training is " + getTraining() +
                 ". My role is " + super.getRole() +

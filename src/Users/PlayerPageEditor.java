@@ -28,6 +28,16 @@ public class PlayerPageEditor extends APageEditor {
         return bDay;
     }
 
+    @Override
+    public void addToMyPage(String feed) {
+
+    }
+
+    @Override
+    public String getMyFisrtName() {
+        return null;
+    }
+
     /**
      *This feature return the content about the player that is on his personal
      * page and the content that the player uploads to his site.
@@ -36,7 +46,7 @@ public class PlayerPageEditor extends APageEditor {
     @Override
     public String viewMyPersonalPage() {
         return "Welcome to my page! "+
-                "My Name is: '" + super.getMyFisrtName() + '\'' +
+                "My Name is: '" + getMyFisrtName() + '\'' +
                 " " + super.getMyLastName() + '\'' +
                 "I was born on " + this.getBDay()+
                 ". My role is " + super.getRole() +

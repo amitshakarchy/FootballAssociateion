@@ -1,13 +1,14 @@
 package System;
-
 import AssociationAssets.Event;
-import AssociationAssets.Game;
 import javafx.util.Pair;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -17,8 +18,8 @@ import java.util.List;
  */
 public class Logger {
 
-// Implement a singleton here
-    List<String> log = new ArrayList<>();
+    List<String> actionLog = new ArrayList<>();
+    List<String> errorLog = new ArrayList<>();
     List<Pair<Integer,List<Event>>> report = new ArrayList<>();
     private static Logger single_instance = null;
 
@@ -50,26 +51,61 @@ public class Logger {
      * @param action - The action we want to add
      */
     public void addActionToLogger(String action){
-        getLog().add(action);
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        getActionLog().add(date + " " + time + ": " + action);
     }
 
-    public List<String> getLog() {
-        return log;
+    /**
+     * Using this function you can add errors that occurred in the system to the error logger
+     * @param action - The action we want to add
+     */
+    public void addErrorToLogger(String action){
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        getErrorActionLog().add(date + " " + time + ": " + action);
     }
 
-    public void WriteObjectToFile(File filepath) {
+    private Collection<String> getErrorActionLog() {
+        return errorLog;
+    }
+
+    public List<String> getActionLog() {
+        return actionLog;
+    }
+
+    public List<String> getErrorLog() {
+        return errorLog;
+    }
+
+    public void WriteActionLoggerToFile(File filepath) {
         try {
 
             FileOutputStream fileOut = new FileOutputStream(filepath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(log);
+            objectOut.writeObject(actionLog);
             objectOut.close();
             fileOut.close();
-            System.out.println("The Logger was succesfully written to a file");
+            System.out.println("The Action Logger was successfully written to a file");
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
+
+    public void WriteErrorLoggerToFile(File filepath) {
+        try {
+
+            FileOutputStream fileOut = new FileOutputStream(filepath);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(errorLog);
+            objectOut.close();
+            fileOut.close();
+            System.out.println("The Error Logger was successfully written to a file");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }
