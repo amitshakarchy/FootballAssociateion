@@ -33,10 +33,7 @@ public class PlayerPageEditor extends APageEditor {
 
     }
 
-    @Override
-    public String getMyFisrtName() {
-        return null;
-    }
+
 
     /**
      *This feature return the content about the player that is on his personal
@@ -46,7 +43,7 @@ public class PlayerPageEditor extends APageEditor {
     @Override
     public String viewMyPersonalPage() {
         return "Welcome to my page! "+
-                "My Name is: '" + getMyFisrtName() + '\'' +
+                "My Name is: '" + super.getMyFirstName() + '\'' +
                 " " + super.getMyLastName() + '\'' +
                 "I was born on " + this.getBDay()+
                 ". My role is " + super.getRole() +

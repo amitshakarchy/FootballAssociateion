@@ -9,7 +9,7 @@ public interface IPageEditor {
      void removeFeedFromMyPage(String feed);
      Enum getRole();
      void setRole(Enum role);
-     String getMyFisrtName();
+     String getMyFirstName();
      String getMyLastName();
      List<String> getMyFeed();
      String viewMyPersonalPage();

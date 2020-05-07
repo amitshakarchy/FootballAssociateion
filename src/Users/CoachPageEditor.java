@@ -41,7 +41,7 @@ public class CoachPageEditor extends APageEditor {
     }
 
     @Override
-    public String getMyFisrtName() {
+    public String getMyFirstName() {
         return this.getMyFirstName();
     }
 
