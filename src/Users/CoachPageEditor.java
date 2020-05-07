@@ -41,9 +41,8 @@ public class CoachPageEditor extends APageEditor {
     }
 
     @Override
-    public String getMyFisrtName() {
-        return this.getMyFirstName();
-    }
+    public String getMyFirstName() {
+
 
     /**
      *This feature return the content about the coach that is on his personal

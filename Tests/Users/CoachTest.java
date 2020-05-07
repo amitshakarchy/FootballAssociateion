@@ -109,13 +109,13 @@ class CoachTest {
     void setfName() {
         Coach coach = new Coach("newCoach", "yossi","cohen",ETraining.CDiploma, ECoachRole.AssistantCoach);
         assertEquals(coach.getfName(),"yossi");
-        assertEquals(coach.getMyPage().getMyFisrtName(),"yossi");
+        assertEquals(coach.getMyPage().getMyFirstName(),"yossi");
         coach.setfName("yosi");
         assertEquals(coach.getfName(), "yosi");
-        assertEquals(coach.getMyPage().getMyFisrtName(),"yosi");
+        assertEquals(coach.getMyPage().getMyFirstName(),"yosi");
         coach.setfName(null);
         assertEquals(coach.getfName(), "yosi");
-        assertEquals(coach.getMyPage().getMyFisrtName(),"yosi");
+        assertEquals(coach.getMyPage().getMyFirstName(),"yosi");
 
 
     }

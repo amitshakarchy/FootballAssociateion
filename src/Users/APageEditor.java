@@ -134,7 +134,7 @@ public abstract class APageEditor implements IPageEditor,Serializable {
     @Override
     public String viewMyPersonalPage() {
         return "Welcome to my page! " +
-                "My Name is: '" + myFirstName + '\'' +
+                "My Name is: '" + getMyFirstName() + '\'' +
                 " " + myLastName + '\'' +
                 ". My role is " + role +
                 ", My Feed : " + myFeed;

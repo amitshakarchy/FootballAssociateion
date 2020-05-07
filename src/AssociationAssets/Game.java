@@ -219,6 +219,13 @@ public class Game {
 
     public void setDate(Date date) {
         this.date = date;
+        notifyReferees();
+    }
+
+
+    //TODO
+    private void notifyReferees() {
+
     }
 
     public void setScore(int scoreHost, int scoreGuest) {
