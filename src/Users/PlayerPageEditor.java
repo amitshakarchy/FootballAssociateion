@@ -34,7 +34,6 @@ public class PlayerPageEditor extends APageEditor {
     }
 
 
-
     /**
      *This feature return the content about the player that is on his personal
      * page and the content that the player uploads to his site.
