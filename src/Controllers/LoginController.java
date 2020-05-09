@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -12,9 +11,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginController {
+public class LoginController extends Controller{
 
-    Model model;
 
     @FXML
     public TextField userName;
@@ -22,10 +20,10 @@ public class LoginController {
     public RequiredField requiredField1;
     public RequiredField requiredField2;
     public Button loginBtn;
+    static final String STYLE_SHEET = "../View/style.css";
 
 
     public LoginController() {
-        this.model = new Model();
     }
 
     @FXML
@@ -49,6 +47,7 @@ public class LoginController {
         Parent newRoot = null;
         try {
             newRoot = FXMLLoader.load(getClass().getResource("../View/MainPage.fxml"));
+            newRoot.getStylesheets().add(getClass().getResource(STYLE_SHEET).toExternalForm());
         } catch (IOException e) {
             e.printStackTrace();
         }

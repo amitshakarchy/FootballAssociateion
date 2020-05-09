@@ -1,4 +1,5 @@
 package Controllers;
 
-public class ManagePolicyController {
+public class ManagePolicyController extends Controller{
+
 }

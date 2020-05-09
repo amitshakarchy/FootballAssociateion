@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import Controllers.ErrorLabel?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-
 <?import Controllers.RequiredField?>
-<StackPane prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CreateTeamController">
-   <SplitPane dividerPositions="0.7088353413654619" orientation="VERTICAL" prefHeight="500.0" prefWidth="500.0">
-     <items>
+<?import Controllers.ErrorLabel?>
+
+<StackPane prefHeight="900" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="Controllers.CreateTeamController">
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="500.0">
-            <children>
-                 <TextField fx:id="teamID" layoutX="93.0" layoutY="60.0" prefHeight="31.0" prefWidth="134.0" promptText="team ID" />
-                 <TextField fx:id="teamName" layoutX="93.0" layoutY="92.0" prefHeight="31.0" prefWidth="134.0" promptText="team name" />
-                 <ChoiceBox fx:id="leagueName" layoutX="93.0" layoutY="125.0" prefHeight="31.0" prefWidth="150.0">
+                 <TextField fx:id="teamID" layoutX="100.0" layoutY="90.0" prefHeight="31.0" prefWidth="134.0" promptText="team ID" />
+                 <TextField fx:id="teamName" layoutX="100.0" layoutY="140.0" prefHeight="31.0" prefWidth="134.0" promptText="team name" />
+                 <ChoiceBox fx:id="leagueName" layoutX="100.0" layoutY="190.0" prefHeight="31.0" prefWidth="150.0">
                      <items>
                          <FXCollections fx:factory="observableArrayList">
                              <String fx:value="Premier League" />
@@ -29,13 +26,13 @@
                          </FXCollections>
                      </items>
                  </ChoiceBox>
-                 <TextField fx:id="teamBudget" layoutX="93.0" layoutY="158.0" prefHeight="31.0" prefWidth="134.0" promptText="team budget" />
-                 <Label layoutX="45.0" layoutY="97.0" text="Name:" />
-                 <Label layoutX="38.0" layoutY="163.0" text="Budget:" />
-                 <Label layoutX="12.0" layoutY="199.0" text="Home Field:" />
-                 <Label layoutX="43.0" layoutY="130.0" text="League:" />
-                 <Label layoutX="38.0" layoutY="240.0" text="Season:" />
-                 <ChoiceBox fx:id="fieldChoiceBox" layoutX="93.0" layoutY="194.0" prefWidth="150.0">
+                 <TextField fx:id="teamBudget" layoutX="100.0" layoutY="240.0" prefHeight="31.0" prefWidth="134.0" promptText="team budget" />
+                 <Label styleClass="labelNormal" layoutX="45.0" layoutY="140.0" text="Name:" />
+                 <Label styleClass="labelNormal" layoutX="38.0" layoutY="240.0" text="Budget:" />
+                 <Label styleClass="labelNormal" layoutX="12.0" layoutY="290.0" text="Home Field:" />
+                 <Label styleClass="labelNormal" layoutX="43.0" layoutY="190.0" text="League:" />
+                 <Label styleClass="labelNormal" layoutX="38.0" layoutY="340.0" text="Season:" />
+                 <ChoiceBox fx:id="fieldChoiceBox" layoutX="100.0" layoutY="290.0" prefWidth="150.0">
                      <items>
                          <FXCollections fx:factory="observableArrayList">
                              <String fx:value="Blomfield" />
@@ -45,7 +42,7 @@
                          </FXCollections>
                      </items>
                  </ChoiceBox>
-                 <ChoiceBox fx:id="seasonChoiceBox" layoutX="93.0" layoutY="235.0" prefWidth="150.0">
+                 <ChoiceBox fx:id="seasonChoiceBox" layoutX="100.0" layoutY="340.0" prefWidth="150.0">
                      <items>
                          <FXCollections fx:factory="observableArrayList">
                              <String fx:value="2020" />
@@ -54,13 +51,10 @@
                          </FXCollections>
                      </items>
                  </ChoiceBox>
-                 <Button layoutX="93.0" layoutY="287.0" mnemonicParsing="false" onAction="#clickOnCreateTeam" prefHeight="53.0" prefWidth="168.0" text="Create Team" />
-                 <Label layoutX="14.0" layoutY="14.0" text="Details For Creating New Team:" />
-               <Label layoutX="67.0" layoutY="65.0" text="ID:" />
+                 <Button layoutX="93.0" layoutY="400.0" mnemonicParsing="false" onAction="#clickOnCreateTeam" prefHeight="53.0" prefWidth="168.0" text="Create Team" />
+                 <Label styleClass="labelHeadline " layoutX="10.0" layoutY="14.0" text="Creating New Team:" />
+               <Label styleClass="labelNormal" layoutX="67.0" layoutY="90.0" text="ID:" />
 
-            </children>
-         </AnchorPane>
-       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
            <fx:define>
                <RequiredField fx:id="requiredField1" >
                    <srcControl>
@@ -96,41 +90,38 @@
                </RequiredField>
 
            </fx:define>
-           <ErrorLabel layoutX="10.0" layoutY="10.0" message="Please enter the ID" styleClass="first-error">
+           <ErrorLabel layoutX="245.0" layoutY="95.0" message="Please enter the ID" styleClass="first-error">
                <validator>
                    <fx:reference source="requiredField1"/>
                </validator>
            </ErrorLabel>
-           <ErrorLabel layoutX="10.0" layoutY="30.0" message="Please enter the name" >
+           <ErrorLabel layoutX="245.0" layoutY="145.0" message="Please enter the name" >
                <validator>
                    <fx:reference source="requiredField2"/>
                </validator>
            </ErrorLabel>
 
-           <ErrorLabel layoutX="10.0" layoutY="50.0" message="Please enter the League" >
+           <ErrorLabel layoutX="255.0" layoutY="195.0" message="Please enter the League" >
                <validator>
                    <fx:reference source="requiredField3"/>
                </validator>
            </ErrorLabel>
-           <ErrorLabel layoutX="10.0" layoutY="70.0" message="Please enter the budget" >
+           <ErrorLabel layoutX="245.0" layoutY="245.0" message="Please enter the budget" >
                <validator>
                    <fx:reference source="requiredField4"/>
                </validator>
            </ErrorLabel>
 
-           <ErrorLabel layoutX="10.0" layoutY="90.0" message="Please enter the home field" >
+           <ErrorLabel layoutX="255.0" layoutY="295.0" message="Please enter the home field" >
                <validator>
                    <fx:reference source="requiredField5"/>
                </validator>
            </ErrorLabel>
 
-           <ErrorLabel layoutX="10.0" layoutY="110.0" message="Please enter the season" >
+           <ErrorLabel layoutX="255.0" layoutY="345.0" message="Please enter the season" >
                <validator>
                    <fx:reference source="requiredField6"/>
                </validator>
            </ErrorLabel>
-
-         </AnchorPane>
-     </items>
-   </SplitPane>
+       </AnchorPane>
 </StackPane>
