@@ -13,8 +13,6 @@ import java.util.List;
 
 public class Model implements IModel {
 
-    //Search search;
-    //Object user;
     Fan user;
     FootballSystem footballSystem = FootballSystem.getInstance();
     ValidateObject validate;
@@ -118,16 +116,14 @@ public class Model implements IModel {
      */
     @Override
     public boolean login(String username, String password) {
-        Guest guest = new Guest();
-        Fan tmpUser = guest.logInGuest(username, password);
+        // TODO: 5/8/2020 to add new exception in case of login is failed - password or username is incorret
+        Fan tmpUser = footballSystem.login(username,password);
         // In case login failed
         if (tmpUser == null) {
             return false;
         }
         // Save the user as an object
-        user = FootballSystem.getInstance().getFanByUserName(username);
-        System.out.println(user instanceof SystemManager);
-        //user = search.getUserByUserName(tmpUser.getUserName());
+        user = footballSystem.getFanByUserName(username);
         return true;
     }
     //endregion
@@ -151,30 +147,22 @@ public class Model implements IModel {
      */
     @Override
     public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName) throws RecordException {
-
         // Only TeamOwner is allowed to create a team.
-        if (!(user instanceof TeamOwner))
-            return false;
+        if (!(user instanceof TeamOwner)){
+            throw new RecordException("You do not have permission to create new team");
+        }
         TeamOwner teamOwnerUser = (TeamOwner) user;
-
         Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
 
         // Get an existing field or create one and add it TO fields DB
         Field field = footballSystem.getFieldDB().getAllFields().get(fieldName);
         if (field == null) {
-           // field = FootballSystem.getInstance().createField(fieldName, fieldCity, 5000);
+            throw new RecordException("The field" + fieldName + "is not exits");
         }
-        //Field field = FootballSystem.getFieldByFieldName(fieldName);
-//        if (field == null) {
-//            field = FootballSystem.getInstance().createField(fieldName, fieldCity, 5000);
-//        }
-
         // Create a new team.
         Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
-
         // Now need to add new data to the DB
-        FootballSystem.getInstance().addTeamToDB(newTeam);
-
+        footballSystem.addTeamToDB(newTeam);
         return true;
     }
 
