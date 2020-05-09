@@ -15,6 +15,8 @@ import java.util.Observer;
 import java.util.Random;
 import System.*;
 
+import javax.security.auth.login.FailedLoginException;
+
 public class RepresentativeFootballAssociation extends Fan implements Observer  {
     private GamesAssigningPolicy gamePolicy;
     private AssociationBudget associationBudget;
@@ -96,7 +98,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      * @param lName - referee's last name
      * @param training -  training's referee ID
      */
-    public Referee nominateReferee(String fName, String lName, EReferee training) {
+    public Referee nominateReferee(String fName, String lName, EReferee training) throws FailedLoginException {
         if(fName == null || lName == null || training == null){
             return null;
         }

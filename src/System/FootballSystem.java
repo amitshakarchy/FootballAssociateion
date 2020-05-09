@@ -331,8 +331,7 @@ public class FootballSystem {
                 return fansHashMap.get(userName);
             }
         }
-        else throw new FailedLoginException("User name is incorrect!");
-        System.out.println("user name or password incorrect");
+        //System.out.println("user name or password incorrect");
         return null;
     }  // useCase 2.3
 

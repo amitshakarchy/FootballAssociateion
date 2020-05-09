@@ -6,6 +6,7 @@ import Users.*;
 import System.*;
 import javafx.util.Pair;
 
+import javax.security.auth.login.FailedLoginException;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -115,16 +116,22 @@ public class Model implements IModel {
      * @return true or false for success or failure
      */
     @Override
-    public boolean login(String username, String password) {
+    public boolean login(String username, String password)  {
         // TODO: 5/8/2020 to add new exception in case of login is failed - password or username is incorret
-        Fan tmpUser = footballSystem.login(username,password);
-        // In case login failed
-        if (tmpUser == null) {
-            return false;
+        try{
+            Fan tmpUser = footballSystem.login(username,password);
+            // In case login failed
+            if (tmpUser == null) {
+                return false;
+            }
+            // Save the user as an object
+            user = footballSystem.getFanByUserName(username);
+            return true;
         }
-        // Save the user as an object
-        user = footballSystem.getFanByUserName(username);
-        return true;
+       catch (FailedLoginException e){
+            // pop up some message
+           return false;
+       }
     }
     //endregion
 

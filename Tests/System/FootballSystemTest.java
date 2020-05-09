@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import javax.security.auth.login.FailedLoginException;
 import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -127,7 +128,7 @@ class FootballSystemTest {
     }
 
     @Test
-    void login() {
+    void login()  throws FailedLoginException {
         assertTrue(null != FootballSystem.getInstance().signIn("Tair","12","tair","cohen"));
         assertEquals(1,FootballSystem.getInstance().fansHashMap.size());
         assertTrue(null != FootballSystem.getInstance().login("Tair","12"));

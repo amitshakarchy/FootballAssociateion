@@ -3,6 +3,8 @@ import AssociationAssets.EEventType;
 import AssociationAssets.Event;
 import AssociationAssets.Game;
 import System.*;
+
+import javax.security.auth.login.FailedLoginException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -249,7 +251,7 @@ public class Referee extends Fan {
     /**
      * Yarin's request
      */
-    public void LoginInvitation(String userName , String pass){
+    public void LoginInvitation(String userName , String pass)throws FailedLoginException {
         FootballSystem.getInstance().login(userName,pass);
     }
 }

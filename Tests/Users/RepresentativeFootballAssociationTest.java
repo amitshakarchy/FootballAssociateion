@@ -9,6 +9,7 @@ import System.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.security.auth.login.FailedLoginException;
 import java.sql.Time;
 import java.util.Date;
 import java.util.HashMap;
@@ -80,7 +81,7 @@ public class RepresentativeFootballAssociationTest {
     }
 
     @Test
-    public void nominateReferee() {
+    public void nominateReferee()  throws FailedLoginException {
         Referee referee = representative.nominateReferee("Dani","Mizrahi",EReferee.ASSISTANT);
         assertTrue(FootballSystem.getInstance().existFanByUserName(referee.getUserName()));
         Referee referee2=  representative.nominateReferee("Dani","Mizrahi",EReferee.ASSISTANT);

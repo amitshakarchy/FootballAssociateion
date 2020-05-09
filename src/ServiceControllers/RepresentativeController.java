@@ -5,6 +5,8 @@ import Budget.TeamBudget;
 import PoliciesAndAlgorithms.*;
 import Users.*;
 import System.*;
+
+import javax.security.auth.login.FailedLoginException;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -86,8 +88,14 @@ public class RepresentativeController {
                 "    MAIN\n" +
                 "    ASSISTANT\n");
         EReferee role = EReferee.valueOf(input.nextLine());
-        rep.nominateReferee(firstName, lastName, role);
-        System.out.println("A new referee was nominated");
+        try{
+            rep.nominateReferee(firstName, lastName, role);
+            System.out.println("A new referee was nominated");
+        }
+
+        catch (FailedLoginException e){
+
+        }
     }
 
     /**
