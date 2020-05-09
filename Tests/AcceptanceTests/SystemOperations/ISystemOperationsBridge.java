@@ -1,5 +1,6 @@
 package AcceptanceTests.SystemOperations;
 
+import AcceptanceTests.DataObjects.TeamDetails;
 import AcceptanceTests.DataObjects.UserDetails;
 
 public interface ISystemOperationsBridge {
@@ -23,4 +24,9 @@ public interface ISystemOperationsBridge {
      */
     boolean register(String userName, String password, String firstName, String lastName);
 
+    TeamDetails getNewRegisteredTeamForTest();
+
+    boolean createNewTeam(String name, String leagueName, String seasonYear, String fieldName);
+
+    boolean createNewTeamWithotTeamOwner(String nonExistFieldName, String la_liga, String s, String nonExistFieldName1);
 }

@@ -1,5 +1,6 @@
 package AcceptanceTests.SystemOperations;
 
+import AcceptanceTests.DataObjects.TeamDetails;
 import AcceptanceTests.DataObjects.UserDetails;
 
 public class SystemOperationProxy implements  ISystemOperationsBridge{
@@ -33,5 +34,21 @@ public class SystemOperationProxy implements  ISystemOperationsBridge{
         return true;
     }
 
+    @Override
+    public boolean createNewTeam(String name, String leagueName, String seasonYear, String fieldName) {
+        if (real != null){
+            return real.createNewTeam(name,leagueName,seasonYear,fieldName);
+        }
+        return false;
+    }
 
+    @Override
+    public TeamDetails getNewRegisteredTeamForTest() {
+        return null;
+    }
+
+    @Override
+    public boolean createNewTeamWithotTeamOwner(String nonExistFieldName, String la_liga, String s, String nonExistFieldName1) {
+        return false;
+    }
 }
