@@ -4,19 +4,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane  fx:controller="Controllers.MainPageController" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainPageController">
    <children>
-      <Pane prefHeight="400.0" prefWidth="600.0">
+      <Pane prefHeight="900.0" prefWidth="900.0">
          <children>
-            <Button fx:id="managePolicyBtn" onAction="#managePolicyClick" layoutX="78.0" layoutY="267.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" text="Manage Policy" />
-            <Button fx:id="manageTeamBtn" onAction="#manageTeamClick" layoutX="78.0" layoutY="32.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" text="Manage Team" />
-            <Button fx:id="manageGameBtn" onAction="#manageGameClick" layoutX="78.0" layoutY="149.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="170.0" text="Manage Game" />
-            <Label layoutX="269.0" layoutY="72.0" text="Welcome To The Football System!" textFill="#6133bc" textOverrun="CENTER_ELLIPSIS" wrapText="true">
-               <font>
-                  <Font name="Calibri Bold Italic" size="22.0" />
-               </font>
+            <Button fx:id="managePolicyBtn" layoutX="612.0" layoutY="172.0" mnemonicParsing="false" onAction="#managePolicyClick" prefHeight="64.0" prefWidth="206.0" text="Manage Policy" />
+            <Button fx:id="manageTeamBtn" layoutX="69.0" layoutY="172.0" mnemonicParsing="false" onAction="#manageTeamClick" prefHeight="64.0" prefWidth="206.0" text="Manage Team" />
+            <Button fx:id="manageGameBtn" layoutX="345.0" layoutY="172.0" mnemonicParsing="false" onAction="#manageGameClick" prefHeight="64.0" prefWidth="206.0" text="Manage Game" />
+            <Label layoutX="83.0" layoutY="78.0" prefHeight="52.0" prefWidth="747.0" styleClass="labelHeadline" text="The Football System!" textOverrun="CENTER_ELLIPSIS" wrapText="true">
             </Label>
          </children>
       </Pane>

@@ -4,18 +4,22 @@
 }
 
 
+
 .root {
-    /*-fx-background-image: url('background.png');*/
-    /*-fx-background-size: cover;*/
-    /*-fx-background-position: center center;*/
-    /*-fx-background-repeat: no-repeat;*/
+    -fx-background-image: url("../background.jpg");
+    -fx-text-fill: white;
+    -fx-font-family: "calibri";
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+
 }
 
 Button {
     -fx-text-fill: white;
-    -fx-font-family: "Forte";
+    -fx-font-family: "calibri";
     -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#e1ebff, #58244f);
+    -fx-font-size: 18;
+    -fx-background-color: linear-gradient(#e1ebff, #4fb134);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
@@ -30,10 +34,10 @@ Button:hover{
 
 
 MenuButton {
-    -fx-font-family: "Forte";
+    -fx-font-family: "calibri";
     -fx-font-weight: bold;
     -fx-font-size: 18;
-    -fx-background-color: linear-gradient(#e1ebff, #58244f);
+    -fx-background-color: linear-gradient(#e1ebff, #4fb134);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 
 }
@@ -45,15 +49,38 @@ MenuButton:hover{
     -fx-content-display: LEFT;
 }
 
-.hbox {
-    -fx-background-color: #a8bbff;
-    -fx-padding: 15;
-    -fx-spacing: 10;
-    -fx-font-size: 16;
-    -fx-font-color: #e1ebff;
-}
+/*.hbox {*/
+    /*-fx-background-color: #a8bbff;*/
+    /*-fx-padding: 15;*/
+    /*-fx-spacing: 10;*/
+    /*-fx-font-size: 16;*/
+    /*-fx-font-color: #e1ebff;*/
+/*}*/
 
 Label{
     -fx-font-size: 16;
     -fx-font-color: #e1ebff;
 }
+
+.labelHeadline {
+    -fx-font-size: 48px;
+    -fx-font-family: "Arial Black";
+    -fx-fill: #ffffff;
+    -fx-effect: innershadow( three-pass-box , rgba(255, 255, 255, 0.7), 6, 0.0 , 0 , 2 );
+ }
+
+.labelNormal {
+    -fx-font-size: 18px;
+    -fx-font-family: "Calibri";
+    -fx-fill: #e1ebff;
+    -fx-effect: innershadow( three-pass-box , rgba(255, 255, 255, 0.7), 6, 0.0 , 0 , 2 );
+}
+/*.text-field {*/
+    /*-fx-background-color: #a9a9a9 , white , white;*/
+    /*-fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;*/
+/*}*/
+
+/*.text-field:focused {*/
+    /*-fx-background-color: #a9a9a9 , white , white;*/
+    /*-fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;*/
+/*}*/

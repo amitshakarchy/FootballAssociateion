@@ -6,7 +6,7 @@ import System.*;
 
 public class ValidateObject {
 
-    static Search search;
+    static Search search = new Search();
 
     /**
      * Validates a presence of a league in the system

@@ -1,43 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import java.lang.String?>
-<AnchorPane styleClass="hbox" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ManageTeamController">
-    <Button styleClass="hbox" layoutX="33.0" layoutY="117.0" mnemonicParsing="false" text="Add Team Property"/>
-    <Button layoutX="34.0" layoutY="148.0" mnemonicParsing="false" text="Remove Team Property"/>
-    <Button fx:id="createNewTeamBtn" onAction="#createNewTeam" layoutX="388.0" layoutY="56.0" mnemonicParsing="false"
-            prefHeight="35.0" prefWidth="149.0" text="Create New Team"/>
-    <Button layoutX="34.0" layoutY="179.0" mnemonicParsing="false" text="Edit Team Property"/>
-    <ChoiceBox layoutX="32.0" layoutY="74.0" prefWidth="150.0">
+
+<AnchorPane prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ManageTeamController">
+    <Button fx:id="addTP" onAction="#addTeamProp" layoutX="78.0" layoutY="200.0" mnemonicParsing="false" styleClass="hbox" text="Add Team Property" />
+    <Button fx:id="removeTP" onAction="#removeTeamProp" layoutX="79.0" layoutY="238.0" mnemonicParsing="false" text="Remove Team Property" />
+    <Button fx:id="createNewTeamBtn" layoutX="553.0" layoutY="143.0" mnemonicParsing="false" onAction="#createNewTeam" prefHeight="35.0" prefWidth="175.0" text="Create New Team" />
+    <Button fx:id="editTP" layoutX="79.0" onAction="#editTeamProp" layoutY="275.0" mnemonicParsing="false" text="Edit Team Property" />
+    <ChoiceBox fx:id="teamName" layoutX="77.0" layoutY="154.0" prefWidth="150.0">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Maccabi Tel Aviv"/>
-                <String fx:value="Beitar"/>
-                <String fx:value="Choose Team"/>
+                <String fx:value="Maccabi Tel Aviv" />
+                <String fx:value="Beitar" />
+                <String fx:value="Choose Team" />
             </FXCollections>
         </items>
         <value>
-            <String fx:value="Choose Team"/>
+            <String fx:value="Choose Team" />
         </value>
     </ChoiceBox>
-    <Label layoutX="30.0" layoutY="49.0" text="Please Choose Team &amp; Action"/>
-    <Label layoutX="48.0" layoutY="18.0" text="Exist Team:">
+    <Label layoutX="75.0" layoutY="129.0" styleClass="labelNormal" text="Please Choose Team &amp; Action" />
+    <Label layoutX="80.0" layoutY="18.0" styleClass="labelHeadline" text="Exist Team:">
         <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
         </font>
     </Label>
-    <Label layoutX="395.0" layoutY="18.0" text="New Team:">
+    <Label layoutX="550.0" layoutY="18.0" styleClass="labelHeadline" text="New Team:">
         <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
         </font>
     </Label>
-    <Button layoutX="35.0" layoutY="210.0" mnemonicParsing="false" text="Nominate Team Owner"/>
-    <Button layoutX="35.0" layoutY="241.0" mnemonicParsing="false" text="Nominate Team Manager"/>
-    <Button layoutX="34.0" layoutY="303.0" mnemonicParsing="false" text="Remove Team Manager"/>
-    <Button layoutX="34.0" layoutY="272.0" mnemonicParsing="false" text="Remove Team Owner"/>
-    <Button layoutX="33.0" layoutY="334.0" mnemonicParsing="false" text="Close Team"/>
+    <Button fx:id="nominateTO" onAction="#nominateTeamOwner" layoutX="80.0" layoutY="313.0" mnemonicParsing="false" text="Nominate Team Owner" />
+    <Button fx:id="nominateTM" onAction="#nominateTeamManager" layoutX="80.0" layoutY="353.0" mnemonicParsing="false" text="Nominate Team Manager" />
+    <Button fx:id="removeTM" onAction="#removeTeamManager" layoutX="80.0" layoutY="433.0" mnemonicParsing="false" text="Remove Team Manager" />
+    <Button fx:id="removeTO" onAction="#removeTeamOwner" layoutX="80.0" layoutY="393.0" mnemonicParsing="false" text="Remove Team Owner" />
+    <Button fx:id="closeTeam" onAction="#closeTeam" layoutX="80.0" layoutY="474.0" mnemonicParsing="false" text="Close Team" />
+    <Button fx:id="editTeamDetails" onAction="#editTeamDetails" layoutX="80.0" layoutY="515.0" mnemonicParsing="false" text="Edit Team Details" />
+
 </AnchorPane>
