@@ -166,7 +166,7 @@ public class Player extends CanBeOwner {
     public void setfName(String fName) {
         if(fName != null) {
             super.setfName(fName);
-            this.myPage.setMyFisrtName(fName);
+            this.myPage.setMyFirstName(fName);
         }
     }
 

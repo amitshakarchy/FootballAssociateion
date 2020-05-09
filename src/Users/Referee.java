@@ -86,8 +86,11 @@ public class Referee extends Fan {
             if(gameToAdd.isUpdatable(2)) {
                 gameToAdd.addEvent(eventType, description);
                 Logger.getInstance().addActionToLogger("Referee added event to assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
-
+                gameToAdd.notifyObserver(description,eventType);
             }
+        }
+        else{
+            Logger.getInstance().addErrorToLogger("Referee adding event to assigned game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
         }
     }
 
@@ -106,9 +109,11 @@ public class Referee extends Fan {
             if(gameToAdd.isUpdatable(2)) {
                 gameToAdd.editEvent(eventIndex, eventType, description);
                 Logger.getInstance().addActionToLogger("Referee update event to assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
-
+                gameToAdd.notifyObserver(description,eventType);
+                return;
             }
         }
+        Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
     }
 
     /**
@@ -124,9 +129,10 @@ public class Referee extends Fan {
             if(gameToAdd.isUpdatable(2)) {
                 gameToAdd.removeEvent(eventIndex);
                 Logger.getInstance().addActionToLogger("Referee remove event from assigned game, user name: "+ getUserName()+" GameID: "+gameID);
-
+                return;
             }
         }
+        Logger.getInstance().addErrorToLogger("Referee remove event to assigned game was failed. " + getUserName()+" GameID: "+gameID);
     }
 
     /**
@@ -144,11 +150,12 @@ public class Referee extends Fan {
             if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.getUserName()) && eventIndex!= -1) {
                 if(gameToAdd.isUpdatable(7)) {
                     gameToAdd.editEvent(eventIndex, eventType, description);
-                    Logger.getInstance().addActionToLogger("Referee edit event from assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
-
+                    Logger.getInstance().addActionToLogger("Referee edit event from finished game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
+                    return;
                 }
             }
         }
+        Logger.getInstance().addErrorToLogger("Referee edit event to finished game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
     } //10.4
 
     /**
@@ -166,10 +173,12 @@ public class Referee extends Fan {
                 if(gameToAdd.isUpdatable(7)){
                     gameToAdd.removeEvent(eventIndex);
                     Logger.getInstance().addActionToLogger("Referee remove event from assigned game, user name: "+ getUserName()+" GameID: "+gameID);
-
+                    return;
                 }
             }
         }
+        Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
+
     }
 
     /**
@@ -187,8 +196,12 @@ public class Referee extends Fan {
                     Logger.getInstance().addActionToLogger("Referee export report from the game, user name: "+ getUserName()+" GameID: "+gameID);
 
                 }
+                else  Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName()+" GameID: "+gameID);
+
             }
         }
+        else  Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName()+" GameID: "+gameID);
+
     }
 
     /**

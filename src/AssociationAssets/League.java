@@ -3,6 +3,8 @@ package AssociationAssets;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -16,10 +18,14 @@ public class League {
 
 
     public League(String name) {
+        /*
+        LocalDate date = LocalDate.now();
+        LocalTime now = LocalTime.now();
+        // Write to the log
+        Logger.getInstance().addActionToLogger(date + " " + now + "League was created. League Name: "+name+".");
+         */
         this.name = name;
         seasonBinders = new HashMap<>();
-        // Write to the log
-        Logger.getInstance().addActionToLogger("League was created. League Name: "+name+".");
     }
 
     //region Getters & Setters

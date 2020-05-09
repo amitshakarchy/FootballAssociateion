@@ -1,4 +1,5 @@
 package Controllers;
 
-public class ManageGameController {
+public class ManageGameController extends Controller{
+
 }

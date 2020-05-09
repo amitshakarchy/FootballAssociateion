@@ -91,11 +91,11 @@ class PlayerTest {
         assertEquals(player.getfName(),"yossi");
         player.setfName("yosi");
         assertEquals(player.getfName(), "yosi");
-        assertEquals(player.getMyPage().getMyFisrtName(), "yosi");
+        assertEquals(player.getMyPage().getMyFirstName(), "yosi");
 
         player.setfName(null);
         assertEquals(player.getfName(), "yosi");
-        assertEquals(player.getMyPage().getMyFisrtName(), "yosi");
+        assertEquals(player.getMyPage().getMyFirstName(), "yosi");
 
 
     }

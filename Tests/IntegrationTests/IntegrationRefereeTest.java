@@ -5,6 +5,7 @@ import AssociationAssets.Field;
 import AssociationAssets.Season;
 import Users.*;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -32,13 +33,13 @@ public class IntegrationRefereeTest {
         teamStub2 = new TeamStub(3,"team2",new Season("2020"),field,null,new TeamOwner("b","b","c"),1);
         gameStub = new GameStub(new Date(),new Time(23),null,teamStub1,teamStub2,referee,referee2,referee3,null,null,1);
         referee.addGame(gameStub);
-        gameStub.addEvent(EEventType.GOAL,"amazing goal by yuval");
+        gameStub.addEvent(EEventType.GOAL,"amazing goal by tair");
     }
 
     @Test
     public void removeEventAfterGame(){
-        referee.removeEventsAfterGameOver(1,0);
-        assertEquals(referee.getMyGames().get(0).getEvents().size(),1);
+        referee.removeEventsAfterGameOver(2,0);
+        assertEquals(referee.getMyGames().get(0).getEvents().size(),0);
 
     }
     @Test
@@ -49,7 +50,7 @@ public class IntegrationRefereeTest {
     }
     @Test
     public void editEventsAfterGameOver(){
-        referee.editEventsAfterGameOver(1,0,EEventType.GOAL,"amazing goal by yuval");
+        referee.editEventsAfterGameOver(3,0,EEventType.GOAL,"amazing goal by yuval");
         assertEquals(referee.getMyGames().get(0).getEvents().get(0).getDescription(),"amazing goal by yuval");
 
     }

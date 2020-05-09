@@ -123,14 +123,29 @@ public class Game {
     }
 
     public boolean isUpdatable(int hoursSinceGameStarted) {
-        Date currentDate = new Date();
+        LocalDateTime currentDate = LocalDateTime.now();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        if( sdf.format(date).equals(sdf.format(currentDate))) {
-            Calendar cal = Calendar.getInstance();
-            SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
-            Time endUpdateTime = new Time(time.getHours() + hoursSinceGameStarted,time.getMinutes(),time.getSeconds());
-            return LocalTime.now().isBefore(LocalTime.parse(endUpdateTime.toString())) && LocalTime.now().isAfter(LocalTime.parse(time.toString()));
+        if(currentDate.getYear() == date.getYear()){
+            if(currentDate.getMonthValue() == date.getMonth() + 1){
+                if(currentDate.getDayOfMonth() == date.getDate()){
+                    Calendar cal = Calendar.getInstance();
+                    SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
+                    Time endUpdateTime = new Time(time.getHours() + hoursSinceGameStarted,time.getMinutes(),time.getSeconds());
+                    return LocalTime.now().isBefore(LocalTime.parse(endUpdateTime.toString())) && LocalTime.now().isAfter(LocalTime.parse(time.toString()));
+                }
+            }
         }
+//        if(date.getDay() == currentDate.getDay()){
+//            if(date.getYear() == currentDate.getYear()){
+//                if(date.getMonth() == currentDate.getMonth()){
+//                    Calendar cal = Calendar.getInstance();
+//                    SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
+//                    Time endUpdateTime = new Time(time.getHours() + hoursSinceGameStarted,time.getMinutes(),time.getSeconds());
+//                    return LocalTime.now().isBefore(LocalTime.parse(endUpdateTime.toString())) && LocalTime.now().isAfter(LocalTime.parse(time.toString()));
+//                }
+//            }
+//        }
+
         return false;
         
     }
@@ -204,6 +219,13 @@ public class Game {
 
     public void setDate(Date date) {
         this.date = date;
+        notifyReferees();
+    }
+
+
+    //TODO
+    private void notifyReferees() {
+
     }
 
     public void setScore(int scoreHost, int scoreGuest) {
@@ -314,12 +336,12 @@ public class Game {
     }
 
 
-    public void notifyObserver() {
+    public void notifyObserver(String description,EEventType eventType) {
 
         if (this.observers.size() > 0) {
             for (Fan fan :
                     this.observers) {
-                fan.updateGame(this);
+                fan.updateGame(description,eventType);
             }
 
         }
@@ -329,18 +351,18 @@ public class Game {
     @Override
     public String toString() {
         return "Game{" +
-                "season=" + season +
-                ", league=" + league +
+                "season=" + season.getYear() +
+                ", league=" + league.getLeagueName() +
                 ", GID=" + GID +
-                ", date=" + date +
-                ", time=" + time +
-                ", score=" + score +
-                ", field=" + field +
-                ", host team=" + host +
-                ", guest team=" + guest +
-                ", main referee=" + main +
-                ", side1 referee=" + side1 +
-                ", side2 referee=" + side2 +
+                ", date=" + date.toString() +
+                ", time=" + time.toString() +
+                ", score=" + score.goalsGuest + ":" + score.goalsHost +
+                ", field=" + field.name +
+                ", host team=" + host.getName() +
+                ", guest team=" + guest.getName() +
+                ", main referee=" + main.getfName() + " " + main.getlName() +
+                ", side1 referee=" + side1.getfName()+ " " +side1.getlName() +
+                ", side2 referee=" + side2.getfName() + " " +side2.getlName() +
                 '}';
     }
 }
