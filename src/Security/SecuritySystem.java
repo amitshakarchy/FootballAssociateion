@@ -1,5 +1,6 @@
 package Security;
 
+import javax.security.auth.login.FailedLoginException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,18 +71,16 @@ public class SecuritySystem {
      * @param password
      * @return true if the password is correct, otherwise - false
      */
-    public boolean checkPasswordForLogIn(String userName, String password) {
+    public boolean checkPasswordForLogIn(String userName, String password) throws FailedLoginException {
         if (!usersHashMap.containsKey(userName)) {
             System.out.println("the user name is NOT EXISTS in the system");
-            return false;
+            throw new FailedLoginException("User name doesn't exists");
         }
         if (AES.decrypt(usersHashMap.get(userName), secretKey).equals(password)) {
             // the user can log in, the password is correct
             return true;
         }
-        //else..
-        System.out.println("the password is wrong");
-        return false;
+        throw new FailedLoginException("Incorrect Password");
     }
 
     /**

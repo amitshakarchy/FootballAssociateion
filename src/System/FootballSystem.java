@@ -8,6 +8,7 @@ import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import Security.SecuritySystem;
 import Users.*;
 
+import javax.security.auth.login.FailedLoginException;
 import java.util.*;
 
 /**
@@ -324,12 +325,13 @@ public class FootballSystem {
      * @param password
      * @return the fan if the login succeed or null if the username or password are incorrect
      */
-    public Fan login(String userName, String password) {
+    public Fan login(String userName, String password)  throws FailedLoginException {
         if (securitySystem.checkPasswordForLogIn(userName, password)) {
             if (this.fansHashMap.containsKey(userName)) {
                 return fansHashMap.get(userName);
             }
         }
+        else throw new FailedLoginException("User name is incorrect!");
         System.out.println("user name or password incorrect");
         return null;
     }  // useCase 2.3
