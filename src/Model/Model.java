@@ -5,11 +5,7 @@ import PoliciesAndAlgorithms.*;
 import Users.*;
 import System.*;
 import javafx.util.Pair;
-
-import java.io.FileOutputStream;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Model implements IModel {
 
@@ -134,6 +130,7 @@ public class Model implements IModel {
         return footballSystem.signIn(userName,password,firstName,lastName)!= null;
     }
     //endregion
+
     //region Team Management
     /**
      * Creates a new team out of the given details.
@@ -372,7 +369,6 @@ public class Model implements IModel {
 
     //endregion
 
-
     //region Policy Management
     /**
      * Receives a policy by its name for a specific season & league and sets it.
@@ -460,7 +456,6 @@ public class Model implements IModel {
     }
     //endregion
 
-
     //region Game Management
 
     /**
@@ -473,16 +468,12 @@ public class Model implements IModel {
      */
     @Override
     public boolean addEvent(int gameID, String eventType, String description) throws RecordException {
-
         // Only Referee is allowed to add an event.
         if (!(user instanceof Referee))
-            return false;
-
+            throw new RecordException("You do not have permission to add event");
         ValidateObject.getValidatedGame(gameID);
-
         Referee referee= (Referee)user;
         referee.addEventToAssignedGame(gameID,EEventType.valueOf(eventType),description);
-
         return true;
     }
 
