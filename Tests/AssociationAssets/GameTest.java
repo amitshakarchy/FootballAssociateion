@@ -54,20 +54,20 @@ public class GameTest {
 
     @Test
     public void addEvent() {
-        game.addEvent(EEventType.GOAL, "bla");
+        game.addEvent(EEventType.GOALHOST, "bla");
         assertEquals(game.getEvents().get(0).getDescription(), "bla");
     }
 
     @Test
     public void editEvent() {
-        game.addEvent(EEventType.GOAL, "bla");
-        game.editEvent(0, EEventType.GOAL, "blu");
+        game.addEvent(EEventType.GOALHOST, "bla");
+        game.editEvent(0, EEventType.GOALHOST, "blu");
         assertEquals(game.getEvents().get(0).getDescription(), "blu");
     }
 
     @Test
     public void removeEvent() {
-        game.addEvent(EEventType.GOAL, "bla");
+        game.addEvent(EEventType.GOALHOST, "bla");
         game.removeEvent(0);
         assertEquals(game.getEvents().size(), 0);
 

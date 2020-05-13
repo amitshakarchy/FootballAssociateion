@@ -5,6 +5,7 @@ import AssociationAssets.Season;
 import AssociationAssets.Team;
 import System.*;
 
+import javax.security.auth.login.FailedLoginException;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -26,7 +27,7 @@ public class Guest {
      * @param firstName
      * @param lastName
      */
-    public Fan signInGuest(String userName, String password, String firstName, String lastName) {
+    public Fan signInGuest(String userName, String password, String firstName, String lastName) throws FailedLoginException {
         Fan newFan = FootballSystem.getInstance().signIn(userName, password, firstName, lastName);
         logInGuest(userName, password);
         return newFan;
@@ -37,7 +38,7 @@ public class Guest {
      * @param userName
      * @param password
      */
-    public Fan logInGuest(String userName, String password) {
+    public Fan logInGuest(String userName, String password) throws FailedLoginException {
         Fan user = FootballSystem.getInstance().login(userName, password);
         if(user != null) user.setStatus(EStatus.ONLINE);
         return user;

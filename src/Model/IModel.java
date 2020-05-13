@@ -2,6 +2,7 @@ package Model;
 
 import javafx.util.Pair;
 
+import javax.security.auth.login.FailedLoginException;
 import java.util.LinkedList;
 
 public interface IModel {
@@ -45,7 +46,7 @@ public interface IModel {
      * @param password - password.
      * @return true or false for success or failure
      */
-    boolean login(String username, String password);
+    boolean login(String username, String password) throws FailedLoginException;
     //endregion
 
     //region Sign In

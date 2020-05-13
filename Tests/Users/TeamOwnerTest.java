@@ -36,8 +36,13 @@ class TeamOwnerTest {
         team2 = new Team(2,"Beitar",season,field,teamBudget,teamOwner2);
         team1.addSeasonToTeam(season);
         team2.addSeasonToTeam(season);
-        FootballSystem.getInstance().addTeamToDB(team1);
-        FootballSystem.getInstance().addTeamToDB(team1);
+        try {
+            FootballSystem.getInstance().addTeamToDB(team1);
+            FootballSystem.getInstance().addTeamToDB(team1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         FootballSystem.getInstance().signIn("yuval","12","yuval","Ben Eliezer");
         FootballSystem.getInstance().signIn("Gili","1","gili","la");
     }

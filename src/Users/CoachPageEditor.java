@@ -40,7 +40,7 @@ public class CoachPageEditor extends APageEditor {
 
     }
 
- 
+
 
     /**
      *This feature return the content about the coach that is on his personal

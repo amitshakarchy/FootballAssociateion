@@ -12,6 +12,7 @@ import org.junit.Test;
 import System.Search;
 import System.*;
 
+import javax.security.auth.login.FailedLoginException;
 import java.util.LinkedList;
 
 import static org.junit.Assert.*;
@@ -57,13 +58,13 @@ public class GuestTest {
     }
 
     @Test
-    public void signInGuest() {
-         guest.signInGuest("GuestTest","1234567","Dani","Dan");
+    public void signInGuest() throws FailedLoginException {
+        guest.signInGuest("GuestTest","1234567","Dani","Dan");
         assertTrue( footballSystem.getFansHashMap().containsKey("GuestTest"));
     }
 
     @Test
-    public void logInGuest() {
+    public void logInGuest()  throws FailedLoginException {
         guest.signInGuest("GuestTest","1234567","Dani","Dan");
        Fan loginUser= guest.logInGuest("GuestTest","1234567");
        assertNotNull(loginUser);

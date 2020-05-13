@@ -2,13 +2,17 @@ package System;
 
 import AssociationAssets.*;
 import DB.*;
+import Model.RecordException;
 import OutSourceSystems.AccountingSystem;
 import OutSourceSystems.TaxRegulationSystem;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import Security.SecuritySystem;
 import Users.*;
 
+import javax.security.auth.login.FailedLoginException;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * this class is Singleton for the Football System.
@@ -31,6 +35,8 @@ public class FootballSystem {
     Map<String, TeamManager> teamManagerMap = new HashMap<>();
     Map<String, TeamOwner> teamOwnerMap = new HashMap<>();
     Map<String, RepresentativeFootballAssociation> representativeFootballAssociationMap = new HashMap<>();
+    ScheduledExecutorService ses = Executors.newScheduledThreadPool(5);
+
 
 
     /**
@@ -324,13 +330,13 @@ public class FootballSystem {
      * @param password
      * @return the fan if the login succeed or null if the username or password are incorrect
      */
-    public Fan login(String userName, String password) {
+    public Fan login(String userName, String password)  throws FailedLoginException {
         if (securitySystem.checkPasswordForLogIn(userName, password)) {
             if (this.fansHashMap.containsKey(userName)) {
                 return fansHashMap.get(userName);
             }
         }
-        System.out.println("user name or password incorrect");
+        //System.out.println("user name or password incorrect");
         return null;
     }  // useCase 2.3
 
@@ -386,11 +392,10 @@ public class FootballSystem {
      * this function adds team to DB
      * @param team
      */
-    public void addTeamToDB(Team team) {
+    public void addTeamToDB(Team team) throws RecordException {
         if (team != null) {
             if (this.teamDB.getAllTeams().containsKey(team.getName())) {
-                System.out.println("The team: " + team.getName() + " is already exit in the DB");
-                return;
+                throw new RecordException("This team name is already exists in the system");
             }
             this.teamDB.addTeam(team, team.getName());
         }

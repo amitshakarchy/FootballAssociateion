@@ -5,6 +5,8 @@ import System.*;
 import java.util.Scanner;
 import AssociationAssets.*;
 
+import javax.security.auth.login.FailedLoginException;
+
 public class GuestController {
 
     Guest guest;
@@ -28,10 +30,16 @@ public class GuestController {
         System.out.println("Insert last Name");
         String lastName = input.nextLine();
 
-        Fan fan = guest.signInGuest(username, password, firstName, lastName);
-        if (fan != null)
-            System.out.println("Sign in completed successfully");
-        else System.out.println("Wrong details.");
+       try {
+           Fan fan = guest.signInGuest(username, password, firstName, lastName);
+           if (fan != null)
+               System.out.println("Sign in completed successfully");
+           else System.out.println("Wrong details.");
+       }
+       catch(FailedLoginException e){
+
+       }
+
     }
 
     /**
@@ -43,11 +51,19 @@ public class GuestController {
         String username = input.nextLine();
         System.out.println("Insert password");
         String password = input.nextLine();
-        Fan fan = guest.logInGuest(username, password);
-        if (fan != null) {
-            System.out.println("login completed successfully");
-        } else System.out.println("Wrong details.");
-        return fan;
+
+        try{
+            Fan fan = guest.logInGuest(username, password);
+            if (fan != null) {
+                System.out.println("login completed successfully");
+            } else System.out.println("Wrong details.");
+            return fan;
+        }
+       catch(FailedLoginException e){
+            String reason = e.getMessage();
+            //GUI pop up
+            return null;
+       }
     }
 
 

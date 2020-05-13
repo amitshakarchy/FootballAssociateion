@@ -30,16 +30,18 @@ public class LoginController extends Controller{
     public void submitPressed(ActionEvent actionEvent) {
         requiredField1.eval();
         requiredField2.eval();
-        if(!requiredField1.getHasErrors() && !requiredField2.getHasErrors()){
-            if(model.login(userName.getText(),password.getText())){
-                showMainPage();
+        if(!requiredField1.getHasErrors() && !requiredField2.getHasErrors()) {
+            try {
+                if (model.login(userName.getText(), password.getText())) {
+                    showMainPage();
+                }
             }
-            else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Username or Password incorrect. \n" +
-                        "Please try again.");
-                alert.showAndWait();
-            }
+                catch(Exception e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText(e.getMessage());
+                    alert.showAndWait();
+                }
+
         }
     }
 

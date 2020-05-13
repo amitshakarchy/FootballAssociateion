@@ -1,8 +1,7 @@
 package AssociationAssets;
 
-import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import PoliciesAndAlgorithms.HeuristicGamesAssigningPolicy;
-import PoliciesAndAlgorithms.ScoreTablePolicy1;
+import PoliciesAndAlgorithms.RegularScorePolicy;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,14 +41,14 @@ public class LeagueTest {
     @Test
     public void setScoreTablePolicy() {
         league.addSeasonToLeague(season);
-        league.setScoreTablePolicy("2020", new ScoreTablePolicy1());
+        league.setScoreTablePolicy("2020", new RegularScorePolicy());
         assertNotNull(league.getScoreTablePolicy(season.year));
     }
 
     @Test
     public void getScoreTablePolicy() {
         league.addSeasonToLeague(season);
-        league.setScoreTablePolicy("2020", new ScoreTablePolicy1());
+        league.setScoreTablePolicy("2020", new RegularScorePolicy());
         assertNotNull(league.getScoreTablePolicy(season.year));
     }
 
