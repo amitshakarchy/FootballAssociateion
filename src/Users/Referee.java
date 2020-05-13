@@ -2,6 +2,7 @@ package Users;
 import AssociationAssets.EEventType;
 import AssociationAssets.Event;
 import AssociationAssets.Game;
+import Model.RecordException;
 import System.*;
 
 import javax.security.auth.login.FailedLoginException;
@@ -82,7 +83,7 @@ public class Referee extends Fan {
      *
      * # use case 10.3
      */
-    public void addEventToAssignedGame(int gameID, EEventType eventType, String description){
+    public void addEventToAssignedGame(int gameID, EEventType eventType, String description) throws Exception {
         Game gameToAdd = getGame(gameID);
         if(gameToAdd != null ){
             if(gameToAdd.isUpdatable(2)) {
@@ -90,9 +91,13 @@ public class Referee extends Fan {
                 Logger.getInstance().addActionToLogger("Referee added event to assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
                 gameToAdd.notifyObserver(description,eventType);
             }
+            else{
+                throw new UnsupportedOperationException("Adding events after game over is not allowed");
+            }
         }
         else{
             Logger.getInstance().addErrorToLogger("Referee adding event to assigned game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+            throw new RecordException("This game not found");
         }
     }
 
@@ -105,7 +110,7 @@ public class Referee extends Fan {
      *
      * # use case 10.3
      */
-    public void updateEventToAssignedGame(int gameID,int eventIndex, EEventType eventType, String description){
+    public void updateEventToAssignedGame(int gameID,int eventIndex, EEventType eventType, String description) throws Exception{
         Game gameToAdd = getGame(gameID);
         if(gameToAdd != null && eventIndex!= -1 ){
             if(gameToAdd.isUpdatable(2)) {
@@ -114,8 +119,17 @@ public class Referee extends Fan {
                 gameToAdd.notifyObserver(description,eventType);
                 return;
             }
+            else{
+                Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+                throw new Exception("Can't update event, the game is finished");
+
+            }
         }
-        Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+        else {
+            Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName() + " GameID: " + gameID + " Event Type: " + eventType);
+            throw new Exception("Can't update event, this game isn't exists");
+
+        }
     }
 
     /**
@@ -125,7 +139,7 @@ public class Referee extends Fan {
      *
      * # use case 10.3
      */
-    public void removeEventFromAssignedGame(int gameID,int eventIndex){
+    public void removeEventFromAssignedGame(int gameID,int eventIndex) throws Exception{
         Game gameToAdd = getGame(gameID);
         if(gameToAdd != null && eventIndex!= -1){
             if(gameToAdd.isUpdatable(2)) {
@@ -133,8 +147,18 @@ public class Referee extends Fan {
                 Logger.getInstance().addActionToLogger("Referee remove event from assigned game, user name: "+ getUserName()+" GameID: "+gameID);
                 return;
             }
+            else{
+                Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName()+" GameID: "+gameID
+                );
+                throw new Exception("Can't remove event, the game is finished");
+            }
         }
-        Logger.getInstance().addErrorToLogger("Referee remove event to assigned game was failed. " + getUserName()+" GameID: "+gameID);
+        else {
+            Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName() + " GameID: " + gameID
+
+            );
+            throw new Exception("Can't remove event, this game isn't exists");
+        }
     }
 
     /**

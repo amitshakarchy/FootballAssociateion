@@ -159,7 +159,7 @@ class FootballSystemTest {
     }
 
     @Test
-    void addTeamToDB() {
+    void addTeamToDB() throws Exception {
         team1 = new Team(1,"Macabi-Tel-aviv",null,null,null, null);
         team2 = new Team(2,"Beitar",null,null,null, null);
         assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
@@ -177,7 +177,11 @@ class FootballSystemTest {
         team1 = new Team(1,"Macabi-Tel-aviv",null,null,null, null);
         team2 = new Team(2,"Beitar",null,null,null, null);
         assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
-        FootballSystem.getInstance().addTeamToDB(team1);
+        try {
+            FootballSystem.getInstance().addTeamToDB(team1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         assertEquals(1,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
         FootballSystem.getInstance().removeTeamFromDB(team1.getName());
         assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());

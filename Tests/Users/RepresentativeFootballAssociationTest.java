@@ -2,7 +2,7 @@ package Users;
 
 import AssociationAssets.*;
 import Budget.AssociationBudget;
-import PoliciesAndAlgorithms.ScoreTablePolicy1;
+import PoliciesAndAlgorithms.RegularScorePolicy;
 import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
 import Budget.TeamBudget;
 import System.*;
@@ -21,7 +21,7 @@ public class RepresentativeFootballAssociationTest {
     Season season;
     RepresentativeFootballAssociation representative;
     SimpleGamesAssigningPolicy gamePolicy;
-    ScoreTablePolicy1 scorePolicy;
+    RegularScorePolicy scorePolicy;
     AssociationBudget associationBudget;
     Game game1;
     Game game2;
@@ -42,7 +42,7 @@ public class RepresentativeFootballAssociationTest {
         coaches =  new HashMap<>();
         players = new HashMap<>();
         gamePolicy =new SimpleGamesAssigningPolicy() ;
-        scorePolicy =  new ScoreTablePolicy1();
+        scorePolicy =  new RegularScorePolicy();
         associationBudget = new AssociationBudget();
         field= new Field("Teddi", "Beer Sheva", 800);
         r1= new Referee("1","a","a",EReferee.MAIN);

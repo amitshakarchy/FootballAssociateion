@@ -273,7 +273,6 @@ public class TeamOwner extends Fan {
         }
         // TODO: 4/12/2020 permissions of manager!
     }
-//continue here!!!!!!!!!!!
     /**
      * this function set the Team Manager to the correct additional info of a specific team in a season.
      * @param team

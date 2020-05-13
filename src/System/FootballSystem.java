@@ -387,11 +387,10 @@ public class FootballSystem {
      * this function adds team to DB
      * @param team
      */
-    public void addTeamToDB(Team team) {
+    public void addTeamToDB(Team team) throws Exception{
         if (team != null) {
             if (this.teamDB.getAllTeams().containsKey(team.getName())) {
-                System.out.println("The team: " + team.getName() + " is already exit in the DB");
-                return;
+                throw new Exception("This team name is already exists in the system");
             }
             this.teamDB.addTeam(team, team.getName());
         }

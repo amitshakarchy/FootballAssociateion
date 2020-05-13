@@ -1,8 +1,6 @@
 package AssociationAssets;
 
 import java.sql.Time;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.util.*;
@@ -166,8 +164,14 @@ public class Game {
         this.league = league;
     }
 
-    public void setField(Field field) {
-        this.field = field;
+    public void setField(Field newField) {
+        if(newField != null && newField.name != field.name){
+            String notification;
+            notification = "Game with GID: " + this.GID + " field has changed from " + this.field.name + " to " + newField.getName();
+            this.field = newField;
+            notifyRefereesFieldChanged(notification);
+
+        }
     }
 
     public void setHost(Team host) throws Exception {
@@ -217,15 +221,50 @@ public class Game {
         this.side2 = side2;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-        notifyReferees();
+    public void setDate(Date newDate) {
+        String notification ;
+        if(newDate != null && date != newDate){
+            notification = "Game with GID: " + this.GID + " date has changed from " + this.date + " to " + newDate;
+            this.date = newDate;
+            //notify referees
+            notifyRefereesDateChanged(notification);
+        }
     }
 
 
     //TODO
-    private void notifyReferees() {
+    private void notifyRefereesTimeChanged(String notification) {
+        if(main != null)
+            main.addTimeChangedNotification(notification);
 
+        if(side1 != null)
+            side1.addTimeChangedNotification(notification);
+
+        if(side2 != null)
+            side2.addTimeChangedNotification(notification);
+    }
+
+    private void notifyRefereesDateChanged(String notification) {
+        if(main != null)
+            main.addDateChangedNotification(notification);
+
+        if(side1 != null)
+            side1.addDateChangedNotification(notification);
+
+        if(side2 != null)
+            side2.addDateChangedNotification(notification);
+    }
+
+
+    private void notifyRefereesFieldChanged(String notification) {
+        if(main != null)
+            main.addFieldChangedNotification(notification);
+
+        if(side1 != null)
+            side1.addFieldChangedNotification(notification);
+
+        if(side2 != null)
+            side2.addFieldChangedNotification(notification);
     }
 
     public void setScore(int scoreHost, int scoreGuest) {
@@ -233,8 +272,14 @@ public class Game {
         score.setGoalsGuest(scoreGuest);
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setTime(Time newTime) {
+        String notification ;
+        if(newTime != null && newTime != this.time){
+            notification = "Game with GID: " + this.GID + " time has changed from " + this.time + " to " + newTime;
+            this.time = newTime;
+            //notify referees
+            notifyRefereesTimeChanged(notification);
+        }
     }
 
     public int getGID() {
@@ -284,6 +329,10 @@ public class Game {
         Time time = Time.valueOf(LocalTime.now());
         Event event = new Event(date, time, eventType, description);
         events.add(event);
+        if(eventType == EEventType.GOALHOST)
+            score.setGoalsHost(score.getGoalsHost() + 1);
+        else if(eventType == EEventType.GoalGUEST)
+            score.setGoalsGuest(score.getGoalsGuest() + 1);
 
         // Write to the log
         Logger.getInstance().addActionToLogger("Event was added to gameID: "+GID+", Event type: "+ event.getEventType());

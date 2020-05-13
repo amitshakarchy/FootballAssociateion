@@ -36,7 +36,7 @@ public class RepresentativeController {
         ScoreTablePolicy sp = null;
         switch (input.nextInt()) {
             case 1:
-                sp = new ScoreTablePolicy1();
+                sp = new RegularScorePolicy();
                 break;
             case 2:
                 sp = new ScoreTablePolicy2();

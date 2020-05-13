@@ -73,7 +73,7 @@ public class SecuritySystem {
      */
     public boolean checkPasswordForLogIn(String userName, String password) throws FailedLoginException {
         if (!usersHashMap.containsKey(userName)) {
-            System.out.println("the user name is NOT EXISTS in the system");
+            System.out.println("The user name is NOT EXISTS in the system");
             throw new FailedLoginException("User name doesn't exists");
         }
         if (AES.decrypt(usersHashMap.get(userName), secretKey).equals(password)) {

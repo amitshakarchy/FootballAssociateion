@@ -7,10 +7,7 @@ import System.*;
 import javafx.util.Pair;
 
 import javax.security.auth.login.FailedLoginException;
-import java.io.FileOutputStream;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Model implements IModel {
 
@@ -169,8 +166,14 @@ public class Model implements IModel {
         // Create a new team.
         Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
         // Now need to add new data to the DB
-        footballSystem.addTeamToDB(newTeam);
-        return true;
+        try {
+            footballSystem.addTeamToDB(newTeam);
+            return true;
+        } catch (Exception e) {
+            String cause = e.getMessage();
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**
@@ -437,7 +440,7 @@ public class Model implements IModel {
         // Set requested policy
         switch (policy){
             case "Policy 1":
-                repUser.SetScoreTablePolicy(new ScoreTablePolicy1(), league,season);
+                repUser.SetScoreTablePolicy(new RegularScorePolicy(), league,season);
                 break;
 
             case "Policy 2":
@@ -482,14 +485,19 @@ public class Model implements IModel {
     public boolean addEvent(int gameID, String eventType, String description) throws RecordException {
 
         // Only Referee is allowed to add an event.
-        if (!(user instanceof Referee))
-            return false;
+        if (!(user instanceof Referee)){
+            throw new RecordException("This user don't have permission to add event");
+        }
 
         ValidateObject.getValidatedGame(gameID);
 
         Referee referee= (Referee)user;
-        referee.addEventToAssignedGame(gameID,EEventType.valueOf(eventType),description);
-
+        try {
+            referee.addEventToAssignedGame(gameID, EEventType.valueOf(eventType), description);
+        }
+        catch (Exception e){
+            String cause = e.getMessage();
+        }
         return true;
     }
 
@@ -512,7 +520,12 @@ public class Model implements IModel {
         ValidateObject.getValidatedGame(gameID);
 
         Referee referee= (Referee)user;
-        referee.updateEventToAssignedGame(gameID,eventIndex,EEventType.valueOf(eventType),description);
+        try {
+            referee.updateEventToAssignedGame(gameID,eventIndex,EEventType.valueOf(eventType),description);
+        } catch (Exception e) {
+            String cause = e.getMessage();
+            e.printStackTrace();
+        }
 
         return true;
     }
@@ -532,7 +545,12 @@ public class Model implements IModel {
 
         ValidateObject.getValidatedGame(gameID);
         Referee referee= (Referee)user;
-        referee.removeEventFromAssignedGame(gameID,eventIndex);
+        try {
+            referee.removeEventFromAssignedGame(gameID,eventIndex);
+        } catch (Exception e) {
+            String cause = e.getMessage();
+            e.printStackTrace();
+        }
 
         return true;
     }

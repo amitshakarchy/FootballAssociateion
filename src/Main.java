@@ -41,7 +41,7 @@ public class Main extends Application {
 ////        mainPageController.setModel(myModel);
 ////        ManageGameController manageGameController = fxmlLoader.getController();
 ////        manageGameController.setModel(myModel);
-////        CreateTeamController createTeamController = fxmlLoader.getController();
+////        eamController createTeamController = fxmlLoader.getController();
 ////        createTeamController.setModel(myModel);
         //-------------
 

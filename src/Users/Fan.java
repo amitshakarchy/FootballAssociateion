@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import AssociationAssets.EEventType;
+import AssociationAssets.EScheduleOrPlaceEvent;
 import AssociationAssets.Game;
 import System.*;
 
@@ -24,6 +25,7 @@ public class Fan extends Guest implements IFan ,Serializable {
     private EStatus status;
     private HashMap<String,EEventType> pendingGameNotifications;
     private HashMap<String,APageEditor> pendingPageNotifications;
+    private HashMap<String, EScheduleOrPlaceEvent> pendingScheduleNotifications;
     private List<String> searchHistory;
 
     /**
@@ -39,6 +41,7 @@ public class Fan extends Guest implements IFan ,Serializable {
         this.searchHistory = new ArrayList<>();
         this.pendingGameNotifications = new HashMap<>();
         this.pendingPageNotifications = new HashMap<>();
+        this.pendingScheduleNotifications = new HashMap<>();
         this.status = EStatus.ONLINE;
     }
 
@@ -287,6 +290,44 @@ public class Fan extends Guest implements IFan ,Serializable {
 //        }
         return null;
     }
+
+    public void addTimeChangedNotification(String notification){
+        if(notification != null && notification.length() != 0){
+            if(this.status == EStatus.ONLINE){
+                //throw some exception or other way to let the service layer to pop up message for referee
+            }
+            //save the notifications for later (show it when referee is online)
+            else{
+                pendingScheduleNotifications.put(notification, EScheduleOrPlaceEvent.TIME_CHANGED);
+            }
+        }
+
+    }
+
+    public void addDateChangedNotification(String notification){
+        if(notification != null && notification.length() != 0){
+            if(this.status == EStatus.ONLINE){
+                //throw some exception or other way to let the service layer to pop up message for referee
+            }
+            //save the notifications for later (show it when referee is online)
+            else{
+                pendingScheduleNotifications.put(notification, EScheduleOrPlaceEvent.DATE_CHANGED);
+            }
+        }
+    }
+
+    public void addFieldChangedNotification(String notification){
+        if(notification != null && notification.length() != 0){
+            if(this.status == EStatus.ONLINE){
+                //throw some exception or other way to let the service layer to pop up message for referee
+            }
+            //save the notifications for later (show it when referee is online)
+            else{
+                pendingScheduleNotifications.put(notification, EScheduleOrPlaceEvent.FIELD_CHANGED);;
+            }
+        }
+    }
+
 
     /**
      * A fan can perform system searches

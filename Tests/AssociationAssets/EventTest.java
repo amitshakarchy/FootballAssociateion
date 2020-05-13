@@ -54,8 +54,8 @@ public class EventTest {
 
     @Test
     public void setEventType() {
-        e.setEventType(EEventType.GOAL);
-        assertEquals(e.getEventType(),EEventType.GOAL);
+        e.setEventType(EEventType.GOALHOST);
+        assertEquals(e.getEventType(),EEventType.GOALHOST);
     }
 
     @Test

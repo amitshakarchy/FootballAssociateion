@@ -2,7 +2,7 @@ package AcceptanceTests;
 
 import AssociationAssets.*;
 import Budget.TeamBudget;
-import PoliciesAndAlgorithms.ScoreTablePolicy1;
+import PoliciesAndAlgorithms.RegularScorePolicy;
 import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
 import Users.*;
 import System.Logger;
@@ -43,7 +43,7 @@ public class Acceptance {
     League league1;
     League league2;
     Season season;
-    ScoreTablePolicy1 scoreTablePolicy1;
+    RegularScorePolicy regularScorePolicy;
     SimpleGamesAssigningPolicy simpleGamesAssigningPolicy;
     Referee mainRef;
     Referee sideRef1;
@@ -83,7 +83,7 @@ public class Acceptance {
         fan4 = footballSystem.signIn("zangooo","888888","Shimi","Zangi");
 
         guest = new Guest();
-        scoreTablePolicy1 = new ScoreTablePolicy1();
+        regularScorePolicy = new RegularScorePolicy();
         Date date = new Date(1987,12,4);
         field = footballSystem.createField("Teddy","Jerusalem",29000);
         field2= footballSystem.createField("Terner","Beer Sheva",19000);
@@ -113,10 +113,10 @@ public class Acceptance {
         game2 = new Game(new Date(2020,10,24),time,field,team2,team1,mainRef,sideRef2,sideRef1,season,league1);
         games.put("1",game);
         games.put("2",game2);
-        scoreTablePolicy1 = new ScoreTablePolicy1();
+        regularScorePolicy = new RegularScorePolicy();
         simpleGamesAssigningPolicy = new SimpleGamesAssigningPolicy();
         // TODO: 18/04/2020  in the next line we want the function to connect the created league to the correct season (which is inside the DB). need to use the functions inside league to do so.
-        rep.addNewLeague("Israeli League",games,teams,scoreTablePolicy1,simpleGamesAssigningPolicy,season.getYear(),season);
+        rep.addNewLeague("Israeli League",games,teams, regularScorePolicy,simpleGamesAssigningPolicy,season.getYear(),season);
         league1 =  footballSystem.getLeagueDB().getAllLeagues().get("Israeli League");
         boolean temp;
 
@@ -238,7 +238,7 @@ public class Acceptance {
 
         System.out.println("\n* * * * * * *Use case 10.3 Referee updates event in the middle of a game * * * * * * * ");
         //need to create game that is still happening in the time this test is running.
-        mainRef.addEventToAssignedGame(game.getGID(),EEventType.GOAL,"own goal by amit lol");
+        mainRef.addEventToAssignedGame(game.getGID(),EEventType.GOALHOST,"own goal by amit lol");
         System.out.println("\n* * * * * * *Use case 10.4 Referee updates til 5 hours after the game ended * * * * * * * ");
         //need to create game that ended less then 5 hours ago.
 
