@@ -113,22 +113,16 @@ public class Model implements IModel {
      * @return true or false for success or failure
      */
     @Override
-    public boolean login(String username, String password)  {
+    public boolean login(String username, String password) throws FailedLoginException {
         // TODO: 5/8/2020 to add new exception in case of login is failed - password or username is incorret
-        try{
+
             Fan tmpUser = footballSystem.login(username,password);
-            // In case login failed
-            if (tmpUser == null) {
-                return false;
-            }
+
             // Save the user as an object
             user = footballSystem.getFanByUserName(username);
             return true;
-        }
-       catch (FailedLoginException e){
-            // pop up some message
-           return false;
-       }
+
+
     }
     //endregion
 
@@ -153,7 +147,10 @@ public class Model implements IModel {
     public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName) throws RecordException {
         // Only TeamOwner is allowed to create a team.
         if (!(user instanceof TeamOwner)){
-            throw new RecordException("You do not have permission to create new team");
+            throw new RecordException("You don ot have permission to create new team");
+        }
+        if(validateDuplicateTeamName(name)){
+            throw new RecordException("This team name already exist");
         }
         TeamOwner teamOwnerUser = (TeamOwner) user;
         Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
@@ -161,19 +158,29 @@ public class Model implements IModel {
         // Get an existing field or create one and add it TO fields DB
         Field field = footballSystem.getFieldDB().getAllFields().get(fieldName);
         if (field == null) {
-            throw new RecordException("The field" + fieldName + "is not exits");
+            throw new RecordException("The field " + fieldName + " is not exits");
         }
+        
         // Create a new team.
-        Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
-        // Now need to add new data to the DB
-        try {
-            footballSystem.addTeamToDB(newTeam);
+        //Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
+
+        //send the request to the RFA
+        RepresentativeFootballAssociation rep = footballSystem.getRepresentativeFootballAssociationByUseName("r");
+        rep.addTeamRequest(name,leagueName,seasonYear,fieldName);
+
             return true;
-        } catch (Exception e) {
-            String cause = e.getMessage();
-            e.printStackTrace();
-        }
+
+    }
+
+    /**
+     * rreturn true if this team name already exist
+     * @param name
+     * @return
+     */
+    private boolean validateDuplicateTeamName(String name) {
+        if(footballSystem.getInstance().getTeamDB().getAllTeams().containsKey(name)) return true;
         return false;
+
     }
 
     /**
@@ -230,6 +237,7 @@ public class Model implements IModel {
      * @param teamName   - team's name
      * @param seasonYear - team's name
      * @param username   - username
+     * @return true or false for success / failure
      * @return true or false for success / failure
      */
     @Override

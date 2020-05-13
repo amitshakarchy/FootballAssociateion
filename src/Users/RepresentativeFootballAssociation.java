@@ -262,4 +262,9 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
         return NotificationTeamsExceedBudget;
     }
 
+    public void addTeamRequest(String name, String leagueName, String seasonYear, String fieldName) {
+        //if online show notifications
+
+        //if offline save to his notifications
+    }
 }

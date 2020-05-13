@@ -2,6 +2,7 @@ package System;
 
 import AssociationAssets.*;
 import DB.*;
+import Model.RecordException;
 import OutSourceSystems.AccountingSystem;
 import OutSourceSystems.TaxRegulationSystem;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
@@ -10,6 +11,8 @@ import Users.*;
 
 import javax.security.auth.login.FailedLoginException;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * this class is Singleton for the Football System.
@@ -32,6 +35,8 @@ public class FootballSystem {
     Map<String, TeamManager> teamManagerMap = new HashMap<>();
     Map<String, TeamOwner> teamOwnerMap = new HashMap<>();
     Map<String, RepresentativeFootballAssociation> representativeFootballAssociationMap = new HashMap<>();
+    ScheduledExecutorService ses = Executors.newScheduledThreadPool(5);
+
 
 
     /**
@@ -387,10 +392,10 @@ public class FootballSystem {
      * this function adds team to DB
      * @param team
      */
-    public void addTeamToDB(Team team) throws Exception{
+    public void addTeamToDB(Team team) throws RecordException {
         if (team != null) {
             if (this.teamDB.getAllTeams().containsKey(team.getName())) {
-                throw new Exception("This team name is already exists in the system");
+                throw new RecordException("This team name is already exists in the system");
             }
             this.teamDB.addTeam(team, team.getName());
         }
