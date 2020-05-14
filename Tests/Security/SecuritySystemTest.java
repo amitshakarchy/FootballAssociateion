@@ -1,6 +1,9 @@
 package Security;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import javax.security.auth.login.FailedLoginException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SecuritySystemTest {
@@ -40,7 +43,7 @@ class SecuritySystemTest {
     }
 
     @Test
-    void checkPasswordForLogIn() {
+    void checkPasswordForLogIn() throws FailedLoginException {
         assertEquals(true,securitySystem.addNewUser("Tair","1213"));
         assertEquals(false,securitySystem.checkPasswordForLogIn("Tair","1212"));
         assertEquals(false,securitySystem.checkPasswordForLogIn("Tair","1213!"));

@@ -2,13 +2,14 @@ package Users;
 
 import AssociationAssets.*;
 import Budget.AssociationBudget;
-import PoliciesAndAlgorithms.ScoreTablePolicy1;
+import PoliciesAndAlgorithms.RegularScorePolicy;
 import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
 import Budget.TeamBudget;
 import System.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.security.auth.login.FailedLoginException;
 import java.sql.Time;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public class RepresentativeFootballAssociationTest {
     Season season;
     RepresentativeFootballAssociation representative;
     SimpleGamesAssigningPolicy gamePolicy;
-    ScoreTablePolicy1 scorePolicy;
+    RegularScorePolicy scorePolicy;
     AssociationBudget associationBudget;
     Game game1;
     Game game2;
@@ -41,7 +42,7 @@ public class RepresentativeFootballAssociationTest {
         coaches =  new HashMap<>();
         players = new HashMap<>();
         gamePolicy =new SimpleGamesAssigningPolicy() ;
-        scorePolicy =  new ScoreTablePolicy1();
+        scorePolicy =  new RegularScorePolicy();
         associationBudget = new AssociationBudget();
         field= new Field("Teddi", "Beer Sheva", 800);
         r1= new Referee("1","a","a",EReferee.MAIN);
@@ -80,7 +81,7 @@ public class RepresentativeFootballAssociationTest {
     }
 
     @Test
-    public void nominateReferee() {
+    public void nominateReferee()  throws FailedLoginException {
         Referee referee = representative.nominateReferee("Dani","Mizrahi",EReferee.ASSISTANT);
         assertTrue(FootballSystem.getInstance().existFanByUserName(referee.getUserName()));
         Referee referee2=  representative.nominateReferee("Dani","Mizrahi",EReferee.ASSISTANT);

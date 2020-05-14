@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import javax.security.auth.login.FailedLoginException;
 import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -127,7 +128,7 @@ class FootballSystemTest {
     }
 
     @Test
-    void login() {
+    void login()  throws FailedLoginException {
         assertTrue(null != FootballSystem.getInstance().signIn("Tair","12","tair","cohen"));
         assertEquals(1,FootballSystem.getInstance().fansHashMap.size());
         assertTrue(null != FootballSystem.getInstance().login("Tair","12"));
@@ -158,7 +159,7 @@ class FootballSystemTest {
     }
 
     @Test
-    void addTeamToDB() {
+    void addTeamToDB() throws Exception {
         team1 = new Team(1,"Macabi-Tel-aviv",null,null,null, null);
         team2 = new Team(2,"Beitar",null,null,null, null);
         assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
@@ -176,7 +177,11 @@ class FootballSystemTest {
         team1 = new Team(1,"Macabi-Tel-aviv",null,null,null, null);
         team2 = new Team(2,"Beitar",null,null,null, null);
         assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
-        FootballSystem.getInstance().addTeamToDB(team1);
+        try {
+            FootballSystem.getInstance().addTeamToDB(team1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         assertEquals(1,FootballSystem.getInstance().getTeamDB().getAllTeams().size());
         FootballSystem.getInstance().removeTeamFromDB(team1.getName());
         assertEquals(0,FootballSystem.getInstance().getTeamDB().getAllTeams().size());

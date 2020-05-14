@@ -135,9 +135,9 @@ public class TeamTest {
 //    }
 //
 //    @Test
-//    public void addHomeGame() {
-//        team1.addHomeGame(game);
-//        assertEquals(team1.getHomeGames().size(),1);
+//    public void addame() {
+//        team1.addame(game);
+//        assertEquals(team1.getames().size(),1);
 //    }
 //
 //    @Test

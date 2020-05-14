@@ -273,7 +273,6 @@ public class TeamOwner extends Fan {
         }
         // TODO: 4/12/2020 permissions of manager!
     }
-//continue here!!!!!!!!!!!
     /**
      * this function set the Team Manager to the correct additional info of a specific team in a season.
      * @param team
@@ -388,32 +387,33 @@ public class TeamOwner extends Fan {
      * @param userName
      * @return true if the nomination successed
      */
-    public boolean nominateTeamOwner(Team team, Season season, String userName) {
+    public boolean nominateTeamOwner(Team team, Season season, String userName) throws UnsupportedOperationException{
         if (checkInputsOfTeamAndSeason(team, season)) return false;
         // checking first if the user name is not team owner in this team and season already.
         AdditionalInfo additionalInfoToSearch = getAdditionalInfo(team, season);
         if (additionalInfoToSearch == null) {
             Logger.getInstance().addErrorToLogger("Nomination of team owner " + userName +" was failed.");
-            return false;
+            throw new UnsupportedOperationException("The team and season combination is wrong" +
+                    ".");
         }
         if (additionalInfoToSearch.findTeamOwner(userName) != null) {
             System.out.println("The user " + userName + " is already team owner on the team " +
                     team + " on the season " + season);
             Logger.getInstance().addErrorToLogger("Nomination of team owner " + userName +" was failed.");
-            return false;
+            throw new UnsupportedOperationException("This user is already a team owner in this team.");
         }
         // checking if the user is in the system.
         if (FootballSystem.getInstance().existFanByUserName(userName)) {
             // checking if the user is owner another team.
             if (FootballSystem.getInstance().findTeamOwnerAtTeamByUserName(userName)) {
-                System.out.println("this team owner is owner another team, user name is: " + userName);
                 Logger.getInstance().addErrorToLogger("Nomination of team owner " + userName +" was failed.");
-                return false;
+                System.out.println("this team owner is owner another team, user name is: " + userName);
+                throw new UnsupportedOperationException("This user is already a team owner in other team.");
             }
             Fan fan = FootballSystem.getInstance().getFanByUserName(userName);
             // check if the additional info has this teamOwner already
             if (!setTeamOwnerToAdditionalInfo(team, season, userName)) {
-                return false;
+                throw new UnsupportedOperationException("This user is already a team owner in this team.");
             }
             TeamOwner teamOwner = (TeamOwner) FootballSystem.getInstance().creatingTeamOwner(userName, fan.getfName(), fan.getlName());
             if(teamOwner == null){
@@ -421,8 +421,8 @@ public class TeamOwner extends Fan {
             }
             teamOwner.addAdditionalInfo(additionalInfoToSearch);
         } else {
-            Logger.getInstance().addErrorToLogger("Nomination of team owner " + userName +" was failed.");
-            return false;
+            Logger.getInstance().addErrorToLogger("Nomination of team owner " + userName +" was failed due to incorrect user name.");
+            throw new UnsupportedOperationException("This user name isn't exists.");
         }
         Logger.getInstance().addActionToLogger("Nomination of team owner " + userName + " in team "+ team.getName());
         return true;

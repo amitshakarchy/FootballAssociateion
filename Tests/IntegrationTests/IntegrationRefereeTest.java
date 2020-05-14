@@ -33,7 +33,7 @@ public class IntegrationRefereeTest {
         teamStub2 = new TeamStub(3,"team2",new Season("2020"),field,null,new TeamOwner("b","b","c"),1);
         gameStub = new GameStub(new Date(),new Time(23),null,teamStub1,teamStub2,referee,referee2,referee3,null,null,1);
         referee.addGame(gameStub);
-        gameStub.addEvent(EEventType.GOAL,"amazing goal by tair");
+        gameStub.addEvent(EEventType.GOALHOST,"amazing goal by tair");
     }
 
     @Test
@@ -43,14 +43,14 @@ public class IntegrationRefereeTest {
 
     }
     @Test
-    public void removeEventDuringGame(){
+    public void removeEventDuringGame() throws Exception{
         referee.removeEventFromAssignedGame(1,0);
         assertEquals(referee.getMyGames().get(0).getEvents().size(),0);
 
     }
     @Test
     public void editEventsAfterGameOver(){
-        referee.editEventsAfterGameOver(3,0,EEventType.GOAL,"amazing goal by yuval");
+        referee.editEventsAfterGameOver(3,0,EEventType.GOALHOST,"amazing goal by yuval");
         assertEquals(referee.getMyGames().get(0).getEvents().get(0).getDescription(),"amazing goal by yuval");
 
     }

@@ -73,7 +73,11 @@ public class RefereeController {
         EEventType eventType = EEventType.valueOf(input.nextLine());
         System.out.println("Insert your description");
         String description= input.nextLine();
-        referee.updateEventToAssignedGame(game.getGID(),index,eventType,description);
+        try {
+            referee.updateEventToAssignedGame(game.getGID(),index,eventType,description);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("Event was modified successfully");
     }
 
@@ -98,7 +102,11 @@ public class RefereeController {
             System.out.println(i+". "+event.getDate()+", "+ event.getTime()+","+" type:" + event.getEventType() +": "+event.getDescription());
         }
         int index= input.nextInt();
-        referee.removeEventFromAssignedGame(game.getGID(),index);
+        try {
+            referee.removeEventFromAssignedGame(game.getGID(),index);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("Event was removed successfully");
     }
 

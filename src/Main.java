@@ -1,10 +1,9 @@
 
-import AssociationAssets.Field;
-import AssociationAssets.League;
-import AssociationAssets.Season;
-import AssociationAssets.SeasonLeagueBinder;
+import AssociationAssets.*;
 import Controllers.*;
 import Model.Model;
+import PoliciesAndAlgorithms.RegularScorePolicy;
+import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
 import Users.Coach;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -41,7 +40,7 @@ public class Main extends Application {
 ////        mainPageController.setModel(myModel);
 ////        ManageGameController manageGameController = fxmlLoader.getController();
 ////        manageGameController.setModel(myModel);
-////        CreateTeamController createTeamController = fxmlLoader.getController();
+////        eamController createTeamController = fxmlLoader.getController();
 ////        createTeamController.setModel(myModel);
         //-------------
 
@@ -52,6 +51,9 @@ public class Main extends Application {
         Season season1 = new Season("2021");
         FootballSystem.getInstance().addSeasonToDB(season);
         FootballSystem.getInstance().addSeasonToDB(season1);
+        FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","a","a",new SimpleGamesAssigningPolicy());
+
+
 
         League league = new League("La Liga");
         League league1 = new League("gal");
@@ -65,9 +67,16 @@ public class Main extends Application {
         FootballSystem.getInstance().addFieldToDB(field);
         FootballSystem.getInstance().addFieldToDB(field1);
 
+        FootballSystem.getInstance().signIn("a","a","tair","cohen");
+        FootballSystem.getInstance().creatingTeamOwner("a","a","cohen");
+        Team team = new Team(1,"Barca",season,field,null,FootballSystem.getInstance().getTeamOwnerByUserName("a"));
+        try {
+            FootballSystem.getInstance().addTeamToDB(team);
+        } catch (Exception e) {
+            String cause = e.getMessage();
+            e.printStackTrace();
+        }
 
-        FootballSystem.getInstance().signIn("tair123","1234","tair","cohen");
-        FootballSystem.getInstance().creatingTeamOwner("tair123","tair","cohen");
 
     }
 
