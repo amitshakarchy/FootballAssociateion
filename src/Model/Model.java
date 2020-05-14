@@ -160,7 +160,7 @@ public class Model implements IModel {
         if (field == null) {
             throw new RecordException("The field " + fieldName + " is not exits");
         }
-        
+
         // Create a new team.
         //Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
 

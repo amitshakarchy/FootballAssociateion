@@ -69,6 +69,7 @@ public class Main extends Application {
 
         FootballSystem.getInstance().signIn("a","a","tair","cohen");
         FootballSystem.getInstance().creatingTeamOwner("a","a","cohen");
+
         Team team = new Team(1,"Barca",season,field,null,FootballSystem.getInstance().getTeamOwnerByUserName("a"));
         try {
             FootballSystem.getInstance().addTeamToDB(team);
