@@ -8,6 +8,8 @@ import AssociationAssets.Season;
 import System.FootballSystem;
 import Model.*;
 
+import javax.security.auth.login.FailedLoginException;
+
 public class RealSystemOperations implements ISystemOperationsBridge{
     private final Model model;
     private static int randomNumberForUser = 0;
@@ -52,7 +54,11 @@ public class RealSystemOperations implements ISystemOperationsBridge{
 
     @Override
     public boolean login(String username, String pw) {
-        return model.login(username,pw);
+        try {
+            return model.login(username,pw);
+        } catch (FailedLoginException e) {
+            return false;
+        }
     }
 
     @Override
@@ -63,8 +69,7 @@ public class RealSystemOperations implements ISystemOperationsBridge{
     @Override
     public TeamDetails getNewRegisteredTeamForTest() {
         if(createNewTeam("RegisteredTeam","La Liga","2020","Blomfield")){
-            TeamDetails RegisteredTeam = new TeamDetails("RegisteredTeam","La Liga","2020","Blomfield");
-            return RegisteredTeam;
+            return new TeamDetails("RegisteredTeam","La Liga","2020","Blomfield");
         }
         return null;
     }
