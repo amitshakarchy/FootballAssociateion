@@ -114,7 +114,6 @@ public class Model implements IModel {
      */
     @Override
     public boolean login(String username, String password) throws FailedLoginException {
-        // TODO: 5/8/2020 to add new exception in case of login is failed - password or username is incorret
 
             Fan tmpUser = footballSystem.login(username,password);
 
