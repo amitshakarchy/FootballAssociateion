@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class JDBCConnectorTest {
 
     @Test
-    void connectDB() {
+    void connectDBUploadData() {
         JDBCConnector connector= new JDBCConnector();
-        connector.connectDB();
+        connector.connectDBUploadData();
     }
 }
