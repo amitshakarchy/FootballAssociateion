@@ -1,7 +1,6 @@
 package AssociationAssets;
 
 import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -63,6 +62,7 @@ public class Game {
         this.time = time;
         //endOfUpdateTime = time.toInstant().plus(Duration.ofHours(7));
         this.field = field;
+        this.status = EGameStatus.OCCURS;
         this.host = host;
         this.guest = guest;
         this.season = season;
@@ -399,5 +399,20 @@ public class Game {
                 ", side1 referee=" + side1.getfName()+ " " +side1.getlName() +
                 ", side2 referee=" + side2.getfName() + " " +side2.getlName() +
                 '}';
+    }
+
+    public boolean isFinished() {
+        LocalDateTime currentDate = LocalDateTime.now();
+        LocalDateTime gameDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        if(currentDate.getYear() == gameDate.getYear()){
+            long minutes = ChronoUnit.MINUTES.between(gameDate, currentDate);
+            if( minutes/60 >= 2 ){
+                setStatus(EGameStatus.FINISHED);
+                this.getLeague().updateGameScore(season.getYear(),host.getName(),guest.getName(),getScore());
+
+                return true;
+            }
+        }
+        return false;
     }
 }

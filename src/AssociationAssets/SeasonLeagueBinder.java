@@ -17,6 +17,9 @@ public class SeasonLeagueBinder {
 
     HashMap<String,Team> teams;
     HashMap<String, Game> games;
+
+
+
     HashMap<String /*team name*/,Integer/*points*/> leagueTable;
     ScoreTablePolicy scoreTablePolicy;// not in the constructor
     GamesAssigningPolicy assigningPolicy;// not in the constructor
@@ -44,6 +47,9 @@ public class SeasonLeagueBinder {
 
     public Season getSeason() {
         return season;
+    }
+    public HashMap<String, Integer> getLeagueTable() {
+        return leagueTable;
     }
 
     public League getLeague() {

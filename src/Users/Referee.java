@@ -1,5 +1,6 @@
 package Users;
 import AssociationAssets.EEventType;
+import AssociationAssets.EGameStatus;
 import AssociationAssets.Event;
 import AssociationAssets.Game;
 import Model.RecordException;
@@ -173,6 +174,7 @@ public class Referee extends Fan {
             Game gameToAdd = getGame(gameID);
             if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.getUserName()) && eventIndex!= -1) {
                 if(gameToAdd.isUpdatable(7)) {
+                    gameToAdd.setStatus(EGameStatus.FINISHED);
                     gameToAdd.editEvent(eventIndex, eventType, description);
                     Logger.getInstance().addActionToLogger("Referee edit event from finished game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
                     return;
@@ -231,7 +233,7 @@ public class Referee extends Fan {
         if(this.training.equals(EReferee.MAIN)){
             Game gameToAdd = getGame(gameID);
             if (gameToAdd != null) {
-                if(gameToAdd.isUpdatable(7)) {
+                if(gameToAdd.isFinished()) {
                     Logger.getInstance().exportReport(gameToAdd.getGID(),gameToAdd.getEvents());
                     Logger.getInstance().addActionToLogger("Referee export report from the game, user name: "+ getUserName()+" GameID: "+gameID);
 
