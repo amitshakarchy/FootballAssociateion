@@ -2,7 +2,10 @@ package Users;
 import AssociationAssets.EEventType;
 import AssociationAssets.Event;
 import AssociationAssets.Game;
+import Model.RecordException;
 import System.*;
+
+import javax.security.auth.login.FailedLoginException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,7 +83,7 @@ public class Referee extends Fan {
      *
      * # use case 10.3
      */
-    public void addEventToAssignedGame(int gameID, EEventType eventType, String description){
+    public void addEventToAssignedGame(int gameID, EEventType eventType, String description) throws Exception {
         Game gameToAdd = getGame(gameID);
         if(gameToAdd != null ){
             if(gameToAdd.isUpdatable(2)) {
@@ -88,9 +91,13 @@ public class Referee extends Fan {
                 Logger.getInstance().addActionToLogger("Referee added event to assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
                 gameToAdd.notifyObserver(description,eventType);
             }
+            else{
+                throw new UnsupportedOperationException("Adding events after game over is not allowed");
+            }
         }
         else{
             Logger.getInstance().addErrorToLogger("Referee adding event to assigned game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+            throw new RecordException("This game not found");
         }
     }
 
@@ -103,7 +110,7 @@ public class Referee extends Fan {
      *
      * # use case 10.3
      */
-    public void updateEventToAssignedGame(int gameID,int eventIndex, EEventType eventType, String description){
+    public void updateEventToAssignedGame(int gameID,int eventIndex, EEventType eventType, String description) throws Exception{
         Game gameToAdd = getGame(gameID);
         if(gameToAdd != null && eventIndex!= -1 ){
             if(gameToAdd.isUpdatable(2)) {
@@ -112,8 +119,17 @@ public class Referee extends Fan {
                 gameToAdd.notifyObserver(description,eventType);
                 return;
             }
+            else{
+                Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+                throw new Exception("Can't update event, the game is finished");
+
+            }
         }
-        Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+        else {
+            Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName() + " GameID: " + gameID + " Event Type: " + eventType);
+            throw new Exception("Can't update event, this game isn't exists");
+
+        }
     }
 
     /**
@@ -123,7 +139,7 @@ public class Referee extends Fan {
      *
      * # use case 10.3
      */
-    public void removeEventFromAssignedGame(int gameID,int eventIndex){
+    public void removeEventFromAssignedGame(int gameID,int eventIndex) throws Exception{
         Game gameToAdd = getGame(gameID);
         if(gameToAdd != null && eventIndex!= -1){
             if(gameToAdd.isUpdatable(2)) {
@@ -131,8 +147,16 @@ public class Referee extends Fan {
                 Logger.getInstance().addActionToLogger("Referee remove event from assigned game, user name: "+ getUserName()+" GameID: "+gameID);
                 return;
             }
+            else{
+                Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName()+" GameID: "+gameID
+                );
+                throw new Exception("Can't remove event, the game is finished");
+            }
         }
-        Logger.getInstance().addErrorToLogger("Referee remove event to assigned game was failed. " + getUserName()+" GameID: "+gameID);
+        else {
+            Logger.getInstance().addErrorToLogger("Referee edit event to assigned game was failed. " + getUserName() + " GameID: " + gameID);
+            throw new Exception("Can't remove event, this game isn't exists");
+        }
     }
 
     /**
@@ -144,7 +168,7 @@ public class Referee extends Fan {
      *
      * # use case 10.4
      */
-    public void editEventsAfterGameOver(int gameID,int eventIndex, EEventType eventType, String description){
+    public void editEventsAfterGameOver(int gameID,int eventIndex, EEventType eventType, String description) throws  UnsupportedOperationException{
         if(this.training.equals(EReferee.MAIN)){
             Game gameToAdd = getGame(gameID);
             if (gameToAdd != null && gameToAdd.getMain().getUserName().equals(this.getUserName()) && eventIndex!= -1) {
@@ -153,9 +177,25 @@ public class Referee extends Fan {
                     Logger.getInstance().addActionToLogger("Referee edit event from finished game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
                     return;
                 }
+                else{
+                    Logger.getInstance().addErrorToLogger("Referee edit event to finished game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+                    throw new UnsupportedOperationException("You can't edit event at this time");
+                }
+            }
+            else if(gameToAdd == null){
+                Logger.getInstance().addErrorToLogger("Referee edit event to finished game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+                throw new UnsupportedOperationException("This game is not exists");
+            }
+            else{
+                Logger.getInstance().addErrorToLogger("Referee edit event to finished game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+                throw new UnsupportedOperationException("You're not the main referee of this game.");
             }
         }
-        Logger.getInstance().addErrorToLogger("Referee edit event to finished game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+        else{
+            Logger.getInstance().addErrorToLogger("Referee edit event to finished game was failed. " + getUserName()+" GameID: "+gameID+" Event Type: "+ eventType);
+            throw new UnsupportedOperationException("Only main referee can do this operation.");
+        }
+
     } //10.4
 
     /**
@@ -249,7 +289,7 @@ public class Referee extends Fan {
     /**
      * Yarin's request
      */
-    public void LoginInvitation(String userName , String pass){
+    public void LoginInvitation(String userName , String pass)throws FailedLoginException {
         FootballSystem.getInstance().login(userName,pass);
     }
 }

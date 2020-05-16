@@ -9,8 +9,10 @@ import java.sql.Time;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ScoreTablePolicy1 extends ScoreTablePolicy {
-
+public class RegularScorePolicy extends ScoreTablePolicy {
+    int pointsForWinner = 3;
+    int pointForLoser = 0;
+    int pointsForDraw = 1;
 
 }
 

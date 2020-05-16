@@ -6,7 +6,8 @@ package AssociationAssets;
  */
 public enum EEventType {
     OFFSIDE,
-    GOAL,
+    GOALHOST,
+    GoalGUEST,
     FOUL,
     REDCARD,
     YELLOWCARD,
