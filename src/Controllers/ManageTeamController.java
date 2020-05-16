@@ -78,13 +78,5 @@ public class ManageTeamController extends Controller {
     public void editTeamDetails() {
         stillWorkingOnIt();
     }
-    private void stillWorkingOnIt() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setContentText("Ops.. Our system is still working on it \n" +
-                " please try soon!");
-        alert.showAndWait();
-    }
-
 
 }
