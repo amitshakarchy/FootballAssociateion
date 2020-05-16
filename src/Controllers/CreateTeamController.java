@@ -43,9 +43,7 @@ public class CreateTeamController extends Controller{
                         " Representative Football Association!");
                 alert.showAndWait();
             } catch (RecordException e1) {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText(e1.getErrorMessage());
-                alert.showAndWait();
+                raiseAlert(e1);
             }
         }
     }
