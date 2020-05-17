@@ -63,6 +63,8 @@ public class Game {
         isUpdatable = true;
         this.date = date;
         this.time = time;
+        this.date.setHours(this.time.getHours());
+        this.date.setMinutes(this.time.getMinutes());
         //endOfUpdateTime = time.toInstant().plus(Duration.ofHours(7));
         this.field = field;
         this.status = EGameStatus.OCCURS;
@@ -127,12 +129,9 @@ public class Game {
     public boolean isUpdatable(int hoursSinceGameStarted) {
         LocalDateTime currentDate = LocalDateTime.now();
         LocalDateTime gameDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        if(currentDate.getYear() == gameDate.getYear()){
-            long minutes = ChronoUnit.MINUTES.between(gameDate, currentDate);
-            if( minutes/60 <= hoursSinceGameStarted && minutes > 0){
-
-                return true;
-            }
+        long minutes = ChronoUnit.MINUTES.between(gameDate, currentDate);
+        if( (double)minutes/60 <= hoursSinceGameStarted && minutes > 0){
+            return true;
         }
         return false;
     }
@@ -266,6 +265,8 @@ public class Game {
         if(newTime != null && newTime != this.time){
             notification = "Game with GID: " + this.GID + " time has changed from " + this.time + " to " + newTime;
             this.time = newTime;
+            this.date.setHours(this.time.getHours());
+            this.date.setMinutes(this.time.getMinutes());
             //notify referees
             notifyRefereesTimeChanged(notification);
         }
