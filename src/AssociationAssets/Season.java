@@ -45,7 +45,7 @@ public class Season {
     /**
      * Adds a league binder into the relevant hashmap
      * @param leagueName -  league's name
-     * @param binder - new binder
+     * @param binder - new binder to add
      */
     public void addLeagueBinder(String leagueName, SeasonLeagueBinder binder){
         this.leagueBinders.put(leagueName, binder);
@@ -53,8 +53,8 @@ public class Season {
 
     /**
      * adding league to the corresponding leagueBinder object
-     * @param leagueName
-     * @param bindersHashMap
+     * @param leagueName -
+     * @param bindersHashMap -
      */
     public void addLeagueToSeason(String leagueName, HashMap<String, SeasonLeagueBinder> bindersHashMap) {
 
@@ -67,8 +67,8 @@ public class Season {
 
     /**
      *  adding team to the corresponding additionalInfo object
-     * @param teamName
-     * @param team
+     * @param teamName -
+     * @param team -
      */
     public void addTeamToSeason(String teamName, HashMap<String, AdditionalInfo> team) {
         this.teamAdditionalInfo.put(teamName,team.get(this.year));
