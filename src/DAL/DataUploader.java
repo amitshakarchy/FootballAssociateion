@@ -4,6 +4,8 @@ import AssociationAssets.Field;
 import AssociationAssets.League;
 import AssociationAssets.Season;
 import AssociationAssets.Team;
+import Security.AESEncryption;
+import Security.SecuritySystem;
 import Users.*;
 
 import java.sql.Date;
@@ -21,6 +23,7 @@ import System.*;
 import Users.*;
 public class DataUploader{
 
+    private final HashMap<Integer, Game> allGames;
     DatabaseManager databaseManager;
 
     FootballSystem system;
@@ -56,7 +59,7 @@ public class DataUploader{
         allSystemManagers= system.getSystemManagerMap();
         allRFAs= system.getRepresentativeFootballAssociationMap();
         allReferees = system.getRefereeMap();
-
+        allGames = system.getGameDB().getAllGames();
     }
 
     public void uploadData(){
@@ -67,6 +70,11 @@ public class DataUploader{
         uploadTeams();
         uploadAdditionalInfo();
         uploadSeasonLeagueBinders();
+        uploadGames();
+    }
+
+    private void uploadGames() {
+
     }
 
     //region Users upload
@@ -79,6 +87,7 @@ public class DataUploader{
         uploadRFAs();
         uploadReferees();
         uploadFans();
+        uploadPasswordsUsers();
     }
     private void uploadFans() {
         ResultSet resultSet = databaseManager.executeQuerySelect("    " +
@@ -194,9 +203,6 @@ public class DataUploader{
 
                 // add to fans map
                 allFans.put(username, manager);
-
-                // TODO connect additional Info
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -225,9 +231,6 @@ public class DataUploader{
 
                 // add to fans map
                 allFans.put(username, teamOwner);
-
-                // TODO connect additional Info
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -256,9 +259,6 @@ public class DataUploader{
 
                 // add to fans map
                 allFans.put(username, teamManager);
-
-                // TODO connect additional Info
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -289,9 +289,6 @@ public class DataUploader{
 
                 // add to fans map
                 allFans.put(username, coach);
-
-                // TODO connect additional Info
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -322,13 +319,27 @@ public class DataUploader{
 
                 // add to fans map
                 allFans.put(username, player);
-
-                // TODO connect additional Info
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    private void uploadPasswordsUsers() {
+        SecuritySystem sec= system.getSecuritySystem();
+        ResultSet resultSet = databaseManager.executeQuerySelect("SELECT * FROM userpasswords");
+        try {
+            while (resultSet.next()) {
+                String username= resultSet.getString("Username");
+                String password= resultSet.getString("Password_user");
+
+                //TODO add setters
+
+                //   sec.addNewUser(username, );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
     //endregion
 
