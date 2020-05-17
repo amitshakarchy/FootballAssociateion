@@ -505,6 +505,7 @@ public class Model implements IModel {
         }
         catch (Exception e){
             String cause = e.getMessage();
+            throw new RecordException(cause);
         }
         return true;
     }
@@ -616,8 +617,21 @@ public class Model implements IModel {
      */
     @Override
     public boolean exportGameReport(int gameID, String pathToSave, String reportName) throws RecordException {
+        // Only Referee is allowed to add an event.
+        if (!(user instanceof Referee)){
+            throw new RecordException("This user doesn't have permission to add event");
+        }
 
+        ValidateObject.getValidatedGame(gameID);
 
+        Referee referee= (Referee)user;
+        try {
+            referee.exportReport(gameID);
+        }
+        catch (Exception e){
+            String cause = e.getMessage();
+            throw new RecordException(cause);
+        }
         return true;
     }
 

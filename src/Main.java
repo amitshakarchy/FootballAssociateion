@@ -66,12 +66,13 @@ public class Main extends Application {
 
         Team team1 = new Team(45,"team1",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("tair123"));
         Team team2 = new Team(55,"team2",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("tair123"));
-        Date date = new Date(17/05/2018);
-        Time time = new Time(2000);
+        Date date = new Date(2020-1900,4,17,13,0);
+        Time time = new Time(9,0,0);
         Referee main = FootballSystem.getInstance().getRefereeByUseName("1");
         Referee side1 = FootballSystem.getInstance().getRefereeByUseName("2");
         Referee side2 = FootballSystem.getInstance().getRefereeByUseName("3");
         Game game = null;
+
         try {
             game = new Game(date,time,field,team1,team2,main,side1,side2,season,league);
         } catch (Exception e) {
