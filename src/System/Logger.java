@@ -41,12 +41,13 @@ public class Logger {
      *  Through the Log main referee can generate reports on games
      * @param gid - game id
      * @param events - List of events that happened in a game
+     * @param pathToSave
      */
-    public void exportReport(int gid, List<Event> events) {
+    public void exportReport(int gid, List<Event> events, String pathToSave) {
         if(events!= null){
             this.report.add(new Pair<>(gid,events));
 
-            try (PrintWriter writer = new PrintWriter(new File(gid+ "_game_report " + ".csv"))) {
+            try (PrintWriter writer = new PrintWriter(new File(pathToSave))) {
                 StringBuilder sb = new StringBuilder();
                 sb.append("Event Type, ");
                 sb.append("Description");

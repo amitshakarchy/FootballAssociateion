@@ -229,12 +229,12 @@ public class Referee extends Fan {
      *
      * # use case 10.4
      */
-    public void exportReport(int gameID){//10.4
+    public void exportReport(int gameID,String pathToSave){//10.4
         if(this.training.equals(EReferee.MAIN)){
             Game gameToAdd = getGame(gameID);
             if (gameToAdd != null) {
                 if(gameToAdd.isFinished()) {
-                    Logger.getInstance().exportReport(gameToAdd.getGID(),gameToAdd.getEvents());
+                    Logger.getInstance().exportReport(gameToAdd.getGID(),gameToAdd.getEvents(),pathToSave);
                     Logger.getInstance().addActionToLogger("Referee export report from the game, user name: "+ getUserName()+" GameID: "+gameID);
 
                 }
