@@ -147,8 +147,8 @@ public class Team {
 
     /**
      * Add an additionalInfo instance to the relevant hashmap
-     * @param year -
-     * @param additionalInfo -
+     * @param year - season's year
+     * @param additionalInfo - season's additional info
      */
     public void addToAdditionalInfo(String year, AdditionalInfo additionalInfo) {
         if (year != null && additionalInfo != null) {
@@ -166,8 +166,8 @@ public class Team {
      * Given a user ID, finds the player in the team.
      * if the player is not in the team, returns NULL
      *
-     * @param PID
-     * @return
+     * @param PID -
+     * @return a player
      **/
     public Player findPlayer(String PID) {
         AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
@@ -181,8 +181,8 @@ public class Team {
      * Given a user ID, finds the coach in the team.
      * if the coach is not in the team, returns NULL
      *
-     * @param CID
-     * @return
+     * @param CID -
+     * @return -
      **/
     public Coach findCoach(String CID) {
         AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
@@ -196,8 +196,8 @@ public class Team {
      * Given a user ID, finds the manager in the team.
      * if the manager is not in the team, returns NULL
      *
-     * @param MID
-     * @return
+     * @param MID -
+     * @return -
      */
     public TeamManager findManager(String MID) {
         AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
@@ -211,8 +211,8 @@ public class Team {
      * Given a user ID, finds the owner in the team.
      * if the owner is not in the team, returns NULL
      *
-     * @param OID
-     * @return
+     * @param OID -
+     * @return -
      **/
     public TeamOwner findTeamOwner(String OID) {
         AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
@@ -226,8 +226,8 @@ public class Team {
      * Given a game ID, finds the relevant home-game
      * if the game is not in the team, returns NULL
      *
-     * @param gid
-     * @return
+     * @param gid -
+     * @return -
      **/
     public Game findHomeGame(int gid) {
         return homeGames.get(gid);
@@ -237,8 +237,8 @@ public class Team {
      * Given a game ID, finds the relevant away-game
      * if the game is not in the team, returns NULL
      *
-     * @param gid
-     * @return
+     * @param gid -
+     * @return -
      */
     public Game findAwayGame(int gid) {
         return awayGames.get(gid);
