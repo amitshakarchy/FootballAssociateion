@@ -1,8 +1,11 @@
 package AssociationAssets;
 
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import System.*;
 import Users.*;
@@ -62,6 +65,7 @@ public class Game {
         this.time = time;
         //endOfUpdateTime = time.toInstant().plus(Duration.ofHours(7));
         this.field = field;
+        this.status = EGameStatus.OCCURS;
         this.host = host;
         this.guest = guest;
         this.season = season;
@@ -110,6 +114,18 @@ public class Game {
     //region Getters & Setters
 
 
+    public void setScore(Score score) {
+        this.score = score;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public void setObservers(List<Fan> observers) {
+        this.observers = observers;
+    }
+
     public EGameStatus getStatus() {
         return status;
     }
@@ -122,30 +138,15 @@ public class Game {
 
     public boolean isUpdatable(int hoursSinceGameStarted) {
         LocalDateTime currentDate = LocalDateTime.now();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        if(currentDate.getYear() == date.getYear()){
-            if(currentDate.getMonthValue() == date.getMonth() + 1){
-                if(currentDate.getDayOfMonth() == date.getDate()){
-                    Calendar cal = Calendar.getInstance();
-                    SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
-                    Time endUpdateTime = new Time(time.getHours() + hoursSinceGameStarted,time.getMinutes(),time.getSeconds());
-                    return LocalTime.now().isBefore(LocalTime.parse(endUpdateTime.toString())) && LocalTime.now().isAfter(LocalTime.parse(time.toString()));
-                }
+        LocalDateTime gameDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        if(currentDate.getYear() == gameDate.getYear()){
+            long minutes = ChronoUnit.MINUTES.between(gameDate, currentDate);
+            if( minutes/60 <= hoursSinceGameStarted && minutes > 0){
+
+                return true;
             }
         }
-//        if(date.getDay() == currentDate.getDay()){
-//            if(date.getYear() == currentDate.getYear()){
-//                if(date.getMonth() == currentDate.getMonth()){
-//                    Calendar cal = Calendar.getInstance();
-//                    SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm:ss");
-//                    Time endUpdateTime = new Time(time.getHours() + hoursSinceGameStarted,time.getMinutes(),time.getSeconds());
-//                    return LocalTime.now().isBefore(LocalTime.parse(endUpdateTime.toString())) && LocalTime.now().isAfter(LocalTime.parse(time.toString()));
-//                }
-//            }
-//        }
-
         return false;
-        
     }
 
     public Season getSeason() {
@@ -413,5 +414,20 @@ public class Game {
                 ", side1 referee=" + side1.getfName()+ " " +side1.getlName() +
                 ", side2 referee=" + side2.getfName() + " " +side2.getlName() +
                 '}';
+    }
+
+    public boolean isFinished() {
+        LocalDateTime currentDate = LocalDateTime.now();
+        LocalDateTime gameDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        if(currentDate.getYear() == gameDate.getYear()){
+            long minutes = ChronoUnit.MINUTES.between(gameDate, currentDate);
+            if( minutes/60 >= 2 ){
+                setStatus(EGameStatus.FINISHED);
+                this.getLeague().updateGameScore(season.getYear(),host.getName(),guest.getName(),getScore());
+
+                return true;
+            }
+        }
+        return false;
     }
 }

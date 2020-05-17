@@ -67,9 +67,24 @@ public class League {
     public Map<String, SeasonLeagueBinder> getSeasonBinders() {
         return this.seasonBinders;
     }
+
+    public void setSeasonBinders(HashMap<String, SeasonLeagueBinder> seasonBinders) {
+        this.seasonBinders = seasonBinders;
+    }
+
     //endregion
 
     //region Adders
+
+    /**
+     * Add a binder to the relevant hashmap
+     * @param year - season's year
+     * @param binder -  new binder
+     */
+    public void addSeasonLeagueBinder(String year, SeasonLeagueBinder binder){
+        seasonBinders.put(year,binder);
+    }
+
 
     /**
      * @param season - the association representative should know and provide the season in order to bind correctly.
@@ -113,6 +128,36 @@ public class League {
             str.append(year).append("; ");
         }
         return str.toString();
+    }
+
+    public void updateGameScore(String year, String host, String guest, Score score) {
+        SeasonLeagueBinder seasonLeagueBinder = seasonBinders.get(year);
+        if(hostWon(score)){
+            int previousPoints = seasonLeagueBinder.getLeagueTable().get(host);
+            //TODO add assigning policy points
+            seasonLeagueBinder.getLeagueTable().put(host,previousPoints +3);
+        }
+        else if(guestWon(score)){
+            int previousPoints = seasonLeagueBinder.getLeagueTable().get(guest);
+            seasonLeagueBinder.getLeagueTable().put(guest,previousPoints +3);
+        }
+        else{
+            int previousPointsHost = seasonLeagueBinder.getLeagueTable().get(host);
+            int previousPointsGuest = seasonLeagueBinder.getLeagueTable().get(guest);
+            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost );
+            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsHost +1);
+
+        }
+    }
+
+    private boolean guestWon(Score score) {
+        if(score.goalsHost < score.goalsGuest) return true;
+        return false;
+    }
+
+    private boolean hostWon(Score score) {
+        if(score.goalsHost > score.goalsGuest) return true;
+        return false;
     }
     //endregion
 

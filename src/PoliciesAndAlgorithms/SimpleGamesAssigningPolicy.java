@@ -8,6 +8,11 @@ public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
 
     }
 
+    @Override
+    public int getPolicyPoints() {
+        return 0;
+    }
+
     /**
      * activate SimpleGamesAssigningPolicy
      */

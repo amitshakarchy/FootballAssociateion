@@ -1,6 +1,7 @@
 package AssociationAssets;
 
 public enum EGameStatus {
-    Canceled,
-    Occurs
+    CANCELED,
+    OCCURS,
+    FINISHED
 }
