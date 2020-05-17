@@ -67,9 +67,24 @@ public class League {
     public Map<String, SeasonLeagueBinder> getSeasonBinders() {
         return this.seasonBinders;
     }
+
+    public void setSeasonBinders(HashMap<String, SeasonLeagueBinder> seasonBinders) {
+        this.seasonBinders = seasonBinders;
+    }
+
     //endregion
 
     //region Adders
+
+    /**
+     * Add a binder to the relevant hashmap
+     * @param year - season's year
+     * @param binder -  new binder
+     */
+    public void addSeasonLeagueBinder(String year, SeasonLeagueBinder binder){
+        seasonBinders.put(year,binder);
+    }
+
 
     /**
      * @param season - the association representative should know and provide the season in order to bind correctly.

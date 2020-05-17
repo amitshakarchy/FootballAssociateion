@@ -5,9 +5,12 @@ import Users.Player;
 import Users.TeamManager;
 import Users.TeamOwner;
 import Budget.TeamBudget;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import System.*;
+
 /**
  * Class Team represents a team. It holds a team's home and away games, it's players and
  * all other team assets.
@@ -29,7 +32,7 @@ public class Team {
     //endregion
 
 
-    public Team(int TID, String name, Season currentSeason, Field mainField, TeamBudget budget,TeamOwner teamOwner) {
+    public Team(int TID, String name, Season currentSeason, Field mainField, TeamBudget budget, TeamOwner teamOwner) {
         this.TID = TID;
         this.name = name;
         this.currentSeason = currentSeason;
@@ -40,16 +43,21 @@ public class Team {
         // TODO: 4/13/2020  need to check that this team owner is not owner of another team already
         this.isActive = ETeamStatus.ACTIVE;
         this.fields = new HashMap<>();
-        if(mainField != null) {
+        if (mainField != null) {
             fields.put(mainField.getName(), mainField);
         }
         this.additionalInfoWithSeasons = new HashMap<>();
-        this.teamOwner  = teamOwner;
+        this.teamOwner = teamOwner;
         // Write to the log
-        Logger.getInstance().addActionToLogger("Team was created. Team's name: "+name+".");
+        Logger.getInstance().addActionToLogger("Team was created. Team's name: " + name + ".");
     }
 
     //region Getters & Setters
+
+
+    public void setTeamOwner(TeamOwner teamOwner) {
+        this.teamOwner = teamOwner;
+    }
 
     public int getTID() {
         return TID;
@@ -136,6 +144,24 @@ public class Team {
     }
 
     //endregion
+
+    /**
+     * Add an additionalInfo instance to the relevant hashmap
+     * @param year -
+     * @param additionalInfo -
+     */
+    public void addToAdditionalInfo(String year, AdditionalInfo additionalInfo) {
+        if (year != null && additionalInfo != null) {
+            if (!year.isEmpty()) {
+                if (additionalInfoWithSeasons.containsKey(year)) {
+                    return;
+                }
+                additionalInfoWithSeasons.put(year, additionalInfo);
+            }
+        }
+    }
+
+
     /**
      * Given a user ID, finds the player in the team.
      * if the player is not in the team, returns NULL
@@ -145,7 +171,7 @@ public class Team {
      **/
     public Player findPlayer(String PID) {
         AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
-        if(info == null){
+        if (info == null) {
             return null;
         }
         return info.findPlayer(PID);
@@ -160,7 +186,7 @@ public class Team {
      **/
     public Coach findCoach(String CID) {
         AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
-        if(info == null){
+        if (info == null) {
             return null;
         }
         return info.findCoach(CID);
@@ -175,7 +201,7 @@ public class Team {
      */
     public TeamManager findManager(String MID) {
         AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
-        if(info == null){
+        if (info == null) {
             return null;
         }
         return info.findManager(MID);
@@ -190,7 +216,7 @@ public class Team {
      **/
     public TeamOwner findTeamOwner(String OID) {
         AdditionalInfo info = this.additionalInfoWithSeasons.get(currentSeason.getYear());
-        if(info == null){
+        if (info == null) {
             return null;
         }
         return info.findTeamOwner(OID);
@@ -224,23 +250,23 @@ public class Team {
             AdditionalInfo additionalInfo = new AdditionalInfo(this, currentSeason);
             additionalInfoWithSeasons.put(season.getYear(), additionalInfo);
             season.addTeamToSeason(name, additionalInfoWithSeasons);
-            if(this.teamOwner != null){
+            if (this.teamOwner != null) {
                 this.teamOwner.addAdditionalInfo(additionalInfo);
-                additionalInfo.addTeamOwner(teamOwner.getUserName(),teamOwner.getUserName());
+                additionalInfo.addTeamOwner(teamOwner.getUserName(), teamOwner.getUserName());
             }
         }
     }
 
-    public void addField(Field field){
-        if(field == null){
+    public void addField(Field field) {
+        if (field == null) {
             return;
         }
-        if(!this.fields.containsKey(field.getName())){
-            this.fields.put(field.getName(),field);
+        if (!this.fields.containsKey(field.getName())) {
+            this.fields.put(field.getName(), field);
         }
     }
 
-    public void removeField(String fieldName){
+    public void removeField(String fieldName) {
         this.fields.remove(fieldName);
     }
 
@@ -263,21 +289,21 @@ public class Team {
     }
 
     public String viewProfile() {
-        return  "Team's name: "+this.name+"\n" +
-                "Current Season: "+ this.currentSeason+"\n" +
-                "Home Field: "+ mainField +"\n" +
-                "Team's Owner: "+teamOwner+".";
+        return "Team's name: " + this.name + "\n" +
+                "Current Season: " + this.currentSeason + "\n" +
+                "Home Field: " + mainField + "\n" +
+                "Team's Owner: " + teamOwner + ".";
     }
 
-    public void addHomeGame(Game game){
-        if(game!= null){
-            this.homeGames.put(String.valueOf(game.GID),game);
+    public void addHomeGame(Game game) {
+        if (game != null) {
+            this.homeGames.put(String.valueOf(game.GID), game);
         }
     }
 
-    public void addAwayGame(Game game){
-        if(game!= null){
-            this.awayGames.put(String.valueOf(game.GID),game);
+    public void addAwayGame(Game game) {
+        if (game != null) {
+            this.awayGames.put(String.valueOf(game.GID), game);
         }
     }
 }

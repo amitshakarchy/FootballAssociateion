@@ -29,9 +29,27 @@ public class Season {
     public String getYear() {
         return year;
     }
+
+    public HashMap<String, SeasonLeagueBinder> getLeagueBinders() {
+        return leagueBinders;
+    }
+
+    public void setLeagueBinders(HashMap<String, SeasonLeagueBinder> leagueBinders) {
+        this.leagueBinders = leagueBinders;
+    }
+
     //endregion
 
     //region Adders
+
+    /**
+     * Adds a league binder into the relevant hashmap
+     * @param leagueName -  league's name
+     * @param binder - new binder
+     */
+    public void addLeagueBinder(String leagueName, SeasonLeagueBinder binder){
+        this.leagueBinders.put(leagueName, binder);
+    }
 
     /**
      * adding league to the corresponding leagueBinder object
