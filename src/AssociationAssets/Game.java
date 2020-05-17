@@ -116,6 +116,18 @@ public class Game {
     //region Getters & Setters
 
 
+    public void setScore(Score score) {
+        this.score = score;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public void setObservers(List<Fan> observers) {
+        this.observers = observers;
+    }
+
     public EGameStatus getStatus() {
         return status;
     }
