@@ -79,6 +79,8 @@ public class Main extends Application {
         }
         main.addGame(game);
         FootballSystem.getInstance().addGameToDB(game);
+        FootballSystem.getInstance().signIn("r","r","r","r");
+        FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","r","r",null);
     }
 
 
