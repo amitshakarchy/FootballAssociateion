@@ -14,12 +14,6 @@ public class RegularScorePolicy extends ScoreTablePolicy {
     int pointForLoser = 0;
     int pointsForDraw = 1;
 
-    public int getPolicyPoints(){
-        //fucntion for winner, loser, and sraw points.
-
-
-        return 0;
-    }
 }
 
 

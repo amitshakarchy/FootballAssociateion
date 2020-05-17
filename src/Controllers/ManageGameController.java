@@ -1,5 +1,85 @@
 package Controllers;
 
-public class ManageGameController extends Controller{
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
+
+public class ManageGameController extends Controller {
+
+    @FXML
+    public Button createReport;
+    public Button removeEvent;
+    public Button editEvent;
+    public Button addEvent;
+    public ChoiceBox gameID;
+    public RequiredField requiredField1;
+    @FXML
+    public void createReport() {
+        requiredField1.eval();
+        if(requiredField1.getHasErrors()){
+            return;
+        }
+        FileChooser fileChooser = new FileChooser();
+        Stage stage = new Stage();
+        stage.initOwner(createReport.getScene().getWindow());
+        fileChooser.setTitle("Create Report"); //set the title of the Dialog window
+        String defaultSaveName = "Report GameID_" + gameID.getValue().toString() ;
+        fileChooser.setInitialFileName(defaultSaveName); //set the default name for file to be saved
+        //create extension filters. The choice will be appended to the end of the file name
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files (*.csv)", "*.csv"));
+        try {
+            //Actually displays the save dialog - blocking
+            File file = fileChooser.showSaveDialog(stage);
+            if (file != null) {
+                File dir = file.getParentFile();//gets the selected directory
+                //update the file chooser directory to user selected so the choice is "remembered"
+                fileChooser.setInitialDirectory(dir);
+                //handle saving data to disk or DB etc.
+                int gameID = Integer.parseInt(this.gameID.getValue().toString());
+                model.exportGameReport(gameID,file.getAbsolutePath(),file.getName());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void addEvent() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/CreateNewEvent.fxml"));
+        Stage stage = getStage(loader,addEvent);
+        stage.setTitle("Create New Event");
+        // showAndWait will block execution until the window closes...
+        stage.showAndWait();
+
+//        requiredField1.eval();
+//        requiredField2.eval();
+//        requiredField3.eval();
+//        if (!requiredField1.getHasErrors() && !requiredField2.getHasErrors() && !requiredField3.getHasErrors()) {
+//            int gameID = Integer.parseInt(this.gameID.getValue().toString());
+//            try {
+//                model.addEvent(gameID, eventChoiceBox.getValue().toString(), description.getText());
+//            } catch (RecordException e) {
+//                raiseAlert(e);
+//            }
+//        }
+    }
+
+
+
+    @FXML
+    public void removeEvent() {
+        stillWorkingOnIt();
+    }
+
+    @FXML
+    public void editEvent() {
+        stillWorkingOnIt();
+    }
 }
+

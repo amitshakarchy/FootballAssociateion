@@ -114,6 +114,7 @@ public class Model implements IModel {
      */
     @Override
     public boolean login(String username, String password) throws FailedLoginException {
+        // TODO: 5/8/2020 to add new exception in case of login is failed - password or username is incorret
 
             Fan tmpUser = footballSystem.login(username,password);
 
@@ -493,7 +494,7 @@ public class Model implements IModel {
 
         // Only Referee is allowed to add an event.
         if (!(user instanceof Referee)){
-            throw new RecordException("This user don't have permission to add event");
+            throw new RecordException("This user doesn't have permission to add event");
         }
 
         ValidateObject.getValidatedGame(gameID);
