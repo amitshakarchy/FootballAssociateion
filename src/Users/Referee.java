@@ -5,6 +5,7 @@ import AssociationAssets.Event;
 import AssociationAssets.Game;
 import Model.RecordException;
 import System.*;
+import sun.rmi.runtime.NewThreadAction;
 
 import javax.security.auth.login.FailedLoginException;
 import java.util.ArrayList;
@@ -229,7 +230,7 @@ public class Referee extends Fan {
      *
      * # use case 10.4
      */
-    public void exportReport(int gameID,String pathToSave){//10.4
+    public void exportReport(int gameID,String pathToSave) throws Exception{//10.4
         if(this.training.equals(EReferee.MAIN)){
             Game gameToAdd = getGame(gameID);
             if (gameToAdd != null) {
@@ -238,12 +239,21 @@ public class Referee extends Fan {
                     Logger.getInstance().addActionToLogger("Referee export report from the game, user name: "+ getUserName()+" GameID: "+gameID);
 
                 }
-                else  Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName()+" GameID: "+gameID);
+                else {
+                    Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName() + " GameID: " + gameID);
+                    throw new Exception("The game isn't over yet");
+                }
 
             }
+            else{
+                Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName() + " GameID: " + gameID);
+                throw new Exception("This game isn't exists");
+            }
         }
-        else  Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName()+" GameID: "+gameID);
-
+        else {
+            Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName() + " GameID: " + gameID);
+            throw new Exception("Referee isn't authorized to this operation");
+        }
     }
 
     /**
