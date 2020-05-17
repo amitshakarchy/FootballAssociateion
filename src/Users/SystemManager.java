@@ -47,7 +47,7 @@ public class SystemManager extends Fan {
             for (Game game:
                  gamesList) {
                 if(game.getDate().after(new Date())){
-                    game.setStatus(EGameStatus.Canceled);
+                    game.setStatus(EGameStatus.CANCELED);
                 }
             }
             team.setIsActive(ETeamStatus.INACTIVE);

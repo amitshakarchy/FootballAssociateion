@@ -4,15 +4,12 @@ import AssociationAssets.*;
 import Budget.AssociationBudget;
 import Budget.TeamBudget;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
-import PoliciesAndAlgorithms.HeuristicGamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Random;
+import java.util.*;
+
 import System.*;
 
 import javax.security.auth.login.FailedLoginException;
@@ -20,7 +17,8 @@ import javax.security.auth.login.FailedLoginException;
 public class RepresentativeFootballAssociation extends Fan implements Observer  {
     private GamesAssigningPolicy gamePolicy;
     private AssociationBudget associationBudget;
-    private HashMap<String/*teamName*/, Boolean> NotificationTeamsExceedBudget;
+    private HashMap<String/*teamName*/, String[]> notificationTeams;
+    private HashMap<String/*teamName*/, Boolean> notificationTeamsExceedBudget;
 
     /**
      * Constructor
@@ -32,11 +30,10 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
         super(userName, fName, lName);
         this.gamePolicy = gamePolicy; // can be changed by the user later
         this.associationBudget = new AssociationBudget();
-        this.NotificationTeamsExceedBudget= new HashMap<>();
-        LocalDate date = LocalDate.now();
-        LocalTime now = LocalTime.now();
+        this.notificationTeamsExceedBudget = new HashMap<>();
+        this.notificationTeams = new HashMap<>();
         // Write to the log
-        Logger.getInstance().addActionToLogger(date + " " + now + ": Representative Football Association was created. representative user name: "+userName);
+        Logger.getInstance().addActionToLogger("Representative Football Association was created. representative user name: "+userName);
     }
 
     /**
@@ -48,7 +45,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     public RepresentativeFootballAssociation(String userName, String fName, String lName){
     super(userName, fName, lName);
     this.associationBudget = new AssociationBudget();
-    this.NotificationTeamsExceedBudget= new HashMap<>();
+    this.notificationTeamsExceedBudget = new HashMap<>();
     LocalDate date = LocalDate.now();
     LocalTime now = LocalTime.now();
     // Write to the log
@@ -220,7 +217,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      */
     @Override
     public void update(Observable o, Object teamName) {
-            NotificationTeamsExceedBudget.put((String)teamName , true);
+            notificationTeamsExceedBudget.put((String)teamName , true);
 
     }
 
@@ -259,12 +256,17 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     }
 
     public HashMap<String, Boolean> getTeamsExceedBudget() {
-        return NotificationTeamsExceedBudget;
+        return notificationTeamsExceedBudget;
     }
 
     public void addTeamRequest(String name, String leagueName, String seasonYear, String fieldName) {
         //if online show notifications
+        if(this.getStatus() == EStatus.ONLINE){
 
-        //if offline save to his notifications
+        }
+        else{
+            //if offline save to his notifications
+            notificationTeams.put(name,new String[]{leagueName,seasonYear,fieldName});
+        }
     }
 }
