@@ -129,6 +129,36 @@ public class League {
         }
         return str.toString();
     }
+
+    public void updateGameScore(String year, String host, String guest, Score score) {
+        SeasonLeagueBinder seasonLeagueBinder = seasonBinders.get(year);
+        if(hostWon(score)){
+            int previousPoints = seasonLeagueBinder.getLeagueTable().get(host);
+            //TODO add assigning policy points
+            seasonLeagueBinder.getLeagueTable().put(host,previousPoints +3);
+        }
+        else if(guestWon(score)){
+            int previousPoints = seasonLeagueBinder.getLeagueTable().get(guest);
+            seasonLeagueBinder.getLeagueTable().put(guest,previousPoints +3);
+        }
+        else{
+            int previousPointsHost = seasonLeagueBinder.getLeagueTable().get(host);
+            int previousPointsGuest = seasonLeagueBinder.getLeagueTable().get(guest);
+            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost );
+            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsHost +1);
+
+        }
+    }
+
+    private boolean guestWon(Score score) {
+        if(score.goalsHost < score.goalsGuest) return true;
+        return false;
+    }
+
+    private boolean hostWon(Score score) {
+        if(score.goalsHost > score.goalsGuest) return true;
+        return false;
+    }
     //endregion
 
 }

@@ -236,7 +236,6 @@ public class TeamOwner extends Fan {
             if (FootballSystem.getInstance().existFanByUserName(uName)) {
                 if (FootballSystem.getInstance().findTeamManagerAtTeamByUserName(uName)) {
                     Logger.getInstance().addErrorToLogger("Team manager adding failed");
-                    System.out.println("this manager is manager another team, user name is: " + uName);
                     return false;
                 }
                 // check if the additional info has this  already
