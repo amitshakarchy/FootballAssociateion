@@ -12,10 +12,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import AssociationAssets.*;
 import DB.*;
@@ -340,7 +337,7 @@ public class DataUploader {
                 String username = resultSet.getString("Username");
                 String password = resultSet.getString("Password_user");
 
-                //TODO add setters
+
 
                 //   sec.addNewUser(username, );
             }
@@ -365,13 +362,15 @@ public class DataUploader {
                         "SELECT * FROM additionalinfo_has_teamowner\n" +
                         "WHERE AdditionalInfo_Teams_name= \"" + teamName + "\" \n" +
                         "AND AdditionalInfo_Seasons_Year = \"" + seasonYear + "\";");
-
+                ArrayList<String> owners= new ArrayList<>();
+              // TODO complete method
                 while (ownersSet.next()) {
                     String ownerUsername = ownersSet.getString("TeamOwner_Username");
-
-                    // todo: add setters to additional info
-
+                    owners.add(ownerUsername);
                 }
+
+
+                //additionalInfo.setOwners();
 
 
             }
@@ -450,14 +449,23 @@ public class DataUploader {
                 }
                 binder.addTeamsToLeague(teams);
 
-                //  TODO: attach games
-
+                // attach teams
+                ResultSet gamesSet = databaseManager.executeQuerySelect(
+                        "SELECT * from games " +
+                                "WHERE Seasons_has_Leagues_Leagues_Name = \"" + leagueName + "\" " +
+                                "AND Seasons_has_Leagues_Seasons_Year = " + seasonYear);
+                HashMap<String, Game> games = new HashMap<>();
+                while (gamesSet.next()) {
+                    String teamName = teamsSet.getString("name");
+                    Team team = allTeams.get(teamName);
+                    teams.put(teamName, team);
+                }
+                binder.addTeamsToLeague(teams);
                 // attach policies
                 binder.setScoreTablePolicy(tablePolicy);
                 binder.setAssigningPolicy(gamesAssigningPolicy);
-
-                // TODO: attach to league & Season
-                // todo add setters in season and league
+                season.addLeagueBinder(leagueName,binder);
+                league.addSeasonLeagueBinder(seasonYear,binder);
 
             }
         } catch (SQLException e) {
