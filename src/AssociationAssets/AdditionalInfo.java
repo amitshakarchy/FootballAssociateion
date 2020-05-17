@@ -68,6 +68,30 @@ public class AdditionalInfo {
         team.setCurrentSeason(season);
     }
 
+    public void setOwners(HashMap<String, ArrayList<String>> owners) {
+        this.owners = owners;
+    }
+
+    public void setCoaches(HashSet<String> coaches) {
+        this.coaches = coaches;
+    }
+
+    public void setManagers(HashMap<String, ArrayList<String>> managers) {
+        this.managers = managers;
+    }
+
+    public void setPlayers(HashSet<String> players) {
+        this.players = players;
+    }
+
+    public void setTeamManagersHashSet(HashSet<String> teamManagersHashSet) {
+        this.teamManagersHashSet = teamManagersHashSet;
+    }
+
+    public void setTeamOwnersHashSet(HashSet<String> teamOwnersHashSet) {
+        this.teamOwnersHashSet = teamOwnersHashSet;
+    }
+
     public HashMap<String, ArrayList<String>> getOwners() {
         return owners;
     }
