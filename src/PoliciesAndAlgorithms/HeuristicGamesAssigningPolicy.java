@@ -11,8 +11,11 @@ import java.util.Map;
 public class HeuristicGamesAssigningPolicy extends GamesAssigningPolicy {
 
 
-
-
+    @Override
+    public int getPolicyPoints() {
+        // just started working on it!
+        return 0;
+    }
 }
 
 
