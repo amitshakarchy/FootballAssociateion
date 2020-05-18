@@ -12,6 +12,7 @@ import java.util.*;
 
 import System.*;
 
+import javax.naming.OperationNotSupportedException;
 import javax.security.auth.login.FailedLoginException;
 
 public class RepresentativeFootballAssociation extends Fan implements Observer  {
@@ -19,6 +20,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     private AssociationBudget associationBudget;
     private HashMap<String/*teamName*/, String[]> notificationTeams;
     private HashMap<String/*teamName*/, Boolean> notificationTeamsExceedBudget;
+
 
     /**
      * Constructor
@@ -162,41 +164,37 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     /**
      * useCase #9.5 - define Score Table policy
      */
-    public void SetScoreTablePolicy(ScoreTablePolicy policy, League league, Season season) {
+    public void SetScoreTablePolicy(ScoreTablePolicy policy, String league, String season) throws UnsupportedOperationException {
         if(policy!=null && league!=null && season!=null){
-            league.getSeasonBinders().get(season.getYear()).setScoreTablePolicy(policy);
-        }
-    }
-    /**
-     * useCase #9.6 - define assign game policy
-     */
-    public void SetGamesAssigningPolicy(String newGamePolicy) {
-        if(newGamePolicy !=null) {
-            gamePolicy.setPolicy(newGamePolicy);
+            FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getSeasonBinders().get(season).setScoreTablePolicy(policy);
         }
     }
 
+
     /**
      * useCase #9.6 - define assign game policy
+     * can only set assigning policy if the current season hasn't started yet.
      */
-    public void SetGamesAssigningPolicy(GamesAssigningPolicy policy, League league, Season season) {
+    public void SetGamesAssigningPolicy(GamesAssigningPolicy policy,  String league, String season) throws OperationNotSupportedException {
         if(policy!=null && league!=null && season!=null){
-            league.getSeasonBinders().get(season.getYear()).setAssigningPolicy(policy);
+            SeasonLeagueBinder binder = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getSeasonBinders().get(season);
+            binder.setAssigningPolicy(policy);
         }
+        else throw new OperationNotSupportedException("Incorrect input");
+
     }
+
     /**
      * useCase #9.7 - activate the Games Assigning
      */
-    public void activateGamesAssigning() {
-        gamePolicy.executePolicy();
-    }
-    /**
-     * useCase #9.7 - activate the Games Assigning
-     */
-    public void activateGamesAssigning(League league, Season season) {
+    public void activateGamesAssigning(String league, String season) {
         if(league!=null && season!=null){
-            league.getSeasonBinders().get(season.getYear()).getAssigningPolicy().executePolicy();
+
+            HashMap<String,Team> teams = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getTeams(season);
+            Map<String,Referee> refs = FootballSystem.getInstance().getRefereeMap();
+            HashMap<Integer, Game> games = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getSeasonBinders().get(season).getAssigningPolicy().executePolicy(teams,refs);
         }
+        //// TODO: 18/05/2020   insert the games to the season league binder
     }
 
     /**

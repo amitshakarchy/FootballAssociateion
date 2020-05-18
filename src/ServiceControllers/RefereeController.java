@@ -186,6 +186,6 @@ public class RefereeController {
             System.out.println("Game's ID: " + game.getGID() + " - Date: " + game.getDate() + "; ");
         }
         Game game = searcher.getGameByGameID(input.nextInt());
-        referee.exportReport(game.getGID());
+        //referee.exportReport(game.getGID());
     }
 }

@@ -1,20 +1,20 @@
 package PoliciesAndAlgorithms;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import AssociationAssets.Game;
+import AssociationAssets.League;
+import AssociationAssets.Team;
+import Users.Referee;
+
+import java.util.HashMap;
 import java.util.Map;
 
 public class HeuristicGamesAssigningPolicy extends GamesAssigningPolicy {
 
 
     @Override
-    public int getPolicyPoints() {
-        // just started working on it!
-        return 0;
+    public HashMap<Integer, Game> executePolicy(HashMap<String, Team> teams, Map<String, Referee> refs) {
+        return null;
     }
 }
 

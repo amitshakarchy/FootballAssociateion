@@ -88,7 +88,7 @@ public class Referee extends Fan {
     public void addEventToAssignedGame(int gameID, EEventType eventType, String description) throws Exception {
         Game gameToAdd = getGame(gameID);
         if(gameToAdd != null ){
-            if(gameToAdd.isUpdatable(2)) {
+            if(!gameToAdd.isFinished()) {
                 gameToAdd.addEvent(eventType, description);
                 Logger.getInstance().addActionToLogger("Referee added event to assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
                 gameToAdd.notifyObserver(description,eventType);

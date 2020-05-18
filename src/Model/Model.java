@@ -147,7 +147,7 @@ public class Model implements IModel {
     public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName) throws RecordException {
         // Only TeamOwner is allowed to create a team.
         if (!(user instanceof TeamOwner)){
-            throw new RecordException("You don ot have permission to create new team");
+            throw new RecordException("You do not have permission to create new team");
         }
         if(validateDuplicateTeamName(name)){
             throw new RecordException("This team name already exist");
