@@ -10,6 +10,8 @@
 <?import java.lang.String?>
 <?import Controllers.RequiredField?>
 <?import Controllers.ErrorLabel?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.VBox?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ManageGameController">
       <Button fx:id="createReport" layoutX="713.0" layoutY="33.0" mnemonicParsing="false" onAction="#createReport" prefHeight="52.0" prefWidth="141.0" text="Create Report" />
        <Button fx:id="removeEvent" layoutX="330.0" layoutY="317.0" mnemonicParsing="false" onAction="#removeEvent" prefHeight="39.0" prefWidth="195.0" text="Remove Event" />
@@ -18,7 +20,7 @@
         <Label styleClass="labelNormal" layoutX="480.0" layoutY="33.0">Game Id: </Label>
     <ChoiceBox fx:id="gameID" layoutX="550.0" layoutY="33.0" prefWidth="150.0" >
         <items>
-            <FXCollections fx:factory="observableArrayList">
+            <FXCollections fx:factory="observableArrayList" >
                 <String fx:value="1" />
                 <String fx:value="2" />
                 <String fx:value="3" />

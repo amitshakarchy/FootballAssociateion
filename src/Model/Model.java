@@ -626,7 +626,7 @@ public class Model implements IModel {
 
         Referee referee= (Referee)user;
         try {
-            referee.exportReport(gameID);
+            referee.exportReport(gameID,pathToSave);
         }
         catch (Exception e){
             String cause = e.getMessage();
