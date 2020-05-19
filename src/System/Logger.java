@@ -1,15 +1,17 @@
 package System;
 import AssociationAssets.Event;
+import com.sun.xml.internal.bind.v2.TODO;
 import javafx.util.Pair;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.sql.Struct;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * All system operations are kept in this class for tracking and error tracking
@@ -39,13 +41,53 @@ public class Logger {
      *  Through the Log main referee can generate reports on games
      * @param gid - game id
      * @param events - List of events that happened in a game
+     * @param pathToSave
      */
-    public void exportReport(int gid, List<Event> events) {
+    public void exportReport(int gid, List<Event> events, String pathToSave) {
         if(events!= null){
             this.report.add(new Pair<>(gid,events));
+
+            try (PrintWriter writer = new PrintWriter(new File(pathToSave))) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("Event Type, ");
+                sb.append("Description");
+                sb.append('\n');
+                for (Event event:events) {
+                    sb.append(event.getEventType().name() + ", ");
+                    sb.append(event.getDescription() + ", ");
+                    sb.append('\n');
+                }
+                writer.write(sb.toString());
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
         }
+        }
+/*
+    public void givenDataArray_whenConvertToCSV_thenOutputCreated(String gid) throws IOException {
+        File csvOutputFile = new File("" + gid);
+        try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
+            report.get(Integer.parseInt(gid).).stream().map(this::convertToCSV).forEach(pw::println);
+        }
+        assertTrue(csvOutputFile.exists());
     }
 
+    public String convertToCSV(String[] data) {
+        return Stream.of(data).map(this::escapeSpecialCharacters).collect(Collectors.joining(","));
+    }
+
+    public String escapeSpecialCharacters(String data) {
+        String escapedData = data.replaceAll("\\R", " ");
+        if (data.contains(",") || data.contains("\"") || data.contains("'")) {
+            data = data.replace("\"", "\"\"");
+            escapedData = "\"" + data + "\"";
+        }
+        return escapedData;
+    }
+
+ */
     /**
      * Using this function you can add actions that occurred in the system to the logger
      * @param action - The action we want to add

@@ -160,7 +160,7 @@ public class Model implements IModel {
         if (field == null) {
             throw new RecordException("The field " + fieldName + " is not exits");
         }
-        
+
         // Create a new team.
         //Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
 
@@ -494,7 +494,7 @@ public class Model implements IModel {
 
         // Only Referee is allowed to add an event.
         if (!(user instanceof Referee)){
-            throw new RecordException("This user don't have permission to add event");
+            throw new RecordException("This user doesn't have permission to add event");
         }
 
         ValidateObject.getValidatedGame(gameID);

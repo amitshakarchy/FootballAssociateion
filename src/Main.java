@@ -2,9 +2,10 @@
 import AssociationAssets.*;
 import Controllers.*;
 import Model.Model;
-import PoliciesAndAlgorithms.RegularScorePolicy;
-import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
 import Users.Coach;
+import Users.EReferee;
+import Users.Referee;
+import Users.TeamOwner;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,8 @@ import System.FootballSystem;
 import sun.misc.Contended;
 import sun.misc.FpUtils;
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.logging.SimpleFormatter;
 
 public class Main extends Application {
@@ -36,14 +39,6 @@ public class Main extends Application {
         Model myModel = new Model();
         Controller controller = new Controller();
         controller.setModel(myModel);
-//        MainPageController mainPageController = fxmlLoader.getController();
-////        mainPageController.setModel(myModel);
-////        ManageGameController manageGameController = fxmlLoader.getController();
-////        manageGameController.setModel(myModel);
-////        eamController createTeamController = fxmlLoader.getController();
-////        createTeamController.setModel(myModel);
-        //-------------
-
     }
 
     private void initDB() {
@@ -51,33 +46,41 @@ public class Main extends Application {
         Season season1 = new Season("2021");
         FootballSystem.getInstance().addSeasonToDB(season);
         FootballSystem.getInstance().addSeasonToDB(season1);
-        FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","a","a",new SimpleGamesAssigningPolicy());
-
-
-
         League league = new League("La Liga");
         League league1 = new League("gal");
         FootballSystem.getInstance().addLeagueToDB(league);
         FootballSystem.getInstance().addLeagueToDB(league1);
-
         league.addSeasonToLeague(season);
-
         Field field = new Field("Blomfield","teal aviv",1000);
         Field field1 = new Field("tedi","teal aviv",1000);
         FootballSystem.getInstance().addFieldToDB(field);
         FootballSystem.getInstance().addFieldToDB(field1);
+        FootballSystem.getInstance().signIn("tair123","1234","tair","cohen");
+        FootballSystem.getInstance().creatingTeamOwner("tair123","tair","cohen");
+        FootballSystem.getInstance().signIn("1","1","lala","la");
+        FootballSystem.getInstance().creatingReferee("1","la","laala", EReferee.MAIN);
+        FootballSystem.getInstance().signIn("2","2","lala","la");
+        FootballSystem.getInstance().creatingReferee("2","la","laala", EReferee.ASSISTANT);
+        FootballSystem.getInstance().signIn("3","3","lala","la");
+        FootballSystem.getInstance().creatingReferee("3","la","laala", EReferee.ASSISTANT);
 
-        FootballSystem.getInstance().signIn("a","a","tair","cohen");
-        FootballSystem.getInstance().creatingTeamOwner("a","a","cohen");
-        Team team = new Team(1,"Barca",season,field,null,FootballSystem.getInstance().getTeamOwnerByUserName("a"));
+        Team team1 = new Team(45,"team1",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("tair123"));
+        Team team2 = new Team(55,"team2",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("tair123"));
+        Date date = new Date(17/05/2018);
+        Time time = new Time(2000);
+        Referee main = FootballSystem.getInstance().getRefereeByUseName("1");
+        Referee side1 = FootballSystem.getInstance().getRefereeByUseName("2");
+        Referee side2 = FootballSystem.getInstance().getRefereeByUseName("3");
+        Game game = null;
         try {
-            FootballSystem.getInstance().addTeamToDB(team);
+            game = new Game(date,time,field,team1,team2,main,side1,side2,season,league);
         } catch (Exception e) {
-            String cause = e.getMessage();
             e.printStackTrace();
         }
-
-
+        main.addGame(game);
+        FootballSystem.getInstance().addGameToDB(game);
+        FootballSystem.getInstance().signIn("r","r","r","r");
+        FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","r","r",null);
     }
 
 
@@ -85,18 +88,5 @@ public class Main extends Application {
         launch(args);
     }
 
-//    @Override
-//    public void start(Stage primaryStage) throws Exception{
-//    Parent root = FXMLLoader.load(getClass().getResource("View/Login.fxml"));
-//    primaryStage.setTitle("Football Association System");
-//    primaryStage.setScene(new Scene(root, 400, 600));
-//    primaryStage.show();
-//}
-//
-//
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
 }
-
 

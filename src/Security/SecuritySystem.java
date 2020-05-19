@@ -14,6 +14,27 @@ public class SecuritySystem {
     private AESEncryption AES = new AESEncryption();
     private final String secretKey = "ssshhhhhhhhhhh!!!!";
 
+    /**
+     * Getter for usersHashMap.
+     * @param code - will return the hashmap only if the given code is correct.
+     * @return - users hashMap
+     */
+    public Map<String, String> getUsersHashMap(String code) {
+        if(code.equals("iseFab5")) {
+            return usersHashMap;
+        }else return null;
+    }
+
+    /**
+     * Sets users & passwords details
+     * @param usersHashMap - uploaded from DB
+     * @param code - will return the hashmap only if the given code is correct.
+     */
+    public void setUsersHashMap(Map<String, String> usersHashMap, String code) {
+        if(code.equals("iseFab5")) {
+            this.usersHashMap = usersHashMap;
+        }
+    }
 
     /**
      * this function add new user to the system.
@@ -73,7 +94,6 @@ public class SecuritySystem {
      */
     public boolean checkPasswordForLogIn(String userName, String password) throws FailedLoginException {
         if (!usersHashMap.containsKey(userName)) {
-            System.out.println("The user name is NOT EXISTS in the system");
             throw new FailedLoginException("User name doesn't exists");
         }
         if (AES.decrypt(usersHashMap.get(userName), secretKey).equals(password)) {

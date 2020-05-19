@@ -81,7 +81,7 @@ public class Acceptance {
         fan2 = footballSystem.signIn("messi10","12345678","Leo", "Messi");
         fan3 = footballSystem.signIn("vered8","888888","Idan","Vered");
         fan4 = footballSystem.signIn("zangooo","888888","Shimi","Zangi");
-
+        footballSystem.creatingReferee("moshe37","Moshe","Zak",EReferee.MAIN);
         guest = new Guest();
         regularScorePolicy = new RegularScorePolicy();
         Date date = new Date(1987,12,4);
@@ -109,7 +109,7 @@ public class Acceptance {
         team1.addSeasonToTeam(season);
         team2.addSeasonToTeam(season);
         time = new Time(13,30,0);
-        game = new Game(new Date(2020,3,29),time,field2,team1,team2,mainRef,sideRef1,sideRef2,season,league1);
+        game = new Game(new Date(2020,4,14),time,field2,team1,team2,mainRef,sideRef1,sideRef2,season,league1);
         game2 = new Game(new Date(2020,10,24),time,field,team2,team1,mainRef,sideRef2,sideRef1,season,league1);
         games.put("1",game);
         games.put("2",game2);
