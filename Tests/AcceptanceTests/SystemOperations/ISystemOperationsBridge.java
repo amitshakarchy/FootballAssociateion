@@ -2,6 +2,7 @@ package AcceptanceTests.SystemOperations;
 
 import AcceptanceTests.DataObjects.TeamDetails;
 import AcceptanceTests.DataObjects.UserDetails;
+import AssociationAssets.EEventType;
 
 public interface ISystemOperationsBridge {
     /**
@@ -29,4 +30,16 @@ public interface ISystemOperationsBridge {
     boolean createNewTeam(String name, String leagueName, String seasonYear, String fieldName);
 
     boolean createNewTeamWithotTeamOwner(String nonExistFieldName, String la_liga, String s, String nonExistFieldName1);
+
+    boolean addEvent(String userName, String password, int gameID, EEventType eventType, int eventIndex, String description);
+
+    boolean updateEvent(String userName, String password, int gameID, EEventType eventType, int eventIndex, String description);
+
+    boolean deleteEvent(String userName,String password, int gameID, EEventType eventType, int eventIndex, String description);
+
+    boolean deleteEventAfterGameOver(String userName, String password, int gameID, EEventType eventType, int eventIndex, String description,int hoursBefore);
+
+    boolean editEventAfterGameOver(String userName, String password, int gameID, EEventType eventType, int eventIndex, String description,int hoursBefore);
+
+    boolean exportReport(String userName, String password, int gameID, int hoursBefore, String path);
 }
