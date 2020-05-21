@@ -505,8 +505,10 @@ public class DataUploader {
             ResultSet homeGamesSet = databaseManager.executeQuerySelect("" +
                     "Select * From games" +
                     "where Teams_Host_Name=\""+team.getName()+"\"");
+            if(homeGamesSet==null) return;
             HashMap<String, Game> homeGames= new HashMap<>();
             try {
+
                 while (homeGamesSet.next()) {
                     Game game= allGames.get(homeGamesSet.getString("idGames"));
                     homeGames.put(String.valueOf(game.getGID()), game);
@@ -520,6 +522,8 @@ public class DataUploader {
             ResultSet awayGamesSet = databaseManager.executeQuerySelect("" +
                     "Select * From games" +
                     "where Teams_Guest_Name=\""+team.getName()+"\"");
+            if(awayGamesSet==null) return;
+
             HashMap<String, Game> awayGames= new HashMap<>();
             try {
                 while (awayGamesSet.next()) {
