@@ -4,6 +4,13 @@ import java.sql.*;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+/**
+ * Database Manager is in charge of setting a connection with the DB.
+ * Using: MysQL server, over port 3306.
+ * Connecting to remote server sitting on 132.72.65.88
+ * Author: Amit Shakarchy
+ */
+
 public class DatabaseManager {
 
     protected String connectionString;
@@ -54,49 +61,45 @@ public class DatabaseManager {
     //</editor-fold>
 
     //<editor-fold desc="Connection Methods">
+
+    /**
+     * start connection with the given connectionString, username and password
+     */
     public void startConnection() {
         try {
             conn = DriverManager.getConnection(connectionString, username, password);
-           // System.out.println(String.format("Connection established to: '%s'", connectionString));
             selectDatabase(this.databaseName);
-        } catch (Exception e) {
-         //   System.out.println(String.format("Cannot start connection to: %s", connectionString));
-         //   System.out.println(e.getMessage());
+        } catch (Exception ignored) {
+
         }
     }
 
     /**
      * Selects database to work on.
      *
-     * @return true if the database exists and been selected.
      */
     private void selectDatabase(String databaseName) {
         try {
             Statement stmt = conn.createStatement();
             stmt.execute("use " + databaseName);
             stmt.close();
-         //   System.out.println(String.format("Database selected: '%s'", databaseName));
-        } catch (Exception e) {
-        //    System.out.println(String.format("Database '%s' not found at: %s", databaseName, connectionString));
-        //    System.out.println(e.getMessage());
+        } catch (Exception ignored) {
+
         }
     }
 
     /**
      * Close the connection
      *
-     * @return true if the connection is closed properly
      */
     public void closeConnection() {
         try {
             if (conn != null && !conn.isClosed()) {
                 conn.close();
                 conn = null;
-           //     System.out.println(String.format("Database connection closed!", connectionString));
             }
-        } catch (Exception e) {
-         //   System.out.println(String.format("Error closing connection to: %s", connectionString));
-         //   System.out.println(e.getMessage());
+        } catch (Exception ignored) {
+
         }
     }
     //</editor-fold>
@@ -114,10 +117,8 @@ public class DatabaseManager {
             try {
                 Statement sqlStatement = conn.createStatement();
                 resultSet = sqlStatement.executeQuery(query);
-         //       System.out.println(String.format("Query executed: '%s'", query));
-            } catch (SQLException e) {
-          //      System.out.println(String.format("Error executing query: '%s'", query));
-          //      System.out.println(e.getMessage());
+            } catch (SQLException ignored) {
+
             }
         }
         return resultSet;
