@@ -59,58 +59,72 @@ public class UC4Tests {
     public void GameManagementTest_notPrivilegeUserTryToAddEvent_FailureScenario(){
         assertFalse(systemOperations.addEvent(registeredUser.userName,registeredUser.password, eventDetails.getGameID(), eventDetails.getEventType(), eventDetails.getEventIndex(), eventDetails.getDescription()));
     }
+
     @Test
     public void GameManagementTest_notPrivilegeUserTryToUpdateEvent_FailureScenario(){
         assertFalse(systemOperations.updateEvent(registeredUser.userName,registeredUser.password, eventDetails.getGameID(), eventDetails.getEventType(), eventDetails.getEventIndex(), eventDetails.getDescription()));
     }
+
     @Test
     public void GameManagementTest_notPrivilegeUserTryToDeleteEvent_FailureScenario(){
         assertFalse(systemOperations.deleteEvent(registeredUser.userName,registeredUser.password, eventDetails.getGameID(), eventDetails.getEventType(), eventDetails.getEventIndex(), eventDetails.getDescription()));
     }
+
     @Test
     public void GameManagementTest_notPrivilegeUserTryToUpdateEventAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.editEventAfterGameOver(registeredUser.userName,registeredUser.password, eventDetails.getGameID(), eventDetails.getEventType(), eventDetails.getEventIndex(), eventDetails.getDescription(),4));
     }
+
     @Test
     public void GameManagementTest_notPrivilegeUserTryToDeleteEventAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.deleteEventAfterGameOver(registeredUser.userName,registeredUser.password, eventDetails.getGameID(), eventDetails.getEventType(), eventDetails.getEventIndex(), eventDetails.getDescription(),4));
     }
+
     @Test
     public void GameManagementTest_MainRefereeTryToEditEventDuringTheGame_SuccessScenario(){
         assertTrue(systemOperations.updateEvent(MainReferee.userName,MainReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description));
     }
+
     @Test
     public void GameManagementTest_AnotherTypeRefereeTryToEditEventDuringTheGame_SuccessScenario(){
         assertTrue(systemOperations.updateEvent(ASSISTANT1Referee.userName,ASSISTANT1Referee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description));
     }
+
     @Test
     public void GameManagementTest_NotAssignRefereeTryToEditEventDuringTheGame_FailureScenario(){
         assertFalse(systemOperations.updateEvent(anotherReferee.userName,anotherReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description));
     }
+
     @Test
     public void GameManagementTest_MainRefereeTryToAddEventDuringTheGame_SuccessScenario(){
         assertTrue(systemOperations.addEvent(MainReferee.userName,MainReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description));
     }
+
     @Test
     public void GameManagementTest_AnotherTypeRefereeTryToAddEventDuringTheGame_SuccessScenario(){
         assertTrue(systemOperations.addEvent(ASSISTANT1Referee.userName,ASSISTANT1Referee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description));
     }
+
     @Test
     public void GameManagementTest_NotAssignRefereeTryToAddEventDuringTheGame_FailureScenario(){
         assertFalse(systemOperations.addEvent(anotherReferee.userName,anotherReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description));
     }
+
     @Test
     public void GameManagementTest_MainRefereeTryToDeleteEventDuringTheGame_SuccessScenario(){
         assertTrue(systemOperations.deleteEvent(MainReferee.userName,MainReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description));
     }
+
     @Test
     public void GameManagementTest_AnotherTypeRefereeTryToDeleteEventDuringTheGame_SuccessScenario(){
         assertTrue(systemOperations.deleteEvent(ASSISTANT1Referee.userName,ASSISTANT1Referee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description));
     }
+
     @Test
     public void GameManagementTest_NotAssignRefereeTryToDeleteEventDuringTheGame_FailureScenario(){
         assertFalse(systemOperations.deleteEvent(anotherReferee.userName,anotherReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description));
     }
+
     @Test
     public void GameManagementTest_MainRefereeTryToDeleteEventAfterGameOver_SuccessScenario(){
         assertTrue(systemOperations.deleteEventAfterGameOver(MainReferee.userName,MainReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,4));
