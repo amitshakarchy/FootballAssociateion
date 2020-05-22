@@ -27,7 +27,7 @@ import Users.*;
 
 public class DataUploader {
 
-    private final HashMap<Integer, Game> allGames;
+    private HashMap<Integer, Game> allGames;
     DatabaseManager databaseManager;
 
     FootballSystem system;
@@ -79,7 +79,6 @@ public class DataUploader {
         attachTeamsGames();
         uploadAdditionalInfo();
         uploadSeasonLeagueBinders();
-
     }
 
 
@@ -136,6 +135,7 @@ public class DataUploader {
             e.printStackTrace();
         }
     }
+
     /**
      * Upload all Referees from DB.
      */
@@ -169,6 +169,7 @@ public class DataUploader {
             e.printStackTrace();
         }
     }
+
     /**
      * Upload all RFAs from DB.
      */
@@ -201,6 +202,7 @@ public class DataUploader {
             e.printStackTrace();
         }
     }
+
     /**
      * Upload all system managers from DB.
      */
@@ -232,6 +234,7 @@ public class DataUploader {
             e.printStackTrace();
         }
     }
+
     /**
      * Upload all team owners from DB.
      */
@@ -263,6 +266,7 @@ public class DataUploader {
             e.printStackTrace();
         }
     }
+
     /**
      * Upload all team managers from DB.
      */
@@ -294,6 +298,7 @@ public class DataUploader {
             e.printStackTrace();
         }
     }
+
     /**
      * Upload all coaches from DB.
      */
@@ -327,6 +332,7 @@ public class DataUploader {
             e.printStackTrace();
         }
     }
+
     /**
      * Upload all players from DB.
      */
@@ -360,22 +366,23 @@ public class DataUploader {
             e.printStackTrace();
         }
     }
+
     /**
      * Upload all passwords from DB.
      * connects securely into the securitySystem's data.
      */
     private void uploadPasswordsUsers() {
-        Map<String, String> userPass= new HashMap<>();
+        Map<String, String> userPass = new HashMap<>();
         SecuritySystem sec = system.getSecuritySystem();
         ResultSet resultSet = databaseManager.executeQuerySelect("SELECT * FROM userpasswords");
         try {
             while (resultSet.next()) {
                 String username = resultSet.getString("Username");
                 String password = resultSet.getString("Password_user");
-                userPass.put(username,password);
+                userPass.put(username, password);
             }
 
-            sec.setUsersHashMap(userPass,"iseFab5");
+            sec.setUsersHashMap(userPass, "iseFab5");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -409,10 +416,10 @@ public class DataUploader {
                     owners.add(ownerUsername);
                 }
                 // select nominating team owner:
-                 String nominatingOwner= owners.get(0);
+                String nominatingOwner = owners.get(0);
 
-                HashMap<String, ArrayList<String>> ownersMap= new HashMap<>();
-                ownersMap.put(nominatingOwner,owners);
+                HashMap<String, ArrayList<String>> ownersMap = new HashMap<>();
+                ownersMap.put(nominatingOwner, owners);
                 additionalInfo.setOwners(ownersMap);
 
                 // attach managers
@@ -425,8 +432,8 @@ public class DataUploader {
                     String username = managersSet.getString("TeamManager_Username");
                     managers.add(username);
                 }
-                HashMap<String, ArrayList<String>> managersMap= new HashMap<>();
-                managersMap.put(nominatingOwner,managers);
+                HashMap<String, ArrayList<String>> managersMap = new HashMap<>();
+                managersMap.put(nominatingOwner, managers);
                 additionalInfo.setManagers(managersMap);
 
                 // attach coaches
@@ -465,6 +472,7 @@ public class DataUploader {
      */
     private void uploadTeams() {
         ResultSet resultSet = databaseManager.executeQuerySelect("SELECT * FROM teams;");
+        int tid=1;
         try {
             while (resultSet.next()) {
 
@@ -487,14 +495,15 @@ public class DataUploader {
                 else status = "ACTIVE";
                 Season season = allSeasons.get(seasonYear);
 
-                Team team = new Team(1, name, season, field, null, owner);
+                Team team = new Team(tid++, name, season, field, null, owner);
                 team.setIsActive(ETeamStatus.valueOf(status));
-                allTeams.put(team.getName(),team);
+                allTeams.put(team.getName(), team);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     /**
      * Attach a team with it's home games and away games.
      */
@@ -504,13 +513,13 @@ public class DataUploader {
             // attach home games
             ResultSet homeGamesSet = databaseManager.executeQuerySelect("" +
                     "Select * From games" +
-                    "where Teams_Host_Name=\""+team.getName()+"\"");
-            if(homeGamesSet==null) return;
-            HashMap<String, Game> homeGames= new HashMap<>();
+                    "where Teams_Host_Name=\"" + team.getName() + "\"");
+            if (homeGamesSet == null) return;
+            HashMap<String, Game> homeGames = new HashMap<>();
             try {
 
                 while (homeGamesSet.next()) {
-                    Game game= allGames.get(homeGamesSet.getString("idGames"));
+                    Game game = allGames.get(homeGamesSet.getString("idGames"));
                     homeGames.put(String.valueOf(game.getGID()), game);
                 }
             } catch (SQLException e) {
@@ -521,13 +530,13 @@ public class DataUploader {
             // attach away games
             ResultSet awayGamesSet = databaseManager.executeQuerySelect("" +
                     "Select * From games" +
-                    "where Teams_Guest_Name=\""+team.getName()+"\"");
-            if(awayGamesSet==null) return;
+                    "where Teams_Guest_Name=\"" + team.getName() + "\"");
+            if (awayGamesSet == null) return;
 
-            HashMap<String, Game> awayGames= new HashMap<>();
+            HashMap<String, Game> awayGames = new HashMap<>();
             try {
                 while (awayGamesSet.next()) {
-                    Game game= allGames.get(homeGamesSet.getString("idGames"));
+                    Game game = allGames.get(homeGamesSet.getString("idGames"));
                     awayGames.put(String.valueOf(game.getGID()), game);
                 }
             } catch (SQLException e) {
@@ -662,7 +671,7 @@ public class DataUploader {
             while (resultSet.next()) {
                 int gid = resultSet.getInt("idGames");
                 String date = resultSet.getString("Date");
-                String time = resultSet.getString("Time");
+                Time time = resultSet.getTime("Time");
                 int goalHost = resultSet.getInt("GoalHost");
                 int goalGuest = resultSet.getInt("GoalGuest");
                 String fields_name = resultSet.getString("Fields_Name");
@@ -681,9 +690,8 @@ public class DataUploader {
                 Referee main = null;
                 Referee side1 = null;
                 Referee side2 = null;
-                ResultSet refereesSet = databaseManager.executeQuerySelect("" +
-                        "SELECT * FROM games_has_referee" +
-                        "WHERE Games_idGames=\"" + gid + "\"");
+                ResultSet refereesSet = databaseManager.executeQuerySelect(
+                        "SELECT * FROM games_has_referee WHERE Games_idGames= "+String.valueOf(gid) );
                 while (refereesSet.next()) {
                     String username = refereesSet.getString("Referee_Username");
                     String role = refereesSet.getString("Game_Role");
@@ -700,7 +708,7 @@ public class DataUploader {
                     }
                 }
 
-                Game game = new Game(Date.valueOf(date), Time.valueOf(time), field, host, guest, main, side1, side2, season, league);
+                Game game = new Game(Date.valueOf(date),time, field, host, guest, main, side1, side2, season, league);
                 game.setScore(goalHost, goalGuest);
 
                 // TODO: game.setGID - fix on class game
