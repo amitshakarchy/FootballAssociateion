@@ -18,15 +18,7 @@
        <Button fx:id="editEvent" layoutX="575.0" layoutY="317.0" mnemonicParsing="false" onAction="#editEvent" prefHeight="39.0" prefWidth="195.0" text="Edit Event" />
        <Button fx:id="addEvent" layoutX="86.0" layoutY="317.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="39.0" prefWidth="195.0" text="Add Event" />
         <Label styleClass="labelNormal" layoutX="480.0" layoutY="33.0">Game Id: </Label>
-    <ChoiceBox fx:id="gameID" layoutX="550.0" layoutY="33.0" prefWidth="150.0" >
-        <items>
-            <FXCollections fx:factory="observableArrayList" >
-                <String fx:value="1" />
-                <String fx:value="2" />
-                <String fx:value="3" />
-            </FXCollections>
-        </items>
-    </ChoiceBox>
+    <ChoiceBox fx:id="gameID" layoutX="550.0" layoutY="33.0" prefWidth="150.0" />
     <fx:define>
     <RequiredField fx:id="requiredField1" >
         <srcControl>

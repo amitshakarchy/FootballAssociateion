@@ -152,7 +152,7 @@ public class Model implements IModel {
     public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName) throws RecordException {
         // Only TeamOwner is allowed to create a team.
         if (!(user instanceof TeamOwner)) {
-            throw new RecordException("You don ot have permission to create new team");
+            throw new RecordException("You dont have permission to create new team");
         }
         if (validateDuplicateTeamName(name)) {
             throw new RecordException("This team name already exist");
@@ -500,7 +500,7 @@ public class Model implements IModel {
 
         // Only Referee is allowed to add an event.
         if (!(user instanceof Referee)) {
-            throw new RecordException("This user doesn't have permission to add event");
+            throw new RecordException("You dont have have permission to add event");
         }
 
         ValidateObject.getValidatedGame(gameID);
@@ -625,7 +625,7 @@ public class Model implements IModel {
     public boolean exportGameReport(int gameID, String pathToSave, String reportName) throws RecordException {
         // Only Referee is allowed to add an event.
         if (!(user instanceof Referee)) {
-            throw new RecordException("This user doesn't have permission to add event");
+            throw new RecordException("You dont have permission to create report");
         }
 
         ValidateObject.getValidatedGame(gameID);

@@ -22,15 +22,7 @@
     </Label>
     <Label layoutX="62.0" layoutY="158.0" styleClass="labelNormal" text="Event:" />
     <Label layoutX="52.0" layoutY="106.0" styleClass="labelNormal" text="Game ID:" />
-    <ChoiceBox fx:id="gameID" layoutX="129.0" layoutY="99.0" prefWidth="150.0" >
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="1" />
-                <String fx:value="2" />
-                <String fx:value="3" />
-            </FXCollections>
-        </items>
-    </ChoiceBox>
+    <ChoiceBox fx:id="gameID" layoutX="129.0" layoutY="99.0" prefWidth="150.0" />
     <ChoiceBox fx:id="eventChoiceBox" layoutX="128.0" layoutY="152.0" prefWidth="150.0">
         <items>
             <FXCollections fx:factory="observableArrayList">

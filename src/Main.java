@@ -47,12 +47,12 @@ public class Main extends Application {
         FootballSystem.getInstance().addSeasonToDB(season);
         FootballSystem.getInstance().addSeasonToDB(season1);
         League league = new League("La Liga");
-        League league1 = new League("gal");
+        League league1 = new League("liga");
         FootballSystem.getInstance().addLeagueToDB(league);
         FootballSystem.getInstance().addLeagueToDB(league1);
         league.addSeasonToLeague(season);
         Field field = new Field("Blomfield","teal aviv",1000);
-        Field field1 = new Field("tedi","teal aviv",1000);
+        Field field1 = new Field("Tedi","teal aviv",1000);
         FootballSystem.getInstance().addFieldToDB(field);
         FootballSystem.getInstance().addFieldToDB(field1);
         FootballSystem.getInstance().signIn("tair123","1234","tair","cohen");

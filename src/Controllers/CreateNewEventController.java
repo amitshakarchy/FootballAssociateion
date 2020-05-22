@@ -35,4 +35,8 @@ public class CreateNewEventController extends Controller {
             }
         }
     }
+
+    public void init() {
+        initGameIdCB(this.gameID);
+    }
 }
