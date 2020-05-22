@@ -22,20 +22,13 @@
     </Label>
     <Label layoutX="62.0" layoutY="158.0" styleClass="labelNormal" text="Event:" />
     <Label layoutX="52.0" layoutY="106.0" styleClass="labelNormal" text="Game ID:" />
-    <ChoiceBox fx:id="gameID" layoutX="129.0" layoutY="99.0" prefWidth="150.0" >
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="1" />
-                <String fx:value="2" />
-                <String fx:value="3" />
-            </FXCollections>
-        </items>
-    </ChoiceBox>
+    <ChoiceBox fx:id="gameID" layoutX="129.0" layoutY="99.0" prefWidth="150.0" />
     <ChoiceBox fx:id="eventChoiceBox" layoutX="128.0" layoutY="152.0" prefWidth="150.0">
         <items>
             <FXCollections fx:factory="observableArrayList">
                 <String fx:value="OFFSIDE" />
-                <String fx:value="GOAL" />
+                <String fx:value="GOALHOST" />
+                <String fx:value="GoalGUEST" />
                 <String fx:value="FOUL" />
                 <String fx:value="REDCARD" />
                 <String fx:value="YELLOWCARD" />
@@ -44,7 +37,7 @@
             </FXCollections>
         </items>
     </ChoiceBox>
-    <TextArea fx:id="description" layoutX="133.0" layoutY="211.0" prefHeight="87.0" prefWidth="150.0" />
+    <TextArea fx:id="description" wrapText="true" layoutX="133.0" layoutY="211.0" prefHeight="87.0" prefWidth="150.0" />
     <Label layoutX="40.0" layoutY="211.0" styleClass="labelNormal" text="Description:" />
     <fx:define>
         <RequiredField fx:id="requiredField1" >
