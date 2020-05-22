@@ -148,11 +148,14 @@ public class RealSystemOperations implements ISystemOperationsBridge{
       if(!login(userName,password)){
           return false;
       }
+
         try {
-           return model.addEvent(gameID,eventType.toString(),description);
+            return model.addEvent(gameID,eventType.toString(),description);
         } catch (RecordException e) {
+            e.printStackTrace();
             return false;
         }
+
     }
 
     @Override
@@ -175,7 +178,7 @@ public class RealSystemOperations implements ISystemOperationsBridge{
         try {
             FootballSystem.getInstance().getGameDB().getAllGames().get(gameID).addEvent(EEventType.GOALHOST,"descriprion");
             return model.removeEvent(gameID,eventIndex);
-        } catch (RecordException e) {
+        } catch (Exception e) {
             return false;
         }
     }
@@ -190,7 +193,7 @@ public class RealSystemOperations implements ISystemOperationsBridge{
             Time time =Time.valueOf(LocalTime.of(LocalTime.now().getHour()-hoursBefore,LocalTime.now().getMinute()));
             FootballSystem.getInstance().getGameDB().getAllGames().get(gameID).setTime(time);
             return model.removeEventAfterGameOver(gameID,eventIndex);
-        } catch (RecordException e) {
+        } catch (Exception e) {
             return false;
         }
     }
@@ -200,14 +203,16 @@ public class RealSystemOperations implements ISystemOperationsBridge{
         if(!login(userName,password)){
             return false;
         }
+        boolean bool = false;
         try {
             FootballSystem.getInstance().getGameDB().getAllGames().get(gameID).addEvent(EEventType.GOALHOST,"descriprion");
             Time time =Time.valueOf(LocalTime.of(LocalTime.now().getHour()-hoursBefore,LocalTime.now().getMinute()));
             FootballSystem.getInstance().getGameDB().getAllGames().get(gameID).setTime(time);
-            return model.updateEventAfterGameOver(gameID,eventIndex,eventType.toString(),description);
+              bool = model.updateEventAfterGameOver(gameID,eventIndex,eventType.toString(),description);
         } catch (RecordException e) {
             return false;
         }
+        return bool;
     }
 
     @Override
@@ -220,7 +225,7 @@ public class RealSystemOperations implements ISystemOperationsBridge{
             Time time =Time.valueOf(LocalTime.of(LocalTime.now().getHour()-hoursBefore,LocalTime.now().getMinute()));
             FootballSystem.getInstance().getGameDB().getAllGames().get(gameID).setTime(time);
             return model.exportGameReport(gameID,path,""+gameID);
-        } catch (RecordException e) {
+        } catch (Exception e) {
             return false;
         }
     }

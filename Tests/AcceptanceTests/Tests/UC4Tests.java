@@ -129,50 +129,63 @@ public class UC4Tests {
     public void GameManagementTest_MainRefereeTryToDeleteEventAfterGameOver_SuccessScenario(){
         assertTrue(systemOperations.deleteEventAfterGameOver(MainReferee.userName,MainReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,4));
     }
+
     @Test
     public void GameManagementTest_AnotherTypeRefereeTryToDeleteAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.deleteEventAfterGameOver(ASSISTANT1Referee.userName,ASSISTANT1Referee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,4));
     }
+
     @Test
     public void GameManagementTest_NotAssignRefereeTryToDeleteEventAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.deleteEventAfterGameOver(anotherReferee.userName,anotherReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,4));
     }
+
     @Test
     public void GameManagementTest_MainRefereeTryToEditEventAfterGameOver_SuccessScenario(){
         assertTrue(systemOperations.editEventAfterGameOver(MainReferee.userName,MainReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,4));
     }
+
     @Test
     public void GameManagementTest_AnotherTypeRefereeTryToEditAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.editEventAfterGameOver(ASSISTANT1Referee.userName,ASSISTANT1Referee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,4));
     }
+
     @Test
     public void GameManagementTest_NotAssignRefereeTryToEditEventAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.editEventAfterGameOver(anotherReferee.userName,anotherReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,4));
     }
+
     @Test
     public void GameManagementTest_MainRefereeTryToDeleteEventMoreThen5HoursAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.deleteEventAfterGameOver(MainReferee.userName,MainReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,8));
     }
+
     @Test
     public void GameManagementTest_AnotherTypeRefereeTryToDeleteMoreThen5HoursAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.deleteEventAfterGameOver(ASSISTANT1Referee.userName,ASSISTANT1Referee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,8));
     }
+
     @Test
     public void GameManagementTest_NotAssignRefereeTryToDeleteEventMoreThen5HoursAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.deleteEventAfterGameOver(anotherReferee.userName,anotherReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,8));
     }
+
     @Test
     public void GameManagementTest_MainRefereeTryToEditEventMoreThen5HoursAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.editEventAfterGameOver(MainReferee.userName,MainReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,8));
     }
+
     @Test
     public void GameManagementTest_AnotherTypeRefereeTryToEditMoreThen5HoursAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.editEventAfterGameOver(ASSISTANT1Referee.userName,ASSISTANT1Referee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,8));
     }
+
     @Test
     public void GameManagementTest_NotAssignRefereeTryToEditEventMoreThen5HoursAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.editEventAfterGameOver(anotherReferee.userName,anotherReferee.password,eventDetails.gameID,eventDetails.eventType,eventDetails.eventIndex,eventDetails.description,8));
     }
+
+
     @Test
     public void GameManagementTest_MainRefereeExportReportAfterGameOver_SuccessScenario(){
         assertTrue(systemOperations.exportReport(MainReferee.userName,MainReferee.password,eventDetails.gameID,4,"C:\\Users\\יובל בן אליעזר\\Desktop"));
