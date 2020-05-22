@@ -47,12 +47,12 @@ public class Main extends Application {
         FootballSystem.getInstance().addSeasonToDB(season);
         FootballSystem.getInstance().addSeasonToDB(season1);
         League league = new League("La Liga");
-        League league1 = new League("gal");
+        League league1 = new League("liga");
         FootballSystem.getInstance().addLeagueToDB(league);
         FootballSystem.getInstance().addLeagueToDB(league1);
         league.addSeasonToLeague(season);
         Field field = new Field("Blomfield","teal aviv",1000);
-        Field field1 = new Field("tedi","teal aviv",1000);
+        Field field1 = new Field("Tedi","teal aviv",1000);
         FootballSystem.getInstance().addFieldToDB(field);
         FootballSystem.getInstance().addFieldToDB(field1);
         FootballSystem.getInstance().signIn("tair123","1234","tair","cohen");
@@ -66,12 +66,13 @@ public class Main extends Application {
 
         Team team1 = new Team(45,"team1",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("tair123"));
         Team team2 = new Team(55,"team2",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("tair123"));
-        Date date = new Date(17/05/2018);
-        Time time = new Time(2000);
+        Date date = new Date(2020-1900,4,12);
+        Time time = new Time(14,40,0);
         Referee main = FootballSystem.getInstance().getRefereeByUseName("1");
         Referee side1 = FootballSystem.getInstance().getRefereeByUseName("2");
         Referee side2 = FootballSystem.getInstance().getRefereeByUseName("3");
         Game game = null;
+
         try {
             game = new Game(date,time,field,team1,team2,main,side1,side2,season,league);
         } catch (Exception e) {
@@ -81,6 +82,7 @@ public class Main extends Application {
         FootballSystem.getInstance().addGameToDB(game);
         FootballSystem.getInstance().signIn("r","r","r","r");
         FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","r","r",null);
+
     }
 
 

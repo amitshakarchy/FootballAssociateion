@@ -1,14 +1,18 @@
 package Controllers;
 
+import AssociationAssets.Game;
+import DB.GameDB;
+import Model.RecordException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.stage.DirectoryChooser;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+import System.FootballSystem;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Set;
 
 public class ManageGameController extends Controller {
 
@@ -19,17 +23,18 @@ public class ManageGameController extends Controller {
     public Button addEvent;
     public ChoiceBox gameID;
     public RequiredField requiredField1;
+
     @FXML
     public void createReport() {
         requiredField1.eval();
-        if(requiredField1.getHasErrors()){
+        if (requiredField1.getHasErrors()) {
             return;
         }
         FileChooser fileChooser = new FileChooser();
         Stage stage = new Stage();
         stage.initOwner(createReport.getScene().getWindow());
         fileChooser.setTitle("Create Report"); //set the title of the Dialog window
-        String defaultSaveName = "Report GameID_" + gameID.getValue().toString() ;
+        String defaultSaveName = "Report GameID_" + gameID.getValue().toString();
         fileChooser.setInitialFileName(defaultSaveName); //set the default name for file to be saved
         //create extension filters. The choice will be appended to the end of the file name
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files (*.csv)", "*.csv"));
@@ -42,7 +47,11 @@ public class ManageGameController extends Controller {
                 fileChooser.setInitialDirectory(dir);
                 //handle saving data to disk or DB etc.
                 int gameID = Integer.parseInt(this.gameID.getValue().toString());
-                model.exportGameReport(gameID,file.getAbsolutePath(),file.getName());
+                try {
+                    model.exportGameReport(gameID, file.getAbsolutePath(), file.getName());
+                } catch (RecordException e) {
+                    raiseAlert(e);
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -52,24 +61,13 @@ public class ManageGameController extends Controller {
     @FXML
     public void addEvent() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/CreateNewEvent.fxml"));
-        Stage stage = getStage(loader,addEvent);
+        Stage stage = getStage(loader, addEvent);
         stage.setTitle("Create New Event");
+        CreateNewEventController controller = loader.getController();
+        controller.init();
         // showAndWait will block execution until the window closes...
         stage.showAndWait();
-
-//        requiredField1.eval();
-//        requiredField2.eval();
-//        requiredField3.eval();
-//        if (!requiredField1.getHasErrors() && !requiredField2.getHasErrors() && !requiredField3.getHasErrors()) {
-//            int gameID = Integer.parseInt(this.gameID.getValue().toString());
-//            try {
-//                model.addEvent(gameID, eventChoiceBox.getValue().toString(), description.getText());
-//            } catch (RecordException e) {
-//                raiseAlert(e);
-//            }
-//        }
     }
-
 
 
     @FXML
@@ -80,6 +78,11 @@ public class ManageGameController extends Controller {
     @FXML
     public void editEvent() {
         stillWorkingOnIt();
+    }
+
+    public void init(){
+        // init game DB
+        initGameIdCB(this.gameID);
     }
 }
 
