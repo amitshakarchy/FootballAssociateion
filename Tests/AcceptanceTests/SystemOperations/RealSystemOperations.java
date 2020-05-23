@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.HashMap;
 
 public class RealSystemOperations implements ISystemOperationsBridge{
     private final Model model;
@@ -32,13 +33,6 @@ public class RealSystemOperations implements ISystemOperationsBridge{
         Season season1 = new Season("2021");
         FootballSystem.getInstance().addSeasonToDB(season);
         FootballSystem.getInstance().addSeasonToDB(season1);
-
-        League league = new League("La Liga");
-        League league1 = new League("gal");
-        FootballSystem.getInstance().addLeagueToDB(league);
-        FootballSystem.getInstance().addLeagueToDB(league1);
-
-        league.addSeasonToLeague(season);
 
         Field field = new Field("Blomfield","teal aviv",1000);
         Field field1 = new Field("tedi","teal aviv",1000);
@@ -70,6 +64,8 @@ public class RealSystemOperations implements ISystemOperationsBridge{
         Referee main = FootballSystem.getInstance().getRefereeByUseName("1");
         Referee side1 = FootballSystem.getInstance().getRefereeByUseName("2");
         Referee side2 = FootballSystem.getInstance().getRefereeByUseName("3");
+        League league = new League("La Liga");
+        League league1 = new League("gal");
         Game game = null;
         try {
             game = new Game(date,time,field,team1,team2,main,side1,side2,season,league);
@@ -83,6 +79,22 @@ public class RealSystemOperations implements ISystemOperationsBridge{
         FootballSystem.getInstance().addGameToDB(game);
         FootballSystem.getInstance().signIn("r","r","r","r");
         FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","r","r",null);
+
+        HashMap<String,Game> games = new HashMap<>();
+        games.put("123",game);
+        HashMap <String,Team> teams = new HashMap<>();
+        teams.put(team1.getName(),team1);
+        teams.put(team2.getName(),team2);
+        league.addSeasonToLeague(season); //creating Binder in league
+        league.addSeasonToLeague(season1);
+        league.addTeamsToLeague("2020",teams);
+        league.addGamesToLeague("2020",games);
+        SeasonLeagueBinder seasonLeagueBinder = season.getLeagueBinders().get("La Liga");
+        FootballSystem.getInstance().addLeagueToDB(league);
+        FootballSystem.getInstance().addLeagueToDB(league1);
+        FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league.getLeagueName()).addSeasonToLeague(season);
+
+
     }
 
     @Override
@@ -109,8 +121,10 @@ public class RealSystemOperations implements ISystemOperationsBridge{
 
     @Override
     public TeamDetails getNewRegisteredTeamForTest() {
-        if(createNewTeam("RegisteredTeam","La Liga","2020","Blomfield")){
-            return new TeamDetails("RegisteredTeam","La Liga","2020","Blomfield");
+        getRandomNumberForTeam++;
+        String teamName = "RegisteredTeam"+ getRandomNumberForTeam;
+        if(createNewTeam(teamName,"La Liga","2020","Blomfield")){
+            return new TeamDetails(teamName,"La Liga","2020","Blomfield");
         }
         return null;
     }
