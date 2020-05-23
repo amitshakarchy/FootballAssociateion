@@ -161,7 +161,7 @@ public class RepresentativeController {
                 gp = new SimpleGamesAssigningPolicy();
                 break;
         }
-        rep.SetGamesAssigningPolicy("Simple");
+        //rep.SetGamesAssigningPolicy("Simple");
         System.out.println("Policy was modified successfully");
     }
 
@@ -169,7 +169,7 @@ public class RepresentativeController {
      * UC 9.7
      */
     public void activateGamesAssigning() {
-        rep.activateGamesAssigning();
+        //rep.activateGamesAssigning();
         System.out.println("Policy was executed successfully");
     }
 

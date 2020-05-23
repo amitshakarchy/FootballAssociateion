@@ -52,7 +52,7 @@ public class League {
         return seasonBinders.get(year).getTeams();
     }
 
-    public HashMap<String, Game> getGames(String year) {
+    public HashMap<Integer, Game> getGames(String year) {
         return seasonBinders.get(year).getGames();
     }
 
@@ -112,7 +112,7 @@ public class League {
         }
     }
 
-    public void addGamesToLeague(String year, HashMap<String, Game> Games) {
+    public void addGamesToLeague(String year, HashMap<Integer, Game> Games) {
         seasonBinders.get(year).addGamesToLeague(Games);
     }
 

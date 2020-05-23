@@ -55,7 +55,7 @@ public class SeasonLeagueBinderTest {
             teams.put(team2.getName(),team2);
             league.addSeasonToLeague(season); //creating Binder in league
             league.addTeamsToLeague("2020",teams);
-            league.addGamesToLeague("2020",games);
+            //league.addGamesToLeague("2020",games);
             seasonLeagueBinder = season.leagueBinders.get("Champions League");
     }
 

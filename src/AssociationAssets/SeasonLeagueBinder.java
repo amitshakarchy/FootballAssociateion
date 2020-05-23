@@ -8,6 +8,7 @@ import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 
 import javax.naming.OperationNotSupportedException;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * this class goal is to connect between pairs of league and season.
@@ -35,6 +36,7 @@ public class SeasonLeagueBinder {
         referees = new HashMap<>();
         leagueTable = new HashMap<>();
         hasStarted = false;
+
     }
 
 
@@ -97,7 +99,15 @@ public class SeasonLeagueBinder {
      */
     public void addTeamsToLeague(HashMap<String, Team> teams) {
         this.teams.putAll(teams);
+        initializeLeagueTable();
     }
+
+    private void initializeLeagueTable() {
+        for (Map.Entry<String,Team> entry:teams.entrySet()) {
+            leagueTable.put(entry.getKey(),0);
+        }
+    }
+
     /**
      * adding games to this specific combination of season and league
      * @param games

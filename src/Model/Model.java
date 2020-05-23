@@ -415,11 +415,11 @@ public class Model implements IModel {
         // Set requested policy
         switch (policy){
             case "Simple Policy":
-                repUser.SetGamesAssigningPolicy(new SimpleGamesAssigningPolicy(), league,season);
+                //repUser.SetGamesAssigningPolicy(new SimpleGamesAssigningPolicy(), league,season);
                 break;
 
             case "Heuristic Policy":
-                repUser.SetGamesAssigningPolicy(new HeuristicGamesAssigningPolicy(), league,season);
+                //repUser.SetGamesAssigningPolicy(new HeuristicGamesAssigningPolicy(), league,season);
                 break;
         }
         return true;
@@ -448,11 +448,11 @@ public class Model implements IModel {
         // Set requested policy
         switch (policy){
             case "Policy 1":
-                repUser.SetScoreTablePolicy(new RegularScorePolicy(), league,season);
+                //repUser.SetScoreTablePolicy(new RegularScorePolicy(), league,season);
                 break;
 
             case "Policy 2":
-                repUser.SetScoreTablePolicy(new ScoreTablePolicy2(), league,season);
+                //repUser.SetScoreTablePolicy(new ScoreTablePolicy2(), league,season);
                 break;
         }
         return true;
@@ -472,7 +472,7 @@ public class Model implements IModel {
         if (!(user instanceof RepresentativeFootballAssociation))
             return false;
         RepresentativeFootballAssociation repUser = (RepresentativeFootballAssociation) user;
-        repUser.activateGamesAssigning();
+        //repUser.activateGamesAssigning();
 
         return true;
     }

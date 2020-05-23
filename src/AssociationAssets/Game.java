@@ -434,4 +434,8 @@ public class Game {
         }
         return false;
     }
+
+    public void setGID(int gid) {
+        this.GID = gid;
+    }
 }

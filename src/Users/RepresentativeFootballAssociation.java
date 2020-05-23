@@ -62,7 +62,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      * @param gamePolicy  - League Game policy
      * @param year - The year's league season
      */
-    public void addNewLeague(String leagueName, HashMap<String, Game> games, HashMap<String, Team> teams, ScoreTablePolicy scorePolicy, GamesAssigningPolicy gamePolicy, String year,
+    public void addNewLeague(String leagueName, HashMap<Integer, Game> games, HashMap<String, Team> teams, ScoreTablePolicy scorePolicy, GamesAssigningPolicy gamePolicy, String year,
                              Season season) {
         if(season == null || leagueName == null || games==null || teams==null || scorePolicy==null ||gamePolicy==null || year==null){
             return;
@@ -82,7 +82,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      * @param games- the games in league season
      * @param teams - the teams in league season
      */
-    public void setSeasonToLeague(League league, String year, HashMap<String, Game> games, HashMap<String, Team> teams) {
+    public void setSeasonToLeague(League league, String year, HashMap<Integer, Game> games, HashMap<String, Team> teams) {
         if(league== null || year==null || games==null || teams==null ){
             return;
         }
@@ -178,6 +178,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     public void SetGamesAssigningPolicy(GamesAssigningPolicy policy,  String league, String season) throws OperationNotSupportedException {
         if(policy!=null && league!=null && season!=null){
             SeasonLeagueBinder binder = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getSeasonBinders().get(season);
+            if(binder == null) throw new OperationNotSupportedException("This combination of league and season doesn't exists");
             binder.setAssigningPolicy(policy);
         }
         else throw new OperationNotSupportedException("Incorrect input");
@@ -187,14 +188,16 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     /**
      * useCase #9.7 - activate the Games Assigning
      */
-    public void activateGamesAssigning(String league, String season) {
+    public void activateGamesAssigning(String league, String season) throws Exception {
         if(league!=null && season!=null){
 
             HashMap<String,Team> teams = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getTeams(season);
             Map<String,Referee> refs = FootballSystem.getInstance().getRefereeMap();
-            HashMap<Integer, Game> games = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getSeasonBinders().get(season).getAssigningPolicy().executePolicy(teams,refs);
+
+            //// TODO: 23/05/2020   maybe need to change this function parameters to Season and League
+
+            //HashMap<Integer, Game> games = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getSeasonBinders().get(season).getAssigningPolicy().executePolicy(teams,refs,LocalDate.now(), season, league);
         }
-        //// TODO: 18/05/2020   insert the games to the season league binder
     }
 
     /**
