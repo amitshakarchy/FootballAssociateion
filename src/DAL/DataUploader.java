@@ -12,6 +12,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import AssociationAssets.*;
@@ -27,6 +29,7 @@ import Users.*;
 
 public class DataUploader {
 
+    //region Fields
     private HashMap<Integer, Game> allGames;
     DatabaseManager databaseManager;
 
@@ -45,6 +48,7 @@ public class DataUploader {
     private Map<String, SystemManager> allSystemManagers;
     private Map<String, RepresentativeFootballAssociation> allRFAs;
     private Map<String, Referee> allReferees;
+    //endregion
 
 
     public DataUploader(DatabaseManager databaseManager) {
@@ -71,6 +75,13 @@ public class DataUploader {
      */
     public void uploadData() {
         uploadUsers();
+        uploadSystemAssets();
+    }
+
+    /**
+     * Conducts all System Assets data uploading
+     */
+    public void uploadSystemAssets() {
         uploadFields();
         uploadLeagues();
         uploadSeasons();
@@ -80,7 +91,6 @@ public class DataUploader {
         uploadAdditionalInfo();
         uploadSeasonLeagueBinders();
     }
-
 
     //region Users upload
 
@@ -587,18 +597,18 @@ public class DataUploader {
                 }
                 binder.addTeamsToLeague(teams);
 
-                // attach teams
+                // attach games
                 ResultSet gamesSet = databaseManager.executeQuerySelect(
                         "SELECT * from games " +
                                 "WHERE Seasons_has_Leagues_Leagues_Name = \"" + leagueName + "\" " +
                                 "AND Seasons_has_Leagues_Seasons_Year = " + seasonYear);
                 HashMap<String, Game> games = new HashMap<>();
                 while (gamesSet.next()) {
-                    String teamName = teamsSet.getString("name");
-                    Team team = allTeams.get(teamName);
-                    teams.put(teamName, team);
+                    int gameID = gamesSet.getInt("idGames");
+                    Game game = allGames.get(gameID);
+                    games.put(String.valueOf(game.getGID()), game);
                 }
-                binder.addTeamsToLeague(teams);
+                binder.addGamesToLeague(games);
                 // attach policies
                 binder.setScoreTablePolicy(tablePolicy);
                 binder.setAssigningPolicy(gamesAssigningPolicy);
@@ -670,8 +680,11 @@ public class DataUploader {
         try {
             while (resultSet.next()) {
                 int gid = resultSet.getInt("idGames");
-                String date = resultSet.getString("Date");
-                Time time = resultSet.getTime("Time");
+                String datestr = resultSet.getString("DateTime");
+                Date date= Date.valueOf(datestr.split(" ")[0]);
+                Time time= Time.valueOf(datestr.split(" ")[1]);
+                SimpleDateFormat dateFormat= new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+                java.util.Date cDate= dateFormat.parse(datestr);
                 int goalHost = resultSet.getInt("GoalHost");
                 int goalGuest = resultSet.getInt("GoalGuest");
                 String fields_name = resultSet.getString("Fields_Name");
@@ -708,15 +721,13 @@ public class DataUploader {
                     }
                 }
 
-                Game game = new Game(Date.valueOf(date),time, field, host, guest, main, side1, side2, season, league);
+                Game game = new Game(cDate,time, field, host, guest, main, side1, side2, season, league);
                 game.setScore(goalHost, goalGuest);
 
                 // TODO: game.setGID - fix on class game
 
                 allGames.put(game.getGID(), game);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
