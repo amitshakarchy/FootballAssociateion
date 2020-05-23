@@ -39,8 +39,7 @@ public class ValidateObject {
 
     /**
      * Returns a team after validating it's presence and activeness.
-     * @param leagueName-
-     * @param seasonYear-
+     * @param leagueName-e
      * @param teamName-
      * @return A specific team for the required season & league
      * @throws RecordException - in case team does not exist or team is inactive.

@@ -1,9 +1,12 @@
 package Model;
 
 import AssociationAssets.*;
-import PoliciesAndAlgorithms.*;
+import PoliciesAndAlgorithms.HeuristicGamesAssigningPolicy;
+import PoliciesAndAlgorithms.RegularScorePolicy;
+import PoliciesAndAlgorithms.ScoreTablePolicy2;
+import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
+import System.FootballSystem;
 import Users.*;
-import System.*;
 import javafx.util.Pair;
 
 import javax.security.auth.login.FailedLoginException;
@@ -17,6 +20,7 @@ public class Model implements IModel {
     static int TEAM_ID = 1;
 
     //region General
+
     /**
      * Returns User's full name in order to display it on screen if needed.
      *
@@ -69,15 +73,15 @@ public class Model implements IModel {
      * @throws RecordException - in case of no such league or season
      */
     @Override
-    public LinkedList<Pair<String,Integer>> getGames(String leagueName, String seasonYear) throws RecordException {
-        LinkedList<Pair<String,Integer>> allGames= new LinkedList<Pair<String, Integer>>();
+    public LinkedList<Pair<String, Integer>> getGames(String leagueName, String seasonYear) throws RecordException {
+        LinkedList<Pair<String, Integer>> allGames = new LinkedList<Pair<String, Integer>>();
         League league = ValidateObject.getValidatedLeague(leagueName);
         Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
-            for (Game game : league.getGames(season.getYear()).values()) {
-                    allGames.add(new Pair<String, Integer>(game.getDate().toString(),game.getGID()));
-            }
-            return allGames;
+        for (Game game : league.getGames(season.getYear()).values()) {
+            allGames.add(new Pair<String, Integer>(game.getDate().toString(), game.getGID()));
         }
+        return allGames;
+    }
 
 
     /**
@@ -88,22 +92,23 @@ public class Model implements IModel {
      * @return list of events, ordered by event's ID.
      */
     @Override
-    public LinkedList<Pair<String,Integer>> getEvents(int gameID) throws RecordException {
+    public LinkedList<Pair<String, Integer>> getEvents(int gameID) throws RecordException {
         Game game = ValidateObject.getValidatedGame(gameID);
-        LinkedList<Pair<String,Integer>> allEvents= new LinkedList<>();
-            String eventList = "";
-            int i = 0;
-            for (Event event : game.getEvents()) {
-                allEvents.add(new Pair<String, Integer>
-                        ("Type: " +event.getEventType()+ ", Description: "+event.getDescription(),i));
+        LinkedList<Pair<String, Integer>> allEvents = new LinkedList<>();
+        String eventList = "";
+        int i = 0;
+        for (Event event : game.getEvents()) {
+            allEvents.add(new Pair<String, Integer>
+                    ("Type: " + event.getEventType() + ", Description: " + event.getDescription(), i));
 
-                i++;
-            }
-            return allEvents;
+            i++;
+        }
+        return allEvents;
     }
 //endregion
 
     //region Login
+
     /**
      * Logs in using user's credentials. Assumes input was already validated for null and empty inputs.
      * After a successful login, Model saves the user's credentials and user-type in order to maintain authorizations.
@@ -114,13 +119,12 @@ public class Model implements IModel {
      */
     @Override
     public boolean login(String username, String password) throws FailedLoginException {
-        // TODO: 5/8/2020 to add new exception in case of login is failed - password or username is incorret
 
-            Fan tmpUser = footballSystem.login(username,password);
+        Fan tmpUser = footballSystem.login(username, password);
 
-            // Save the user as an object
-            user = footballSystem.getFanByUserName(username);
-            return true;
+        // Save the user as an object
+        user = footballSystem.getFanByUserName(username);
+        return true;
 
 
     }
@@ -129,10 +133,11 @@ public class Model implements IModel {
     //region Sign In
     @Override
     public boolean signIn(String userName, String password, String firstName, String lastName) {
-        return footballSystem.signIn(userName,password,firstName,lastName)!= null;
+        return footballSystem.signIn(userName, password, firstName, lastName) != null;
     }
     //endregion
     //region Team Management
+
     /**
      * Creates a new team out of the given details.
      * Assumes input was already validated for null and empty inputs.
@@ -146,10 +151,10 @@ public class Model implements IModel {
     @Override
     public boolean createTeam(String name, String leagueName, String seasonYear, String fieldName) throws RecordException {
         // Only TeamOwner is allowed to create a team.
-        if (!(user instanceof TeamOwner)){
-            throw new RecordException("You don ot have permission to create new team");
+        if (!(user instanceof TeamOwner)) {
+            throw new RecordException("You dont have permission to create new team");
         }
-        if(validateDuplicateTeamName(name)){
+        if (validateDuplicateTeamName(name)) {
             throw new RecordException("This team name already exist");
         }
         TeamOwner teamOwnerUser = (TeamOwner) user;
@@ -166,19 +171,20 @@ public class Model implements IModel {
 
         //send the request to the RFA
         RepresentativeFootballAssociation rep = footballSystem.getRepresentativeFootballAssociationByUseName("r");
-        rep.addTeamRequest(name,leagueName,seasonYear,fieldName);
+        rep.addTeamRequest(name, leagueName, seasonYear, fieldName);
 
-            return true;
+        return true;
 
     }
 
     /**
      * rreturn true if this team name already exist
+     *
      * @param name
      * @return
      */
     private boolean validateDuplicateTeamName(String name) {
-        if(footballSystem.getInstance().getTeamDB().getAllTeams().containsKey(name)) return true;
+        if (footballSystem.getInstance().getTeamDB().getAllTeams().containsKey(name)) return true;
         return false;
 
     }
@@ -237,7 +243,6 @@ public class Model implements IModel {
      * @param teamName   - team's name
      * @param seasonYear - team's name
      * @param username   - username
-     * @return true or false for success / failure
      * @return true or false for success / failure
      */
     @Override
@@ -392,6 +397,7 @@ public class Model implements IModel {
 
 
     //region Policy Management
+
     /**
      * Receives a policy by its name for a specific season & league and sets it.
      *
@@ -409,17 +415,17 @@ public class Model implements IModel {
         RepresentativeFootballAssociation repUser = (RepresentativeFootballAssociation) user;
 
         // Validate season & league
-        Season season=ValidateObject.getValidatedSeason(leagueName, seasonYear);
-        League league= ValidateObject.getValidatedLeague(leagueName);
+        Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
+        League league = ValidateObject.getValidatedLeague(leagueName);
 
         // Set requested policy
-        switch (policy){
+        switch (policy) {
             case "Simple Policy":
-                repUser.SetGamesAssigningPolicy(new SimpleGamesAssigningPolicy(), league,season);
+                repUser.SetGamesAssigningPolicy(new SimpleGamesAssigningPolicy(), league, season);
                 break;
 
             case "Heuristic Policy":
-                repUser.SetGamesAssigningPolicy(new HeuristicGamesAssigningPolicy(), league,season);
+                repUser.SetGamesAssigningPolicy(new HeuristicGamesAssigningPolicy(), league, season);
                 break;
         }
         return true;
@@ -442,17 +448,17 @@ public class Model implements IModel {
         RepresentativeFootballAssociation repUser = (RepresentativeFootballAssociation) user;
 
         // Validate season & league
-        Season season= ValidateObject.getValidatedSeason(leagueName, seasonYear);
-        League league= ValidateObject.getValidatedLeague(leagueName);
+        Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
+        League league = ValidateObject.getValidatedLeague(leagueName);
 
         // Set requested policy
-        switch (policy){
+        switch (policy) {
             case "Policy 1":
-                repUser.SetScoreTablePolicy(new RegularScorePolicy(), league,season);
+                repUser.SetScoreTablePolicy(new RegularScorePolicy(), league, season);
                 break;
 
             case "Policy 2":
-                repUser.SetScoreTablePolicy(new ScoreTablePolicy2(), league,season);
+                repUser.SetScoreTablePolicy(new ScoreTablePolicy2(), league, season);
                 break;
         }
         return true;
@@ -493,18 +499,18 @@ public class Model implements IModel {
     public boolean addEvent(int gameID, String eventType, String description) throws RecordException {
 
         // Only Referee is allowed to add an event.
-        if (!(user instanceof Referee)){
-            throw new RecordException("This user doesn't have permission to add event");
+        if (!(user instanceof Referee)) {
+            throw new RecordException("You dont have have permission to add event");
         }
 
         ValidateObject.getValidatedGame(gameID);
 
-        Referee referee= (Referee)user;
+        Referee referee = (Referee) user;
         try {
             referee.addEventToAssignedGame(gameID, EEventType.valueOf(eventType), description);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             String cause = e.getMessage();
+            throw new RecordException(cause);
         }
         return true;
     }
@@ -527,9 +533,9 @@ public class Model implements IModel {
 
         ValidateObject.getValidatedGame(gameID);
 
-        Referee referee= (Referee)user;
+        Referee referee = (Referee) user;
         try {
-            referee.updateEventToAssignedGame(gameID,eventIndex,EEventType.valueOf(eventType),description);
+            referee.updateEventToAssignedGame(gameID, eventIndex, EEventType.valueOf(eventType), description);
         } catch (Exception e) {
             String cause = e.getMessage();
             e.printStackTrace();
@@ -552,9 +558,9 @@ public class Model implements IModel {
             return false;
 
         ValidateObject.getValidatedGame(gameID);
-        Referee referee= (Referee)user;
+        Referee referee = (Referee) user;
         try {
-            referee.removeEventFromAssignedGame(gameID,eventIndex);
+            referee.removeEventFromAssignedGame(gameID, eventIndex);
         } catch (Exception e) {
             String cause = e.getMessage();
             e.printStackTrace();
@@ -580,8 +586,8 @@ public class Model implements IModel {
             return false;
 
         ValidateObject.getValidatedGame(gameID);
-        Referee referee= (Referee)user;
-        referee.editEventsAfterGameOver(gameID,eventIndex, EEventType.valueOf(eventType), description);
+        Referee referee = (Referee) user;
+        referee.editEventsAfterGameOver(gameID, eventIndex, EEventType.valueOf(eventType), description);
 
         return true;
     }
@@ -601,23 +607,36 @@ public class Model implements IModel {
             return false;
 
         ValidateObject.getValidatedGame(gameID);
-        Referee referee= (Referee)user;
-        referee.removeEventsAfterGameOver(gameID,eventIndex);
+        Referee referee = (Referee) user;
+        referee.removeEventsAfterGameOver(gameID, eventIndex);
 
         return true;
     }
 
     /**
      * Export an Excel report holds all events in the required game
-     *  @param gameID     -
+     *
+     * @param gameID     -
      * @param pathToSave -
      * @param reportName -
      * @return
      */
     @Override
     public boolean exportGameReport(int gameID, String pathToSave, String reportName) throws RecordException {
+        // Only Referee is allowed to add an event.
+        if (!(user instanceof Referee)) {
+            throw new RecordException("You dont have permission to create report");
+        }
 
+        ValidateObject.getValidatedGame(gameID);
 
+        Referee referee = (Referee) user;
+        try {
+            referee.exportReport(gameID, pathToSave);
+        } catch (Exception e) {
+            String cause = e.getMessage();
+            throw new RecordException(cause);
+        }
         return true;
     }
 
@@ -645,8 +664,6 @@ public class Model implements IModel {
         return false;
     }
     //endregion
-
-
 
 
 }
