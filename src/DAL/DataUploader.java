@@ -732,6 +732,4 @@ public class DataUploader {
             e.printStackTrace();
         }
     }
-
-
 }
