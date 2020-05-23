@@ -131,6 +131,7 @@ public class RealSystemOperations implements ISystemOperationsBridge{
 
     @Override
     public boolean createNewTeam(String name, String leagueName, String seasonYear, String fieldName) {
+        // TODO: 23/05/2020 send request with the same details to representive football
         //login first
         if(!login("tair123","1234")){
             return false;

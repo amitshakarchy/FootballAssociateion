@@ -101,7 +101,7 @@ public class UC5Tests {
     @Test
     public void EditTeamAssetsTest_TeamOwnerTryToEditFieldCapacityWithNegativeValue_FailureScenario(){
     }
-    
+
     @Test
     public void EditTeamAssetsTest_TeamOwnerTryToEditFirstNameOfCoach_SuccessScenario(){
     }
