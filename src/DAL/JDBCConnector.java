@@ -22,8 +22,13 @@ public class JDBCConnector {
         databaseManager.closeConnection();
     }
 
-
-
+    public void connectDBSaveData() {
+        databaseManager = new DatabaseManagerServerMySQL();
+        databaseManager.startConnection();
+        DataSave dataSave = new DataSave(databaseManager);
+        dataSave.saveAllData();
+        databaseManager.closeConnection();
+    }
 
 
 }

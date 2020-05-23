@@ -97,7 +97,7 @@ public class DataUploader {
     /**
      * Conducts all users uploading
      */
-    private void uploadUsers() {
+    public void uploadUsers() {
         uploadPlayers();
         uploadCoaches();
         uploadTeamManagers();
