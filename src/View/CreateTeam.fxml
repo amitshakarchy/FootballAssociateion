@@ -16,36 +16,15 @@
        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="500.0">
                  <TextField fx:id="teamID" layoutX="100.0" layoutY="90.0" prefHeight="31.0" prefWidth="134.0" promptText="team ID" />
                  <TextField fx:id="teamName" layoutX="100.0" layoutY="140.0" prefHeight="31.0" prefWidth="134.0" promptText="team name" />
-                 <ChoiceBox fx:id="leagueName" layoutX="100.0" layoutY="190.0" prefHeight="31.0" prefWidth="150.0">
-                     <items>
-                         <FXCollections fx:factory="observableArrayList">
-                             <String fx:value="Premier League" />
-                             <String fx:value="La Liga" />
-                             <String fx:value="Champions League" />
-                             <String fx:value="Israeli League" />
-                         </FXCollections>
-                     </items>
-                 </ChoiceBox>
+                 <ChoiceBox fx:id="leagueNameCB" layoutX="100.0" layoutY="190.0" prefHeight="31.0" prefWidth="150.0"/>
                  <TextField fx:id="teamBudget" layoutX="100.0" layoutY="240.0" prefHeight="31.0" prefWidth="134.0" promptText="team budget" />
                  <Label styleClass="labelNormal" layoutX="45.0" layoutY="140.0" text="Name:" />
                  <Label styleClass="labelNormal" layoutX="38.0" layoutY="240.0" text="Budget:" />
                  <Label styleClass="labelNormal" layoutX="12.0" layoutY="290.0" text="Home Field:" />
                  <Label styleClass="labelNormal" layoutX="43.0" layoutY="190.0" text="League:" />
                  <Label styleClass="labelNormal" layoutX="38.0" layoutY="340.0" text="Season:" />
-                 <ChoiceBox fx:id="fieldChoiceBox" layoutX="100.0" layoutY="290.0" prefWidth="150.0">
-                     <items>
-                         <FXCollections fx:factory="observableArrayList">
-                             <String fx:value="Blomfield" />
-                         </FXCollections>
-                     </items>
-                 </ChoiceBox>
-                 <ChoiceBox fx:id="seasonChoiceBox" layoutX="100.0" layoutY="340.0" prefWidth="150.0">
-                     <items>
-                         <FXCollections fx:factory="observableArrayList">
-                             <String fx:value="2020" />
-                         </FXCollections>
-                     </items>
-                 </ChoiceBox>
+                 <ChoiceBox fx:id="fieldChoiceBox" layoutX="100.0" layoutY="290.0" prefWidth="150.0"/>
+                 <ChoiceBox fx:id="seasonChoiceBoxCB" layoutX="100.0" layoutY="340.0" prefWidth="150.0"/>
                  <Button layoutX="93.0" layoutY="400.0" mnemonicParsing="false" onAction="#clickOnCreateTeam" prefHeight="53.0" prefWidth="168.0" text="Create Team" />
                  <Label styleClass="labelHeadline " layoutX="10.0" layoutY="14.0" text="Creating New Team:" />
                <Label styleClass="labelNormal" layoutX="67.0" layoutY="90.0" text="ID:" />
@@ -63,7 +42,7 @@
            </RequiredField>
                <RequiredField fx:id="requiredField3" >
                    <srcControl>
-                       <fx:reference source="leagueName"/>
+                       <fx:reference source="leagueNameCB"/>
                    </srcControl>
                </RequiredField>
                <RequiredField fx:id="requiredField4" >
@@ -80,7 +59,7 @@
 
                <RequiredField fx:id="requiredField6" >
                    <srcControl>
-                       <fx:reference source="seasonChoiceBox"/>
+                       <fx:reference source="seasonChoiceBoxCB"/>
                    </srcControl>
                </RequiredField>
 

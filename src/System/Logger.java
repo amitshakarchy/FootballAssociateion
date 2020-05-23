@@ -48,7 +48,6 @@ public class Logger {
             this.report.add(new Pair<>(gid,events));
 
             try (PrintWriter writer = new PrintWriter(new File(pathToSave))) {
-
                 StringBuilder sb = new StringBuilder();
                 sb.append("Event Type, ");
                 sb.append("Description");
