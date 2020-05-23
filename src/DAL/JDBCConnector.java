@@ -15,19 +15,13 @@ public class JDBCConnector {
     DatabaseManager databaseManager;
 
     public void connectDBUploadData() {
-
         databaseManager = new DatabaseManagerServerMySQL();
         databaseManager.startConnection();
-
         DataUploader uploader = new DataUploader(databaseManager);
         uploader.uploadData();
-
         databaseManager.closeConnection();
     }
 
-    public void connectSaveOnDB() {
-
-    }
 
 
 
