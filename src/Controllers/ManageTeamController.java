@@ -1,18 +1,17 @@
 package Controllers;
 
-import AssociationAssets.Field;
 import AssociationAssets.Team;
-import DB.FieldDB;
 import DB.TeamDB;
 import Model.RecordException;
+import System.FootballSystem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+
 import java.util.HashMap;
 import java.util.Set;
-import System.FootballSystem;
 
 public class ManageTeamController extends Controller {
 
@@ -27,72 +26,104 @@ public class ManageTeamController extends Controller {
     public Button removeTO;
     public Button removeTM;
     public Button closeTeam;
+    public RequiredField requiredField1;
+    public RequiredField requiredField2;
+    public ChoiceBox seasonCB;
 
     @FXML
-    public void createNewTeam(){
+    public void teamNameCBChoose() {
+        //init season DB
+        seasonCB.getItems().clear();
+        seasonCB.setVisible(true);
+        Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamNameCB.getValue().toString());
+        Set<String> seasonSet = team.getAdditionalInfoWithSeasons().keySet();
+        for (String seasonName : seasonSet) {
+            this.seasonCB.getItems().add(seasonName);
+        }
+    }
+
+    @FXML
+    public void createNewTeam() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/CreateTeam.fxml"));
-        Stage stage = getStage(loader,createNewTeamBtn);
+        Stage stage = getStage(loader, createNewTeamBtn);
         stage.setTitle("Create New Team");
         CreateTeamController createTeamController = loader.getController();
         createTeamController.init();
         // showAndWait will block execution until the window closes...
         stage.showAndWait();
     }
+
     @FXML
     public void addTeamProp() {
         stillWorkingOnIt();
     }
+
     @FXML
     public void removeTeamProp() {
         stillWorkingOnIt();
     }
+
     @FXML
     public void editTeamProp() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/CreateTeam.fxml"));
-        Stage stage = getStage(loader,createNewTeamBtn);
+        requiredField1.eval();
+        requiredField2.eval();
+        if (requiredField1.getHasErrors() || requiredField2.getHasErrors()) {
+            return;
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/EditTeamProperty.fxml"));
+        Stage stage = getStage(loader, editTP);
         stage.setTitle("Edit Team Property");
+        EditTeamPropertyController controller = loader.getController();
+        controller.setSeasonYear(seasonCB.getValue().toString());
+        controller.setTeamName(teamNameCB.getValue().toString());
         // showAndWait will block execution until the window closes...
         stage.showAndWait();
     }
+
     @FXML
     public void nominateTeamOwner() {
         stillWorkingOnIt();
     }
+
     @FXML
     public void nominateTeamManager() {
         stillWorkingOnIt();
     }
+
     @FXML
     public void removeTeamOwner() {
         stillWorkingOnIt();
     }
+
     @FXML
     public void removeTeamManager() {
         stillWorkingOnIt();
     }
+
     @FXML
     public void closeTeam() {
         stillWorkingOnIt();
     }
 
-
     public void init() {
         //init team DB
         TeamDB teamDB = FootballSystem.getInstance().getTeamDB();
-        if(teamDB != null){
+        if (teamDB != null) {
             HashMap<String, Team> teamHashMap = teamDB.getAllTeams();
-            if(teamHashMap != null && teamHashMap.size() > 0){
+            if (teamHashMap != null && teamHashMap.size() > 0) {
                 Set<String> teamSet = teamHashMap.keySet();
-                for (String teamName : teamSet){
+                for (String teamName : teamSet) {
                     this.teamNameCB.getItems().add(teamName);
                 }
-            }
-            else{
+            } else {
                 raiseAlert(new RecordException("There is not teams at the DB"));
             }
-        }
-        else{
+        } else {
             raiseAlert(new RecordException("Teams DB is not exits"));
         }
+    }
+
+    public void seasonCBChoose() {
+
     }
 }
