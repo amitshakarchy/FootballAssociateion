@@ -606,7 +606,7 @@ public class Model implements IModel {
             referee.updateEventToAssignedGame(gameID, eventIndex, EEventType.valueOf(eventType), description);
         } catch (Exception e) {
             String cause = e.getMessage();
-            e.printStackTrace();
+            throw new RecordException(cause);
         }
 
         return true;
@@ -631,7 +631,7 @@ public class Model implements IModel {
             referee.removeEventFromAssignedGame(gameID, eventIndex);
         } catch (Exception e) {
             String cause = e.getMessage();
-            e.printStackTrace();
+            throw new RecordException(cause);
         }
 
         return true;
@@ -655,7 +655,12 @@ public class Model implements IModel {
 
         ValidateObject.getValidatedGame(gameID);
         Referee referee = (Referee) user;
-        referee.editEventsAfterGameOver(gameID, eventIndex, EEventType.valueOf(eventType), description);
+        try {
+            referee.editEventsAfterGameOver(gameID, eventIndex, EEventType.valueOf(eventType), description);
+        } catch (Exception e) {
+            String cause = e.getMessage();
+            throw new RecordException(cause);
+        }
 
         return true;
     }
@@ -676,8 +681,13 @@ public class Model implements IModel {
 
         ValidateObject.getValidatedGame(gameID);
         Referee referee = (Referee) user;
-        referee.removeEventsAfterGameOver(gameID, eventIndex);
-
+        try {
+            referee.removeEventsAfterGameOver(gameID, eventIndex);
+        }
+        catch (Exception e) {
+            String cause = e.getMessage();
+            throw new RecordException(cause);
+        }
         return true;
     }
 

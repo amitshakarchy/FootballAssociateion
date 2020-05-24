@@ -155,6 +155,7 @@ public class Acceptance {
         System.out.println("complaint submitted");
 
         System.out.println("\n* * * * * * *Use case 3.5 Fan watch his history of search* * * * * * *\nHistory found:");
+
         List<String> history = fan2.getSearchHistory();
         for (int i = 0; i < history.size(); i++) {
             System.out.println(history.get(i));
