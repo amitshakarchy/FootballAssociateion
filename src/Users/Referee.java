@@ -5,7 +5,6 @@ import AssociationAssets.Event;
 import AssociationAssets.Game;
 import Model.RecordException;
 import System.*;
-import sun.rmi.runtime.NewThreadAction;
 
 import javax.security.auth.login.FailedLoginException;
 import java.util.ArrayList;
@@ -88,7 +87,7 @@ public class Referee extends Fan {
     public void addEventToAssignedGame(int gameID, EEventType eventType, String description) throws Exception {
         Game gameToAdd = getGame(gameID);
         if(gameToAdd != null ){
-            if(!gameToAdd.isFinished()) {
+            if(gameToAdd.isUpdatable(2)) {
                 gameToAdd.addEvent(eventType, description);
                 Logger.getInstance().addActionToLogger("Referee added event to assigned game, user name: "+ getUserName()+" GameID: "+gameID+" Event Type: "+ eventType+" description: " + description);
                 gameToAdd.notifyObserver(description,eventType);
@@ -208,7 +207,7 @@ public class Referee extends Fan {
      *
      * # use case 10.4
      */
-    public void removeEventsAfterGameOver(int gameID,int eventIndex)throws  UnsupportedOperationException{
+    public void removeEventsAfterGameOver(int gameID,int eventIndex){
         if(this.training.equals(EReferee.MAIN)){
             Game gameToAdd = null;
             gameToAdd = getGame(gameID);
@@ -219,24 +218,23 @@ public class Referee extends Fan {
                     return;
                 }
                 else{
-                    Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
-                    throw new UnsupportedOperationException("You can't remove event at this time");
+                    Logger.getInstance().addErrorToLogger("Referee delete event to a finished game - this action was failed. " + getUserName()+" GameID: "+gameID);
+                    throw new UnsupportedOperationException("It was more than 5 hours after the game ended");
                 }
             }
             else if(gameToAdd == null){
-                Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
-                throw new UnsupportedOperationException("This game is not exists");
+                Logger.getInstance().addErrorToLogger("Referee delete event to a finished game - this action was failed. " + getUserName()+" GameID: "+gameID);
+                throw new UnsupportedOperationException("The referee is not assign for this game");
             }
             else{
-                Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
-                throw new UnsupportedOperationException("You're not the main referee of this game.");
+                Logger.getInstance().addErrorToLogger("Referee delete event to a finished game - this action was failed.  " + getUserName()+" GameID: "+gameID);
+                throw new UnsupportedOperationException("This event does not exist");
             }
         }
         else{
-            Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
+            Logger.getInstance().addErrorToLogger("Referee delete event to a finished game - this action was failed. " + getUserName()+" GameID: "+gameID);
             throw new UnsupportedOperationException("Only main referee can do this operation.");
         }
-
     }
 
     /**
@@ -245,7 +243,7 @@ public class Referee extends Fan {
      *
      * # use case 10.4
      */
-    public void exportReport(int gameID,String pathToSave) throws Exception{//10.4
+    public void exportReport(int gameID,String pathToSave){//10.4
         if(this.training.equals(EReferee.MAIN)){
             Game gameToAdd = getGame(gameID);
             if (gameToAdd != null) {
@@ -254,21 +252,12 @@ public class Referee extends Fan {
                     Logger.getInstance().addActionToLogger("Referee export report from the game, user name: "+ getUserName()+" GameID: "+gameID);
 
                 }
-                else {
-                    Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName() + " GameID: " + gameID);
-                    throw new Exception("The game isn't over yet");
-                }
+                else  Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName()+" GameID: "+gameID);
 
             }
-            else{
-                Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName() + " GameID: " + gameID);
-                throw new Exception("This game isn't exists");
-            }
         }
-        else {
-            Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName() + " GameID: " + gameID);
-            throw new Exception("Referee isn't authorized to this operation");
-        }
+        else  Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName()+" GameID: "+gameID);
+
     }
 
     /**
