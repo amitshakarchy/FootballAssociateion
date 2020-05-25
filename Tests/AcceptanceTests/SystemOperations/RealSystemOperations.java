@@ -80,8 +80,8 @@ public class RealSystemOperations implements ISystemOperationsBridge{
         FootballSystem.getInstance().signIn("r","r","r","r");
         FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","r","r",null);
 
-        HashMap<String,Game> games = new HashMap<>();
-        games.put("123",game);
+        HashMap<Integer,Game> games = new HashMap<>();
+        games.put(123,game);
         HashMap <String,Team> teams = new HashMap<>();
         teams.put(team1.getName(),team1);
         teams.put(team2.getName(),team2);
