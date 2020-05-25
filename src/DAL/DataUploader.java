@@ -598,11 +598,11 @@ public class DataUploader {
                         "SELECT * from games " +
                                 "WHERE Seasons_has_Leagues_Leagues_Name = \"" + leagueName + "\" " +
                                 "AND Seasons_has_Leagues_Seasons_Year = " + seasonYear);
-                HashMap<String, Game> games = new HashMap<>();
+                HashMap<Integer, Game> games = new HashMap<>();
                 while (gamesSet.next()) {
                     int gameID = gamesSet.getInt("idGames");
                     Game game = allGames.get(gameID);
-                    games.put(String.valueOf(game.getGID()), game);
+                    games.put(game.getGID(), game);
                 }
                 binder.addGamesToLeague(games);
                 // attach policies
