@@ -2,10 +2,7 @@
 import AssociationAssets.*;
 import Controllers.*;
 import Model.Model;
-import Users.Coach;
-import Users.EReferee;
-import Users.Referee;
-import Users.TeamOwner;
+import Users.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +12,7 @@ import System.FootballSystem;
 import sun.misc.Contended;
 import sun.misc.FpUtils;
 
+import java.awt.*;
 import java.sql.Time;
 import java.util.Date;
 import java.util.logging.SimpleFormatter;
@@ -55,8 +53,8 @@ public class Main extends Application {
         Field field1 = new Field("Tedi","teal aviv",1000);
         FootballSystem.getInstance().addFieldToDB(field);
         FootballSystem.getInstance().addFieldToDB(field1);
-        FootballSystem.getInstance().signIn("tair123","1234","tair","cohen");
-        FootballSystem.getInstance().creatingTeamOwner("tair123","tair","cohen");
+        FootballSystem.getInstance().signIn("4","4","tair","cohen");
+        TeamOwner tairTO = (TeamOwner) FootballSystem.getInstance().creatingTeamOwner("4","tair","cohen");
         FootballSystem.getInstance().signIn("1","1","lala","la");
         FootballSystem.getInstance().creatingReferee("1","la","laala", EReferee.MAIN);
         FootballSystem.getInstance().signIn("2","2","lala","la");
@@ -64,8 +62,24 @@ public class Main extends Application {
         FootballSystem.getInstance().signIn("3","3","lala","la");
         FootballSystem.getInstance().creatingReferee("3","la","laala", EReferee.ASSISTANT);
 
-        Team team1 = new Team(45,"team1",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("tair123"));
-        Team team2 = new Team(55,"team2",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("tair123"));
+        Team team1 = new Team(45,"team1",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("4"));
+        Team team2 = new Team(55,"team2",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("4"));
+        team1.addSeasonToTeam(season);
+        team1.addSeasonToTeam(season1);
+        team2.addSeasonToTeam(season);
+        tairTO.addCoach(team1,season,"coach-2020","123","c","c", ETraining.CDiploma,ECoachRole.AssistantCoach);
+        tairTO.addField(team1,season,"Camp-No1","tel-aviv",12222);
+        tairTO.addField(team1,season,"Camp-No2","tel-aviv",12222);
+        tairTO.addTeamManager(team1,season,"TM-2020","123","la","la");
+        tairTO.addPlayer(team1,season,"player-2020","123","la","la",new Date(17/10/1995),EPlayerRole.GoalKeeper);
+
+        try {
+            FootballSystem.getInstance().addTeamToDB(team1);
+            FootballSystem.getInstance().addTeamToDB(team2);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Date date = new Date(2020-1900,4,12);
         Time time = new Time(14,40,0);
         Referee main = FootballSystem.getInstance().getRefereeByUseName("1");
@@ -82,6 +96,10 @@ public class Main extends Application {
         FootballSystem.getInstance().addGameToDB(game);
         FootballSystem.getInstance().signIn("r","r","r","r");
         FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","r","r",null);
+
+
+
+
 
     }
 
