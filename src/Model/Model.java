@@ -136,6 +136,7 @@ public class Model implements IModel {
         return footballSystem.signIn(userName, password, firstName, lastName) != null;
     }
     //endregion
+
     //region Team Management
 
     /**
@@ -175,6 +176,74 @@ public class Model implements IModel {
 
         return true;
 
+    }
+
+    public void editTeamManagerDetails(String teamName, String seasonYear, String userName, String firstName, String lastName) throws RecordException {
+        if (!(user instanceof TeamOwner)) {
+            throw new RecordException("You dont have permission to edit team property details");
+        }
+        TeamOwner teamOwner = (TeamOwner) user;
+        Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamName);
+        Season season = FootballSystem.getInstance().getSeasonDB().getAllSeasons().get(seasonYear);
+        teamOwner.editTMDetails(team, season, userName, firstName,
+                lastName);
+    }
+
+    public void editCoachDetails(String teamName, String seasonYear, String userName, String firstName, String lastName, String training, String role) throws RecordException {
+        if (!(user instanceof TeamOwner)) {
+            throw new RecordException("You dont have permission to edit team property details");
+        }
+        TeamOwner teamOwner = (TeamOwner) user;
+        Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamName);
+        Season season = FootballSystem.getInstance().getSeasonDB().getAllSeasons().get(seasonYear);
+        if (training == null && role == null) {
+            teamOwner.editCoachDetails(team, season, userName, firstName,
+                    lastName, null, null);
+        } else if (training == null) {
+            teamOwner.editCoachDetails(team, season, userName, firstName,
+                    lastName, null, ECoachRole.valueOf(role));
+        } else if (role == null) {
+            teamOwner.editCoachDetails(team, season, userName, firstName,
+                    lastName, ETraining.valueOf(training), null);
+        } else {
+            teamOwner.editCoachDetails(team, season, userName, firstName,
+                    lastName, ETraining.valueOf(training), ECoachRole.valueOf(role));
+        }
+    }
+
+    public void editPlayerDetails(String teamName, String seasonYear, String userName, String firstName, String lastName, String role) throws RecordException {
+        if (!(user instanceof TeamOwner)) {
+            throw new RecordException("You dont have permission to edit team property details");
+        }
+        TeamOwner teamOwner = (TeamOwner) user;
+        Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamName);
+        Season season = FootballSystem.getInstance().getSeasonDB().getAllSeasons().get(seasonYear);
+        if (role == null) {
+            teamOwner.editPlayerDetails(team, season, userName, firstName,
+                    lastName, null);
+        } else {
+            teamOwner.editPlayerDetails(team, season, userName, firstName,
+                    lastName, EPlayerRole.valueOf(role));
+        }
+    }
+
+    public void editFieldDetails(String teamName, String seasonYear, String fieldName, String city, String capacity) throws RecordException {
+        if (!(user instanceof TeamOwner)) {
+            throw new RecordException("You dont have permission to edit team property details");
+        }
+        TeamOwner teamOwner = (TeamOwner) user;
+        Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamName);
+        Season season = FootballSystem.getInstance().getSeasonDB().getAllSeasons().get(seasonYear);
+        try {
+            int capa = Integer.parseInt(capacity);
+            if (capa < 0) {
+                throw new RecordException("please insert valid capacity. only integer greater then 0");
+            }
+        } catch (Exception e) {
+            throw new RecordException("please insert valid capacity. only integer greater then 0");
+        }
+        teamOwner.editFieldDetails(team, season, fieldName, city,
+                capacity);
     }
 
     /**
@@ -393,8 +462,8 @@ public class Model implements IModel {
         return false;
     }
 
-    //endregion
 
+    //endregion
 
     //region Policy Management
 
@@ -484,7 +553,6 @@ public class Model implements IModel {
     }
     //endregion
 
-
     //region Game Management
 
     /**
@@ -538,7 +606,7 @@ public class Model implements IModel {
             referee.updateEventToAssignedGame(gameID, eventIndex, EEventType.valueOf(eventType), description);
         } catch (Exception e) {
             String cause = e.getMessage();
-            e.printStackTrace();
+            throw new RecordException(cause);
         }
 
         return true;
@@ -563,7 +631,7 @@ public class Model implements IModel {
             referee.removeEventFromAssignedGame(gameID, eventIndex);
         } catch (Exception e) {
             String cause = e.getMessage();
-            e.printStackTrace();
+            throw new RecordException(cause);
         }
 
         return true;
@@ -587,7 +655,12 @@ public class Model implements IModel {
 
         ValidateObject.getValidatedGame(gameID);
         Referee referee = (Referee) user;
-        referee.editEventsAfterGameOver(gameID, eventIndex, EEventType.valueOf(eventType), description);
+        try {
+            referee.editEventsAfterGameOver(gameID, eventIndex, EEventType.valueOf(eventType), description);
+        } catch (Exception e) {
+            String cause = e.getMessage();
+            throw new RecordException(cause);
+        }
 
         return true;
     }
@@ -608,8 +681,13 @@ public class Model implements IModel {
 
         ValidateObject.getValidatedGame(gameID);
         Referee referee = (Referee) user;
-        referee.removeEventsAfterGameOver(gameID, eventIndex);
-
+        try {
+            referee.removeEventsAfterGameOver(gameID, eventIndex);
+        }
+        catch (Exception e) {
+            String cause = e.getMessage();
+            throw new RecordException(cause);
+        }
         return true;
     }
 

@@ -69,30 +69,30 @@
                    <fx:reference source="requiredField1"/>
                </validator>
            </ErrorLabel>
-           <ErrorLabel layoutX="245.0" layoutY="145.0" message="Please enter the name" >
+           <ErrorLabel layoutX="245.0" layoutY="145.0" message="Please enter the name" styleClass="first-error">
                <validator>
                    <fx:reference source="requiredField2"/>
                </validator>
            </ErrorLabel>
 
-           <ErrorLabel layoutX="255.0" layoutY="195.0" message="Please enter the League" >
+           <ErrorLabel layoutX="255.0" layoutY="195.0" message="Please enter the League" styleClass="first-error">
                <validator>
                    <fx:reference source="requiredField3"/>
                </validator>
            </ErrorLabel>
-           <ErrorLabel layoutX="245.0" layoutY="245.0" message="Please enter the budget" >
+           <ErrorLabel layoutX="245.0" layoutY="245.0" message="Please enter the budget" styleClass="first-error">
                <validator>
                    <fx:reference source="requiredField4"/>
                </validator>
            </ErrorLabel>
 
-           <ErrorLabel layoutX="255.0" layoutY="295.0" message="Please enter the home field" >
+           <ErrorLabel layoutX="255.0" layoutY="295.0" message="Please enter the home field" styleClass="first-error" >
                <validator>
                    <fx:reference source="requiredField5"/>
                </validator>
            </ErrorLabel>
 
-           <ErrorLabel layoutX="255.0" layoutY="345.0" message="Please enter the season" >
+           <ErrorLabel layoutX="255.0" layoutY="345.0" message="Please enter the season" styleClass="first-error">
                <validator>
                    <fx:reference source="requiredField6"/>
                </validator>
