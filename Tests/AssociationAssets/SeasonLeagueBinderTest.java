@@ -47,9 +47,9 @@ public class SeasonLeagueBinderTest {
                 new Time(20,00,0),
                 field,team2,team1,r1,r3,r2,season,
                 league);
-            HashMap <String,Game> games = new HashMap<>();
-            games.put("123",game1);
-            games.put("113",game2);
+            HashMap <Integer,Game> games = new HashMap<>();
+            games.put(123,game1);
+            games.put(113,game2);
             HashMap <String,Team> teams = new HashMap<>();
             teams.put(team1.getName(),team1);
             teams.put(team2.getName(),team2);

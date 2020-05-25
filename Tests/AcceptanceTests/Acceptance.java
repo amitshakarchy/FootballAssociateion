@@ -52,7 +52,7 @@ public class Acceptance {
     Game game2;
     Time time;
     Time time2;
-    HashMap<String,Game> games;
+    HashMap<Integer,Game> games;
     HashMap<String,Team> teams;
 
 
@@ -111,8 +111,8 @@ public class Acceptance {
         time = new Time(13,30,0);
         game = new Game(new Date(2020,4,14),time,field2,team1,team2,mainRef,sideRef1,sideRef2,season,league1);
         game2 = new Game(new Date(2020,10,24),time,field,team2,team1,mainRef,sideRef2,sideRef1,season,league1);
-        games.put("1",game);
-        games.put("2",game2);
+        games.put(1,game);
+        games.put(2,game2);
         regularScorePolicy = new RegularScorePolicy();
         simpleGamesAssigningPolicy = new SimpleGamesAssigningPolicy();
         // TODO: 18/04/2020  in the next line we want the function to connect the created league to the correct season (which is inside the DB). need to use the functions inside league to do so.
