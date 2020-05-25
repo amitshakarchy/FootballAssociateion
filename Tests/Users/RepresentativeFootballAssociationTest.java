@@ -70,13 +70,13 @@ public class RepresentativeFootballAssociationTest {
 
     @Test
     public void addNewLeague() {
-        //representative.addNewLeague("leagueTest",games,teams,scorePolicy,gamePolicy,"2020",season);
+        representative.addNewLeague("leagueTest",games,teams,scorePolicy,gamePolicy,"2020",season);
         assertTrue(FootballSystem.getInstance().existLeagueByName("leagueTest"));
     }
 
     @Test
     public void setSeasonToLeague() {
-        //representative.setSeasonToLeague(league,"2019",games,teams);
+        representative.setSeasonToLeague(league,"2019",games,teams);
         assertTrue(league.getSeasonBinders().containsKey("2019"));
     }
 
@@ -114,8 +114,8 @@ public class RepresentativeFootballAssociationTest {
 
     @Test
     public void setGamesAssigningPolicy() {
-        //representative.SetGamesAssigningPolicy("SimplePolicy");
-        //assertEquals(gamePolicy.getPolicy(),"SimplePolicy");
+        representative.SetGamesAssigningPolicy("SimplePolicy");
+        assertEquals(gamePolicy.getPolicy(),"SimplePolicy");
     }
 
     //next iteration

@@ -38,7 +38,7 @@ public class SystemManager extends Fan {
      *
      * @param teamName -team name - to close
      */
-    public void closeTam(String teamName){
+    public void closeTeam(String teamName){
         Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamName);
         if(team != null){
             List <Game> gamesList = new ArrayList<>();

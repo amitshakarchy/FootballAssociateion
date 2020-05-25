@@ -116,7 +116,7 @@ public class Acceptance {
         regularScorePolicy = new RegularScorePolicy();
         simpleGamesAssigningPolicy = new SimpleGamesAssigningPolicy();
         // TODO: 18/04/2020  in the next line we want the function to connect the created league to the correct season (which is inside the DB). need to use the functions inside league to do so.
-        //rep.addNewLeague("Israeli League",games,teams, regularScorePolicy,simpleGamesAssigningPolicy,season.getYear(),season);
+        rep.addNewLeague("Israeli League",games,teams, regularScorePolicy,simpleGamesAssigningPolicy,season.getYear(),season);
         league1 =  footballSystem.getLeagueDB().getAllLeagues().get("Israeli League");
         boolean temp;
 
