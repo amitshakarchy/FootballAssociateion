@@ -1,6 +1,6 @@
 package AssociationAssets;
 
-import PoliciesAndAlgorithms.HeuristicGamesAssigningPolicy;
+import PoliciesAndAlgorithms.OneRoundGamesAssigningPolicy;
 import PoliciesAndAlgorithms.RegularScorePolicy;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +33,7 @@ public class LeagueTest {
     @Test
     public void setAssigningPolicy() {
         league.addSeasonToLeague(season);
-        league.setAssigningPolicy(season.year, new HeuristicGamesAssigningPolicy());
+        league.setAssigningPolicy(season.year, new OneRoundGamesAssigningPolicy());
         // TODO: 4/14/2020 fix test
       //  assertNotNull(league.getAssigningPolicy(season.year));
     }

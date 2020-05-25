@@ -142,7 +142,7 @@ public class Game {
         LocalDateTime currentDate = LocalDateTime.now();
         LocalDateTime gameDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         long minutes = ChronoUnit.MINUTES.between(gameDate, currentDate);
-        if( (double)minutes/60 <= hoursSinceGameStarted && minutes > 0){
+        if( (double)minutes/60 <= hoursSinceGameStarted && minutes >= 0){
             return true;
         }
         return false;
@@ -424,11 +424,18 @@ public class Game {
             long minutes = ChronoUnit.MINUTES.between(gameDate, currentDate);
             if( minutes/60 >= 2 ){
                 setStatus(EGameStatus.FINISHED);
+                //update league table
                 this.getLeague().updateGameScore(season.getYear(),host.getName(),guest.getName(),getScore());
-
+                //update that league started for use case 9.5 (RFA can change score policy only before the beginning of the season)
+                String season = getLeague().getCurrentSeason();
+                getLeague().getSeasonBinders().get(season).setSeasonStatus();
                 return true;
             }
         }
         return false;
+    }
+
+    public void setGID(int gid) {
+        this.GID = gid;
     }
 }
