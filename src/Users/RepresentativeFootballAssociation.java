@@ -271,7 +271,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     }
 
 
-
-
-
+    public GamesAssigningPolicy getAssigningPolicy() {
+        return gamePolicy;
+    }
 }

@@ -9,6 +9,7 @@ import System.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.naming.OperationNotSupportedException;
 import javax.security.auth.login.FailedLoginException;
 import java.sql.Time;
 import java.util.Date;
@@ -113,9 +114,13 @@ public class RepresentativeFootballAssociationTest {
     }
 
     @Test
-    public void setGamesAssigningPolicy() {
-        representative.SetGamesAssigningPolicy("SimplePolicy");
-        assertEquals(gamePolicy.getPolicy(),"SimplePolicy");
+    public void setGamesAssigningPolicy()  {
+        try {
+            representative.SetGamesAssigningPolicy(gamePolicy,league,season);
+        } catch (OperationNotSupportedException e) {
+            e.printStackTrace();
+        }
+        assertNotEquals(representative.getAssigningPolicy(),null);
     }
 
     //next iteration
