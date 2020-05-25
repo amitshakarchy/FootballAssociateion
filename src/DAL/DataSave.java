@@ -77,6 +77,7 @@ public class DataSave {
         saveFans();
         savePasswordsUsers();
     }
+
     private void saveSeasonLeagueBinders() {
         for (Season s:allSeasons.values()) {
             for (SeasonLeagueBinder binder:s.getLeagueBinders().values()) {
@@ -93,10 +94,7 @@ public class DataSave {
         }
     }
 
-
-
-    private void saveAdditionalInfo() {
-
+    public void saveAdditionalInfo() {
         for (Season season : allSeasons.values()) {
             for (AdditionalInfo additionalInfo : season.getTeamAdditionalInfo().values()) {
                 // additionalinfo table
@@ -151,7 +149,7 @@ public class DataSave {
     }
 
 
-    private void saveGames() {
+    public void saveGames() {
         for (Game game : allGames.values()) {
 
             // games table
@@ -177,7 +175,7 @@ public class DataSave {
     }
 
 
-    private void saveTeams() {
+    public void saveTeams() {
         //int id=1;
         for (Team team : allTeams.values()) {
             int active = 0;
@@ -200,7 +198,7 @@ public class DataSave {
     }
     }
 
-    private void saveSeasons() {
+    public void saveSeasons() {
         int id = 1;
         for (Season season : allSeasons.values()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
@@ -211,7 +209,7 @@ public class DataSave {
         }
     }
 
-    private void saveLeagues() {
+    public void saveLeagues() {
         for (League league : allLeagues.values()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
                     "Replace  INTO \n" +
@@ -221,7 +219,7 @@ public class DataSave {
         }
     }
 
-    private void saveFields() {
+    public void saveFields() {
         int id = 1;
         for (Field field : allFields.values()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
@@ -233,7 +231,7 @@ public class DataSave {
     }
 
 
-    private void savePasswordsUsers() {
+    public void savePasswordsUsers() {
         SecuritySystem sec = FootballSystem.getInstance().getSecuritySystem();
         for (Map.Entry<String, String> entry : sec.getUsersHashMap("iseFab5").entrySet()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
@@ -244,7 +242,7 @@ public class DataSave {
         }
     }
 
-    private void saveFans() {
+    public void saveFans() {
         for (Fan fan : allFans.values()) {
             int offlineStatus = 0;
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
@@ -255,7 +253,7 @@ public class DataSave {
         }
     }
 
-    private void saveReferees() {
+    public void saveReferees() {
         for (Referee referee : allReferees.values()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
                     "Replace  INTO \n" +
@@ -265,7 +263,7 @@ public class DataSave {
         }
     }
 
-    private void saveRFAs() {
+    public void saveRFAs() {
         for (RepresentativeFootballAssociation rfa : allRFAs.values()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
                     "Replace  INTO \n" +
@@ -275,7 +273,7 @@ public class DataSave {
         }
     }
 
-    private void saveSystemManagers() {
+    public void saveSystemManagers() {
         for (SystemManager systemManager : allSystemManagers.values()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
                     "Replace  INTO \n" +
@@ -286,7 +284,7 @@ public class DataSave {
     }
 
 
-    private void saveTeamOwners() {
+    public void saveTeamOwners() {
         for (TeamOwner owner : allTeamOwners.values()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
                     "Replace  INTO \n" +
@@ -296,7 +294,7 @@ public class DataSave {
         }
     }
 
-    private void saveTeamManagers() {
+    public void saveTeamManagers() {
         for (TeamManager manager : allTeamManagers.values()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
                     "Replace  INTO \n" +
@@ -306,7 +304,7 @@ public class DataSave {
         }
     }
 
-    private void saveCoaches() {
+    public void saveCoaches() {
         for (Coach c : allCoaches.values()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
                     "Replace  INTO \n" +
@@ -316,7 +314,7 @@ public class DataSave {
         }
     }
 
-    private void savePlayers() {
+    public void savePlayers() {
         for (Player p : allPlayers.values()) {
             ResultSet resultSet = databaseManager.executeQuerySelect("" +
                     "Replace  INTO \n" +

@@ -13,11 +13,18 @@ import java.util.*;
 public class JDBCConnector {
 
     DatabaseManager databaseManager;
+    public DataUploader uploader;
+    public DataSave dataSave;
+
+    public JDBCConnector() {
+        databaseManager = new DatabaseManagerServerMySQL();
+        uploader = new DataUploader(databaseManager);
+        dataSave = new DataSave(databaseManager);
+    }
+
 
     public void connectDBUploadData() {
-        databaseManager = new DatabaseManagerServerMySQL();
         databaseManager.startConnection();
-        DataUploader uploader = new DataUploader(databaseManager);
         uploader.uploadData();
         databaseManager.closeConnection();
     }
@@ -25,7 +32,6 @@ public class JDBCConnector {
     public void connectDBSaveData() {
         databaseManager = new DatabaseManagerServerMySQL();
         databaseManager.startConnection();
-        DataSave dataSave = new DataSave(databaseManager);
         dataSave.saveAllData();
         databaseManager.closeConnection();
     }
