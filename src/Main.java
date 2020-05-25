@@ -2,7 +2,6 @@
 import AssociationAssets.*;
 import Controllers.*;
 import Model.Model;
-import Users.Coach;
 import Users.EReferee;
 import Users.Referee;
 import Users.TeamOwner;
@@ -12,16 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import System.FootballSystem;
-import sun.misc.Contended;
-import sun.misc.FpUtils;
 
 import java.sql.Time;
 import java.util.Date;
-import java.util.logging.SimpleFormatter;
 
 public class Main extends Application {
-    static final String RESOURCE = "View/Login.fxml";
-    static final String STYLE_SHEET = "View/style.css";
+    static final String RESOURCE = "View/ManagePolicyUI.fxml";
+    static final String STYLE_SHEET = "View/common-styles.css";
     static Stage stg;
 
     @Override
@@ -29,7 +25,7 @@ public class Main extends Application {
 
         this.stg = stage;
         FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getClass().getResource(RESOURCE).openStream());
+        Parent root = fxmlLoader.load(getClass().getResource(RESOURCE));
         root.getStylesheets().add(getClass().getResource(STYLE_SHEET).toExternalForm());
         stage.setTitle("Football Association System");
         stage.setScene(new Scene(root, 900, 900));
