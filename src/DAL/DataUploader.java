@@ -4,7 +4,6 @@ import AssociationAssets.Field;
 import AssociationAssets.League;
 import AssociationAssets.Season;
 import AssociationAssets.Team;
-import Security.AESEncryption;
 import Security.SecuritySystem;
 import Users.*;
 
@@ -13,14 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.*;
 
 import AssociationAssets.*;
-import DB.*;
 import PoliciesAndAlgorithms.*;
 import System.*;
-import Users.*;
 
 /**
  * Data Uploader is in charge of fetching data from the DB and setting it in the system's Hashmaps and data sets.
@@ -574,7 +570,7 @@ public class DataUploader {
                 ScoreTablePolicy tablePolicy = new RegularScorePolicy();
                 if (scoreTablePolicy.equals("2")) tablePolicy = new ScoreTablePolicy2();
 
-                GamesAssigningPolicy gamesAssigningPolicy = new HeuristicGamesAssigningPolicy();
+                GamesAssigningPolicy gamesAssigningPolicy = new OneRoundGamesAssigningPolicy();
                 if (gameSchedulePolicy.equals("1")) gamesAssigningPolicy = new SimpleGamesAssigningPolicy();
 
                 Season season = allSeasons.get(seasonYear);

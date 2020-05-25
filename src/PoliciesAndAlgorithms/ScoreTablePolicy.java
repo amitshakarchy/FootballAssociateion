@@ -2,7 +2,9 @@ package PoliciesAndAlgorithms;
 
 public abstract class ScoreTablePolicy {
 
-// I assume we will improvise here :)
-String nada;
+    public abstract int getPolicyWinnerPoints();
+    public abstract int getPolicyLoserPoints();
+    public abstract int getPolicyDrawPoints();
+
 
 }
