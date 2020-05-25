@@ -217,10 +217,24 @@ public class Referee extends Fan {
                     Logger.getInstance().addActionToLogger("Referee remove event from assigned game, user name: "+ getUserName()+" GameID: "+gameID);
                     return;
                 }
+                else{
+                    Logger.getInstance().addErrorToLogger("Referee delete event to a finished game - this action was failed. " + getUserName()+" GameID: "+gameID);
+                    throw new UnsupportedOperationException("It was more than 5 hours after the game ended");
+                }
+            }
+            else if(gameToAdd == null){
+                Logger.getInstance().addErrorToLogger("Referee delete event to a finished game - this action was failed. " + getUserName()+" GameID: "+gameID);
+                throw new UnsupportedOperationException("The referee is not assign for this game");
+            }
+            else{
+                Logger.getInstance().addErrorToLogger("Referee delete event to a finished game - this action was failed.  " + getUserName()+" GameID: "+gameID);
+                throw new UnsupportedOperationException("This event does not exist");
             }
         }
-        Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
-
+        else{
+            Logger.getInstance().addErrorToLogger("Referee delete event to a finished game - this action was failed. " + getUserName()+" GameID: "+gameID);
+            throw new UnsupportedOperationException("Only main referee can do this operation.");
+        }
     }
 
     /**
