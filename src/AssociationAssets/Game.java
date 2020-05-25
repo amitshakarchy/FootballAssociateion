@@ -142,7 +142,7 @@ public class Game {
         LocalDateTime currentDate = LocalDateTime.now();
         LocalDateTime gameDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         long minutes = ChronoUnit.MINUTES.between(gameDate, currentDate);
-        if( (double)minutes/60 <= hoursSinceGameStarted && minutes > 0){
+        if( (double)minutes/60 <= hoursSinceGameStarted && minutes >= 0){
             return true;
         }
         return false;

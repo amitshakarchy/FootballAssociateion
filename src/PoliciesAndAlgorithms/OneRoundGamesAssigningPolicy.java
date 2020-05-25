@@ -1,5 +1,6 @@
 package PoliciesAndAlgorithms;
 
+
 import AssociationAssets.Game;
 import AssociationAssets.League;
 import AssociationAssets.Season;
@@ -10,11 +11,12 @@ import Users.Referee;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
+public class OneRoundGamesAssigningPolicy extends GamesAssigningPolicy {
+
+
+
     /**
      * constructor
      */
@@ -22,7 +24,7 @@ public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
     static int gidCounter;
 
 
-    public SimpleGamesAssigningPolicy() {
+    public OneRoundGamesAssigningPolicy() {
         counterMainRef = 0;
         counterSideRef = 0;
         gidCounter = 1;
@@ -38,7 +40,7 @@ public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
      * @param season season to assign to
      * @param league league to assign to
      * @return hashmap of games, the key is the game ID
-     * @throws Exception in case of not enough referees or null parameters
+     * @throws Exception in case of not enough referees or null parameters or if games already assigned.
      */
     public HashMap<Integer, Game> executePolicy(HashMap<String, Team> teams, Map<String, Referee> refs, LocalDate startDate, Season season, League league) throws Exception {
         if(teams == null || refs == null || startDate == null || season == null || league == null) throw new Exception("At least one parameter is wrong");
@@ -53,7 +55,7 @@ public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
 
         Map<String, Referee> mainReferees = getMainReferees(refs);
         Map<String, Referee> otherRefs = getOtherReferees(refs);
-        int numberOfGames = nChooseTwo(teamsCount)*2;
+        int numberOfGames = nChooseTwo(teamsCount);
         int mainRefWithExtraGame = (numberOfGames % mainRefereeCount);
         int otherRefWithExtraGame = (numberOfGames*2 % (refereeCount-mainRefereeCount));
         //String[] of team names
@@ -83,15 +85,6 @@ public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
                     int gid = gidHelper++;
                     game.setGID(gid);
                     games.put(gidCounter,game);
-                    //second game between same rivals, opposite host and guest
-                    calendar = Calendar.getInstance();
-                    calendar.setTime(Date.valueOf(startDate));
-                    calendar.add(Calendar.DAY_OF_YEAR, (weeks+1)*7*(numberOfGames/4));
-                    dateNew = calendar.getTime();
-                    Game game2 = new Game(dateNew,new Time(21,0,0),guest.getMainField(),guest,host,mainRef,sideRef1,sideRef2,season,league);
-                    gid = ++gidCounter + (teamsCount/2) + (numberOfGames/4);
-                    game2.setGID(gid);
-                    games.put(gid,game2);
                 }
 
                 weeks++;
@@ -99,8 +92,8 @@ public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
 
         }
 
-       else{
-           //odd team count
+        else{
+            //odd team count
             int gidHelper = 1;
             for (int i = 0; i < (numberOfGames/((teamsCount-1)/2))/2; i++) {
                 //for each week of games
@@ -121,15 +114,6 @@ public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
                     int gid = gidHelper++;
                     game.setGID(gid);
                     games.put(gidCounter,game);
-                    //second game between same rivals, opposite host and guest
-                    calendar = Calendar.getInstance();
-                    calendar.setTime(Date.valueOf(startDate));
-                    calendar.add(Calendar.DAY_OF_YEAR, (weeks+1)*7*(numberOfGames/4));
-                    dateNew = calendar.getTime();
-                    Game game2 = new Game(dateNew,new Time(21,0,0),guest.getMainField(),guest,host,mainRef,sideRef1,sideRef2,season,league);
-                    gid = ++gidCounter + (teamsCount/2) + (numberOfGames/4) + 2;
-                    game2.setGID(gid);
-                    games.put(gid,game2);
                 }
 
                 weeks++;
@@ -140,12 +124,6 @@ public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
         return games;
     }
 
-    /**
-     *  choosing one side ref at a time for the next game.
-     *    each referee is chose by his turn, referee can judge only one game in a round of games
-     * @param otherRefs
-     * @return
-     */
     private Referee selectSideRef(Map<String, Referee> otherRefs) {
         Referee referee = null;
         int counter = 0;
@@ -184,6 +162,7 @@ public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
         }
         return referee;
     }
+
 
     /**
      * this function return for each round of games - the teams assigned for each game
@@ -329,3 +308,6 @@ public class SimpleGamesAssigningPolicy extends GamesAssigningPolicy {
         return ans;
     }
 }
+
+
+

@@ -175,9 +175,9 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      * useCase #9.6 - define assign game policy
      * can only set assigning policy if the current season hasn't started yet.
      */
-    public void SetGamesAssigningPolicy(GamesAssigningPolicy policy,  String league, String season) throws OperationNotSupportedException {
+    public void SetGamesAssigningPolicy(GamesAssigningPolicy policy, League league, Season season) throws OperationNotSupportedException {
         if(policy!=null && league!=null && season!=null){
-            SeasonLeagueBinder binder = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getSeasonBinders().get(season);
+            SeasonLeagueBinder binder = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league.getLeagueName()).getSeasonBinders().get(season.getYear());
             if(binder == null) throw new OperationNotSupportedException("This combination of league and season doesn't exists");
             binder.setAssigningPolicy(policy);
         }
@@ -190,13 +190,15 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
      */
     public void activateGamesAssigning(String league, String season) throws Exception {
         if(league!=null && season!=null){
-
-            HashMap<String,Team> teams = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getTeams(season);
+            //get objects of season and league from the db.
+            Season season1 = FootballSystem.getInstance().getSeasonDB().getAllSeasons().get(season);
+            League league1 = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league);
+            //get the teams from the season binder
+            HashMap<String,Team> teams = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league1.getLeagueName()).getSeasonBinders().get(season).getTeams();
+            //getting all refs in the system
             Map<String,Referee> refs = FootballSystem.getInstance().getRefereeMap();
-
-            //// TODO: 23/05/2020   maybe need to change this function parameters to Season and League
-
-            //HashMap<Integer, Game> games = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getSeasonBinders().get(season).getAssigningPolicy().executePolicy(teams,refs,LocalDate.now(), season, league);
+            //calling for the assigning fucntion
+            HashMap<Integer, Game> games = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league).getSeasonBinders().get(season).getAssigningPolicy().executePolicy(teams,refs,LocalDate.now(), season1, league1);
         }
     }
 

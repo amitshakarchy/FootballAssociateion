@@ -208,7 +208,7 @@ public class Referee extends Fan {
      *
      * # use case 10.4
      */
-    public void removeEventsAfterGameOver(int gameID,int eventIndex){
+    public void removeEventsAfterGameOver(int gameID,int eventIndex)throws  UnsupportedOperationException{
         if(this.training.equals(EReferee.MAIN)){
             Game gameToAdd = null;
             gameToAdd = getGame(gameID);
@@ -218,9 +218,24 @@ public class Referee extends Fan {
                     Logger.getInstance().addActionToLogger("Referee remove event from assigned game, user name: "+ getUserName()+" GameID: "+gameID);
                     return;
                 }
+                else{
+                    Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
+                    throw new UnsupportedOperationException("You can't remove event at this time");
+                }
+            }
+            else if(gameToAdd == null){
+                Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
+                throw new UnsupportedOperationException("This game is not exists");
+            }
+            else{
+                Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
+                throw new UnsupportedOperationException("You're not the main referee of this game.");
             }
         }
-        Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
+        else{
+            Logger.getInstance().addErrorToLogger("Referee remove event to finished game was failed. " + getUserName()+" GameID: "+gameID);
+            throw new UnsupportedOperationException("Only main referee can do this operation.");
+        }
 
     }
 

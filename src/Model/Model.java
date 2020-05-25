@@ -1,7 +1,7 @@
 package Model;
 
 import AssociationAssets.*;
-import PoliciesAndAlgorithms.HeuristicGamesAssigningPolicy;
+import PoliciesAndAlgorithms.OneRoundGamesAssigningPolicy;
 import PoliciesAndAlgorithms.RegularScorePolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy2;
 import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
@@ -425,7 +425,7 @@ public class Model implements IModel {
                 break;
 
             case "Heuristic Policy":
-                repUser.SetGamesAssigningPolicy(new HeuristicGamesAssigningPolicy(), league, season);
+                repUser.SetGamesAssigningPolicy(new OneRoundGamesAssigningPolicy(), league, season);
                 break;
         }
         return true;

@@ -56,11 +56,14 @@ public class SeasonLeagueBinder {
             throw new UnsupportedOperationException("Can't change score policy after league already began");
         return true;
     }
+
+
     public void addReferee(Referee referee){
         if(referee != null){
             referees.put(referee.getUserName(),referee);
         }
     }
+
     public ScoreTablePolicy getScoreTablePolicy() {
         return scoreTablePolicy;
     }
@@ -95,6 +98,7 @@ public class SeasonLeagueBinder {
 
     /**
      * adding teams to this specific combination of season and league
+     * after adding teams, function call to initialize the league table.
      * @param teams
      */
     public void addTeamsToLeague(HashMap<String, Team> teams) {
