@@ -40,7 +40,7 @@ public class SeasonLeagueBinder {
 
     //region Getters & Setters
     public void setAssigningPolicy(GamesAssigningPolicy assigningPolicy) {
-        if(hasStarted())
+        if(!hasStarted())
             this.assigningPolicy = assigningPolicy;
         else
             throw new UnsupportedOperationException("Can't change Assigning policy after league already began");

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import System.*;
+import org.omg.PortableInterceptor.INACTIVE;
 
 /**
  * Class Team represents a team. It holds a team's home and away games, it's players and
@@ -24,8 +25,8 @@ public class Team {
     Field mainField;
     HashMap<String/*field name*/, Field> fields;
     HashMap<String/*season Year*/, AdditionalInfo> additionalInfoWithSeasons;
-    HashMap<String/*GID*/, Game> homeGames;
-    HashMap<String/*GID*/, Game> awayGames;
+    HashMap<Integer/*GID*/, Game> homeGames;
+    HashMap<Integer/*GID*/, Game> awayGames;
     TeamBudget budget;
     ETeamStatus isActive;
     TeamOwner teamOwner;
@@ -83,11 +84,11 @@ public class Team {
         return additionalInfoWithSeasons;
     }
 
-    public HashMap<String, Game> getHomeGames() {
+    public HashMap<Integer, Game> getHomeGames() {
         return homeGames;
     }
 
-    public HashMap<String, Game> getAwayGames() {
+    public HashMap<Integer, Game> getAwayGames() {
         return awayGames;
     }
 
@@ -119,11 +120,11 @@ public class Team {
         this.additionalInfoWithSeasons = additionalInfoWithSeasons;
     }
 
-    public void setHomeGames(HashMap<String, Game> homeGames) {
+    public void setHomeGames(HashMap<Integer, Game> homeGames) {
         this.homeGames = homeGames;
     }
 
-    public void setAwayGames(HashMap<String, Game> awayGames) {
+    public void setAwayGames(HashMap<Integer, Game> awayGames) {
         this.awayGames = awayGames;
     }
 
@@ -297,13 +298,13 @@ public class Team {
 
     public void addHomeGame(Game game) {
         if (game != null) {
-            this.homeGames.put(String.valueOf(game.GID), game);
+            this.homeGames.put(game.GID, game);
         }
     }
 
     public void addAwayGame(Game game) {
         if (game != null) {
-            this.awayGames.put(String.valueOf(game.GID), game);
+            this.awayGames.put(game.GID, game);
         }
     }
 }
