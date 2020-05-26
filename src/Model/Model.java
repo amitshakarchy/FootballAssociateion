@@ -9,10 +9,13 @@ import System.FootballSystem;
 import Users.*;
 import javafx.util.Pair;
 
+import javax.naming.OperationNotSupportedException;
 import javax.security.auth.login.FailedLoginException;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Observable;
 
-public class Model implements IModel {
+public class Model extends Observable implements IModel {
 
     Fan user;
     FootballSystem footballSystem = FootballSystem.getInstance();
@@ -119,14 +122,17 @@ public class Model implements IModel {
      */
     @Override
     public boolean login(String username, String password) throws FailedLoginException {
-
         Fan tmpUser = footballSystem.login(username, password);
-
         // Save the user as an object
         user = footballSystem.getFanByUserName(username);
+        if(user instanceof RepresentativeFootballAssociation){
+            ArrayList<String> notifications =  RepresentativeFootballAssociation.notificationTeams;
+            if(notifications.size() > 0){
+                setChanged();
+                notifyObservers(notifications);
+            }
+        }
         return true;
-
-
     }
     //endregion
 
@@ -160,20 +166,17 @@ public class Model implements IModel {
         }
         TeamOwner teamOwnerUser = (TeamOwner) user;
         Season season = ValidateObject.getValidatedSeason(leagueName, seasonYear);
-
         // Get an existing field or create one and add it TO fields DB
         Field field = footballSystem.getFieldDB().getAllFields().get(fieldName);
         if (field == null) {
             throw new RecordException("The field " + fieldName + " is not exits");
         }
-
         // Create a new team.
         //Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
-
         //send the request to the RFA
-        RepresentativeFootballAssociation rep = footballSystem.getRepresentativeFootballAssociationByUseName("r");
-        rep.addTeamRequest(name, leagueName, seasonYear, fieldName);
-
+        String request = "";
+        notifyAll();
+        notifyObservers(request);
         return true;
 
     }
@@ -490,11 +493,21 @@ public class Model implements IModel {
         // Set requested policy
         switch (policy) {
             case "Simple Policy":
-                repUser.SetGamesAssigningPolicy(new SimpleGamesAssigningPolicy(), league, season);
+                try {
+                    repUser.SetGamesAssigningPolicy(new SimpleGamesAssigningPolicy(), league, season);
+                } catch (OperationNotSupportedException e) {
+                    // TODO: 5/26/2020 handle exc
+                    e.printStackTrace();
+                }
                 break;
 
             case "Heuristic Policy":
-                repUser.SetGamesAssigningPolicy(new OneRoundGamesAssigningPolicy(), league, season);
+                try {
+                    repUser.SetGamesAssigningPolicy(new OneRoundGamesAssigningPolicy(), league, season);
+                } catch (OperationNotSupportedException e) {
+                    // TODO: 5/26/2020 handle exc
+                    e.printStackTrace();
+                }
                 break;
         }
         return true;
@@ -547,7 +560,14 @@ public class Model implements IModel {
         if (!(user instanceof RepresentativeFootballAssociation))
             return false;
         RepresentativeFootballAssociation repUser = (RepresentativeFootballAssociation) user;
-        repUser.activateGamesAssigning();
+        Season season = FootballSystem.getInstance().getSeasonDB().getAllSeasons().get(seasonYear);
+        League league = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(leagueName);
+        try {
+            repUser.activateGamesAssigning(league,season);
+        } catch (Exception e) {
+            // TODO: 5/26/2020 handle exc
+            e.printStackTrace();
+        }
 
         return true;
     }
