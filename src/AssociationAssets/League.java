@@ -3,12 +3,8 @@ package AssociationAssets;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import System.*;
 
 public class League {
 
@@ -56,7 +52,7 @@ public class League {
         return seasonBinders.get(year).getTeams();
     }
 
-    public HashMap<String, Game> getGames(String year) {
+    public HashMap<Integer, Game> getGames(String year) {
         return seasonBinders.get(year).getGames();
     }
 
@@ -116,7 +112,7 @@ public class League {
         }
     }
 
-    public void addGamesToLeague(String year, HashMap<String, Game> Games) {
+    public void addGamesToLeague(String year, HashMap<Integer, Game> Games) {
         seasonBinders.get(year).addGamesToLeague(Games);
     }
 
@@ -132,22 +128,34 @@ public class League {
 
     public void updateGameScore(String year, String host, String guest, Score score) {
         SeasonLeagueBinder seasonLeagueBinder = seasonBinders.get(year);
+        String season = getCurrentSeason();
+        int previousPointsHost = seasonLeagueBinder.getLeagueTable().get(host);
+        int previousPointsGuest = seasonLeagueBinder.getLeagueTable().get(guest);
         if(hostWon(score)){
-            int previousPoints = seasonLeagueBinder.getLeagueTable().get(host);
-            //TODO add assigning policy points
-            seasonLeagueBinder.getLeagueTable().put(host,previousPoints +3);
-        }
-        else if(guestWon(score)){
-            int previousPoints = seasonLeagueBinder.getLeagueTable().get(guest);
-            seasonLeagueBinder.getLeagueTable().put(guest,previousPoints +3);
-        }
-        else{
-            int previousPointsHost = seasonLeagueBinder.getLeagueTable().get(host);
-            int previousPointsGuest = seasonLeagueBinder.getLeagueTable().get(guest);
-            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost );
-            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsHost +1);
+            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost + this.getScoreTablePolicy(season).getPolicyWinnerPoints());
+            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsGuest + this.getScoreTablePolicy(season).getPolicyWinnerPoints());
 
         }
+        else if(guestWon(score)){
+            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsGuest + this.getScoreTablePolicy(season).getPolicyWinnerPoints());
+            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost + this.getScoreTablePolicy(season).getPolicyLoserPoints());
+        }
+        else{
+            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsGuest + this.getScoreTablePolicy(season).getPolicyDrawPoints());
+            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost + this.getScoreTablePolicy(season).getPolicyDrawPoints());
+
+        }
+    }
+
+    public String getCurrentSeason() {
+        int curr,max = 0;
+        for (Map.Entry<String,SeasonLeagueBinder> entry : seasonBinders.entrySet()) {
+            curr = Integer.parseInt(entry.getKey());
+            if(curr > max){
+                max = curr;
+            }
+        }
+        return String.valueOf(max);
     }
 
     private boolean guestWon(Score score) {

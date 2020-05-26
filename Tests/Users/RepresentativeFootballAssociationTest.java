@@ -9,6 +9,7 @@ import System.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.naming.OperationNotSupportedException;
 import javax.security.auth.login.FailedLoginException;
 import java.sql.Time;
 import java.util.Date;
@@ -28,7 +29,7 @@ public class RepresentativeFootballAssociationTest {
     Team team1, team2;
     Field field;
     Referee r1,r2,r3;
-    HashMap <String,Game> games;
+    HashMap <Integer,Game> games;
     HashMap <String,Team> teams;
     TeamBudget teamBudget;
     HashMap<String,TeamOwner> owners;
@@ -59,8 +60,8 @@ public class RepresentativeFootballAssociationTest {
                 field,team2,team1,r1,r3,r2,season,
                 league);
         games = new HashMap<>();
-        games.put("123",game1);
-        games.put("113",game2);
+        games.put(123,game1);
+        games.put(113,game2);
         teams = new HashMap<>();
         teams.put(team1.getName(),team1);
         teams.put(team2.getName(),team2);
@@ -113,9 +114,13 @@ public class RepresentativeFootballAssociationTest {
     }
 
     @Test
-    public void setGamesAssigningPolicy() {
-        representative.SetGamesAssigningPolicy("SimplePolicy");
-        assertEquals(gamePolicy.getPolicy(),"SimplePolicy");
+    public void setGamesAssigningPolicy()  {
+        try {
+            representative.SetGamesAssigningPolicy(gamePolicy,league,season);
+        } catch (OperationNotSupportedException e) {
+            e.printStackTrace();
+        }
+        assertNotEquals(representative.getAssigningPolicy(),null);
     }
 
     //next iteration
