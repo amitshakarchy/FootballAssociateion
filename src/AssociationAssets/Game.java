@@ -428,7 +428,6 @@ public class Game {
                 this.getLeague().updateGameScore(season.getYear(),host.getName(),guest.getName(),getScore());
                 //update that league started for use case 9.5 (RFA can change score policy only before the beginning of the season)
                 String season = getLeague().getCurrentSeason();
-                getLeague().getSeasonBinders().get(season).setSeasonStatus();
                 return true;
             }
         }

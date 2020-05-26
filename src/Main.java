@@ -35,8 +35,18 @@ public class Main extends Application {
         //-------------
         initDB();
         Model myModel = new Model();
+        //***************
+        // TODO: 5/26/2020 add all rep to observers
+        FootballSystem.getInstance().signIn("r","r","r","r");
+        RepresentativeFootballAssociation r =
+                (RepresentativeFootballAssociation) FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","r","r",null);
+        myModel.addObserver(r);
+        myModel.addObserver(fxmlLoader.getController());
         Controller controller = new Controller();
         controller.setModel(myModel);
+        RepresentativeFootballAssociation.notificationTeams.add("bnlablalbal");
+        // ***********
+
     }
 
     private void initDB() {
@@ -94,13 +104,6 @@ public class Main extends Application {
         }
         main.addGame(game);
         FootballSystem.getInstance().addGameToDB(game);
-        FootballSystem.getInstance().signIn("r","r","r","r");
-        FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","r","r",null);
-
-
-
-
-
     }
 
 

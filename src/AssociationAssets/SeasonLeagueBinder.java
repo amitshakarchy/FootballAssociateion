@@ -23,7 +23,6 @@ public class SeasonLeagueBinder {
     HashMap<String /*team name*/,Integer/*points*/> leagueTable;
     ScoreTablePolicy scoreTablePolicy;// not in the constructor
     GamesAssigningPolicy assigningPolicy;// not in the constructor
-    boolean hasStarted;
 
 
 
@@ -35,14 +34,13 @@ public class SeasonLeagueBinder {
         games= new HashMap<>();
         referees = new HashMap<>();
         leagueTable = new HashMap<>();
-        hasStarted = false;
 
     }
 
 
     //region Getters & Setters
     public void setAssigningPolicy(GamesAssigningPolicy assigningPolicy) {
-        if(!hasStarted)
+        if(hasStarted())
             this.assigningPolicy = assigningPolicy;
         else
             throw new UnsupportedOperationException("Can't change Assigning policy after league already began");
@@ -50,7 +48,7 @@ public class SeasonLeagueBinder {
     }
 
     public boolean setScoreTablePolicy(ScoreTablePolicy scoreTablePolicy) throws UnsupportedOperationException {
-        if(!hasStarted)
+        if(!hasStarted())
             this.scoreTablePolicy = scoreTablePolicy;
         else
             throw new UnsupportedOperationException("Can't change score policy after league already began");
@@ -58,11 +56,6 @@ public class SeasonLeagueBinder {
     }
 
 
-    public void addReferee(Referee referee){
-        if(referee != null){
-            referees.put(referee.getUserName(),referee);
-        }
-    }
 
     public ScoreTablePolicy getScoreTablePolicy() {
         return scoreTablePolicy;
@@ -84,7 +77,11 @@ public class SeasonLeagueBinder {
     }
 
     public boolean hasStarted() {
-        return hasStarted;
+        for (Map.Entry<Integer,Game> entry:games.entrySet()) {
+            if(entry.getValue().isFinished())
+                return true;
+        }
+        return false;
     }
 
     public GamesAssigningPolicy getAssigningPolicy() {
@@ -120,9 +117,6 @@ public class SeasonLeagueBinder {
         this.games.putAll(games);
     }
 
-    public void setSeasonStatus() {
-        hasStarted = true;
-    }
     //TODO remove game & remove team functions (not sure this is necessary)
 
 
