@@ -10,5 +10,6 @@ class JDBCConnectorTest {
     void connectDBUploadData() {
         JDBCConnector connector= new JDBCConnector();
         connector.connectDBUploadData();
+        connector.connectDBSaveData();
     }
 }
