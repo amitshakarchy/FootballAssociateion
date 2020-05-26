@@ -72,6 +72,7 @@ public class DataSave {
     }
 
     private void saveUsers() {
+        saveFans();
         savePlayers();
         saveCoaches();
         saveTeamManagers();
@@ -79,21 +80,20 @@ public class DataSave {
         saveSystemManagers();
         saveRFAs();
         saveReferees();
-        saveFans();
         savePasswordsUsers();
     }
 
     private void saveSeasonLeagueBinders() {
-        for (Season s:allSeasons.values()) {
-            for (SeasonLeagueBinder binder:s.getLeagueBinders().values()) {
-                int scorePolicy = (binder.getScoreTablePolicy() instanceof RegularScorePolicy) ? 1 :2;
-                int gamePolicy = (binder.getAssigningPolicy() instanceof SimpleGamesAssigningPolicy) ? 1 :2;
+        for (Season s : allSeasons.values()) {
+            for (SeasonLeagueBinder binder : s.getLeagueBinders().values()) {
+                int scorePolicy = (binder.getScoreTablePolicy() instanceof RegularScorePolicy) ? 1 : 2;
+                int gamePolicy = (binder.getAssigningPolicy() instanceof SimpleGamesAssigningPolicy) ? 1 : 2;
                 databaseManager.executeQuerySelect("" +
                         "Replace  INTO \n" +
                         "\tseasons_has_leagues(Seasons_Year, Leagues_Name, ScorePolicy, SchedulePolicy)\n" +
                         "VALUES\n" +
-                        "    (" + binder.getSeason().getYear() + "," + binder.getLeague().getLeagueName() +","+
-                        scorePolicy+","+gamePolicy+");");
+                        "    (" + binder.getSeason().getYear() + "," + binder.getLeague().getLeagueName() + "," +
+                        scorePolicy + "," + gamePolicy + ");");
             }
 
         }
@@ -168,9 +168,9 @@ public class DataSave {
             String query = "REPLACE INTO games(idGames, DateTime, GoalHost, GoalGuest, Fields_Name," +
                     "Teams_Host_Name, Teams_Seasons_Year_Host," +
                     "    Teams_Guest_Name, Teams_Seasons_Year_Guest," +
-                    "    Seasons_has_Leagues_Seasons_Year, Seasons_has_Leagues_Leagues_Name)"+
+                    "    Seasons_has_Leagues_Seasons_Year, Seasons_has_Leagues_Leagues_Name)" +
                     " VALUES (?,?,?,?,?,?,?,?,?,?,?);"; //query
-            try{
+            try {
                 ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
                 ps.setInt(1, game.getGID());
                 ps.setString(2, dateStr);
@@ -186,55 +186,55 @@ public class DataSave {
                 //System.out.println(ps.toString());
                 ps.executeUpdate();
                 databaseManager.conn.commit();
-                ps=null;
+                ps = null;
 
 
                 // games_has_referee table:
 
                 // save main referee
-                query =  "Replace  INTO \n" +
+                query = "Replace  INTO \n" +
                         "\tgames_has_referee(Games_idGames, Referee_Username, Game_Role)\n" +
                         "\tVALUES(?,?,?);";
                 ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
                 ps.setInt(1, game.getGID());
                 ps.setString(2, game.getMain().getUserName());
-                ps.setString(3,"main");
-               // System.out.println(ps.toString());
+                ps.setString(3, "main");
+                // System.out.println(ps.toString());
                 ps.executeUpdate();
                 databaseManager.conn.commit();
 
                 // save side1 referee
-                query =  "Replace  INTO \n" +
+                query = "Replace  INTO \n" +
                         "\tgames_has_referee(Games_idGames, Referee_Username, Game_Role)\n" +
                         "\tVALUES(?,?,?);";
                 ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
                 ps.setInt(1, game.getGID());
                 ps.setString(2, game.getSide1().getUserName());
-                ps.setString(3,"side1");
+                ps.setString(3, "side1");
                 //System.out.println(ps.toString());
                 ps.executeUpdate();
                 databaseManager.conn.commit();
 
                 // save side2 referee
-                query =  "Replace  INTO \n" +
+                query = "Replace  INTO \n" +
                         "\tgames_has_referee(Games_idGames, Referee_Username, Game_Role)\n" +
                         "\tVALUES(?,?,?);";
                 ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
                 ps.setInt(1, game.getGID());
                 ps.setString(2, game.getSide2().getUserName());
-                ps.setString(3,"side2");
+                ps.setString(3, "side2");
                 //System.out.println(ps.toString());
                 ps.executeUpdate();
                 databaseManager.conn.commit();
 
-            }catch (SQLException e) {
-                try{
+            } catch (SQLException e) {
+                try {
                     databaseManager.conn.rollback();
-                }catch (SQLException e2) {
+                } catch (SQLException e2) {
                     e2.printStackTrace();
                 }
                 e.printStackTrace();
-            }finally {
+            } finally {
                 try {
                     if (ps != null) {
                         ps.close();
@@ -248,27 +248,57 @@ public class DataSave {
 
 
     public void saveTeams() {
-        //int id=1;
         for (Team team : allTeams.values()) {
+            PreparedStatement ps = null;
             int active = 0;
-            // TODO set team's league
-            //String leaguename=team.get
             if (team.getIsActive() == ETeamStatus.ACTIVE) active = 1;
-            databaseManager.executeQuerySelect("" +
-                    "Replace  INTO \n" +
-                    "\tteams(name, Fields_Name_Main, teamStatus, Seasons_has_Leagues_Seasons_Year, Seasons_has_Leagues_Leagues_Name)\n" +
-                    "VALUES\n" +
-                    "    (" + team.getName() + "," + team.getMainField().getName() + "," + active + "," + team.getCurrentSeason().getYear() +","+"Israeli League);");
+            String query = "Replace  INTO \n" +
+                    "\tteams(name, Fields_Name_Main, teamStatus, Seasons_has_Leagues_Seasons_Year, Seasons_has_Leagues_Leagues_Name) " +
+                    "VALUES(?,?,?,?,?)";
+            try {
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setString(1, team.getName());
+                ps.setString(2, team.getMainField().getName());
+                ps.setInt(3, active);
+                ps.setInt(4, Integer.parseInt(team.getCurrentSeason().getYear()));
+                ps.setString(5, team.getCurrentLeague().getLeagueName());
+                //System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
 
-            for (Field f:team.getFields().values()) {
-                databaseManager.executeQuerySelect("" +
-                        "Replace  INTO \n" +
-                        "\tteams_has_fields(Team_Name, Fields_Name)\n" +
-                        "VALUES\n" +
-                        "    (" + team.getName() + "," +f.getName()+");");
+                for (Field f : team.getFields().values()) {
+                    query =
+                            "Replace  INTO \n" +
+                                    "\tteams_has_fields(Team_Name, Fields_Name)\n" +
+                                    "VALUES (?,?)";
+
+                    ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                    ps.setString(1, team.getName());
+                    ps.setString(2, f.getName());
+                    //System.out.println(ps.toString());
+                    ps.executeUpdate();
+                    databaseManager.conn.commit();
+                }
+            } catch (SQLException e) {
+                try {
+                    databaseManager.conn.rollback();
+                } catch (SQLException e2) {
+                    e2.printStackTrace();
+                }
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                } catch (SQLException e3) {
+                    e3.printStackTrace();
+                }
             }
+        }
     }
-    }
+
+
 
     public void saveSeasons() {
         int id = 1;
@@ -283,22 +313,72 @@ public class DataSave {
 
     public void saveLeagues() {
         for (League league : allLeagues.values()) {
-            ResultSet resultSet = databaseManager.executeQuerySelect("" +
+           String query=
                     "Replace  INTO \n" +
                     "\tleagues(Name)\n" +
-                    "VALUES\n" +
-                    "    (" + league.getLeagueName() + ");");
+                    "VALUES(?);";
+            PreparedStatement ps=null;
+            try {
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setString(1,league.getLeagueName());
+                System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
+            } catch (SQLException e) {
+                try {
+                    databaseManager.conn.rollback();
+                } catch (SQLException e2) {
+                    e2.printStackTrace();
+                }
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                } catch (SQLException e3) {
+                    e3.printStackTrace();
+                }
+            }
         }
     }
 
     public void saveFields() {
         int id = 1;
         for (Field field : allFields.values()) {
-            ResultSet resultSet = databaseManager.executeQuerySelect("" +
+            String query=
                     "Replace  INTO \n" +
-                    "\tfields(ID, Name,City, Capacity)\n" +
-                    "VALUES\n" +
-                    "    (" + id++ + "," + field.getName() + "," + field.getCity() + "," + field.getCapacity() + ");");
+                            "\tfields(ID, Name,City, Capacity)\n" +
+                            "VALUES(?,?,?,?);";
+            PreparedStatement ps=null;
+            try {
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setInt(1,id);
+                id+=1;
+                ps.setString(2,field.getName());
+                ps.setString(3,field.getCity());
+                ps.setInt(4,field.getCapacity());
+                //System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
+            } catch (SQLException e) {
+                try {
+                    databaseManager.conn.rollback();
+                } catch (SQLException e2) {
+                    e2.printStackTrace();
+                }
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                } catch (SQLException e3) {
+                    e3.printStackTrace();
+                }
+            }
+
+
         }
     }
 
@@ -306,42 +386,144 @@ public class DataSave {
     public void savePasswordsUsers() {
         SecuritySystem sec = FootballSystem.getInstance().getSecuritySystem();
         for (Map.Entry<String, String> entry : sec.getUsersHashMap("iseFab5").entrySet()) {
-            ResultSet resultSet = databaseManager.executeQuerySelect("" +
+            String query=
                     "Replace  INTO \n" +
-                    "\tuserpasswords(Username,Password_user)\n" +
-                    "VALUES\n" +
-                    "    (" + entry.getKey() + "," + entry.getValue() + ";");
+                            "\tuserpasswords(Username,Password_user)\n" +
+                            "VALUES(?,?);";
+            PreparedStatement ps=null;
+            try {
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setString(1,entry.getKey());
+                ps.setString(2,entry.getValue());
+                //System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
+            } catch (SQLException e) {
+                try {
+                    databaseManager.conn.rollback();
+                } catch (SQLException e2) {
+                    e2.printStackTrace();
+                }
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                } catch (SQLException e3) {
+                    e3.printStackTrace();
+                }
+            }
+
+
         }
     }
 
     public void saveFans() {
         for (Fan fan : allFans.values()) {
             int offlineStatus = 0;
-            ResultSet resultSet = databaseManager.executeQuerySelect("" +
+            String query=
                     "Replace  INTO \n" +
                     "\tfans(Username,FirstName, LastName, AccountStatus)\n" +
-                    "VALUES\n" +
-                    "    (" + fan.getUserName() + "," + fan.getfName() + "," + fan.getlName() + "," + offlineStatus + ";");
+                    "VALUES(?,?,?,?);";
+
+            PreparedStatement ps=null;
+            try {
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setString(1,fan.getUserName());
+                ps.setString(2,fan.getfName());
+                ps.setString(3,fan.getlName());
+                ps.setInt(4,offlineStatus);
+                //System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
+            } catch (SQLException e) {
+                try {
+                    databaseManager.conn.rollback();
+                } catch (SQLException e2) {
+                    e2.printStackTrace();
+                }
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                } catch (SQLException e3) {
+                    e3.printStackTrace();
+                }
+            }
+
+
+
         }
     }
 
     public void saveReferees() {
         for (Referee referee : allReferees.values()) {
-            ResultSet resultSet = databaseManager.executeQuerySelect("" +
+            String query=
                     "Replace  INTO \n" +
                     "\treferee(Username,Training)\n" +
-                    "VALUES\n" +
-                    "    (" + referee.getUserName() + "," + referee.getTraining() + ";");
+                    "VALUES(?,?);";
+
+            PreparedStatement ps=null;
+            try {
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setString(1,referee.getUserName());
+                ps.setString(2,referee.getTraining().toString());
+                //System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
+            } catch (SQLException e) {
+                try {
+                    databaseManager.conn.rollback();
+                } catch (SQLException e2) {
+                    e2.printStackTrace();
+                }
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                } catch (SQLException e3) {
+                    e3.printStackTrace();
+                }
+            }
+
         }
     }
 
     public void saveRFAs() {
         for (RepresentativeFootballAssociation rfa : allRFAs.values()) {
-            ResultSet resultSet = databaseManager.executeQuerySelect("" +
+            String query=
                     "Replace  INTO \n" +
                     "\trfa(Username)\n" +
-                    "VALUES\n" +
-                    "    (" + rfa.getUserName() + ");");
+                    "VALUES(?);";
+
+            PreparedStatement ps=null;
+            try {
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setString(1,rfa.getUserName());
+                //System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
+            } catch (SQLException e) {
+                try {
+                    databaseManager.conn.rollback();
+                } catch (SQLException e2) {
+                    e2.printStackTrace();
+                }
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                } catch (SQLException e3) {
+                    e3.printStackTrace();
+                }
+            }
         }
     }
 

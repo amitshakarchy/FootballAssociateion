@@ -502,6 +502,7 @@ public class DataUploader {
                 String fieldName = resultSet.getString("Fields_Name_Main");
                 String status = resultSet.getString("teamStatus");
                 String seasonYear = resultSet.getString("Seasons_has_Leagues_Seasons_Year");
+                String leagueName = resultSet.getString("Seasons_has_Leagues_Leagues_Name");
 
                 ResultSet teamOwnerRes = databaseManager.executeQuerySelect("" +
                         "SELECT * FROM additionalinfo_has_teamowner " +
@@ -516,9 +517,11 @@ public class DataUploader {
                 if (status.equals("0")) status = "INACTIVE";
                 else status = "ACTIVE";
                 Season season = allSeasons.get(seasonYear);
+                League league= allLeagues.get(leagueName);
 
                 Team team = new Team(tid++, name, season, field, null, owner);
                 team.setIsActive(ETeamStatus.valueOf(status));
+                team.setCurrentLeague(league);
                 allTeams.put(team.getName(), team);
             }
         } catch (SQLException e) {
