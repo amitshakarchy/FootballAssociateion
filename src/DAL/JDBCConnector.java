@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class JDBCConnector {
 
-    DatabaseManager databaseManager;
+    public DatabaseManager databaseManager;
     public DataUploader uploader;
     public DataSave dataSave;
 

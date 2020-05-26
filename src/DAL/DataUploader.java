@@ -70,6 +70,7 @@ public class DataUploader {
      * Conducts all needed data uploading
      */
     public void uploadData() {
+        System.out.println("start user uploading");
         uploadUsers();
         uploadSystemAssets();
     }
@@ -78,12 +79,20 @@ public class DataUploader {
      * Conducts all System Assets data uploading
      */
     public void uploadSystemAssets() {
+        System.out.println("start upload system assets");
         uploadFields();
+        System.out.println("uploaded Fields");
         uploadLeagues();
+        System.out.println("uploaded Leagues");
         uploadSeasons();
+        System.out.println("uploaded Seasons");
         uploadTeams();
+        System.out.println("uploaded Teams");
         uploadGames();
+        System.out.println("uploaded Games");
         attachTeamsGames();
+        System.out.println("uploaded TeamsGames");
+
         uploadAdditionalInfo();
         uploadSeasonLeagueBinders();
     }
@@ -98,10 +107,15 @@ public class DataUploader {
         uploadCoaches();
         uploadTeamManagers();
         uploadTeamOwners();
+        System.out.println("uploaded players, coaches team owners and teamManagers");
         uploadSystemManagers();
+        System.out.println("uploaded system Managers");
         uploadRFAs();
+        System.out.println("uploaded RFAs");
         uploadReferees();
+        System.out.println("uploaded referees");
         uploadFans();
+        System.out.println("uploaded fans");
         uploadPasswordsUsers();
     }
 
@@ -110,15 +124,17 @@ public class DataUploader {
      * Fans- a user with no other role- just a signed visitor.
      */
     private void uploadFans() {
-        ResultSet resultSet = databaseManager.executeQuerySelect("    " +
-                "SELECT * FROM fans, teamowner, coach, player, referee, rfa, systemmanager, teammanager\n" +
-                "    WHERE fans.Username = teamowner.username\n" +
-                "    AND fans.Username<> coach.Username\n" +
-                "    AND fans.Username<> player.Username\n" +
-                "    AND fans.Username<> referee.Username\n" +
-                "    AND fans.Username<> rfa.Username\n" +
-                "    AND fans.Username<> systemmanager.Username\n" +
-                "    AND fans.Username<> teammanager.Username");
+        ResultSet resultSet = databaseManager.executeQuerySelect("SELECT * FROM fans");
+
+//        ResultSet resultSet = databaseManager.executeQuerySelect("    " +
+//                "SELECT * FROM fans, teamowner, coach, player, referee, rfa, systemmanager, teammanager\n" +
+//                "    WHERE fans.Username = teamowner.username\n" +
+//                "    AND fans.Username<> coach.Username\n" +
+//                "    AND fans.Username<> player.Username\n" +
+//                "    AND fans.Username<> referee.Username\n" +
+//                "    AND fans.Username<> rfa.Username\n" +
+//                "    AND fans.Username<> systemmanager.Username\n" +
+//                "    AND fans.Username<> teammanager.Username");
         try {
             while (resultSet.next()) {
                 String username = resultSet.getString("Username");
@@ -518,7 +534,7 @@ public class DataUploader {
 
             // attach home games
             ResultSet homeGamesSet = databaseManager.executeQuerySelect("" +
-                    "Select * From games" +
+                    "Select * From games " +
                     "where Teams_Host_Name=\"" + team.getName() + "\"");
             if (homeGamesSet == null) return;
             HashMap<String, Game> homeGames = new HashMap<>();
@@ -535,7 +551,7 @@ public class DataUploader {
 
             // attach away games
             ResultSet awayGamesSet = databaseManager.executeQuerySelect("" +
-                    "Select * From games" +
+                    "Select * From games " +
                     "where Teams_Guest_Name=\"" + team.getName() + "\"");
             if (awayGamesSet == null) return;
 
@@ -700,7 +716,7 @@ public class DataUploader {
                 Referee side1 = null;
                 Referee side2 = null;
                 ResultSet refereesSet = databaseManager.executeQuerySelect(
-                        "SELECT * FROM games_has_referee WHERE Games_idGames= "+String.valueOf(gid) );
+                        "SELECT * FROM games_has_referee WHERE Games_idGames= "+gid );
                 while (refereesSet.next()) {
                     String username = refereesSet.getString("Referee_Username");
                     String role = refereesSet.getString("Game_Role");

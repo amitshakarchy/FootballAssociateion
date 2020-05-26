@@ -7,8 +7,13 @@ import Security.SecuritySystem;
 import Users.*;
 import System.*;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -152,26 +157,93 @@ public class DataSave {
     public void saveGames() {
         for (Game game : allGames.values()) {
 
-            // games table
-            databaseManager.executeQuerySelect("" +
-                    "Replace  INTO \n" +
-                    "\tgames(name, Fields_Name_Main, teamStatus, Seasons_has_Leagues_Seasons_Year, Seasons_has_Leagues_Leagues_Name)\n" +
-                    "VALUES\n" +
-                    "    (" + game.getGID() + "," + game.getDate() + "," + game.getScore().getGoalsHost() + ","
-                    + game.getScore().getGoalsGuest() + "," + game.getField().getName() + "," + game.getHost().getName() + "," +
-                    game.getSeason().getYear() + "," + game.getGuest().getName() + "," + game.getSeason().getYear() + ","
-                    + game.getLeague() + ");");
+            // change date formatting
+            java.util.Date dt = game.getDate();
+            java.text.SimpleDateFormat sdf =
+                    new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String dateStr = sdf.format(dt);
 
-            // games_has_referee table:
-            databaseManager.executeQuerySelect("" +
-                    "Replace  INTO \n" +
-                    "\tgames_has_referee(Games_idGames, Referee_Username, Game_Role)\n" +
-                    "VALUES\n" +
-                    "("+game.getGID()+","+ game.getSide1().getUserName()+",side1),"+
-                            "("+game.getGID()+","+ game.getSide2().getUserName()+",side2),"+
-                    "    (" +game.getGID()+","+ game.getMain().getUserName()+",main);");
+            // save game:
+            PreparedStatement ps = null;
+            String query = "REPLACE INTO games(idGames, DateTime, GoalHost, GoalGuest, Fields_Name," +
+                    "Teams_Host_Name, Teams_Seasons_Year_Host," +
+                    "    Teams_Guest_Name, Teams_Seasons_Year_Guest," +
+                    "    Seasons_has_Leagues_Seasons_Year, Seasons_has_Leagues_Leagues_Name)"+
+                    " VALUES (?,?,?,?,?,?,?,?,?,?,?);"; //query
+            try{
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setInt(1, game.getGID());
+                ps.setString(2, dateStr);
+                ps.setInt(3, game.getScore().getGoalsHost());
+                ps.setInt(4, game.getScore().getGoalsGuest());
+                ps.setString(5, game.getField().getName());
+                ps.setString(6, game.getHost().getName());
+                ps.setInt(7, Integer.parseInt(game.getSeason().getYear()));
+                ps.setString(8, game.getGuest().getName());
+                ps.setInt(9, Integer.parseInt(game.getSeason().getYear()));
+                ps.setInt(10, Integer.parseInt(game.getSeason().getYear()));
+                ps.setString(11, game.getLeague().getLeagueName());
+                //System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
+                ps=null;
+
+
+                // games_has_referee table:
+
+                // save main referee
+                query =  "Replace  INTO \n" +
+                        "\tgames_has_referee(Games_idGames, Referee_Username, Game_Role)\n" +
+                        "\tVALUES(?,?,?);";
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setInt(1, game.getGID());
+                ps.setString(2, game.getMain().getUserName());
+                ps.setString(3,"main");
+               // System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
+
+                // save side1 referee
+                query =  "Replace  INTO \n" +
+                        "\tgames_has_referee(Games_idGames, Referee_Username, Game_Role)\n" +
+                        "\tVALUES(?,?,?);";
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setInt(1, game.getGID());
+                ps.setString(2, game.getSide1().getUserName());
+                ps.setString(3,"side1");
+                //System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
+
+                // save side2 referee
+                query =  "Replace  INTO \n" +
+                        "\tgames_has_referee(Games_idGames, Referee_Username, Game_Role)\n" +
+                        "\tVALUES(?,?,?);";
+                ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
+                ps.setInt(1, game.getGID());
+                ps.setString(2, game.getSide2().getUserName());
+                ps.setString(3,"side2");
+                //System.out.println(ps.toString());
+                ps.executeUpdate();
+                databaseManager.conn.commit();
+
+            }catch (SQLException e) {
+                try{
+                    databaseManager.conn.rollback();
+                }catch (SQLException e2) {
+                    e2.printStackTrace();
+                }
+                e.printStackTrace();
+            }finally {
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                } catch (SQLException e3) {
+                    e3.printStackTrace();
+                }
+            }
         }
-
     }
 
 

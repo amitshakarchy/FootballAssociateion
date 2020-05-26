@@ -69,7 +69,10 @@ public class DatabaseManager {
         try {
             conn = DriverManager.getConnection(connectionString, username, password);
             selectDatabase(this.databaseName);
+            conn.setAutoCommit(false);
+            System.out.println("started connection successfully");
         } catch (Exception ignored) {
+            System.out.println("connection went bad");
 
         }
     }
@@ -118,7 +121,7 @@ public class DatabaseManager {
                 Statement sqlStatement = conn.createStatement();
                 resultSet = sqlStatement.executeQuery(query);
             } catch (SQLException ignored) {
-
+                System.out.println("bad query or connection: "+ignored.getMessage());
             }
         }
         return resultSet;
