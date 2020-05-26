@@ -90,8 +90,8 @@ public class DataUploader {
         System.out.println("uploaded Teams");
         uploadGames();
         System.out.println("uploaded Games");
-       //attachTeamsGames();
-        //System.out.println("uploaded TeamsGames");
+        attachTeamsGames();
+        System.out.println("uploaded TeamsGames");
 
         uploadAdditionalInfo();
         uploadSeasonLeagueBinders();
@@ -529,7 +529,7 @@ public class DataUploader {
     /**
      * Attach a team with it's home games and away games.
      */
-/*    private void attachTeamsGames() {
+    private void attachTeamsGames() {
         for (Team team : allTeams.values()) {
 
             // attach home games
@@ -537,12 +537,13 @@ public class DataUploader {
                     "Select * From games " +
                     "where Teams_Host_Name=\"" + team.getName() + "\"");
             if (homeGamesSet == null) return;
-            HashMap<String, Game> homeGames = new HashMap<>();
+            HashMap<Integer, Game> homeGames = new HashMap<>();
             try {
 
                 while (homeGamesSet.next()) {
-                    Game game = allGames.get(homeGamesSet.getString("idGames"));
-                    homeGames.put(String.valueOf(game.getGID()), game);
+                    int GID= homeGamesSet.getInt("idGames");
+                    Game game = allGames.get(GID);
+                    homeGames.put(game.getGID(), game);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -555,11 +556,12 @@ public class DataUploader {
                     "where Teams_Guest_Name=\"" + team.getName() + "\"");
             if (awayGamesSet == null) return;
 
-            HashMap<String, Game> awayGames = new HashMap<>();
+            HashMap<Integer, Game> awayGames = new HashMap<>();
             try {
                 while (awayGamesSet.next()) {
-                    Game game = allGames.get(homeGamesSet.getString("idGames"));
-                    awayGames.put(String.valueOf(game.getGID()), game);
+                    int GID= awayGamesSet.getInt("idGames");
+                    Game game = allGames.get(GID);
+                    awayGames.put(game.getGID(), game);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -567,7 +569,7 @@ public class DataUploader {
             team.setAwayGames(awayGames);
 
         }
-    }*/
+    }
 
     /**
      * Upload all seasonLeagueBinder objects from DB.

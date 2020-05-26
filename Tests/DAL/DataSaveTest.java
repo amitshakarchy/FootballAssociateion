@@ -3,8 +3,12 @@ package DAL;
 import AssociationAssets.AdditionalInfo;
 import AssociationAssets.Game;
 import AssociationAssets.Season;
+import AssociationAssets.Team;
 import org.junit.Test;
 import System.FootballSystem;
+
+import java.util.HashMap;
+
 import static org.junit.Assert.*;
 
 public class DataSaveTest {
@@ -36,10 +40,13 @@ public class DataSaveTest {
     public void saveTeams() {
         connector= new JDBCConnector();
         connector.connectDBUploadData();
+        HashMap<String, Team> allTeams = FootballSystem.getInstance().getTeamDB().getAllTeams();
+        Team t= allTeams.get("Beitar Jerusalem");
+        t.setName("Amit");
+        FootballSystem.getInstance().getTeamDB().getAllTeams().put(t.getName(),t);
         connector.databaseManager.startConnection();
         connector.dataSave.saveTeams();
         connector.databaseManager.closeConnection();
-
     }
 
     @Test
