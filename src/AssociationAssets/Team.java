@@ -22,6 +22,7 @@ public class Team {
     int TID;
     String name;
     Season currentSeason;
+    League currentLeague;
     Field mainField;
     HashMap<String/*field name*/, Field> fields;
     HashMap<String/*season Year*/, AdditionalInfo> additionalInfoWithSeasons;
@@ -82,6 +83,14 @@ public class Team {
 
     public HashMap<String, AdditionalInfo> getAdditionalInfoWithSeasons() {
         return additionalInfoWithSeasons;
+    }
+
+    public void setCurrentLeague(League currentLeague) {
+        this.currentLeague = currentLeague;
+    }
+
+    public League getCurrentLeague() {
+        return currentLeague;
     }
 
     public HashMap<Integer, Game> getHomeGames() {
