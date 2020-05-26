@@ -258,7 +258,7 @@ public class DataSave {
                     "Replace  INTO \n" +
                     "\tteams(name, Fields_Name_Main, teamStatus, Seasons_has_Leagues_Seasons_Year, Seasons_has_Leagues_Leagues_Name)\n" +
                     "VALUES\n" +
-                    "    (" + team.getName() + "," + team.getMainField().getName() + "," + active + "," + team.getCurrentSeason().getYear() +","+ ");");
+                    "    (" + team.getName() + "," + team.getMainField().getName() + "," + active + "," + team.getCurrentSeason().getYear() +","+"Israeli League);");
 
             for (Field f:team.getFields().values()) {
                 databaseManager.executeQuerySelect("" +
