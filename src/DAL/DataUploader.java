@@ -90,8 +90,8 @@ public class DataUploader {
         System.out.println("uploaded Teams");
         uploadGames();
         System.out.println("uploaded Games");
-        attachTeamsGames();
-        System.out.println("uploaded TeamsGames");
+       //attachTeamsGames();
+        //System.out.println("uploaded TeamsGames");
 
         uploadAdditionalInfo();
         uploadSeasonLeagueBinders();
@@ -529,7 +529,7 @@ public class DataUploader {
     /**
      * Attach a team with it's home games and away games.
      */
-    private void attachTeamsGames() {
+/*    private void attachTeamsGames() {
         for (Team team : allTeams.values()) {
 
             // attach home games
@@ -567,7 +567,7 @@ public class DataUploader {
             team.setAwayGames(awayGames);
 
         }
-    }
+    }*/
 
     /**
      * Upload all seasonLeagueBinder objects from DB.
@@ -621,6 +621,7 @@ public class DataUploader {
                     games.put(game.getGID(), game);
                 }
                 binder.addGamesToLeague(games);
+
                 // attach policies
                 binder.setScoreTablePolicy(tablePolicy);
                 binder.setAssigningPolicy(gamesAssigningPolicy);
