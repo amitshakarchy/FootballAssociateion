@@ -1,8 +1,15 @@
 package OutSourceSystems;
 
-public class TaxRegulationSystem {
+public class TaxRegulationSystem implements ITaxRegulationSystem {
 
-    public static void connect(){
 
+    @Override
+    public boolean connect() {
+        return true;
+    }
+
+    @Override
+    public double getTaxRate(double revenueAmount) {
+        return 0;
     }
 }
