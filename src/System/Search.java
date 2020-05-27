@@ -103,9 +103,12 @@ public class Search {
             if(league==null){
                 return null;
             }
-            Season season= league.getSeasonBinders().get(year).getSeason();
-            if(season!=null){
-                return season;
+            SeasonLeagueBinder yearOfSeason = league.getSeasonBinders().get(year);
+            if(yearOfSeason != null){
+                Season season= yearOfSeason.getSeason();
+                if(season!=null){
+                    return season;
+                }
             }
         }
         return null;

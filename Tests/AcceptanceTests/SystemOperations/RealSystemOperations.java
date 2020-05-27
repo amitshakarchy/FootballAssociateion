@@ -3,11 +3,13 @@ package AcceptanceTests.SystemOperations;
 import AcceptanceTests.DataObjects.TeamDetails;
 import AcceptanceTests.DataObjects.UserDetails;
 import AssociationAssets.*;
+import PoliciesAndAlgorithms.GamesAssigningPolicy;
+import PoliciesAndAlgorithms.OneRoundGamesAssigningPolicy;
+import PoliciesAndAlgorithms.RegularScorePolicy;
+import PoliciesAndAlgorithms.ScoreTablePolicy2;
 import System.FootballSystem;
 import Model.*;
-import Users.EReferee;
-import Users.Referee;
-import Users.TeamOwner;
+import Users.*;
 
 import javax.security.auth.login.FailedLoginException;
 import java.nio.file.Path;
@@ -40,7 +42,7 @@ public class RealSystemOperations implements ISystemOperationsBridge{
         FootballSystem.getInstance().addFieldToDB(field1);
 
         FootballSystem.getInstance().signIn("tair123","1234","tair","cohen");
-        FootballSystem.getInstance().creatingTeamOwner("tair123","tair","cohen");
+        TeamOwner tairTO = (TeamOwner) FootballSystem.getInstance().creatingTeamOwner("tair123","tair","cohen");
 
         FootballSystem.getInstance().signIn("1","1","lala","la");
         FootballSystem.getInstance().creatingReferee("1","la","laala", EReferee.MAIN);
@@ -51,6 +53,17 @@ public class RealSystemOperations implements ISystemOperationsBridge{
 
         Team team1 = new Team(45,"team1",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("tair123"));
         Team team2 = new Team(55,"team2",season,field,null,(TeamOwner)FootballSystem.getInstance().getFanByUserName("tair123"));
+   //     tairTO.addCoach(team1,season,"coach-2020","123","c","c", ETraining.CDiploma, ECoachRole.AssistantCoach);
+//        tairTO.addField(team1,season,"Blomfield","tel-aviv",12222);
+  //      tairTO.addTeamManager(team1,season,"TM-2020","123","la","la");
+     //   tairTO.addPlayer(team1,season,"player-2020","123","la","la",new Date(17/10/1995),EPlayerRole.GoalKeeper);
+        try {
+            FootballSystem.getInstance().addTeamToDB(team1);
+            FootballSystem.getInstance().addTeamToDB(team2);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //default time zone
         ZoneId defaultZoneId = ZoneId.systemDefault();
 
@@ -115,6 +128,19 @@ public class RealSystemOperations implements ISystemOperationsBridge{
     }
 
     @Override
+    public TeamDetails getRegisteredTeamForTest() {
+        TeamDetails teamDetails = new TeamDetails("team1","La Liga" , "2020", "Blomfield");
+        return teamDetails;
+    }
+
+    @Override
+    public UserDetails getRegisteredTeamOwnerForTest() {
+        UserDetails teamOwner = new UserDetails("tair123","1234","tair","cohen");
+        return teamOwner;
+    }
+
+
+    @Override
     public boolean register(String userName, String password, String firstName, String lastName) {
         return model.signIn(userName,password,firstName,lastName);
     }
@@ -129,9 +155,9 @@ public class RealSystemOperations implements ISystemOperationsBridge{
         return null;
     }
 
+
     @Override
     public boolean createNewTeam(String name, String leagueName, String seasonYear, String fieldName) {
-        // TODO: 23/05/2020 send request with the same details to representive football
         //login first
         if(!login("tair123","1234")){
             return false;
@@ -183,6 +209,19 @@ public class RealSystemOperations implements ISystemOperationsBridge{
         } catch (RecordException e) {
             return false;
         }
+    }
+
+    @Override
+    public boolean editTeamManagerDetails(String userName, String password, String teamName, String seasonYear, String teamManagerUserName, String firstName, String lastName) {
+        if(!login(userName,password)){
+            return false;
+        }
+        try {
+            model.editTeamManagerDetails(teamName,seasonYear,teamManagerUserName,firstName,lastName);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -239,7 +278,10 @@ public class RealSystemOperations implements ISystemOperationsBridge{
             FootballSystem.getInstance().getGameDB().getAllGames().get(gameID).addEvent(EEventType.GOALHOST,"descriprion");
             Time time =Time.valueOf(LocalTime.of(LocalTime.now().getHour()-hoursBefore,LocalTime.now().getMinute()));
             FootballSystem.getInstance().getGameDB().getAllGames().get(gameID).setTime(time);
-            return model.exportGameReport(gameID,path,""+gameID);
+            FootballSystem.getInstance().getGameDB().getAllGames().get(gameID).getLeague().setAssigningPolicy("2021", new OneRoundGamesAssigningPolicy());
+            FootballSystem.getInstance().getGameDB().getAllGames().get(gameID).getLeague().setScoreTablePolicy("2021", new ScoreTablePolicy2());
+
+            return model.exportGameReport(gameID,path+"\\"+gameID+".csv",""+gameID);
         } catch (Exception e) {
             return false;
         }

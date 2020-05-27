@@ -1,22 +1,21 @@
 package AcceptanceTests.DataObjects;
 
-import AssociationAssets.Field;
-import AssociationAssets.Season;
-import Budget.TeamBudget;
-import Users.TeamOwner;
-
 public class TeamDetails {
     String name;
     String leagueName;
     String seasonYear;
     String fieldName;
 
+
     public TeamDetails(String name, String leagueName, String seasonYear, String fieldName) {
         this.name = name;
         this.leagueName = leagueName;
         this.seasonYear = seasonYear;
         this.fieldName = fieldName;
+        this.fieldName = "Blomfield";
+
     }
+
 
     public String getName() {
         return name;
@@ -45,6 +44,8 @@ public class TeamDetails {
     public String getFieldName() {
         return fieldName;
     }
+
+
 
     public void setFieldName(String fieldName) {
         this.fieldName = fieldName;

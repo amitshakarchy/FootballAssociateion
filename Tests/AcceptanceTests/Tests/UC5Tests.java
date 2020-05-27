@@ -1,6 +1,7 @@
 package AcceptanceTests.Tests;
 
 import AcceptanceTests.DataObjects.TeamDetails;
+import AcceptanceTests.DataObjects.UserDetails;
 import AcceptanceTests.SystemOperations.ISystemOperationsBridge;
 import AcceptanceTests.SystemOperations.RealSystemOperations;
 import org.junit.Before;
@@ -11,15 +12,21 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UC5Tests {
     ISystemOperationsBridge systemOperations;
-    TeamDetails registeredTeam;
+    UserDetails teamOwner;
+    TeamDetails teamDetails;
+    UserDetails teamManager;
+
     @Before
     public void Setup(){
         systemOperations = new RealSystemOperations();
-        registeredTeam = systemOperations.getNewRegisteredTeamForTest();
+        teamDetails = systemOperations.getRegisteredTeamForTest();
+        teamOwner = systemOperations.getRegisteredTeamOwnerForTest();
+        teamManager = new UserDetails("TM-2020","123","la","la");
     }
 
     @Test
-    public void EditTeamAssetsTest_TeamOwnerTryToEditFirstNameOfTeamManager_SuccessScenario(){
+    public void EditTeamAssetsTest_TeamOwnerTryToEditFirstNameOfTeamManager_SuccessScenario() {
+        assertTrue(systemOperations.editTeamManagerDetails(teamOwner.userName, teamOwner.password, teamDetails.getName(), teamDetails.getSeasonYear(), teamManager.userName, "changeFirstName", teamManager.LastName));
     }
 
     @Test
