@@ -3,8 +3,8 @@ package System;
 import AssociationAssets.*;
 import DB.*;
 import Model.RecordException;
-import OutSourceSystems.AccountingSystem;
-import OutSourceSystems.TaxRegulationSystem;
+import OutSourceSystems.ProxyAccountingSystem;
+import OutSourceSystems.ProxyTaxRegulationSystem;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import Security.SecuritySystem;
 import Users.*;
@@ -28,6 +28,8 @@ public class FootballSystem {
     FieldDB fieldDB = new FieldDB();
     SeasonDB seasonDB = new SeasonDB();
     LeagueDB leagueDB = new LeagueDB();
+    ProxyAccountingSystem proxyAccountingSystem = new ProxyAccountingSystem();
+    ProxyTaxRegulationSystem proxyTaxRegulationSystem = new ProxyTaxRegulationSystem();
     Map<String, Referee> refereeMap = new HashMap<>();
     Map<String, Player> playerMap = new HashMap<>();
     Map<String, Coach> coachMap = new HashMap<>();
@@ -59,9 +61,9 @@ public class FootballSystem {
         signIn("admin", "admin", "admin", "admin");
         creatingSystemManager("admin", "admin", "admin");
         //connect with accounting system
-        AccountingSystem.connect();
+        proxyAccountingSystem.connect();
         //connect with tax regulation system
-        TaxRegulationSystem.connect();
+        proxyTaxRegulationSystem.connect();
     }
 
     public SecuritySystem getSecuritySystem() {
