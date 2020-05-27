@@ -113,4 +113,14 @@ public class SecuritySystem {
             this.usersHashMap.remove(userName);
         }
     }
+
+    public Map<String, String> getEncryptedUsersHashMap(String code) {
+        Map<String, String> tmp= new HashMap<>();
+        if(code.equals("iseFab5")) {
+            for (Map.Entry<String, String> entry:usersHashMap.entrySet()) {
+                tmp.put(entry.getKey(),AES.encrypt(entry.getValue(),secretKey));
+            }
+        }
+        return tmp;
+    }
 }
