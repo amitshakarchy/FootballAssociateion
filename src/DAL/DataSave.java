@@ -62,19 +62,19 @@ public class DataSave {
 
     public void saveAllData() {
         saveUsers();
-        System.out.println("saved users");
+        //System.out.println("saved users");
         saveFields();
-        System.out.println("saved fields");
+        //System.out.println("saved fields");
         saveLeagues();
-        System.out.println("saved Leagues");
+        //System.out.println("saved Leagues");
         saveSeasons();
-        System.out.println("saved seasons");
+        //System.out.println("saved seasons");
         saveTeams();
-        System.out.println("saved teams");
+        //System.out.println("saved teams");
         saveGames();
-        System.out.println("saved games");
+        //System.out.println("saved games");
         saveAdditionalInfo();
-        System.out.println("saved additionalInfo");
+        //System.out.println("saved additionalInfo");
         saveSeasonLeagueBinders();
     }
 
