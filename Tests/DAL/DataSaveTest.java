@@ -2,13 +2,11 @@ package DAL;
 
 import AssociationAssets.*;
 import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
-import Users.EReferee;
-import Users.Fan;
-import Users.Referee;
-import Users.RepresentativeFootballAssociation;
+import Users.*;
 import org.junit.Test;
 import System.FootballSystem;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import static org.junit.Assert.*;
@@ -18,7 +16,7 @@ public class DataSaveTest {
     JDBCConnector connector;
 
     @Test
-    public void saveAdditionalInfo() {
+    public void saveAdditionalInfo() { // CHECKED- with no changes.
         connector= new JDBCConnector();
         connector.connectDBUploadData();
         connector.databaseManager.startConnection();
@@ -27,67 +25,62 @@ public class DataSaveTest {
     }
 
     @Test
-    public void saveGames() { // Checked
+    public void saveGames() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
-        Game g= FootballSystem.getInstance().getGameDB().getAllGames().get(1);
-        g.setGID(66);
-        FootballSystem.getInstance().getGameDB().getAllGames().put(66,g);
+        FootballSystem.getInstance().getGameDB().getAllGames().get(1).setScore(0,0);
         connector.databaseManager.startConnection();
         connector.dataSave.saveGames();
         connector.databaseManager.closeConnection();
     }
 
     @Test
-    public void saveTeams() { // Checked
+    public void saveTeams() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
-        HashMap<String, Team> allTeams = FootballSystem.getInstance().getTeamDB().getAllTeams();
-        Team t= allTeams.get("Beitar Jerusalem");
-        t.setName("Amit");
-        FootballSystem.getInstance().getTeamDB().getAllTeams().put(t.getName(),t);
+        Field teddi=FootballSystem.getInstance().getFieldDB().getAllFields().get("Teddi");
+        FootballSystem.getInstance().getTeamDB().getAllTeams().get("Beitar Jerusalem").setMainField(teddi);
         connector.databaseManager.startConnection();
         connector.dataSave.saveTeams();
         connector.databaseManager.closeConnection();
     }
 
     @Test
-    public void saveSeasons() { // Checked
+    public void saveSeasons() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
-        FootballSystem.getInstance().getSeasonDB().getAllSeasons().put("2050",new Season("2050"));
+        FootballSystem.getInstance().getSeasonDB().getAllSeasons().put("2021",new Season("2021"));
         connector.databaseManager.startConnection();
         connector.dataSave.saveSeasons();
         connector.databaseManager.closeConnection();
     }
 
     @Test
-    public void saveLeagues() { // Checked
+    public void saveLeagues() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
-        FootballSystem.getInstance().getLeagueDB().getAllLeagues().put("Amit League", new League("Amit League"));
+        FootballSystem.getInstance().getLeagueDB().getAllLeagues().put("Youth League", new League("Youth League"));
         connector.databaseManager.startConnection();
         connector.dataSave.saveLeagues();
         connector.databaseManager.closeConnection();
     }
 
     @Test
-    public void saveFields() { // Checked
+    public void saveFields() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
-        FootballSystem.getInstance().getFieldDB().getAllFields().put("Amit", new Field("Amit", "Amit", 3000));
+        FootballSystem.getInstance().getFieldDB().getAllFields().put("AmitF", new Field("AmitF", "AmitFCity", 3000));
         connector.databaseManager.startConnection();
         connector.dataSave.saveFields();
         connector.databaseManager.closeConnection();
-
     }
 
     @Test
-    public void savePasswordsUsers() { // Checked
+    public void savePasswordsUsers() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
-        FootballSystem.getInstance().getFansHashMap().put("Amit", new Fan("Amit","Amit","Amit"));
-        FootballSystem.getInstance().getSecuritySystem().getUsersHashMap("iseFab5").put("Amit","Amit");
+        FootballSystem.getInstance().getFansHashMap().put("AmitUP", new Fan("AmitUP","AmitUP","AmitUP"));
+        FootballSystem.getInstance().getSecuritySystem().getUsersHashMap("iseFab5").put("AmitUP","AmitUP");
         connector.databaseManager.startConnection();
         connector.dataSave.saveFans();
         connector.dataSave.savePasswordsUsers();
@@ -95,23 +88,22 @@ public class DataSaveTest {
     }
 
     @Test
-    public void saveFans() { // Checked
+    public void saveFans() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
-        FootballSystem.getInstance().getFansHashMap().put("Amit", new Fan("Amit","Amit","Amit"));
+        FootballSystem.getInstance().getFansHashMap().get("amit").setlName("FUNNNN");
         connector.databaseManager.startConnection();
         connector.dataSave.saveFans();
         connector.databaseManager.closeConnection();
-
     }
 
     @Test
-    public void saveReferees() { // Checked
+    public void saveReferees() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
-        Referee ref= new Referee("Amit","Amit","Amit", EReferee.VAR);
-        FootballSystem.getInstance().getRefereeMap().put("Amit", ref);
-        FootballSystem.getInstance().getFansHashMap().put("Amit",ref);
+        Referee ref= new Referee("AmitRef","Amit","Amit", EReferee.VAR);
+        FootballSystem.getInstance().getRefereeMap().put("AmitRef", ref);
+        FootballSystem.getInstance().getFansHashMap().put("AmitRef",ref);
         connector.databaseManager.startConnection();
         connector.dataSave.saveFans();
         connector.dataSave.saveReferees();
@@ -119,12 +111,12 @@ public class DataSaveTest {
     }
 
     @Test
-    public void saveRFAs() { // Checked
+    public void saveRFAs() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
-        RepresentativeFootballAssociation rep= new RepresentativeFootballAssociation("Amit","Amit", "Amit",new SimpleGamesAssigningPolicy());
-        FootballSystem.getInstance().getRepresentativeFootballAssociationMap().put("Amit",rep);
-        FootballSystem.getInstance().getFansHashMap().put("Amit",rep);
+        RepresentativeFootballAssociation rep= new RepresentativeFootballAssociation("AmitRep","AmitRep", "AmitRep",new SimpleGamesAssigningPolicy());
+        FootballSystem.getInstance().getRepresentativeFootballAssociationMap().put("AmitRep",rep);
+        FootballSystem.getInstance().getFansHashMap().put("AmitRep",rep);
         connector.databaseManager.startConnection();
         connector.dataSave.saveFans();
         connector.dataSave.saveRFAs();
@@ -133,37 +125,67 @@ public class DataSaveTest {
     }
 
     @Test
-    public void saveSystemManagers() {
+    public void saveSystemManagers() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
+        SystemManager systemManager= new SystemManager("AmitSysMng","AmitSysMng","AmitSysMng");
+        FootballSystem.getInstance().getSystemManagerMap().put("AmitSysMng",systemManager);
+        FootballSystem.getInstance().getFansHashMap().put("AmitSysMng",systemManager);
+        connector.databaseManager.startConnection();
+        connector.dataSave.saveFans();
         connector.dataSave.saveSystemManagers();
+        connector.databaseManager.closeConnection();
     }
 
     @Test
-    public void saveTeamOwners() {
+    public void saveTeamOwners() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
+        TeamOwner teamOwner= new TeamOwner("AmitTO","AmitTO","AmitTO");
+        FootballSystem.getInstance().getTeamOwnerMap().put("AmitTO",teamOwner);
+        FootballSystem.getInstance().getFansHashMap().put("AmitTO",teamOwner);
+        connector.databaseManager.startConnection();
+        connector.dataSave.saveFans();
         connector.dataSave.saveTeamOwners();
+        connector.databaseManager.closeConnection();
     }
 
     @Test
-    public void saveTeamManagers() {
+    public void saveTeamManagers() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
+        TeamManager teamManager= new TeamManager("AmitTM","AmitTM","AmitTM");
+        FootballSystem.getInstance().getTeamManagerMap().put("AmitTM",teamManager);
+        FootballSystem.getInstance().getFansHashMap().put("AmitTM",teamManager);
+        connector.databaseManager.startConnection();
+        connector.dataSave.saveFans();
         connector.dataSave.saveTeamManagers();
+        connector.databaseManager.closeConnection();
     }
 
     @Test
-    public void saveCoaches() {
+    public void saveCoaches() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
+        Coach coach= new Coach("AmitC","AmitC","AmitC",ETraining.CDiploma,ECoachRole.AssistantCoach);
+        FootballSystem.getInstance().getCoachMap().put("AmitC",coach);
+        FootballSystem.getInstance().getFansHashMap().put("AmitC",coach);
+        connector.databaseManager.startConnection();
+        connector.dataSave.saveFans();
         connector.dataSave.saveCoaches();
+        connector.databaseManager.closeConnection();
     }
 
     @Test
-    public void savePlayers() {
+    public void savePlayers() { // CHECKED
         connector= new JDBCConnector();
         connector.connectDBUploadData();
+        Player player= new Player("AmitP","AmitP","AmitP",new Date(17/10/1995),EPlayerRole.Forward);
+        FootballSystem.getInstance().getPlayerMap().put("AmitP",player);
+        FootballSystem.getInstance().getFansHashMap().put("AmitP",player);
+        connector.databaseManager.startConnection();
+        connector.dataSave.saveFans();
         connector.dataSave.savePlayers();
+        connector.databaseManager.closeConnection();
     }
 }
