@@ -27,6 +27,7 @@ public class SystemOperationProxy implements  ISystemOperationsBridge{
         return false;
     }
 
+
     @Override
     public boolean register(String userName, String password, String firstName, String lastName) {
         if (real != null){
@@ -97,6 +98,30 @@ public class SystemOperationProxy implements  ISystemOperationsBridge{
     public boolean exportReport(String userName, String password, int gameID, int hoursBefore, String path) {
         if (real != null){
             return real.exportReport( userName,  password,  gameID,  hoursBefore,  path);
+        }
+        return false;
+    }
+
+    @Override
+    public TeamDetails getRegisteredTeamForTest() {
+        if (real != null){
+            return real.getRegisteredTeamForTest();
+        }
+        return null;
+    }
+
+    @Override
+    public UserDetails getRegisteredTeamOwnerForTest() {
+        if (real != null){
+            return real.getRegisteredTeamOwnerForTest();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean editTeamManagerDetails(String userName, String password, String name, String seasonYear, String teamManagerUserName, String changeFirstName, String lastName) {
+        if (real != null){
+            return real.editTeamManagerDetails( userName,  password,  name,  seasonYear,  teamManagerUserName,  changeFirstName,  lastName);
         }
         return false;
     }

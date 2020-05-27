@@ -131,20 +131,20 @@ public class League {
         String season = getCurrentSeason();
         int previousPointsHost = seasonLeagueBinder.getLeagueTable().get(host);
         int previousPointsGuest = seasonLeagueBinder.getLeagueTable().get(guest);
-        if(hostWon(score)){
-            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost + this.getScoreTablePolicy(season).getPolicyWinnerPoints());
-            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsGuest + this.getScoreTablePolicy(season).getPolicyWinnerPoints());
-
-        }
-        else if(guestWon(score)){
-            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsGuest + this.getScoreTablePolicy(season).getPolicyWinnerPoints());
-            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost + this.getScoreTablePolicy(season).getPolicyLoserPoints());
-        }
-        else{
-            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsGuest + this.getScoreTablePolicy(season).getPolicyDrawPoints());
-            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost + this.getScoreTablePolicy(season).getPolicyDrawPoints());
-
-        }
+//        if(hostWon(score)){
+//            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost + this.getScoreTablePolicy(season).getPolicyWinnerPoints());
+//            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsGuest + this.getScoreTablePolicy(season).getPolicyWinnerPoints());
+//
+//        }
+//        else if(guestWon(score)){
+//            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsGuest + this.getScoreTablePolicy(season).getPolicyWinnerPoints());
+//            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost + this.getScoreTablePolicy(season).getPolicyLoserPoints());
+//        }
+//        else{
+//            seasonLeagueBinder.getLeagueTable().put(guest,previousPointsGuest + this.getScoreTablePolicy(season).getPolicyDrawPoints());
+//            seasonLeagueBinder.getLeagueTable().put(host,previousPointsHost + this.getScoreTablePolicy(season).getPolicyDrawPoints());
+//
+//        }
     }
 
     public String getCurrentSeason() {

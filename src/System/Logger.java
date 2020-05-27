@@ -46,22 +46,31 @@ public class Logger {
     public void exportReport(int gid, List<Event> events, String pathToSave) {
         if(events!= null){
             this.report.add(new Pair<>(gid,events));
-
-            try (PrintWriter writer = new PrintWriter(new File(pathToSave))) {
+            File toSave = new File(pathToSave);
+            try {
+                PrintWriter writer = new PrintWriter(toSave);
                 StringBuilder sb = new StringBuilder();
+                sb.append("id,");
+                sb.append(',');
                 sb.append("Event Type, ");
+                sb.append(',');
                 sb.append("Description");
                 sb.append('\n');
                 for (Event event:events) {
-                    sb.append(event.getEventType().name() + ", ");
+                    sb.append("1");
+                    sb.append(',');
+                    sb.append(event.getEventType().name()+ ", ");
+                    sb.append(',');
                     sb.append(event.getDescription() + ", ");
+                    sb.append(',');
                     sb.append('\n');
                 }
                 writer.write(sb.toString());
-            }
-            catch (FileNotFoundException e) {
+                writer.close();
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+
 
         }
         }

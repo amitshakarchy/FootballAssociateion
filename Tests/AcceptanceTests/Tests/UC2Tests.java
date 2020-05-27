@@ -12,7 +12,7 @@ public class UC2Tests {
     @Before
     public void Setup(){
         systemOperations = new RealSystemOperations();
-        registeredTeam = systemOperations.getNewRegisteredTeamForTest();
+        registeredTeam = systemOperations.getRegisteredTeamForTest();
     }
 
     // Create new group
@@ -45,7 +45,4 @@ public class UC2Tests {
     public void CreateNewTeamTest_tryToCreateNewTeamWithNotATeamOwner_FailureScenario(){
         assertFalse(systemOperations.createNewTeamWithotTeamOwner("NotTeamOwner","La Liga","2020","Blomfield"));
     }
-
-
-
 }

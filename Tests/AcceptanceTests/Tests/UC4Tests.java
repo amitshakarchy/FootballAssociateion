@@ -186,24 +186,29 @@ public class UC4Tests {
 
     @Test
     public void GameManagementTest_MainRefereeExportReportAfterGameOver_SuccessScenario(){
-        assertTrue(systemOperations.exportReport(MainReferee.userName,MainReferee.password,eventDetails.gameID,4,"C:\\Users\\יובל בן אליעזר\\Desktop"));
+        assertTrue(systemOperations.exportReport(MainReferee.userName,MainReferee.password,eventDetails.gameID,4,"C:\\Users\\יובל בן אליעזר\\Documents\\test"));
     }
+
     @Test
     public void GameManagementTest_AnotherTypeRefereeExportReportAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.exportReport(ASSISTANT1Referee.userName,ASSISTANT1Referee.password,eventDetails.gameID,4,"C:\\Users\\יובל בן אליעזר\\Desktop"));
     }
+
     @Test
     public void GameManagementTest_NotAssignRefereeExportReportAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.exportReport(anotherReferee.userName,anotherReferee.password,eventDetails.gameID,4,"C:\\Users\\יובל בן אליעזר\\Desktop"));
     }
+
     @Test
     public void GameManagementTest_MainRefereeExportReportMoreThen5HoursAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.exportReport(MainReferee.userName,MainReferee.password,eventDetails.gameID,8,"C:\\Users\\יובל בן אליעזר\\Desktop"));
     }
+
     @Test
     public void GameManagementTest_AnotherTypeRefereeExportReportMoreThen5HoursAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.exportReport(ASSISTANT1Referee.userName,ASSISTANT1Referee.password,eventDetails.gameID,8,"C:\\Users\\יובל בן אליעזר\\Desktop"));
     }
+
     @Test
     public void GameManagementTest_NotAssignRefereeExportReportMoreThen5HoursAfterGameOver_FailureScenario(){
         assertFalse(systemOperations.exportReport(anotherReferee.userName,anotherReferee.password,eventDetails.gameID,8,"C:\\Users\\יובל בן אליעזר\\Desktop"));

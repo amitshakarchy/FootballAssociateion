@@ -172,11 +172,17 @@ public class Model extends Observable implements IModel {
             throw new RecordException("The field " + fieldName + " is not exits");
         }
         // Create a new team.
-        //Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
+        try {
+            Team newTeam = new Team(TEAM_ID++, name, season, field, null, teamOwnerUser);
+            FootballSystem.getInstance().addTeamToDB(newTeam);
+        } catch (Exception e) {
+            String cause = e.getMessage();
+            throw new RecordException(cause);
+        }
         //send the request to the RFA
-        String request = "";
-        notifyAll();
-        notifyObservers(request);
+     //   String request = "";
+    //    notifyAll();
+       // notifyObservers(request);
         return true;
 
     }
@@ -188,8 +194,13 @@ public class Model extends Observable implements IModel {
         TeamOwner teamOwner = (TeamOwner) user;
         Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamName);
         Season season = FootballSystem.getInstance().getSeasonDB().getAllSeasons().get(seasonYear);
-        teamOwner.editTMDetails(team, season, userName, firstName,
-                lastName);
+        try{
+            teamOwner.editTMDetails(team, season, userName, firstName,
+                    lastName);
+        }  catch (Exception e) {
+            String cause = e.getMessage();
+            throw new RecordException(cause);
+        }
     }
 
     public void editCoachDetails(String teamName, String seasonYear, String userName, String firstName, String lastName, String training, String role) throws RecordException {
@@ -762,6 +773,5 @@ public class Model extends Observable implements IModel {
         return false;
     }
     //endregion
-
 
 }

@@ -250,14 +250,19 @@ public class Referee extends Fan {
         if(this.training.equals(EReferee.MAIN)){
             Game gameToAdd = getGame(gameID);
             if (gameToAdd != null) {
-                if(gameToAdd.isFinished()) {
-                    Logger.getInstance().exportReport(gameToAdd.getGID(),gameToAdd.getEvents(),pathToSave);
-                    Logger.getInstance().addActionToLogger("Referee export report from the game, user name: "+ getUserName()+" GameID: "+gameID);
-
+                if(gameToAdd.isUpdatable(7)){
+                    if(gameToAdd.isFinished()) {
+                        Logger.getInstance().exportReport(gameToAdd.getGID(), gameToAdd.getEvents(), pathToSave);
+                        Logger.getInstance().addActionToLogger("Referee export report from the game, user name: " + getUserName() + " GameID: " + gameID);
+                    }
+                    else {
+                        Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName() + " GameID: " + gameID);
+                        throw new Exception("The game isn't over yet");
+                    }
                 }
                 else {
                     Logger.getInstance().addErrorToLogger("Referee export report of the game was failed. " + getUserName() + " GameID: " + gameID);
-                    throw new Exception("The game isn't over yet");
+                    throw new Exception("Pass More Then 5 Hours After Game Over");
                 }
 
             }

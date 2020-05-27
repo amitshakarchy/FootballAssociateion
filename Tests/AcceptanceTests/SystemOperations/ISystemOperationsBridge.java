@@ -42,4 +42,12 @@ public interface ISystemOperationsBridge {
     boolean editEventAfterGameOver(String userName, String password, int gameID, EEventType eventType, int eventIndex, String description,int hoursBefore);
 
     boolean exportReport(String userName, String password, int gameID, int hoursBefore, String path);
+
+    TeamDetails getRegisteredTeamForTest();
+
+    UserDetails getRegisteredTeamOwnerForTest();
+
+    boolean editTeamManagerDetails(String userName, String password, String name, String seasonYear, String teamManagerUserName, String changeFirstName, String lastName);
+
+//    UserDetails getNewRegisteredTeamOwnerForTest();
 }
