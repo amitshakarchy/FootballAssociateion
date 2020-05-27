@@ -1,6 +1,7 @@
 
 import AssociationAssets.*;
 import Controllers.*;
+import DAL.JDBCConnector;
 import Model.Model;
 import Users.*;
 import javafx.application.Application;
@@ -50,7 +51,10 @@ public class Main extends Application {
     }
 
     private void initDB() {
-        Season season = new Season("2020");
+        JDBCConnector dbConnector= new JDBCConnector();
+        dbConnector.connectDBUploadData();
+        //region Tair's initialization
+/*        Season season = new Season("2020");
         Season season1 = new Season("2021");
         FootballSystem.getInstance().addSeasonToDB(season);
         FootballSystem.getInstance().addSeasonToDB(season1);
@@ -103,7 +107,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
         main.addGame(game);
-        FootballSystem.getInstance().addGameToDB(game);
+        FootballSystem.getInstance().addGameToDB(game);*/
+        //endregion
     }
 
 
