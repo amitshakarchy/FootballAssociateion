@@ -22,7 +22,6 @@ public class JDBCConnector {
         dataSave = new DataSave(databaseManager);
     }
 
-
     public void connectDBUploadData() {
         databaseManager.startConnection();
         uploader.uploadData();
@@ -30,7 +29,6 @@ public class JDBCConnector {
     }
 
     public void connectDBSaveData() {
-        databaseManager = new DatabaseManagerServerMySQL();
         databaseManager.startConnection();
         dataSave.saveAllData();
         databaseManager.closeConnection();

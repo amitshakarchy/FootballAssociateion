@@ -70,7 +70,7 @@ public class DataUploader {
      * Conducts all needed data uploading
      */
     public void uploadData() {
-        System.out.println("start user uploading");
+        //System.out.println("start user uploading");
         uploadUsers();
         uploadSystemAssets();
     }
@@ -79,19 +79,19 @@ public class DataUploader {
      * Conducts all System Assets data uploading
      */
     public void uploadSystemAssets() {
-        System.out.println("start upload system assets");
+        //System.out.println("start upload system assets");
         uploadFields();
-        System.out.println("uploaded Fields");
+        //System.out.println("uploaded Fields");
         uploadLeagues();
-        System.out.println("uploaded Leagues");
+        //System.out.println("uploaded Leagues");
         uploadSeasons();
-        System.out.println("uploaded Seasons");
+        //System.out.println("uploaded Seasons");
         uploadTeams();
-        System.out.println("uploaded Teams");
+        //System.out.println("uploaded Teams");
         uploadGames();
-        System.out.println("uploaded Games");
+        //System.out.println("uploaded Games");
         attachTeamsGames();
-        System.out.println("uploaded TeamsGames");
+        //System.out.println("uploaded TeamsGames");
 
         uploadAdditionalInfo();
         uploadSeasonLeagueBinders();
@@ -107,15 +107,15 @@ public class DataUploader {
         uploadCoaches();
         uploadTeamManagers();
         uploadTeamOwners();
-        System.out.println("uploaded players, coaches team owners and teamManagers");
+        //System.out.println("uploaded players, coaches team owners and teamManagers");
         uploadSystemManagers();
-        System.out.println("uploaded system Managers");
+        //System.out.println("uploaded system Managers");
         uploadRFAs();
-        System.out.println("uploaded RFAs");
+        //System.out.println("uploaded RFAs");
         uploadReferees();
-        System.out.println("uploaded referees");
+        //System.out.println("uploaded referees");
         uploadFans();
-        System.out.println("uploaded fans");
+        //System.out.println("uploaded fans");
         uploadPasswordsUsers();
     }
 
@@ -502,6 +502,7 @@ public class DataUploader {
                 String fieldName = resultSet.getString("Fields_Name_Main");
                 String status = resultSet.getString("teamStatus");
                 String seasonYear = resultSet.getString("Seasons_has_Leagues_Seasons_Year");
+                String leagueName = resultSet.getString("Seasons_has_Leagues_Leagues_Name");
 
                 ResultSet teamOwnerRes = databaseManager.executeQuerySelect("" +
                         "SELECT * FROM additionalinfo_has_teamowner " +
@@ -516,9 +517,11 @@ public class DataUploader {
                 if (status.equals("0")) status = "INACTIVE";
                 else status = "ACTIVE";
                 Season season = allSeasons.get(seasonYear);
+                League league= allLeagues.get(leagueName);
 
                 Team team = new Team(tid++, name, season, field, null, owner);
                 team.setIsActive(ETeamStatus.valueOf(status));
+                team.setCurrentLeague(league);
                 allTeams.put(team.getName(), team);
             }
         } catch (SQLException e) {
