@@ -3,6 +3,7 @@ package DAL;
 import AssociationAssets.*;
 import PoliciesAndAlgorithms.RegularScorePolicy;
 import PoliciesAndAlgorithms.SimpleGamesAssigningPolicy;
+import Security.AESEncryption;
 import Security.SecuritySystem;
 import Users.*;
 import System.*;
@@ -646,6 +647,7 @@ public class DataSave {
                             "Password_user=?;";
 
             PreparedStatement ps = null;
+
             try {
                 ps = databaseManager.conn.prepareStatement(query); //compiling query in the DB
                 ps.setString(1, entry.getKey());
