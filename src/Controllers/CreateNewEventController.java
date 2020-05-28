@@ -1,17 +1,14 @@
 package Controllers;
 import Model.RecordException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 
 public class CreateNewEventController extends Controller {
 
 
-    public ChoiceBox gameID;
-    public ChoiceBox eventChoiceBox;
-    public TextArea description;
+    public ComboBox cmbGameIDType;
+    public ComboBox cmbEventType1;
+    public TextArea txtDescription;
     public Button addEvent;
     public RequiredField requiredField1;
     public RequiredField requiredField2;
@@ -23,9 +20,9 @@ public class CreateNewEventController extends Controller {
         requiredField2.eval();
         requiredField3.eval();
         if (!requiredField1.getHasErrors() && !requiredField2.getHasErrors() && !requiredField3.getHasErrors()) {
-            int gameID = Integer.parseInt(this.gameID.getValue().toString());
+            int gameID = Integer.parseInt(this.cmbGameIDType.getValue().toString());
             try {
-                if(model.addEvent(gameID, eventChoiceBox.getValue().toString(), description.getText())){
+                if(model.addEvent(gameID, cmbEventType1.getValue().toString(), txtDescription.getText())){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setContentText("The event was adding successfully!");
                     alert.showAndWait();
@@ -37,6 +34,6 @@ public class CreateNewEventController extends Controller {
     }
 
     public void init() {
-        initGameIdCB(this.gameID);
+        initGameIdCB(this.cmbGameIDType);
     }
 }

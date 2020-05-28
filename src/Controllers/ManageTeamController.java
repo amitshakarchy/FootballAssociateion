@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public class ManageTeamController extends Controller {
     public Button addTP;
     public Button removeTP;
     public Button editTP;
-    public ChoiceBox teamNameCB;
+    public ComboBox cmbTeamNameType;
     public Button nominateTO;
     public Button nominateTM;
     public Button removeTO;
@@ -28,23 +29,23 @@ public class ManageTeamController extends Controller {
     public Button closeTeam;
     public RequiredField requiredField1;
     public RequiredField requiredField2;
-    public ChoiceBox seasonCB;
+    public ComboBox cmbSeasonType;
 
     @FXML
     public void teamNameCBChoose() {
         //init season DB
-        seasonCB.getItems().clear();
-        seasonCB.setVisible(true);
-        Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(teamNameCB.getValue().toString());
+        cmbSeasonType.getItems().clear();
+        cmbSeasonType.setVisible(true);
+        Team team = FootballSystem.getInstance().getTeamDB().getAllTeams().get(cmbTeamNameType.getValue().toString());
         Set<String> seasonSet = team.getAdditionalInfoWithSeasons().keySet();
         for (String seasonName : seasonSet) {
-            this.seasonCB.getItems().add(seasonName);
+            this.cmbSeasonType.getItems().add(seasonName);
         }
     }
 
     @FXML
     public void createNewTeam() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/CreateTeam.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/CreateNewTeamUI.fxml"));
         Stage stage = getStage(loader, createNewTeamBtn);
         stage.setTitle("Create New Team");
         CreateTeamController createTeamController = loader.getController();
@@ -74,8 +75,8 @@ public class ManageTeamController extends Controller {
         Stage stage = getStage(loader, editTP);
         stage.setTitle("Edit Team Property");
         EditTeamPropertyController controller = loader.getController();
-        controller.setSeasonYear(seasonCB.getValue().toString());
-        controller.setTeamName(teamNameCB.getValue().toString());
+        controller.setSeasonYear(cmbSeasonType.getValue().toString());
+        controller.setTeamName(cmbTeamNameType.getValue().toString());
         // showAndWait will block execution until the window closes...
         stage.showAndWait();
     }
@@ -113,7 +114,7 @@ public class ManageTeamController extends Controller {
             if (teamHashMap != null && teamHashMap.size() > 0) {
                 Set<String> teamSet = teamHashMap.keySet();
                 for (String teamName : teamSet) {
-                    this.teamNameCB.getItems().add(teamName);
+                    this.cmbTeamNameType.getItems().add(teamName);
                 }
             } else {
                 raiseAlert(new RecordException("There is not teams at the DB"));

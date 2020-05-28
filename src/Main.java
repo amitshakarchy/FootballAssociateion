@@ -19,8 +19,8 @@ import java.util.Date;
 import java.util.logging.SimpleFormatter;
 
 public class Main extends Application {
-    static final String RESOURCE = "View/Login.fxml";
-    static final String STYLE_SHEET = "View/style.css";
+    static final String RESOURCE = "View/Login2.fxml";
+    static final String STYLE_SHEET = "View/common-styles.css";
     static Stage stg;
 
     @Override

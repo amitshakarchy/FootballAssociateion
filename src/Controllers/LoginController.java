@@ -1,5 +1,4 @@
 package Controllers;
-import Model.Model;
 import Users.RepresentativeFootballAssociation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,12 +20,12 @@ public class LoginController extends Controller implements Observer {
 
 
     @FXML
-    public TextField userName;
-    public TextField password;
+    public TextField txtUserName;
+    public TextField txtPassword;
     public RequiredField requiredField1;
     public RequiredField requiredField2;
     public Button loginBtn;
-    static final String STYLE_SHEET = "../View/style.css";
+    static final String STYLE_SHEET = "../View/common-styles.css";
 
 
     public LoginController() {
@@ -39,7 +38,7 @@ public class LoginController extends Controller implements Observer {
         requiredField2.eval();
         if(!requiredField1.getHasErrors() && !requiredField2.getHasErrors()) {
             try {
-                if (model.login(userName.getText(), password.getText())) {
+                if (model.login(txtUserName.getText(), txtPassword.getText())) {
                     showMainPage();
 
                 }
@@ -56,7 +55,7 @@ public class LoginController extends Controller implements Observer {
     private void showMainPage() {
         Parent newRoot = null;
         try {
-            newRoot = FXMLLoader.load(getClass().getResource("../View/MainPage.fxml"));
+            newRoot = FXMLLoader.load(getClass().getResource("../View/MainPageUI.fxml"));
             newRoot.getStylesheets().add(getClass().getResource(STYLE_SHEET).toExternalForm());
         } catch (IOException e) {
             e.printStackTrace();
