@@ -107,35 +107,35 @@
             </RequiredField>
 
          </fx:define>
-         <ErrorLabel layoutX="245.0" layoutY="95.0" message="Please enter the ID" styleClass="first-error">
+         <ErrorLabel layoutX="710.0" layoutY="200.0" message="Please enter the ID" styleClass="first-error">
             <validator>
                <fx:reference source="requiredField1"/>
             </validator>
          </ErrorLabel>
-         <ErrorLabel layoutX="245.0" layoutY="145.0" message="Please enter the name" styleClass="first-error">
+         <ErrorLabel layoutX="520.0" layoutY="200.0" message="Please select a team" styleClass="first-error">
             <validator>
                <fx:reference source="requiredField2"/>
             </validator>
          </ErrorLabel>
 
-         <ErrorLabel layoutX="255.0" layoutY="195.0" message="Please enter the League" styleClass="first-error">
+         <ErrorLabel layoutX="520.0" layoutY="260.0" message="Please select a League" styleClass="first-error">
             <validator>
                <fx:reference source="requiredField3"/>
             </validator>
          </ErrorLabel>
-         <ErrorLabel layoutX="245.0" layoutY="245.0" message="Please enter the budget" styleClass="first-error">
+         <ErrorLabel layoutX="710.0" layoutY="325.0" message="Please enter your budget" styleClass="first-error">
             <validator>
                <fx:reference source="requiredField4"/>
             </validator>
          </ErrorLabel>
 
-         <ErrorLabel layoutX="255.0" layoutY="295.0" message="Please enter the home field" styleClass="first-error" >
+         <ErrorLabel layoutX="520.0" layoutY="325.0" message="Please select your home field" styleClass="first-error" >
             <validator>
                <fx:reference source="requiredField5"/>
             </validator>
          </ErrorLabel>
 
-         <ErrorLabel layoutX="255.0" layoutY="345.0" message="Please enter the season" styleClass="first-error">
+         <ErrorLabel layoutX="710.0" layoutY="260.0" message="Please enter the season" styleClass="first-error">
             <validator>
                <fx:reference source="requiredField6"/>
             </validator>

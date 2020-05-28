@@ -88,7 +88,7 @@
                </font>
             </Text>
       
-                  <AnchorPane layoutX="42.0" layoutY="381.0" prefHeight="290.0" prefWidth="918.0" styleClass="container">
+                  <AnchorPane layoutX="42.0" layoutY="350.0" prefHeight="290.0" prefWidth="918.0" styleClass="container">
                      <children>
                         <AnchorPane layoutY="1.0" prefHeight="10.0" prefWidth="921.0" styleClass="container-header" AnchorPane.bottomAnchor="276.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0" />
                         <AnchorPane layoutY="275.0" prefHeight="10.0" prefWidth="950.0" styleClass="container-footer" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -117,13 +117,13 @@
                </srcControl>
             </RequiredField>
          </fx:define>
-         <ErrorLabel layoutX="385.0" layoutY="150.0" message="Please enter team name"
+         <ErrorLabel layoutX="120.0" layoutY="150.0" message="Please select a team"
                      styleClass="first-error">
             <validator>
                <fx:reference source="requiredField1"/>
             </validator>
          </ErrorLabel>
-         <ErrorLabel layoutX="385.0" layoutY="165.0" message="Please enter season name"
+         <ErrorLabel layoutX="380.0" layoutY="150.0" message="Please select a season"
                      styleClass="first-error">
             <validator>
                <fx:reference source="requiredField2"/>

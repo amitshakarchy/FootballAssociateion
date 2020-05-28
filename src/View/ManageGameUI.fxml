@@ -50,7 +50,7 @@
          </srcControl>
       </RequiredField>
    </fx:define>
-   <ErrorLabel layoutX="550.0" layoutY="85.0" message="Please enter the game ID" styleClass="first-error">
+   <ErrorLabel layoutX="100.0" layoutY="305.0" message="Please enter the game ID" styleClass="first-error">
       <validator>
          <fx:reference source="requiredField1"/>
       </validator>
