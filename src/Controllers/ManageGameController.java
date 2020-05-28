@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import System.FootballSystem;
@@ -21,7 +22,7 @@ public class ManageGameController extends Controller {
     public Button removeEvent;
     public Button editEvent;
     public Button addEvent;
-    public ChoiceBox gameID;
+    public ComboBox cmbGameIDType;
     public RequiredField requiredField1;
 
     @FXML
@@ -34,7 +35,7 @@ public class ManageGameController extends Controller {
         Stage stage = new Stage();
         stage.initOwner(createReport.getScene().getWindow());
         fileChooser.setTitle("Create Report"); //set the title of the Dialog window
-        String defaultSaveName = "Report GameID_" + gameID.getValue().toString();
+        String defaultSaveName = "Report GameID_" + cmbGameIDType.getValue().toString();
         fileChooser.setInitialFileName(defaultSaveName); //set the default name for file to be saved
         //create extension filters. The choice will be appended to the end of the file name
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files (*.csv)", "*.csv"));
@@ -46,7 +47,7 @@ public class ManageGameController extends Controller {
                 //update the file chooser directory to user selected so the choice is "remembered"
                 fileChooser.setInitialDirectory(dir);
                 //handle saving data to disk or DB etc.
-                int gameID = Integer.parseInt(this.gameID.getValue().toString());
+                int gameID = Integer.parseInt(this.cmbGameIDType.getValue().toString());
                 try {
                     model.exportGameReport(gameID, file.getAbsolutePath(), file.getName());
                 } catch (RecordException e) {
@@ -60,7 +61,7 @@ public class ManageGameController extends Controller {
 
     @FXML
     public void addEvent() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/CreateNewEvent.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/CreateNewEventUI.fxml"));
         Stage stage = getStage(loader, addEvent);
         stage.setTitle("Create New Event");
         CreateNewEventController controller = loader.getController();
@@ -82,7 +83,7 @@ public class ManageGameController extends Controller {
 
     public void init(){
         // init game DB
-        initGameIdCB(this.gameID);
+        initGameIdCB(this.cmbGameIDType);
     }
 }
 

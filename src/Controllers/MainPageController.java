@@ -19,7 +19,7 @@ public class MainPageController extends Controller{
 
     @FXML
     public void manageTeamClick() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/ManageTeam.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/ManageTeamUI.fxml"));
         Stage stage = getStage(loader,manageTeamBtn);
         stage.setTitle("Manage Team");
         ManageTeamController controller = loader.getController();
@@ -30,7 +30,7 @@ public class MainPageController extends Controller{
 
     @FXML
     public void managePolicyClick() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/ManagePolicy.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/ManagePolicyUI.fxml"));
         Stage stage = getStage(loader,managePolicyBtn);
         stage.setTitle("Manage Policy");
         ManagePolicyController controller = loader.getController();
@@ -41,7 +41,7 @@ public class MainPageController extends Controller{
 
     @FXML
     public void manageGameClick() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/ManageGame.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../View/ManageGameUI.fxml"));
         Stage stage = getStage(loader,manageGameBtn);
         stage.setTitle("Manage Game");
         ManageGameController controller = loader.getController();
