@@ -197,3 +197,7 @@ Button:hover{
     -fx-background-color: white;
     -fx-text-fill: #2ecc71;
 }
+.error-label
+{
+    -fx-text-fill: #2ecc71;
+}

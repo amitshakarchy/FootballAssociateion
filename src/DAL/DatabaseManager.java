@@ -73,7 +73,6 @@ public class DatabaseManager {
             System.out.println("started connection successfully");
         } catch (Exception ignored) {
             System.out.println("connection went bad");
-
         }
     }
 
