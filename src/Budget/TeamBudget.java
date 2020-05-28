@@ -36,7 +36,7 @@ public class TeamBudget extends Observable {
     public void setNews(RepresentativeFootballAssociation representative) {
         if(representative!=null) {
             this.representative = representative;
-            representative.update(this, this.team.getName());
+            //representative.update(this, this.team.getName());
         }
     }
     /**

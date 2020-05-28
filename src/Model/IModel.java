@@ -213,7 +213,7 @@ public interface IModel {
      * @param seasonYear -
      * @return true for success, false for failure
      */
-    boolean defineGameSchedulingPolicy(String policy, String leagueName, String seasonYear) throws RecordException;
+    boolean defineGameSchedulingPolicy(String policy, String leagueName, String seasonYear) throws RecordException, Exception;
 
     /**
      * Receives a policy by its name for a specific season & league and sets it.
@@ -233,7 +233,7 @@ public interface IModel {
      * @param seasonYear -
      * @return true for success, false for failure
      */
-    boolean runGameSchedulingAlgorithm(String leagueName, String seasonYear);
+    boolean runGameSchedulingAlgorithm(String leagueName, String seasonYear) throws Exception;
     //endregion
 
     /**

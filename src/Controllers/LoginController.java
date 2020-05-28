@@ -72,7 +72,7 @@ public class LoginController extends Controller implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if(o.equals(model)){
-            ArrayList<String> notifications = (ArrayList<String>) arg;
+            ArrayList<String> notifications =  ((RepresentativeFootballAssociation) arg).getNotificationTeams();
             for (String req : notifications){
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText(req);
@@ -80,7 +80,7 @@ public class LoginController extends Controller implements Observer {
                 if(ButtonType.OK.equals(option.get())){
                     // TODO: 5/26/2020 send notifications to the relevent and create team
                 }
-                RepresentativeFootballAssociation.notificationTeams.remove(req);
+                ((RepresentativeFootballAssociation)arg).removeNotifications();
 
             }
         }
