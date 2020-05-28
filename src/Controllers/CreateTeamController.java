@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import System.FootballSystem;
 
@@ -29,9 +30,9 @@ public class CreateTeamController extends Controller{
     public TextField teamID;
     public TextField teamName;
     public TextField teamBudget;
-    public ChoiceBox leagueNameCB;
-    public ChoiceBox fieldChoiceBox;
-    public ChoiceBox seasonChoiceBoxCB;
+    public ComboBox cmbLeagueType2;
+    public ComboBox cmbFieldType;
+    public ComboBox cmbSeasonType21;
 
 
     @FXML
@@ -46,8 +47,8 @@ public class CreateTeamController extends Controller{
                 !requiredField4.getHasErrors() && !requiredField5.getHasErrors()  && !requiredField6.getHasErrors()  ){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             try {
-                model.createTeam(teamName.getText(), leagueNameCB.getValue().toString(),
-                        seasonChoiceBoxCB.getValue().toString(),fieldChoiceBox.getValue().toString());
+                model.createTeam(teamName.getText(), cmbLeagueType2.getValue().toString(),
+                        cmbSeasonType21.getValue().toString(),cmbFieldType.getValue().toString());
                 alert.setTitle("Information Dialog");
                 alert.setContentText("The request has been sent to the \n" +
                         " Representative Football Association!");
@@ -66,7 +67,7 @@ public class CreateTeamController extends Controller{
             if(leagueHashMap != null && leagueHashMap.size() > 0){
                 Set<String> leagueSet = leagueHashMap.keySet();
                 for (String leagueName : leagueSet){
-                    this.leagueNameCB.getItems().add(leagueName);
+                    this.cmbLeagueType2.getItems().add(leagueName);
                 }
             }
             else{
@@ -84,7 +85,7 @@ public class CreateTeamController extends Controller{
             if(seasonHashMap != null && seasonHashMap.size() > 0){
                 Set<String> seasonSet = seasonHashMap.keySet();
                 for (String seasonName : seasonSet){
-                    this.seasonChoiceBoxCB.getItems().add(seasonName);
+                    this.cmbSeasonType21.getItems().add(seasonName);
                 }
             }
             else{
@@ -102,7 +103,7 @@ public class CreateTeamController extends Controller{
             if(fieldHashMap != null && fieldHashMap.size() > 0){
                 Set<String> fieldSet = fieldHashMap.keySet();
                 for (String fieldName : fieldSet){
-                    this.fieldChoiceBox.getItems().add(fieldName);
+                    this.cmbFieldType.getItems().add(fieldName);
                 }
             }
             else{

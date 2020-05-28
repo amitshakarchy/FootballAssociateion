@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import Model.RecordException;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import System.FootballSystem;
 
@@ -18,7 +19,7 @@ import java.util.Set;
 
 public class Controller {
     public static Model model;
-    static final String STYLE_SHEET = "../View/style.css";
+    static final String STYLE_SHEET = "../View/common-styles.css";
 
     public void setModel(Model model) {
         this.model = model;
@@ -52,14 +53,14 @@ public class Controller {
         return stage;
     }
 
-    public void initGameIdCB(ChoiceBox choiceBox){
+    public void initGameIdCB(ComboBox comboBox){
         GameDB gameDB = FootballSystem.getInstance().getGameDB();
         if(gameDB != null){
             HashMap<Integer, Game> gameHashMap = gameDB.getAllGames();
             if(gameHashMap != null && gameHashMap.size() > 0){
                 Set<Integer> gameSet = gameHashMap.keySet();
                 for (Integer gameName : gameSet){
-                    choiceBox.getItems().add(gameName);
+                    comboBox.getItems().add(gameName);
                 }
             }
             else{
