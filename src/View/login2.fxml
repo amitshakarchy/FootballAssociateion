@@ -36,10 +36,11 @@
                         <Font name="Calibri Bold" size="16.0" />
                     </font>
                 </PasswordField>
-                <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="130.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="110.0" fitWidth="110.0" layoutX="123.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@/images/user.png" />
+                        <Image url="http://icons.iconarchive.com/icons/saki/nuoveXT/128/User-male-icon.png" />
                     </image>
+<!--                    @/images/user.png-->
                 </ImageView>
             </children>
             <fx:define>

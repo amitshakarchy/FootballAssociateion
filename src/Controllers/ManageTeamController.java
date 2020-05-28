@@ -1,6 +1,8 @@
 package Controllers;
 
+import AssociationAssets.Season;
 import AssociationAssets.Team;
+import DB.SeasonDB;
 import DB.TeamDB;
 import Model.RecordException;
 import System.FootballSystem;
@@ -121,6 +123,22 @@ public class ManageTeamController extends Controller {
             }
         } else {
             raiseAlert(new RecordException("Teams DB is not exits"));
+        }
+
+        // init season DB
+        SeasonDB seasonDB = FootballSystem.getInstance().getSeasonDB();
+        if (teamDB != null) {
+            HashMap<String, Season> seasonsHashMap = seasonDB.getAllSeasons();
+            if (seasonsHashMap != null && seasonsHashMap.size() > 0) {
+                Set<String> seasonsSet = seasonsHashMap.keySet();
+                for (String season : seasonsSet) {
+                    this.cmbSeasonType.getItems().add(season);
+                }
+            } else {
+                raiseAlert(new RecordException("There is no seasons at the DB"));
+            }
+        } else {
+            raiseAlert(new RecordException("Season DB does not exits"));
         }
     }
 
