@@ -169,7 +169,7 @@ Button:hover{
 .combo-box .list-cell{
     -fx-background: white;
     -fx-background-color: transparent;
-    -fx-text-fill: white;
+    -fx-text-fill: rgba(0,0,0,0.6);
     -fx-padding: 3 0 2 7;
     -fx-cell-size: 1.66667em;
 }
