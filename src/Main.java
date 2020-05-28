@@ -33,7 +33,7 @@ public class Main extends Application {
         stage.setTitle("Football Association System");
         stage.setScene(new Scene(root, 900, 900));
         stage.show();
-        //-------------
+        //------------- 
         initDB();
         Model myModel = new Model();
         //***************
