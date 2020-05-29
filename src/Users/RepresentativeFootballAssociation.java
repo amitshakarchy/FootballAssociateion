@@ -3,6 +3,7 @@ package Users;
 import AssociationAssets.*;
 import Budget.AssociationBudget;
 import Budget.TeamBudget;
+import Model.RecordException;
 import PoliciesAndAlgorithms.GamesAssigningPolicy;
 import PoliciesAndAlgorithms.ScoreTablePolicy;
 
@@ -15,10 +16,11 @@ import System.*;
 import javax.naming.OperationNotSupportedException;
 import javax.security.auth.login.FailedLoginException;
 
-public class RepresentativeFootballAssociation extends Fan implements Observer  {
+public class RepresentativeFootballAssociation extends Fan  {
     private GamesAssigningPolicy gamePolicy;
     private AssociationBudget associationBudget;
-    public static ArrayList<String> notificationTeams = new ArrayList<>();
+    private   ArrayList<String> notificationTeams = new ArrayList<>();
+    //add notifications
     private HashMap<String/*teamName*/, Boolean> notificationTeamsExceedBudget;
 
 
@@ -52,6 +54,13 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
     // Write to the log
     Logger.getInstance().addActionToLogger(date + " " + now + ": Representative Football Association was created. representative user name: "+userName);
 }
+
+    public void removeNotifications() {
+        this.notificationTeams.clear();
+    }
+
+
+
     /**
      * useCase #9.1 - Define new League
      * @param leagueName  - The name of the new league
@@ -168,7 +177,9 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
             FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league.getLeagueName()).getSeasonBinders().get(season.getYear()).setScoreTablePolicy(policy);
         }
     }
-
+    public ArrayList<String> getNotificationTeams() {
+        return notificationTeams;
+    }
 
     /**
      * useCase #9.6 - define assign game policy
@@ -180,7 +191,7 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
             if(binder == null) throw new OperationNotSupportedException("This combination of league and season doesn't exists");
             binder.setAssigningPolicy(policy);
         }
-        else throw new OperationNotSupportedException("Incorrect input");
+        else throw new OperationNotSupportedException("Incorrect season or league provided");
 
     }
 
@@ -191,10 +202,15 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
         if(league!=null && season!=null){
             //get the teams from the season binder
             HashMap<String,Team> teams = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league.getLeagueName()).getSeasonBinders().get(season.getYear()).getTeams();
+            if(teams.size() < 2) throw new RecordException("Less than 2 teams in this league, can't activate policy");
             //getting all refs in the system
             Map<String,Referee> refs = FootballSystem.getInstance().getRefereeMap();
-            //calling for the assigning fucntion
-            HashMap<Integer, Game> games = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league.getLeagueName()).getSeasonBinders().get(season.getYear()).getAssigningPolicy().executePolicy(teams,refs,LocalDate.now(), season, league);
+            if(refs.size() == 0) throw new RecordException("No referees in the system, can't activate policy");
+            SeasonLeagueBinder binder = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(league.getLeagueName()).getSeasonBinders().get(season.getYear());
+            //calling for the assigning function
+            HashMap<Integer, Game> games = binder.getAssigningPolicy().executePolicy(teams,refs,LocalDate.now(), season, league);
+            //adding the games to the league
+            binder.addGamesToLeague(games);
         }
     }
 
@@ -208,16 +224,16 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
         }
         teamBudget.setThreshHold(threshHold,this);
     }
-
-    /**
-     * This function called when the team exceeds its budget
-     * @param o - TeamBudget Observable
-     * @param teamName-
-     */
-    @Override
-    public void update(Observable o, Object teamName) {
-        notificationTeams.add((String) teamName);
-    }
+//
+//    /**
+//     * This function called when the team exceeds its budget
+//     * @param o - TeamBudget Observable
+//     * @param teamName-
+//     */
+//    @Override
+//    public void update(Observable o, Object teamName) {
+//        notificationTeams.add((String) teamName);
+//    }
 
     /**
      * useCase #9.9 - define Tutu intakes
@@ -241,6 +257,9 @@ public class RepresentativeFootballAssociation extends Fan implements Observer  
         associationBudget.setRegistrationFee(registrationFee);
     }
 
+    public void addNotification(String notification){
+        this.notificationTeams.add(notification);
+    }
     /**
      * useCase #9.9 - set salary User
      * @param user-

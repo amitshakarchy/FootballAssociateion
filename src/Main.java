@@ -42,11 +42,11 @@ public class Main extends Application {
         FootballSystem.getInstance().signIn("r","r","r","r");
         RepresentativeFootballAssociation r =
                 (RepresentativeFootballAssociation) FootballSystem.getInstance().creatingRepresentativeFootballAssociation("r","r","r",null);
-        myModel.addObserver(r);
+        //myModel.addObserver(r);
         myModel.addObserver(fxmlLoader.getController());
         Controller controller = new Controller();
         controller.setModel(myModel);
-        RepresentativeFootballAssociation.notificationTeams.add("bnlablalbal");
+        //RepresentativeFootballAssociation.notificationTeams.add("bnlablalbal");
         // ***********
 
     }
