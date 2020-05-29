@@ -28,10 +28,8 @@ public class DeleteData {
         String dateStr = sdf.format(dt);
 
         String query =
-                "DELETE FROM \n" +
-                        "\tevents " +
-                        "WHERE \n" +
-                        "DateTime=? " +
+                "DELETE FROM events " +
+                        "WHERE DateTime=? " +
                         "AND gameID=?;";
 
         PreparedStatement ps = null;
@@ -40,7 +38,7 @@ public class DeleteData {
             ps.setString(1, dateStr);
             ps.setInt(2, gameID);
 
-            //System.out.println(ps.toString());
+            System.out.println(ps.toString());
             ps.executeUpdate();
             databaseManager.conn.commit();
         } catch (SQLException e) {
