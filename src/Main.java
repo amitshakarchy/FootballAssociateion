@@ -31,6 +31,7 @@ public class Main extends Application {
         Parent root = fxmlLoader.load(getClass().getResource(RESOURCE).openStream());
         root.getStylesheets().add(getClass().getResource(STYLE_SHEET).toExternalForm());
         stage.setTitle("Football Association System");
+        stage.setHeight(650);
         stage.setScene(new Scene(root, 900, 900));
         stage.show();
         //-------------
