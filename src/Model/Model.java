@@ -11,6 +11,7 @@ import javafx.util.Pair;
 
 import javax.naming.OperationNotSupportedException;
 import javax.security.auth.login.FailedLoginException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -126,12 +127,14 @@ public class Model extends Observable implements IModel {
         // Save the user as an object
         user = footballSystem.getFanByUserName(username);
         if(user instanceof RepresentativeFootballAssociation){
-            ArrayList<String> notifications =  RepresentativeFootballAssociation.notificationTeams;
+            ArrayList<String> notifications =  ((RepresentativeFootballAssociation) user).getNotificationTeams();
             if(notifications.size() > 0){
                 setChanged();
-                notifyObservers(notifications);
+                notifyObservers(user);
             }
         }
+        //else if team owner/referee
+
         return true;
     }
     //endregion
@@ -490,11 +493,11 @@ public class Model extends Observable implements IModel {
      * @return true for success, false for failure
      */
     @Override
-    public boolean defineGameSchedulingPolicy(String policy, String leagueName, String seasonYear) throws RecordException {
+    public boolean defineGameSchedulingPolicy(String policy, String leagueName, String seasonYear) throws RecordException, Exception {
 
         // Only Representative is allowed to define a policy.
         if (!(user instanceof RepresentativeFootballAssociation))
-            return false;
+            throw new RecordException("You don't have permission to define a game scheduling policy");
         RepresentativeFootballAssociation repUser = (RepresentativeFootballAssociation) user;
 
         // Validate season & league
@@ -503,23 +506,32 @@ public class Model extends Observable implements IModel {
 
         // Set requested policy
         switch (policy) {
-            case "Simple Policy":
+            case "Regular Schedule Policy":
                 try {
                     repUser.SetGamesAssigningPolicy(new SimpleGamesAssigningPolicy(), league, season);
+                    runGameSchedulingAlgorithm(leagueName,seasonYear);
+
                 } catch (OperationNotSupportedException e) {
                     // TODO: 5/26/2020 handle exc
                     e.printStackTrace();
                 }
+
+
                 break;
 
-            case "Heuristic Policy":
+            case "One Round Schedule Policy":
                 try {
                     repUser.SetGamesAssigningPolicy(new OneRoundGamesAssigningPolicy(), league, season);
                 } catch (OperationNotSupportedException e) {
                     // TODO: 5/26/2020 handle exc
-                    e.printStackTrace();
+                    throw new RecordException(e.getMessage());
+
                 }
                 break;
+
+            default:
+                throw new RecordException("You have to choose policy");
+
         }
         return true;
     }
@@ -537,7 +549,7 @@ public class Model extends Observable implements IModel {
 
         // Only Representative is allowed to define a policy.
         if (!(user instanceof RepresentativeFootballAssociation))
-            return false;
+            throw new RecordException("You don't have permission to define a score policy");
         RepresentativeFootballAssociation repUser = (RepresentativeFootballAssociation) user;
 
         // Validate season & league
@@ -546,13 +558,17 @@ public class Model extends Observable implements IModel {
 
         // Set requested policy
         switch (policy) {
-            case "Policy 1":
+            case "Classic Score Policy":
                 repUser.SetScoreTablePolicy(new RegularScorePolicy(), league, season);
                 break;
 
-            case "Policy 2":
+            case "Draw equals Lose Score Policy":
                 repUser.SetScoreTablePolicy(new ScoreTablePolicy2(), league, season);
                 break;
+
+            default:
+                throw new RecordException("You must choose a policy");
+
         }
         return true;
     }
@@ -565,7 +581,7 @@ public class Model extends Observable implements IModel {
      * @return true for success, false for failure
      */
     @Override
-    public boolean runGameSchedulingAlgorithm(String leagueName, String seasonYear) {
+    public boolean runGameSchedulingAlgorithm(String leagueName, String seasonYear) throws Exception {
 
         // Only Representative is allowed to define a policy.
         if (!(user instanceof RepresentativeFootballAssociation))
@@ -573,12 +589,9 @@ public class Model extends Observable implements IModel {
         RepresentativeFootballAssociation repUser = (RepresentativeFootballAssociation) user;
         Season season = FootballSystem.getInstance().getSeasonDB().getAllSeasons().get(seasonYear);
         League league = FootballSystem.getInstance().getLeagueDB().getAllLeagues().get(leagueName);
-        try {
-            repUser.activateGamesAssigning(league,season);
-        } catch (Exception e) {
-            // TODO: 5/26/2020 handle exc
-            e.printStackTrace();
-        }
+
+        repUser.activateGamesAssigning(league,season);
+
 
         return true;
     }
